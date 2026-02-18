@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QCH – Smart Ramadan Medication Assistant (v6)</title>
-  <meta name="description" content="Qatif Central Hospital – Ramadan Medication Assistant (Arabic/English). Hospital-grade class + frequency rules." />
+  <title>QCH – Smart Ramadan Medication Assistant (v7 fixed)</title>
+  <meta name="description" content="Qatif Central Hospital – Ramadan Medication Assistant (Arabic/English)." />
   <style>
     :root{
       --bg:#0b1f26; --text:#eaf6fb; --muted:#b7d2dd;
       --accent:#35d0c7; --accent2:#2aa6ff;
       --danger:#ff4d4f; --warn:#f5a524; --ok:#22c55e;
-      --radius:18px; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
     }
     body{margin:0;background:radial-gradient(1200px 700px at 20% 10%, #15404d 0%, var(--bg) 55%);color:var(--text);}
@@ -20,7 +20,7 @@
     .brand{display:flex;gap:14px;align-items:center}
     .logo{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--accent2),var(--accent));
       display:grid;place-items:center;font-weight:900;box-shadow:0 10px 20px rgba(0,0,0,.25)}
-    .title h1{margin:0;font-size:18px;letter-spacing:.2px}
+    .title h1{margin:0;font-size:18px}
     .title p{margin:4px 0 0;color:var(--muted);font-size:13px}
     .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     select, button, input{
@@ -28,37 +28,40 @@
       padding:10px 12px;border-radius:14px;outline:none;font-size:13px
     }
     button{cursor:pointer;background:rgba(53,208,199,.14);border-color:rgba(53,208,199,.35)}
-    button:hover{filter:brightness(1.06)}
     .grid{margin-top:16px;display:grid;grid-template-columns:1.45fr .75fr;gap:16px}
     @media (max-width: 980px){.grid{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;box-shadow:var(--shadow);overflow:hidden;min-height:560px;display:flex;flex-direction:column}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;min-height:560px}
     .card header{padding:14px 16px;background:rgba(0,0,0,.15);border-bottom:1px solid rgba(255,255,255,.08);
       display:flex;align-items:center;justify-content:space-between;gap:10px}
     .badge{font-size:12px;color:var(--muted);padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px}
-    .pillrow{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px 0}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px 10px}
     .pill{font-size:12px;color:var(--text);padding:8px 10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);
       border-radius:999px;cursor:pointer;user-select:none}
     .pill:hover{border-color:rgba(53,208,199,.45)}
-    .chatlog{padding:16px;overflow:auto;flex:1;-webkit-overflow-scrolling:touch}
+    /* IMPORTANT FIX: composer is fixed so it is ALWAYS clickable */
+    .chatWrap{position:relative;height:560px}
+    .chatlog{position:absolute;left:0;right:0;top:0;bottom:74px;padding:16px;overflow:auto;-webkit-overflow-scrolling:touch}
+    .composer{
+      position:absolute;left:12px;right:12px;bottom:12px;z-index:9999;
+      display:flex;gap:10px;padding:12px;background:rgba(8,18,22,.78);
+      border:1px solid rgba(255,255,255,.10);border-radius:16px;backdrop-filter: blur(10px)
+    }
+    .composer input{flex:1;font-size:14px}
     .msg{display:flex;margin:10px 0}
     .msg .bubble{max-width:88%;padding:12px;border-radius:16px;line-height:1.35;font-size:14px;border:1px solid rgba(255,255,255,.10);white-space:pre-wrap}
     .me{justify-content:flex-end}
     .me .bubble{background:rgba(53,208,199,.16);border-color:rgba(53,208,199,.35)}
     .bot .bubble{background:rgba(255,255,255,.06)}
     .chips{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
-    .chip{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.12);color:rgba(234,246,251,.92)}
+    .chip{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.12)}
     .chip.ok{border-color:rgba(34,197,94,.45)}
     .chip.warn{border-color:rgba(245,165,36,.45)}
     .chip.danger{border-color:rgba(255,77,79,.45)}
-    .composer{position:sticky;bottom:0;z-index:50;display:flex;gap:10px;padding:12px;background:rgba(8,18,22,.72);
-      border-top:1px solid rgba(255,255,255,.08);backdrop-filter: blur(10px)}
-    .composer input{flex:1;font-size:14px;pointer-events:auto}
     .side .content{padding:16px;color:var(--muted);font-size:13px;line-height:1.5}
     .alert{margin-top:10px;padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
-    .alert.ok{border-color:rgba(34,197,94,.45)}
     .alert.warn{border-color:rgba(245,165,36,.45)}
-    .alert.danger{border-color:rgba(255,77,79,.45)}
+    .alert.ok{border-color:rgba(34,197,94,.45)}
     .foot{margin-top:14px;font-size:12px;color:rgba(234,246,251,.75)}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
   </style>
@@ -91,16 +94,18 @@
       <section class="card">
         <header>
           <div style="font-weight:800">Chat</div>
-          <div class="badge">Ramadan • v6 (Class + Frequency Engine)</div>
+          <div class="badge">Ramadan • v7 (Typing Fix)</div>
         </header>
 
         <div class="pillrow" id="quick"></div>
-        <div class="chatlog" id="chat"></div>
 
-        <div class="composer">
-          <input id="input" type="text" inputmode="text" autocapitalize="off" autocorrect="off"
-                 placeholder="Type medication name… / اكتب اسم الدواء…" autocomplete="off" />
-          <button id="send" type="button">Send</button>
+        <div class="chatWrap">
+          <div class="chatlog" id="chat"></div>
+          <div class="composer">
+            <input id="input" type="text" inputmode="text" autocapitalize="off" autocorrect="off"
+                   placeholder="Type medication name… / اكتب اسم الدواء…" autocomplete="off" />
+            <button id="send" type="button">Send</button>
+          </div>
         </div>
       </section>
 
@@ -114,7 +119,6 @@
             <b>Important:</b> General guidance only. For <b>insulin</b>, <b>warfarin</b>, <b>pregnancy</b>, <b>CKD/CLD</b>,
             transplant, chemotherapy, seizure meds, or complex regimens → consult your clinician/pharmacist.
           </div>
-
           <div class="alert ok" id="welcomeBox"></div>
 
           <div class="alert">
@@ -188,21 +192,21 @@
     }
     if(freq==="bid"){
       return {
-        en: "✅ Twice daily (BID): 1st dose after Iftar + 2nd dose after Suhoor (as close to 12 hours apart as possible).\n• If one dose must be with food: take it with Iftar.",
-        ar: "✅ مرتين يوميًا (BID): الجرعة الأولى بعد الإفطار + الثانية بعد السحور (قريب من 12 ساعة قدر الإمكان).\n• إذا جرعة لازم مع الأكل: خذها مع الإفطار.",
+        en: "✅ Twice daily (BID): 1st dose after Iftar + 2nd dose after Suhoor (as close to 12 hours apart as possible).",
+        ar: "✅ مرتين يوميًا (BID): الجرعة الأولى بعد الإفطار + الثانية بعد السحور (قريب من 12 ساعة قدر الإمكان).",
         chips: chips([{l:"ok",ar:"إفطار + سحور",en:"Iftar + Suhoor"}])
       };
     }
     if(freq==="tid"){
       return {
-        en: "⚠ Three times daily (TID): usually not ideal in Ramadan.\n✅ Best option: ask your clinician to switch to BID or extended‑release (XR) during Ramadan.\n⛔ Do NOT self‑adjust.",
-        ar: "⚠ ثلاث مرات يوميًا (TID): غالبًا غير مناسب في رمضان.\n✅ الأفضل: استشر الطبيب لتحويله إلى مرتين أو ممتد المفعول (XR) خلال رمضان.\n⛔ لا تعدّل الجرعات بنفسك.",
+        en: "⚠ Three times daily (TID): usually not ideal in Ramadan.\n✅ Ask clinician to switch to BID or XR.\n⛔ Do NOT self-adjust.",
+        ar: "⚠ ثلاث مرات يوميًا (TID): غالبًا غير مناسب في رمضان.\n✅ استشر الطبيب لتحويله إلى مرتين أو XR.\n⛔ لا تعدّل الجرعات بنفسك.",
         chips: chips([{l:"warn",ar:"يفضل تحويله",en:"Prefer switch to BID/XR"},{l:"danger",ar:"لا تعدل بنفسك",en:"Do not self-adjust"}])
       };
     }
     return {
-      en: "⛔ Four times daily (QID): not compatible with fasting safely for most meds.\nConsult your clinician for an alternative schedule.",
-      ar: "⛔ أربع مرات يوميًا (QID): غالبًا غير مناسب للصيام بشكل آمن.\nاستشر الطبيب لبديل أو جدول مختلف.",
+      en: "⛔ Four times daily (QID): not compatible with fasting safely for most meds. Consult your clinician.",
+      ar: "⛔ أربع مرات يوميًا (QID): غالبًا غير مناسب للصيام بشكل آمن. استشر الطبيب.",
       chips: chips([{l:"danger",ar:"استشارة ضرورية",en:"Consultation required"}])
     };
   }
@@ -222,67 +226,32 @@
       chips([{l:"danger",ar:"وارفارين يحتاج INR",en:"Warfarin needs INR monitoring"},{l:"warn",ar:"تداخلات مع مضادات/NSAIDs",en:"Interactions with antibiotics/NSAIDs"}]),
       hcp("Keep time consistent; monitor INR with diet/drug changes.","ثبّت وقت الجرعة وراقب INR مع أي تغيير غذائي/دوائي.")
     ),
-    entry(["apixaban","eliquis","أبيكسابان","اليكوس"], "DOAC", "مضاد تخثر (DOAC)",
-      "✅ BID: after Iftar + after Suhoor (≈12h apart).",
-      "✅ مرتين: بعد الإفطار + بعد السحور (≈12 ساعة).",
-      chips([{l:"warn",ar:"راقب النزيف",en:"Monitor bleeding"}])
-    ),
-    entry(["rivaroxaban","xarelto","ريفاروكسابان","زارلتو"], "DOAC", "مضاد تخثر (DOAC)",
-      "✅ OD: after Iftar.\n🍽 Some strengths must be taken with food (follow label).",
-      "✅ مرة: بعد الإفطار.\n🍽 بعض الجرعات لازم مع الطعام (اتبع الوصفة).",
-      chips([{l:"warn",ar:"راقب النزيف",en:"Monitor bleeding"}])
-    ),
     entry(["insulin","انسولين","lantus","novorapid","humalog","mixtard","glargine","aspart"], "Diabetes", "السكر – إنسولين",
       "⚠ Insulin needs an individualized Ramadan plan.\n✅ Mealtime doses with Iftar & Suhoor; basal often evening.\n⛔ Do not change doses without clinician.\n📌 Hypoglycemia symptoms → break fast immediately.",
       "⚠ الإنسولين يحتاج خطة فردية لرمضان.\n✅ جرعات الوجبات مع الإفطار والسحور؛ القاعدي غالبًا مساء.\n⛔ لا تغيّر الجرعات بدون الطبيب.\n📌 أعراض هبوط السكر → افطر فورًا.",
       chips([{l:"danger",ar:"خطر هبوط سكر أعلى",en:"Higher hypoglycemia risk"}])
     ),
-    entry(["levothyroxine","euthyrox","eltroxin","ليفوثيروكسين","ثيروكسين"], "Endocrine", "الغدة الدرقية",
-      "✅ Take 30–60 min before Suhoor on empty stomach with water.\nSeparate 4 hours from iron/calcium/antacids.",
-      "✅ خذه قبل السحور 30–60 دقيقة على معدة فارغة مع ماء.\nافصل 4 ساعات عن الحديد/الكالسيوم/مضادات الحموضة.",
-      chips([{l:"ok",ar:"على معدة فارغة",en:"Empty stomach"}])
-    ),
-    entry(["omeprazole","pantoprazole","esomeprazole","lansoprazole","ppi","أوميبرازول","بانتوبرازول","إيزوميبرازول"], "GI (PPI)", "أدوية المعدة (PPI)",
-      "✅ Best 30–60 min before Iftar.\nAlternative: before Suhoor.\nIf BID: before Iftar + before Suhoor.",
-      "✅ الأفضل قبل الإفطار 30–60 دقيقة.\nبديل: قبل السحور.\nإذا مرتين: قبل الإفطار + قبل السحور.",
+    entry(["omeprazole","pantoprazole","esomeprazole","ppi","أوميبرازول","بانتوبرازول","إيزوميبرازول"], "GI (PPI)", "أدوية المعدة (PPI)",
+      "✅ Best 30–60 min before Iftar. Alternative: before Suhoor. If BID: before Iftar + before Suhoor.",
+      "✅ الأفضل قبل الإفطار 30–60 دقيقة. بديل: قبل السحور. إذا مرتين: قبل الإفطار + قبل السحور.",
       chips([{l:"ok",ar:"قبل الأكل أفضل",en:"Best before meals"}])
     ),
-    entry(["furosemide","lasix","فروسيمايد","لازيكس","hct","hydrochlorothiazide"], "Diuretic", "مدر بول",
-      "✅ Best early after Iftar (avoid night urination).\n💧 Watch dehydration; check BP.",
-      "✅ الأفضل بعد الإفطار مبكرًا (لتقليل التبول ليلًا).\n💧 انتبه للجفاف وراقب الضغط.",
-      chips([{l:"warn",ar:"خطر الجفاف",en:"Dehydration risk"}])
+    entry(["levothyroxine","euthyrox","eltroxin","ليفوثيروكسين","ثيروكسين"], "Endocrine", "الغدة الدرقية",
+      "✅ Take 30–60 min before Suhoor on empty stomach with water. Separate 4h from iron/calcium/antacids.",
+      "✅ خذه قبل السحور 30–60 دقيقة على معدة فارغة مع ماء. افصل 4 ساعات عن الحديد/الكالسيوم/مضادات الحموضة.",
+      chips([{l:"ok",ar:"على معدة فارغة",en:"Empty stomach"}])
     ),
-    entry(["metformin","glucophage","ميتفورمين","جلوكوفاج"], "Diabetes", "السكر – ميتفورمين",
-      "✅ BID: after Iftar + after Suhoor (with food).\n✅ XR OD: after Iftar.",
-      "✅ مرتين: بعد الإفطار + بعد السحور (مع الطعام).\n✅ ممتد OD: بعد الإفطار.",
-      chips([{l:"warn",ar:"مرض حاد/جفاف → راجع",en:"Acute illness/dehydration → seek advice"}])
-    ),
-    entry(["gliclazide","glimepiride","سلفونيل","غليكلازايد","glibenclamide"], "Diabetes (Sulfonylurea)", "السكر – سلفونيل يوريا",
-      "⚠ Higher hypoglycemia risk. Usually take with Iftar meal.\n⛔ Dose changes require clinician.",
-      "⚠ خطر هبوط سكر أعلى. غالبًا مع وجبة الإفطار.\n⛔ تعديل الجرعة يتطلب الطبيب.",
-      chips([{l:"danger",ar:"خطر هبوط سكر",en:"Higher hypoglycemia risk"}])
-    ),
-    entry(["empagliflozin","dapagliflozin","sglt2","جاردينس","إمباغليفلوزين","داباغليفلوزين"], "Diabetes (SGLT2)", "السكر – SGLT2",
-      "✅ OD after Iftar.\n💧 Hydration is important.\n⚠ Hold during acute illness per plan.",
-      "✅ مرة بعد الإفطار.\n💧 الترطيب مهم.\n⚠ أوقف عند مرض حاد حسب الخطة.",
-      chips([{l:"warn",ar:"جفاف/التهاب بولي",en:"Dehydration/UTI risk"}])
-    ),
-    entry(["augmentin","amoxicillin","amoxiclav","أوجمنتين","أموكسيسيلين","أموكسيكلاف"], "Antibiotic", "مضاد حيوي",
-      "✅ BID: after Iftar + after Suhoor.\n📌 Finish the course.",
-      "✅ مرتين: بعد الإفطار + بعد السحور.\n📌 أكمل الكورس.",
-      chips([{l:"warn",ar:"قد يؤثر على INR مع وارفارين",en:"May affect INR with warfarin"}])
+    entry(["antibiotic","مضاد حيوي"], "Antibiotic", "مضاد حيوي",
+      "✅ If BID: after Iftar + after Suhoor. If OD: after Iftar. If TID/QID: ask for XR/BID alternative.",
+      "✅ إذا مرتين: بعد الإفطار + بعد السحور. إذا مرة: بعد الإفطار. إذا 3/4 مرات: اطلب بديل XR/BID.",
+      chips([{l:"warn",ar:"أكمل الكورس",en:"Finish the course"}])
     ),
   ];
 
   const CLASS_RULES = [
-    classRule(["antibiotic","مضاد حيوي"], "Antibiotic", "مضاد حيوي",
-      "If BID: after Iftar + after Suhoor.\nIf OD: after Iftar.\nIf TID/QID: ask clinician for BID/XR alternative.",
-      "إذا BID: بعد الإفطار + بعد السحور.\nإذا OD: بعد الإفطار.\nإذا TID/QID: استشر الطبيب لبديل BID/XR.",
-      chips([{l:"warn",ar:"أكمل الكورس",en:"Finish the course"}])
-    ),
     classRule(["blood pressure","antihypertensive","ضغط"], "Blood pressure meds", "أدوية الضغط",
-      "OD: after Iftar OR after Suhoor (consistent).\nDiuretics: early after Iftar.",
-      "OD: بعد الإفطار أو السحور (وقت ثابت).\nالمدرات: بعد الإفطار مبكرًا.",
+      "OD: after Iftar OR after Suhoor (consistent). Diuretics: early after Iftar.",
+      "مرة: بعد الإفطار أو السحور (وقت ثابت). المدرات: بعد الإفطار مبكرًا.",
       chips([{l:"warn",ar:"راقب الدوخة/الضغط",en:"Monitor dizziness/BP"}])
     ),
     classRule(["ppi","معدة","ارتجاع"], "PPI", "أدوية المعدة (PPI)",
@@ -290,20 +259,15 @@
       "قبل الإفطار 30–60 دقيقة (الأفضل). إذا مرتين: قبل الإفطار + قبل السحور.",
       chips([{l:"ok",ar:"قبل الأكل أفضل",en:"Best before meals"}])
     ),
-    classRule(["thyroid","levothyroxine","غدة","ثيروكسين"], "Thyroid", "الغدة الدرقية",
-      "Empty stomach before Suhoor 30–60 min; separate from iron/calcium/antacids.",
-      "معدة فارغة قبل السحور 30–60 دقيقة؛ افصل عن الحديد/الكالسيوم/مضادات الحموضة.",
-      chips([{l:"ok",ar:"على معدة فارغة",en:"Empty stomach"}])
+    classRule(["pain","analgesic","مسكن"], "Pain relief", "مسكنات",
+      "Paracetamol between Iftar–Suhoor as needed. NSAIDs after Iftar with food; avoid with ulcers/CKD/warfarin unless advised.",
+      "باراسيتامول بين الإفطار والسحور عند الحاجة. NSAIDs بعد الإفطار مع الطعام؛ تجنبها مع قرحة/كلى/وارفارين إلا بتوجيه.",
+      chips([{l:"warn",ar:"مع الطعام",en:"With food"}])
     ),
     classRule(["inhaler","asthma","بخاخ"], "Inhalers", "بخاخات",
       "Continue as prescribed. Do not delay treatment if severe symptoms.",
       "استمر حسب الوصفة. لا تؤخر العلاج إذا الأعراض شديدة.",
       chips([{l:"warn",ar:"الأولوية للأمان",en:"Safety first"}])
-    ),
-    classRule(["pain","analgesic","مسكن"], "Pain relief", "مسكنات",
-      "Paracetamol: between Iftar–Suhoor as needed.\nNSAIDs: after Iftar with food; avoid with ulcers/CKD/warfarin unless advised.",
-      "باراسيتامول: بين الإفطار والسحور عند الحاجة.\nNSAIDs: بعد الإفطار مع الطعام؛ تجنبه مع قرحة/كلى/وارفارين إلا بتوجيه.",
-      chips([{l:"warn",ar:"مع الطعام",en:"With food"}])
     ),
   ];
 
@@ -332,102 +296,50 @@
   function askFrequency(classHint=null){
     state.pending = {type:"freq", classHint};
     pushMsg(t(
-      "To cover ALL medications safely, tell me the dosing frequency:
-1) Once daily (OD)
-2) Twice daily (BID)
-3) Three times daily (TID)
-4) Four times daily (QID)
-
-Reply: 1 / 2 / 3 / 4",
-      "لتغطية كل الأدوية بأمان، حدّد عدد المرات باليوم:
-1) مرة يوميًا (OD)
-2) مرتين (BID)
-3) ثلاث مرات (TID)
-4) أربع مرات (QID)
-
-اكتب: 1 أو 2 أو 3 أو 4"
-    ), "bot", chips([{l:"ok",ar:"منطق شامل لكل الأدوية",en:"Scalable for all meds"}]));
+      "To cover ALL medications safely, tell me the dosing frequency:\n1) Once daily (OD)\n2) Twice daily (BID)\n3) Three times daily (TID)\n4) Four times daily (QID)\n\nReply: 1 / 2 / 3 / 4",
+      "لتغطية كل الأدوية بأمان، حدّد عدد المرات باليوم:\n1) مرة يوميًا (OD)\n2) مرتين (BID)\n3) ثلاث مرات (TID)\n4) أربع مرات (QID)\n\nاكتب: 1 أو 2 أو 3 أو 4"
+    ));
   }
 
   function renderMed(m){
-    const header = t(`📌 Category: ${m.cat.en}
-`, `📌 التصنيف: ${m.cat.ar}
-`);
+    const header = t(`📌 Category: ${m.cat.en}\n`, `📌 التصنيف: ${m.cat.ar}\n`);
     const body = (ui.mode.value==="hcp" && m.hcp)
-      ? t("🧑‍⚕️ For HCP:
-" + m.hcp.en, "🧑‍⚕️ للكوادر الصحية:
-" + m.hcp.ar)
+      ? t("🧑‍⚕️ For HCP:\n" + m.hcp.en, "🧑‍⚕️ للكوادر الصحية:\n" + m.hcp.ar)
       : t(m.patient.ar, m.patient.en);
-    pushMsg(header + "
-" + body, "bot", m.chips || []);
+    pushMsg(header + "\n" + body, "bot", m.chips || []);
   }
 
   function renderClass(c){
-    const header = t(`📌 Class: ${c.cat.en}
-`, `📌 الفئة: ${c.cat.ar}
-`);
-    pushMsg(header + "
-" + t(c.patient.ar, c.patient.en), "bot", c.chips || []);
-    pushMsg(t(
-      "If you know the frequency (OD/BID/TID/QID), type it now (1/2/3/4) for the perfect Ramadan schedule.",
-      "إذا تعرف عدد المرات (OD/BID/TID/QID)، اكتب الآن (1/2/3/4) للحصول على الجدول الأدق."
-    ), "bot");
-    state.pending = {type:"freq", classHint:c.cat};
+    const header = t(`📌 Class: ${c.cat.en}\n`, `📌 الفئة: ${c.cat.ar}\n`);
+    pushMsg(header + "\n" + t(c.patient.ar, c.patient.en), "bot", c.chips || []);
+    askFrequency(c.cat);
   }
 
   function handleFrequencyReply(q){
     const qq = normalize(q);
-    const map = {
-      "1":"od","od":"od","once":"od","مرة":"od",
-      "2":"bid","bid":"bid","twice":"bid","مرتين":"bid",
-      "3":"tid","tid":"tid","three":"tid","ثلاث":"tid",
-      "4":"qid","qid":"qid","four":"qid","أربع":"qid"
-    };
+    const map = {"1":"od","od":"od","once":"od","مرة":"od","2":"bid","bid":"bid","twice":"bid","مرتين":"bid","3":"tid","tid":"tid","4":"qid","qid":"qid"};
     const f = map[qq];
-    if(!f){
-      pushMsg(t("Please reply 1/2/3/4 (OD/BID/TID/QID).","اكتب 1/2/3/4 (OD/BID/TID/QID)."),"bot");
-      return;
-    }
+    if(!f){ pushMsg(t("Reply 1/2/3/4.","اكتب 1/2/3/4."),"bot"); return; }
     const g = freqGuidance(f);
     const label = (state.pending && state.pending.classHint)
-      ? t(`📌 Based on class: ${state.pending.classHint.en || ""}
-`, `📌 بناءً على الفئة: ${state.pending.classHint.ar || ""}
-`)
+      ? t(`📌 Based on class: ${state.pending.classHint.en||""}\n`, `📌 بناءً على الفئة: ${state.pending.classHint.ar||""}\n`)
       : "";
-    pushMsg(label + "
-" + t(g.ar,g.en), "bot", g.chips||[]);
+    pushMsg(label + "\n" + t(g.ar,g.en), "bot", g.chips||[]);
     state.pending = null;
   }
 
   function route(q){
-    if(state.pending && state.pending.type==="freq"){
-      handleFrequencyReply(q);
-      return;
-    }
-
-    const qq = normalize(q);
-    if(!qq) return;
-
-    const m = findMed(q);
-    if(m){ renderMed(m); return; }
-
-    const c = findClass(q);
-    if(c){ renderClass(c); return; }
-
+    if(state.pending && state.pending.type==="freq"){ handleFrequencyReply(q); return; }
+    const m = findMed(q); if(m){ renderMed(m); return; }
+    const c = findClass(q); if(c){ renderClass(c); return; }
     pushMsg(t(
-      "I couldn't find that exact medication.
-✅ Type a class (antibiotic / PPI / blood pressure / inhaler / pain), or reply with frequency (1/2/3/4) to generate a safe Ramadan schedule for ANY medication.",
-      "لم أجد الدواء بالاسم.
-✅ اكتب فئة الدواء (مضاد حيوي / PPI / ضغط / بخاخ / مسكن)، أو اكتب عدد المرات (1/2/3/4) لأعطيك جدول آمن لأي دواء."
+      "Not found by name. Type a class (antibiotic / PPI / blood pressure / inhaler / pain) OR reply with 1/2/3/4 for frequency.",
+      "لم أجد الاسم. اكتب فئة (مضاد حيوي / PPI / ضغط / بخاخ / مسكن) أو اكتب 1/2/3/4 لعدد المرات."
     ),"bot");
     askFrequency();
   }
 
-  const quick = [
-    "warfarin","insulin","levothyroxine","omeprazole","metformin","augmentin",
-    "antibiotic","blood pressure","PPI","inhaler","pain",
-    "OD (1)","BID (2)","TID (3)","QID (4)"
-  ];
+  const quick = ["warfarin","insulin","levothyroxine","omeprazole","antibiotic","blood pressure","PPI","inhaler","pain","OD (1)","BID (2)","TID (3)","QID (4)"];
   function buildQuick(){
     ui.quick.innerHTML = "";
     quick.forEach(label=>{
@@ -442,6 +354,7 @@ Reply: 1 / 2 / 3 / 4",
         if(label==="QID (4)") v="4";
         pushMsg(v,"me");
         route(v);
+        focusInput();
       };
       ui.quick.appendChild(b);
     });
@@ -451,26 +364,18 @@ Reply: 1 / 2 / 3 / 4",
     ui.chat.innerHTML = "";
     state.pending = null;
     pushMsg(t(
-      "Ramadan Kareem 🌙
-
-Welcome to QCH Smart Ramadan Medication Assistant.
-Type your medication name (Arabic/English). If not found, type a class or reply with dosing frequency (1/2/3/4).
-
-Example: warfarin / insulin / omeprazole / antibiotic / blood pressure",
-      "Ramadan Kareem 🌙
-
-أهلًا بك في مساعد أدوية رمضان – مستشفى القطيف المركزي.
-اكتب اسم الدواء (عربي/إنجليزي). إذا لم يظهر، اكتب فئة الدواء أو عدد المرات (1/2/3/4).
-
-مثال: وارفارين / انسولين / omeprazole / مضاد حيوي / ضغط"
+      "Ramadan Kareem 🌙\n\nWelcome to QCH Smart Ramadan Medication Assistant.\nType your medication name (Arabic/English).",
+      "Ramadan Kareem 🌙\n\nأهلًا بك في مساعد أدوية رمضان – مستشفى القطيف المركزي.\nاكتب اسم الدواء (عربي/إنجليزي)."
     ), "bot");
-
     ui.welcomeBox.textContent = t(
-      "Perfect Ramadan guidance = (Medication OR Class) + (Frequency).
-If your medicine is TID/QID, ask for XR/BID alternative.",
-      "الإرشاد المثالي = (اسم الدواء أو الفئة) + (عدد المرات).
-إذا TID/QID اطلب بديل XR/BID."
+      "If your medicine is TID/QID → ask for XR/BID alternative.",
+      "إذا الدواء 3/4 مرات → اطلب بديل XR/BID."
     );
+    focusInput();
+  }
+
+  function focusInput(){
+    setTimeout(()=>{ try{ ui.input.focus(); }catch(e){} }, 50);
   }
 
   function send(){
@@ -479,6 +384,7 @@ If your medicine is TID/QID, ask for XR/BID alternative.",
     pushMsg(q,"me");
     ui.input.value = "";
     route(q);
+    focusInput();
   }
 
   ui.send.addEventListener("click", send);
@@ -486,6 +392,8 @@ If your medicine is TID/QID, ask for XR/BID alternative.",
   ui.reset.addEventListener("click", welcome);
   ui.lang.addEventListener("change", welcome);
   ui.mode.addEventListener("change", welcome);
+
+  document.addEventListener("click", (e)=>{ if(e.target !== ui.input){ focusInput(); } }, {passive:true});
 
   buildQuick();
   welcome();
