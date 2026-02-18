@@ -3,51 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>QCH – Smart Ramadan Medication Assistant</title>
-  <meta name="description" content="Bilingual Ramadan medication timing assistant (Arabic/English) – Qatif Central Hospital Pharmacy Department." />
+  <title>QCH – Ramadan Medication Assistant</title>
+  <meta name="description" content="Patient-friendly Ramadan medication timing assistant (Arabic/English) – Qatif Central Hospital." />
 
   <style>
     :root{
-      --bg:#f5fbfb;
+      --bg:#f6fbfc;
       --card:#ffffff;
-      --ink:#0b1b2a;
-      --muted:#5b6b7b;
+      --ink:#071827;
+      --muted:#516274;
       --brand:#0aa6a6;     /* turquoise */
       --brand2:#1e88e5;    /* blue */
       --warn:#b45309;
-      --good:#047857;
       --line:#e6edf2;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
-      --radius: 18px;
+      --radius: 20px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
-
     html,body{height:100%;}
     body{
       margin:0;
       font-family:var(--font);
       color:var(--ink);
-      background: radial-gradient(1200px 700px at 20% 0%, rgba(10,166,166,.12), transparent 60%),
-                  radial-gradient(1000px 600px at 90% 10%, rgba(30,136,229,.12), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(10,166,166,.12), transparent 60%),
+        radial-gradient(1000px 600px at 90% 10%, rgba(30,136,229,.12), transparent 55%),
+        var(--bg);
     }
 
-    /* Patient-friendly mode */
-    body.patient-mode{
-      font-size: 18px;
-    }
-    body.patient-mode .detail{
-      display:none !important;
-    }
-    body.patient-mode .chip{
-      padding:10px 12px;
-      font-size: 16px;
-    }
+    /* Patient-friendly defaults: bigger text, simpler */
+    body.patient-mode{ font-size: 18px; }
+    .detail{ display:none !important; } /* always hide details (patient-focused) */
 
     .wrap{
-      max-width: 980px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 18px 16px 28px;
+      padding: 16px 14px 22px;
       display:flex;
       flex-direction:column;
       gap:14px;
@@ -60,53 +51,51 @@
       border: 1px solid rgba(230,237,242,.9);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 16px 16px;
+      padding: 14px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:12px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 0;
+      min-width:0;
     }
 
-    .logo{
-      width: 56px;
-      height: 56px;
+    .logoBox{
+      width: 78px;
+      height: 52px;
       border-radius: 16px;
-      background: conic-gradient(from 220deg, var(--brand), var(--brand2));
-      box-shadow: 0 10px 25px rgba(10,166,166,.18);
+      background: #fff;
+      border: 1px solid rgba(230,237,242,.95);
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#fff;
-      font-weight:800;
-      letter-spacing:.5px;
-      flex: 0 0 auto;
       overflow:hidden;
+      flex: 0 0 auto;
+      padding: 6px 8px;
     }
-
-    /* If you have a real logo file, set <img> inside .logo and it will fill */
-    .logo img{
+    .logoBox img{
       width:100%;
       height:100%;
-      object-fit:cover;
+      object-fit:contain;
       display:block;
     }
 
-    .brand h1{
+    .brandText{ min-width:0; }
+    .brandText h1{
       margin:0;
       font-size: 18px;
-      line-height: 1.2;
+      line-height:1.2;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
-    .brand p{
+    .brandText p{
       margin:4px 0 0;
       font-size: 13px;
       color: var(--muted);
@@ -117,43 +106,36 @@
 
     .controls{
       display:flex;
-      flex-wrap:wrap;
       gap:10px;
+      flex-wrap:wrap;
       justify-content:flex-end;
       align-items:center;
     }
-
     .btn{
       appearance:none;
       border: 1px solid var(--line);
       background: #fff;
       color: var(--ink);
       border-radius: 999px;
-      padding: 10px 12px;
-      font-weight: 600;
+      padding: 12px 14px;
+      font-weight: 800;
       cursor:pointer;
       display:inline-flex;
       align-items:center;
       gap:8px;
       box-shadow: 0 6px 18px rgba(15,23,42,.05);
-      transition: transform .06s ease, border-color .2s ease, background .2s ease;
+      transition: transform .06s ease, border-color .2s ease;
       user-select:none;
+      font-size: 15px;
     }
     .btn:hover{ transform: translateY(-1px); border-color: rgba(10,166,166,.35); }
     .btn.primary{
-      background: linear-gradient(135deg, rgba(10,166,166,.16), rgba(30,136,229,.10));
+      background: linear-gradient(135deg, rgba(10,166,166,.18), rgba(30,136,229,.10));
       border-color: rgba(10,166,166,.25);
     }
     .btn.danger{
       border-color: rgba(180,83,9,.25);
       background: rgba(180,83,9,.06);
-    }
-
-    .panel{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      flex: 1 1 auto;
     }
 
     .card{
@@ -164,89 +146,123 @@
       overflow:hidden;
     }
 
-    .card-head{
+    .hero{
       padding: 14px 14px 10px;
       border-bottom: 1px solid var(--line);
+    }
+    .heroTitle{
       display:flex;
       flex-wrap:wrap;
-      align-items:flex-start;
       gap:10px;
+      align-items:center;
       justify-content:space-between;
     }
-    .card-head .title{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-    .badge{
-      font-weight:800;
+    .pill{
+      font-weight:900;
       font-size: 12px;
-      padding: 6px 10px;
+      padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(10,166,166,.12);
-      border: 1px solid rgba(10,166,166,.20);
+      background: rgba(10,166,166,.10);
+      border: 1px solid rgba(10,166,166,.22);
       color: #065f5f;
       white-space:nowrap;
     }
-    .badge.blue{
-      background: rgba(30,136,229,.10);
-      border-color: rgba(30,136,229,.20);
-      color: #1e4f94;
-    }
-    .badge.warn{
+    .pill.warn{
       background: rgba(180,83,9,.10);
       border-color: rgba(180,83,9,.20);
-      color: #7c2d12;
+      color:#7c2d12;
     }
-
-    .subtitle{
-      margin:6px 0 0;
-      font-size: 13px;
+    .hero p{
+      margin: 10px 0 0;
       color: var(--muted);
-      max-width: 720px;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
-    .chips{
+    /* Big language buttons */
+    .langRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
       padding: 12px 14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
       border-bottom: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(10,166,166,.06), transparent);
     }
-    .chip{
-      border: 1px solid rgba(10,166,166,.22);
-      background: rgba(10,166,166,.08);
-      color: #064e4e;
-      padding: 9px 11px;
-      border-radius: 999px;
+    .langBtn{
+      border: 1px solid rgba(30,136,229,.18);
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px 14px;
       cursor:pointer;
-      font-weight:700;
-      font-size: 14px;
+      box-shadow: 0 8px 18px rgba(15,23,42,.05);
+      text-align:center;
+      font-weight: 900;
+      font-size: 18px;
       user-select:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+      transition: transform .06s ease, border-color .2s ease;
     }
-    .chip:hover{ transform: translateY(-1px); border-color: rgba(10,166,166,.35); background: rgba(10,166,166,.10); }
-    .chip .emoji{ font-size: 16px; }
+    .langBtn:hover{ transform: translateY(-1px); border-color: rgba(10,166,166,.40); }
+    .langBtn small{
+      display:block;
+      font-weight:700;
+      color: var(--muted);
+      margin-top:6px;
+      font-size: 13px;
+    }
 
+    /* Big topic tiles */
+    .topics{
+      padding: 12px 14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .tile{
+      border: 1px solid rgba(10,166,166,.22);
+      background: rgba(10,166,166,.06);
+      border-radius: 18px;
+      padding: 14px 12px;
+      cursor:pointer;
+      box-shadow: 0 8px 18px rgba(15,23,42,.04);
+      transition: transform .06s ease, border-color .2s ease, background .2s ease;
+      user-select:none;
+      min-height: 84px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:8px;
+    }
+    .tile:hover{ transform: translateY(-1px); border-color: rgba(10,166,166,.40); background: rgba(10,166,166,.08); }
+    .tile .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight: 1000;
+      font-size: 16px;
+    }
+    .tile .top span{ font-size: 20px; }
+    .tile .sub{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.35;
+    }
+
+    /* Chat area */
     .chat{
       display:flex;
       flex-direction:column;
-      height: 52vh;
+      height: 48vh;
       min-height: 420px;
+      border-top: 1px solid var(--line);
     }
-
     .messages{
       padding: 14px;
       overflow:auto;
       flex: 1 1 auto;
       scroll-behavior:smooth;
+      background: linear-gradient(180deg, rgba(255,255,255,.7), #fff);
     }
-
     .msg{
       display:flex;
       gap:10px;
@@ -254,15 +270,15 @@
       align-items:flex-start;
     }
     .avatar{
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
       background: rgba(10,166,166,.12);
       border:1px solid rgba(10,166,166,.22);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight:900;
+      font-weight:1000;
       color:#065f5f;
       flex: 0 0 auto;
     }
@@ -271,27 +287,21 @@
       border-color: rgba(30,136,229,.20);
       color:#1e4f94;
     }
-
     .bubble{
-      max-width: 760px;
+      max-width: 820px;
       background: #fff;
       border:1px solid var(--line);
       border-radius: 18px;
       padding: 12px 12px;
       box-shadow: 0 6px 18px rgba(15,23,42,.04);
-      line-height: 1.4;
+      line-height: 1.5;
       white-space: pre-wrap;
       word-break: break-word;
+      font-size: 16px;
     }
     .bubble.user{
       background: rgba(30,136,229,.06);
       border-color: rgba(30,136,229,.16);
-    }
-
-    .meta{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top:6px;
     }
 
     .composer{
@@ -304,11 +314,11 @@
     }
     .composer input{
       flex: 1 1 auto;
-      padding: 12px 14px;
+      padding: 14px 16px;
       border-radius: 999px;
       border: 1px solid var(--line);
       outline: none;
-      font-size: 15px;
+      font-size: 16px;
       background:#fff;
     }
     .composer input:focus{
@@ -316,518 +326,48 @@
       box-shadow: 0 0 0 4px rgba(10,166,166,.10);
     }
     .send{
-      padding: 12px 14px;
+      padding: 14px 16px;
       border-radius: 999px;
       border: 1px solid rgba(10,166,166,.25);
       background: linear-gradient(135deg, rgba(10,166,166,.18), rgba(30,136,229,.10));
-      font-weight: 900;
+      font-weight: 1000;
       cursor:pointer;
       user-select:none;
+      font-size: 16px;
     }
 
     footer{
       text-align:center;
       color: var(--muted);
       font-size: 12px;
-      margin-top: 4px;
       padding: 6px 4px;
     }
-    .small{
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .kicker{
-      font-weight: 900;
-      color: #0a3b55;
-    }
 
-    /* Arabic direction support per-message */
     .rtl{ direction: rtl; text-align: right; }
     .ltr{ direction: ltr; text-align: left; }
 
-    /* Mobile tweaks */
-    @media (max-width: 680px){
-      .chat{ height: 56vh; min-height: 420px; }
-      .brand h1{ font-size: 16px; }
-      .controls{ justify-content:flex-start; }
+    .miniNote{
+      padding: 0 14px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.4;
+    }
+
+    @media (max-width: 920px){
+      .topics{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px){
+      .langRow{ grid-template-columns: 1fr; }
+      .topics{ grid-template-columns: 1fr; }
+      .brandText p{ display:none; }
     }
   </style>
 </head>
 
-<body>
+<body class="patient-mode">
   <div class="wrap">
 
     <header>
       <div class="brand">
-        <div class="logo" aria-label="QCH Logo">
-          <!-- Replace this with your real logo file if available:
-               <img src="assets/qch-logo.png" alt="QCH Logo">
-          -->
-          QCH
-        </div>
-        <div style="min-width:0;">
-          <h1>QCH – Smart Ramadan Medication Assistant</h1>
-          <p>Pharmacy Department • Qatif Central Hospital • Bilingual (AR/EN)</p>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button class="btn primary" id="langToggle" title="Toggle Arabic/English UI">
-          🌐 Language: <span id="langLabel">Auto</span>
-        </button>
-        <button class="btn" id="modeToggle" title="Bigger text + simpler answers">
-          😊 Patient-friendly: <span id="modeLabel">OFF</span>
-        </button>
-        <button class="btn danger" id="resetBtn" title="Clear chat">
-          🧹 Reset
-        </button>
-      </div>
-    </header>
-
-    <div class="panel">
-      <div class="card">
-        <div class="card-head">
-          <div class="title">
-            <span class="badge">Ramadan timing</span>
-            <span class="badge blue">No PHI stored</span>
-            <span class="badge warn">Educational</span>
-          </div>
-          <div class="subtitle">
-            <span class="kicker">Type a drug name</span> (e.g., “warfarin”, “omeprazole”, “insulin”, “Augmentin”) or choose a quick topic below.
-          </div>
-          <div class="subtitle rtl" style="width:100%;">
-            <span class="kicker">اكتبي اسم الدواء</span> (مثلاً: “وارفرين”، “اوميبرازول”، “انسولين”، “أوغمنتين”) أو اختاري موضوع سريع تحت.
-          </div>
-        </div>
-
-        <div class="chips" id="chips">
-          <div class="chip" data-q="insulin">
-            <span class="emoji">💉</span> Insulin / إنسولين
-          </div>
-          <div class="chip" data-q="warfarin">
-            <span class="emoji">🩸</span> Warfarin / وارفارين
-          </div>
-          <div class="chip" data-q="ppi">
-            <span class="emoji">🧡</span> PPI / أدوية الحموضة
-          </div>
-          <div class="chip" data-q="antibiotic bid">
-            <span class="emoji">🦠</span> Antibiotic BID / مضاد مرتين
-          </div>
-          <div class="chip" data-q="htn meds">
-            <span class="emoji">🔥</span> HTN / أدوية الضغط
-          </div>
-          <div class="chip" data-q="dmard biologic">
-            <span class="emoji">🦴</span> DMARDs & Biologics / الروماتيزم
-          </div>
-        </div>
-
-        <div class="chat">
-          <div class="messages" id="messages" role="log" aria-live="polite"></div>
-
-          <div class="composer">
-            <input id="input" type="text" placeholder="Type here… | اكتبي هنا…" autocomplete="off" />
-            <button class="send" id="sendBtn">Send ➜</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="small">
-        ⚠️ This assistant provides general education only. For individualized dosing (especially insulin, warfarin, biologics), follow your prescriber/pharmacist plan.
-        <br>
-        ⚠️ هذا الشات للتثقيف العام فقط. للجرعات الفردية (خصوصًا الإنسولين/الوارفرين/البيولوجيات) اتّبع خطة طبيبك/صيدليك.
-      </div>
-    </div>
-
-    <footer>
-      Created by Ali Alsada – Pharmacy Department • Qatif Central Hospital
-    </footer>
-  </div>
-
-  <script>
-    // ===== Utilities =====
-    const $ = (id) => document.getElementById(id);
-    const messagesEl = $("messages");
-    const inputEl = $("input");
-
-    const state = {
-      patientMode: false,
-      langMode: "auto", // auto | en | ar
-    };
-
-    function isArabicText(text){
-      return /[\u0600-\u06FF]/.test(text);
-    }
-
-    function pickLang(text){
-      if(state.langMode === "en") return "en";
-      if(state.langMode === "ar") return "ar";
-      // auto
-      return isArabicText(text) ? "ar" : "en";
-    }
-
-    function addMessage(role, text, opts = {}){
-      const lang = opts.lang || pickLang(text);
-      const rtl = (lang === "ar");
-
-      const row = document.createElement("div");
-      row.className = "msg";
-
-      const avatar = document.createElement("div");
-      avatar.className = "avatar " + (role === "user" ? "user" : "bot");
-      avatar.textContent = role === "user" ? "U" : "Q";
-
-      const bubble = document.createElement("div");
-      bubble.className = "bubble " + (role === "user" ? "user" : "bot") + " " + (rtl ? "rtl" : "ltr");
-      bubble.textContent = text;
-
-      row.appendChild(avatar);
-      row.appendChild(bubble);
-      messagesEl.appendChild(row);
-
-      // Auto scroll
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-    }
-
-    function resetChat(){
-      messagesEl.innerHTML = "";
-      seedWelcome();
-    }
-
-    function seedWelcome(){
-      addMessage("bot",
-`Hello 👋
-I can help with Ramadan medication timing in Arabic & English.
-Try: insulin, warfarin, PPI (omeprazole/pantoprazole), antibiotics BID, BP meds, DMARDs/biologics.
-
-⚠️ Educational only. For individual dose changes (especially insulin/warfarin), follow your clinician plan.`,
-      {lang:"en"});
-
-      addMessage("bot",
-`مرحبًا 👋
-أقدر أساعدك بتوقيت الأدوية في رمضان (عربي/إنجليزي).
-جرّبي: إنسولين، وارفارين، PPI (اوميبرازول/بانتوبرازول)، مضاد حيوي مرتين، أدوية الضغط، أدوية الروماتيزم (DMARD/biologics).
-
-⚠️ للتثقيف فقط. تغييرات الجرعة خصوصًا الإنسولين/الوارفرين تكون حسب خطة الطبيب/الصيدلي.`,
-      {lang:"ar"});
-    }
-
-    // ===== Knowledge Cards (Ramadan) =====
-    const CARDS = [
-      {
-        keys: ["insulin","lantus","glargine","detemir","degludec","novorapid","aspart","lispro","humalog","regular","mixtard","70/30","premix","insulatard",
-               "انسولين","إنسولين","لانتوس","جلارجين","ديتيمير","ديجلوديك","نوفورابيد","أسبارت","ليسبرو","هيومالوج","ريجيولار","ميكستارد","70/30","خليط","مكس"],
-        title_en: "💉 Insulin in Ramadan",
-        title_ar: "💉 الإنسولين في رمضان",
-        patient_en: [
-          "Golden rule: Do not adjust insulin doses on your own if you have frequent hypos, pregnancy, or advanced kidney/heart disease—contact your clinic.",
-          "If glucose <70 mg/dL (or severe symptoms): break the fast immediately and treat the hypo.",
-          "Common general patterns (non-individualized): basal insulin often moved to Iftar with modest reduction; Suhoor rapid-acting dose is often lower to reduce late-day hypoglycemia; premix often higher at Iftar and lower at Suhoor.",
-          "Stop fasting and seek advice if recurrent hypos, glucose >300 with symptoms, vomiting, severe dizziness, or dehydration."
-        ],
-        patient_ar: [
-          "قاعدة ذهبية: لا تغيّر جرعات الإنسولين بنفسك إذا عندك هبوط متكرر أو حمل أو مرض كلوي/قلبي متقدم—تواصل مع العيادة.",
-          "إذا السكر أقل من 70 أو أعراض قوية: افطر فورًا وخذ علاج الهبوط.",
-          "أنماط عامة شائعة (غير فردية): غالبًا يتم نقل الـ Basal للإفطار مع تقليل بسيط؛ جرعة السحور من السريع غالبًا أقل لتقليل هبوط آخر النهار؛ الخلطات (Premix) غالبًا أعلى في الإفطار وأقل في السحور.",
-          "أوقف الصيام وراجع إذا تكرر الهبوط، أو سكر >300 مع أعراض، أو قيء/دوخة شديدة/جفاف."
-        ],
-        detail_en: [
-          "Reminder: measuring glucose does NOT break the fast.",
-          "If you use sulfonylureas with insulin, ask your clinician about fasting plan."
-        ],
-        detail_ar: [
-          "تنبيه: قياس السكر لا يفطر.",
-          "إذا تستخدم سلفونيل يوريا مع الإنسولين، اسأل عن خطة الصيام لتجنب الهبوط."
-        ],
-        safety_en: ["High risk of harm if self-adjusting insulin → follow clinician plan."],
-        safety_ar: ["خطر عالي إذا عدلت الإنسولين بنفسك → اتبع خطة الطبيب/الصيدلي."]
-      },
-
-      {
-        keys: ["warfarin","coumadin","inr","وارفرين","وارفارين","كومادين","INR","wafarin"],
-        title_en: "🩸 Warfarin timing",
-        title_ar: "🩸 توقيت الوارفارين",
-        patient_en: [
-          "Take warfarin at the same time every day. During Ramadan, many patients take it 1–2 hours after Iftar (choose a consistent time).",
-          "Do NOT change the dose because of fasting unless instructed.",
-          "Keep vitamin K intake consistent (leafy greens). Consistency matters more than avoidance.",
-          "Watch interactions: antibiotics/antifungals/NSAIDs may increase INR and bleeding risk."
-        ],
-        patient_ar: [
-          "خذ الوارفارين كل يوم نفس الوقت. في رمضان غالبًا يكون مناسب بعد الإفطار بـ 1–2 ساعة (اختر وقت ثابت).",
-          "لا تغيّر الجرعة بسبب الصيام إلا بتوجيه الطبيب.",
-          "حافظ على ثبات الأكل الغني بفيتامين K (الخضار الورقية). الثبات أهم من المنع.",
-          "انتبه للتداخلات: مضادات حيوية/فطريات/مسكنات قد ترفع INR وتزيد النزف."
-        ],
-        detail_en: [
-          "Urgent signs: black stools, vomiting blood, severe unexplained bruising/bleeding → urgent care.",
-          "INR monitoring should follow your clinic schedule, especially after starting/stopping interacting drugs."
-        ],
-        detail_ar: [
-          "علامات طارئة: براز أسود، تقيؤ دم، كدمات/نزف شديد غير مبرر → طوارئ.",
-          "فحص INR حسب مواعيد العيادة، خصوصًا بعد بدء/إيقاف أدوية متداخلة."
-        ],
-        safety_en: ["Warfarin is high-risk—dose changes only by clinician."],
-        safety_ar: ["الوارفرين دواء عالي الخطورة—تعديل الجرعة فقط عبر الطبيب."]
-      },
-
-      {
-        keys: ["ppi","omeprazole","pantoprazole","esomeprazole","lansoprazole","rabeprazole","dexlansoprazole",
-               "حموضة","معدة","ارتجاع","panto","omep","اوميبرازول","بانتوبرازول","ايسوميبرازول","لانزوبرازول","رابيبرازول","مثبط مضخة البروتون"],
-        title_en: "🧡 PPI timing (before Suhoor/Iftar)",
-        title_ar: "🧡 توقيت PPI (قبل السحور/الإفطار)",
-        patient_en: [
-          "Best timing: 30–60 minutes before a meal.",
-          "Once daily: before Suhoor if symptoms during fasting; before Iftar if symptoms mainly at night.",
-          "Twice daily: before Iftar + before Suhoor (30–60 minutes)."
-        ],
-        patient_ar: [
-          "أفضل وقت: قبل الأكل بـ 30–60 دقيقة.",
-          "مرة يوميًا: قبل السحور إذا الأعراض أثناء الصيام؛ أو قبل الإفطار إذا الأعراض ليلًا.",
-          "مرتين يوميًا: قبل الإفطار + قبل السحور (30–60 دقيقة)."
-        ],
-        detail_en: [
-          "If you also take sucralfate/antacids, separate them as advised by your pharmacist.",
-          "Seek care for alarm symptoms: persistent vomiting, weight loss, trouble swallowing, blood in vomit/stool."
-        ],
-        detail_ar: [
-          "إذا تستخدم سوكرالفات/مضادات حموضة أخرى، افصل بينها حسب إرشاد الصيدلي.",
-          "راجع فورًا إذا توجد علامات خطورة: قيء مستمر، نقص وزن، صعوبة بلع، دم في القيء/البراز."
-        ],
-        safety_en: [],
-        safety_ar: []
-      },
-
-      {
-        keys: ["antibiotic","augmentin","amoxicillin","clavulanate","cipro","ciprofloxacin","levo","levofloxacin","azithro","azithromycin","doxy","doxycycline","cephalexin","cefuroxime",
-               "مضاد","مضاد حيوي","اوجمنتين","أوغمنتين","اموكس","أموكس","سيبرو","ليفو","ازيثرو","أزيثرو","دوكسي","سيفاليكسين","سيفوروكسيم","مرتين","b i d","bid","q12"],
-        title_en: "🦠 Antibiotics BID optimization",
-        title_ar: "🦠 ضبط المضاد الحيوي مرتين يوميًا",
-        patient_en: [
-          "BID (about every 12 hours): usually take at Iftar + Suhoor, aiming as close to 12 hours as possible.",
-          "Avoid “double dosing” to compensate for shorter gaps.",
-          "If strict 12-hour dosing is needed for your infection, ask your pharmacist about Ramadan-friendly alternatives."
-        ],
-        patient_ar: [
-          "مرتين يوميًا (كل 12 ساعة تقريبًا): غالبًا إفطار + سحور، وحاول تقارب 12 ساعة قدر الإمكان.",
-          "لا تكدّس الجرعات لتعويض فرق الوقت.",
-          "إذا الحالة تحتاج 12 ساعة بدقة، اسأل الصيدلي عن بدائل مناسبة لرمضان."
-        ],
-        detail_en: [
-          "Some antibiotics must be taken with food or away from dairy/antacids—follow your label.",
-          "Complete the full course unless your clinician tells you to stop."
-        ],
-        detail_ar: [
-          "بعض المضادات تؤخذ مع الأكل أو بعيدًا عن الألبان/مضادات الحموضة—اتبع الإرشادات على الوصفة.",
-          "أكمل الكورس كاملًا ما لم يطلب الطبيب الإيقاف."
-        ],
-        safety_en: [],
-        safety_ar: []
-      },
-
-      {
-        keys: ["htn","hypertension","bp","blood pressure","amlodipine","losartan","valsartan","lisinopril","enalapril","bisoprolol","metoprolol","carvedilol","furosemide","hctz","hydrochlorothiazide",
-               "ضغط","ضغط الدم","اميلوديبين","أملوديبين","لوسارتان","فالسارتان","ليسينوبريل","انالابريل","بيسوبرولول","ميتوبرولول","كارفيديلول","فوروسيميد","مدر","هيدروكلوروثيازيد"],
-        title_en: "🔥 Hypertension (BP) meds timing",
-        title_ar: "🔥 توقيت أدوية الضغط",
-        patient_en: [
-          "Once daily BP meds: often easiest after Iftar at a fixed time.",
-          "Diuretics (water pills): prefer after Iftar / early evening to reduce dehydration and bathroom urgency during fasting.",
-          "If you feel dizzy or faint, check BP, hydrate after Iftar, and contact your clinician if severe."
-        ],
-        patient_ar: [
-          "أدوية الضغط مرة يوميًا: غالبًا الأفضل بعد الإفطار بوقت ثابت.",
-          "مدرات البول: الأفضل بعد الإفطار/بداية الليل لتقليل الجفاف وكثرة التبول أثناء الصيام.",
-          "إذا توجد دوخة شديدة/إغماء: قس الضغط، اشرب سوائل بعد الإفطار، وتواصل مع الطبيب إذا الأعراض قوية."
-        ],
-        detail_en: [
-          "If you have kidney disease, heart failure, or are on multiple BP meds, discuss a fasting plan in advance.",
-          "Do not stop BP meds abruptly unless instructed."
-        ],
-        detail_ar: [
-          "إذا عندك مرض كلوي/فشل قلبي أو تستخدم أكثر من دواء ضغط، ناقش خطة الصيام مسبقًا.",
-          "لا توقف أدوية الضغط فجأة إلا بتوجيه."
-        ],
-        safety_en: [],
-        safety_ar: []
-      },
-
-      {
-        keys: ["dmard","biologic","biologics","methotrexate","mtx","adalimumab","humira","etanercept","enbrel","infliximab","remicade","tocilizumab","rituximab","secukinumab","ustekinumab",
-               "tofacitinib","baricitinib","upadacitinib","jak",
-               "روماتيزم","ميثوتريكسيت","ام تي اكس","اداليموماب","هيوميرا","ايتانرسبت","انبرل","انفليكسيماب","ريميكاد","توسيليزوماب","ريتوكسيماب","سيكيوكينوماب","اوستيكينوماب","توفاسيتينيب","باريسيتينيب","اوباداسيتينيب","جاك"],
-        title_en: "🦴 DMARDs & biologics safety",
-        title_ar: "🦴 سلامة DMARDs والبيولوجيات",
-        patient_en: [
-          "Fasting usually does not prevent DMARD/biologic use by itself.",
-          "Do NOT stop these medicines abruptly without your specialist (risk of flare).",
-          "Key warning: infection symptoms (fever, severe cough, burning urination, infected wounds) → contact your clinic."
-        ],
-        patient_ar: [
-          "الصيام غالبًا لا يمنع استخدام DMARD/biologics بحد ذاته.",
-          "لا توقف الدواء فجأة بدون طبيبك (قد يزيد نشاط المرض).",
-          "أهم تحذير: أعراض عدوى (حرارة، كحة شديدة، ألم/حرقان بول، جروح ملتهبة) → تواصل مع العيادة."
-        ],
-        detail_en: [
-          "Methotrexate is often weekly—keep a fixed day; take with food if GI upset; follow folic acid plan.",
-          "Vaccines/surgery/active infections: decisions to hold therapy must be clinician-led."
-        ],
-        detail_ar: [
-          "الميثوتريكسيت غالبًا أسبوعي—حافظ على يوم ثابت؛ خذه مع الطعام إذا سبب اضطراب معدة؛ واتبع خطة الفوليك أسيد.",
-          "لقاحات/عمليات/عدوى نشطة: قرار الإيقاف أو الاستمرار يكون مع الطبيب فقط."
-        ],
-        safety_en: ["High-risk immunosuppression: do not self-hold/restart without clinician."],
-        safety_ar: ["مثبطات مناعة عالية الخطورة: لا توقف/تستأنف بنفسك دون الطبيب."]
-      }
-    ];
-
-    function findCard(userText){
-      const t = (userText || "").toLowerCase().trim();
-      if(!t) return null;
-      return CARDS.find(c => c.keys.some(k => t.includes(String(k).toLowerCase())));
-    }
-
-    function renderCard(card, lang){
-      if(!card) return null;
-
-      const isAR = (lang === "ar");
-      const title = isAR ? card.title_ar : card.title_en;
-
-      const patient = isAR ? card.patient_ar : card.patient_en;
-      const detail  = isAR ? card.detail_ar  : card.detail_en;
-      const safety  = isAR ? card.safety_ar  : card.safety_en;
-
-      const lines = [];
-      lines.push(title);
-
-      // Patient-friendly: show only patient bullets (shorter)
-      lines.push("");
-      const bullets = state.patientMode ? patient : patient.concat(detail.map(x => "DETAIL: " + x));
-      for(const b of bullets){
-        if(!b) continue;
-        // In non-patient mode, mark detail lines slightly
-        if(!state.patientMode && b.startsWith("DETAIL: ")){
-          lines.push("• " + b.replace("DETAIL: ",""));
-        } else {
-          lines.push("• " + b);
-        }
-      }
-
-      if(!state.patientMode && safety && safety.length){
-        lines.push("");
-        lines.push(isAR ? "⚠️ تنبيهات أمان:" : "⚠️ Safety notes:");
-        for(const s of safety) lines.push("• " + s);
-      }
-
-      // Universal disclaimer footer
-      lines.push("");
-      lines.push(isAR
-        ? "— للتثقيف فقط. للجرعات الفردية اتبع خطة الطبيب/الصيدلي."
-        : "— Educational only. For individualized dosing, follow your clinician/pharmacist plan."
-      );
-
-      return lines.join("\n");
-    }
-
-    function fallbackResponse(text){
-      const lang = pickLang(text);
-      const isAR = (lang === "ar");
-      if(isAR){
-        return [
-          "ما حصلت موضوع مطابق تمامًا.",
-          "جرّبي تكتب/تكتبي:",
-          "• اسم الدواء (وارفرين، اوميبرازول، أملوديبين، أوغمنتين، إنسولين)",
-          "• أو الكلمات: DMARD / biologic / ضغط / مضاد / PPI",
-          "",
-          "إذا عطيتني اسم الدواء وعدد الجرعات (مرة/مرتين/ثلاث) أقدر أعطي توقيت مناسب للإفطار والسحور."
-        ].join("\n");
-      } else {
-        return [
-          "I couldn’t match that exactly.",
-          "Try typing:",
-          "• a medication name (warfarin, omeprazole, amlodipine, Augmentin, insulin)",
-          "• or keywords: DMARD / biologic / BP / antibiotic / PPI",
-          "",
-          "If you tell me the drug name + dosing frequency (OD/BID/TID), I’ll suggest Ramadan-friendly timing for Iftar/Suhoor."
-        ].join("\n");
-      }
-    }
-
-    function handleUser(text){
-      const cleaned = (text || "").trim();
-      if(!cleaned) return;
-
-      addMessage("user", cleaned);
-
-      const lang = pickLang(cleaned);
-      const card = findCard(cleaned);
-      const reply = card ? renderCard(card, lang) : fallbackResponse(cleaned);
-
-      addMessage("bot", reply, {lang});
-    }
-
-    // ===== UI events =====
-    $("sendBtn").addEventListener("click", () => {
-      handleUser(inputEl.value);
-      inputEl.value = "";
-      inputEl.focus();
-    });
-
-    inputEl.addEventListener("keydown", (e) => {
-      if(e.key === "Enter"){
-        e.preventDefault();
-        $("sendBtn").click();
-      }
-    });
-
-    $("resetBtn").addEventListener("click", resetChat);
-
-    // Quick topic chips
-    $("chips").addEventListener("click", (e) => {
-      const chip = e.target.closest(".chip");
-      if(!chip) return;
-      const q = chip.getAttribute("data-q") || "";
-      handleUser(q);
-    });
-
-    // Patient-friendly toggle
-    $("modeToggle").addEventListener("click", () => {
-      state.patientMode = !state.patientMode;
-      document.body.classList.toggle("patient-mode", state.patientMode);
-      $("modeLabel").textContent = state.patientMode ? "ON" : "OFF";
-
-      // Add a small system note
-      addMessage("bot",
-        state.patientMode
-          ? "😊 Patient-friendly mode is ON (simpler, bigger text)."
-          : "✅ Patient-friendly mode is OFF (more details).",
-        {lang:"en"}
-      );
-      addMessage("bot",
-        state.patientMode
-          ? "😊 تم تفعيل وضع المريض (مبسّط وخط أكبر)."
-          : "✅ تم إلغاء وضع المريض (تفاصيل أكثر).",
-        {lang:"ar"}
-      );
-    });
-
-    // Language toggle (Auto → EN → AR → Auto)
-    $("langToggle").addEventListener("click", () => {
-      state.langMode = state.langMode === "auto" ? "en" : (state.langMode === "en" ? "ar" : "auto");
-      const label = state.langMode === "auto" ? "Auto" : (state.langMode === "en" ? "EN" : "AR");
-      $("langLabel").textContent = label;
-
-      addMessage("bot",
-        `Language mode set to: ${label}.`,
-        {lang:"en"}
-      );
-      addMessage("bot",
-        `تم ضبط اللغة إلى: ${label}.`,
-        {lang:"ar"}
-      );
-    });
-
-    // ===== Init =====
-    seedWelcome();
-  </script>
-</body>
-</html>
+        <div class="logoBox" aria-label="QCH Logo">
+          <img alt="QCH Logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAkACQAAD/4QECRXhpZgAATU0AKgAAAAgABwEOAAIAAAALAAAAYgESAAMAAAABAAEAAAEaAAUAAAABAAAAbgEbAAUAAAABAAAAdgEoAAMAAAABAAIAAAExAAIAAAAhAAAAfgEyAAIAAAAUAAAAoAITAAMAAAABAAEAAIdpAAQAAAABAAAAtgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAATygAwAEAAAAAQAAAGIAAAAA/9sAQwABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCABiATgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5kooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
