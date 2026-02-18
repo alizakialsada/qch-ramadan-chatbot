@@ -65,17 +65,6 @@
     .alert.ok{border-color:rgba(34,197,94,.45)}
     .foot{margin-top:14px;font-size:12px;color:rgba(234,246,251,.75)}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
-
-    /* RTL support when Arabic selected */
-    body.rtl { direction: rtl; }
-    body.rtl .brand { flex-direction: row-reverse; }
-    body.rtl .controls { flex-direction: row-reverse; }
-    body.rtl .card header { flex-direction: row-reverse; }
-    body.rtl .pillrow { justify-content: flex-start; }
-    body.rtl .msg.bot { justify-content: flex-start; }
-    body.rtl .msg.me { justify-content: flex-end; }
-    body.rtl .bubble { text-align: right; }
-
   </style>
 </head>
 <body>
@@ -84,14 +73,19 @@
       <div class="brand">
         <div class="logo">QCH</div>
         <div class="title">
-          <h1 id="uiTitle">مساعد أدوية رمضان الذكي – مستشفى القطيف المركزي</h1>
-          <p id="uiSubtitle">إرشادات طبية: الدواء + الفئة + عدد الجرعات</p>
+          <h1>QCH – Smart Ramadan Medication Assistant</h1>
+          <p>Hospital-grade rules: medication + class + frequency • Arabic / English</p>
         </div>
       </div>
       <div class="controls">
+        <select id="lang">
+          <option value="bi" selected>Arabic + English</option>
+          <option value="ar">Arabic</option>
+          <option value="en">English</option>
+        </select>
         <select id="mode">
-          <option value="patient" selected id="optPatient">مريض</option>
-          <option value="hcp" id="optHcp">كوادر صحية</option>
+          <option value="patient" selected>Patient</option>
+          <option value="hcp">Healthcare Staff</option>
         </select>
         <button id="reset" type="button">Reset</button>
       </div>
@@ -100,8 +94,8 @@
     <div class="grid">
       <section class="card">
         <header>
-          <div style="font-weight:800" id="uiChatTitle">المحادثة</div>
-          <div class="badge">Ramadan • Arabic Only (RTL)</div>
+          <div style="font-weight:800">Chat</div>
+          <div class="badge">Ramadan • v8 (Full Hospital Version)</div>
         </header>
 
         <div class="pillrow" id="quick"></div>
@@ -110,7 +104,7 @@
           <div class="chatlog" id="chat"></div>
           <div class="composer">
             <input id="input" type="text" inputmode="text" autocapitalize="off" autocorrect="off"
-                   placeholder="اكتب اسم الدواء…" autocomplete="off" />
+                   placeholder="Type medication name… / اكتب اسم الدواء…" autocomplete="off" />
             <button id="send" type="button">Send</button>
           </div>
         </div>
@@ -118,20 +112,21 @@
 
       <aside class="card side">
         <header>
-          <div style="font-weight:800" id="uiSafetyTitle">السلامة وطريقة الاستخدام</div>
+          <div style="font-weight:800">Safety & How to use</div>
           <div class="badge">No PHI stored</div>
         </header>
         <div class="content">
           <div class="alert warn">
-            <b id="uiImportantLabel">Important:</b> <span id="uiImportantText">General guidance only. For insulin, warfarin, pregnancy, CKD/CLD, transplant, chemotherapy, seizure meds, or complex regimens → consult your clinician/pharmacist.</span>
+            <b>Important:</b> General guidance only. For <b>insulin</b>, <b>warfarin</b>, <b>pregnancy</b>, <b>CKD/CLD</b>,
+            transplant, chemotherapy, seizure meds, or complex regimens → consult your clinician/pharmacist.
           </div>
           <div class="alert ok" id="welcomeBox"></div>
 
           <div class="alert">
-            <b id="uiPerfectLabel">Perfect Ramadan method:</b><br/>
-            <span id="uiPerfectText">1) Type the medication name. If not found → type a class (e.g., antibiotic, PPI, blood pressure).<br/>
-            2) If still unknown, the assistant will ask: How many times per day? (OD/BID/TID/QID).<br/>
-            3) Follow the timing and the warning labels (⛔/⚠️/✅).</span>
+            <b>Perfect Ramadan method:</b><br/>
+            1) Type the medication name. If not found → type a <b>class</b> (e.g., <span class="mono">antibiotic</span>, <span class="mono">PPI</span>, <span class="mono">blood pressure</span>).<br/>
+            2) If still unknown, the assistant will ask: <b>How many times per day?</b> (OD/BID/TID/QID).<br/>
+            3) Follow the timing and the warning labels (⛔/⚠️/✅).
           </div>
 
           
@@ -147,8 +142,8 @@
           </div>
 
           <div class="foot">
-            <span id="uiCreatedBy">Created by</span> <b>Ali Alsada</b><br/>
-            <span id="uiPharmDept">Pharmacy Department • Qatif Central Hospital</span>
+            Created by <b>Ali Alsada</b><br/>
+            Pharmacy Department • Qatif Central Hospital
           </div>
         </div>
       </aside>
@@ -158,7 +153,7 @@
 <script>
 (() => {
   const ui = {
-    lang: { value: 'ar', addEventListener: ()=>{} },
+    lang: document.getElementById('lang'),
     mode: document.getElementById('mode'),
     reset: document.getElementById('reset'),
     chat: document.getElementById('chat'),
@@ -172,57 +167,12 @@
     copyStatus: document.getElementById('copyStatus'),
   };
 
-  function t(ar,en){ return ar; }
-
-  function applyDir(){
-    document.body.classList.add("rtl");
-    document.documentElement.setAttribute("lang","ar");
+  function t(ar,en){
+    const L = ui.lang.value;
+    if(L==="ar") return ar;
+    if(L==="en") return en;
+    return ar + "\n\n" + en;
   }
-
-  function translateUI(){
-    // Top area
-    const title = document.getElementById("uiTitle");
-    if(title) title.textContent = "مساعد أدوية رمضان الذكي – مستشفى القطيف المركزي";
-
-    const subtitle = document.getElementById("uiSubtitle");
-    if(subtitle) subtitle.textContent = "إرشادات طبية: الدواء + الفئة + عدد الجرعات";
-
-    // Section headers
-    const chatT = document.getElementById("uiChatTitle");
-    if(chatT) chatT.textContent = "المحادثة";
-
-    const safetyT = document.getElementById("uiSafetyTitle");
-    if(safetyT) safetyT.textContent = "السلامة وطريقة الاستخدام";
-
-    // Controls
-    ui.reset.textContent = "إعادة ضبط";
-    ui.send.textContent = "إرسال";
-    ui.input.placeholder = "اكتب اسم الدواء… / أو اكتب الفئة…";
-
-    const imp = document.getElementById("uiImportantLabel");
-    if(imp) imp.textContent = "مهم:";
-
-    const impText = document.getElementById("uiImportantText");
-    if(impText) impText.textContent = "إرشادات عامة فقط. في حالة الإنسولين، الوارفارين، الحمل، أمراض الكلى/الكبد، زراعة الأعضاء، العلاج الكيماوي، أدوية الصرع، أو الخطط المعقدة → استشر الطبيب/الصيدلي.";
-
-    const perfect = document.getElementById("uiPerfectLabel");
-    if(perfect) perfect.textContent = "أفضل طريقة في رمضان:";
-
-    const perfectText = document.getElementById("uiPerfectText");
-    if(perfectText) perfectText.innerHTML = "1) اكتب اسم الدواء. إذا لم يظهر → اكتب الفئة (مثل: مضاد حيوي، PPI، ضغط).<br/>2) إذا مازال غير معروف، سيسألك: كم مرة يوميًا؟ (OD/BID/TID/QID).<br/>3) اتبع التوقيت وعلامات التحذير (⛔/⚠️/✅).";
-
-    const createdBy = document.getElementById("uiCreatedBy");
-    if(createdBy) createdBy.textContent = "إعداد";
-
-    const dept = document.getElementById("uiPharmDept");
-    if(dept) dept.textContent = "قسم الصيدلية • مستشفى القطيف المركزي";
-
-    // Share box (Arabic)
-    const shareTitle = document.querySelector('.alert b');
-    // keep as-is if not found; share block already bilingual/English in HTML, we won't over-edit here
-  }
-
-
   function pushMsg(text, who="bot", chips=[]){
     const row = document.createElement("div");
     row.className = "msg " + (who==="me" ? "me":"bot");
@@ -548,13 +498,13 @@
     ui.chat.innerHTML = "";
     state.pending = null;
     pushMsg(t(
-      "Ramadan Kareem 🌙\n\nWelcome to QCH Smart Ramadan Medication Assistant (v9).
+      "Ramadan Kareem 🌙\n\nWelcome to QCH Smart Ramadan Medication Assistant (v8).
 Includes anticoagulants, diabetes meds, BP meds, GI meds, antibiotics, and more.\nType your medication name (Arabic/English).",
       "Ramadan Kareem 🌙\n\nأهلًا بك في مساعد أدوية رمضان – مستشفى القطيف المركزي (v8).
 يشمل مضادات التخثر، أدوية السكري، الضغط، المعدة، المضادات الحيوية، وغيرها.\nاكتب اسم الدواء (عربي/إنجليزي)."
     ), "bot");
     ui.welcomeBox.textContent = t(
-      "إذا الدواء 3/4 مرات → اطلب بديل XR/BID.",
+      "If your medicine is TID/QID → ask for XR/BID alternative.",
       "إذا الدواء 3/4 مرات → اطلب بديل XR/BID."
     );
     focusInput();
@@ -581,6 +531,7 @@ Includes anticoagulants, diabetes meds, BP meds, GI meds, antibiotics, and more.
   ui.send.addEventListener("click", send);
   ui.input.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); send(); } });
   ui.reset.addEventListener("click", welcome);
+  ui.lang.addEventListener("change", welcome);
   ui.mode.addEventListener("change", welcome);
 
   document.addEventListener("click", (e) => {
@@ -610,8 +561,6 @@ Includes anticoagulants, diabetes meds, BP meds, GI meds, antibiotics, and more.
   }
 
   buildQuick();
-  applyDir();
-  translateUI();
   welcome();
 })();
 </script>
