@@ -393,7 +393,12 @@
   ui.lang.addEventListener("change", welcome);
   ui.mode.addEventListener("change", welcome);
 
-  document.addEventListener("click", (e)=>{ if(e.target !== ui.input){ focusInput(); } }, {passive:true});
+  document.addEventListener("click", (e) => {
+    // Don't steal focus when clicking controls or interactive elements
+    if (e.target.closest(".controls")) return;
+    if (e.target.closest("select, button, a, input, textarea, label")) return;
+    focusInput();
+  }, { passive: true });
 
   buildQuick();
   welcome();
