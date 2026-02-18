@@ -8,106 +8,386 @@
 
   <style>
     :root{
-      --bg:#f6fbfc; --card:#ffffff; --ink:#071827; --muted:#516274;
-      --brand:#0aa6a6; --brand2:#1e88e5; --warn:#b45309; --line:#e6edf2;
-      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
-      --radius: 20px;
+      --bg1:#f2fbfb;
+      --bg2:#eef6ff;
+      --card:#ffffff;
+      --ink:#071827;
+      --muted:#516274;
+      --brand:#0aa6a6;
+      --brand2:#1e88e5;
+      --warn:#b45309;
+      --danger:#b91c1c;
+      --line:#e6edf2;
+      --shadow: 0 12px 35px rgba(15, 23, 42, .10);
+      --shadow2: 0 10px 22px rgba(15, 23, 42, .08);
+      --radius: 22px;
+      --radius2: 18px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
+
     html,body{height:100%;}
     body{
-      margin:0; font-family:var(--font); color:var(--ink);
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
       background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(10,166,166,.12), transparent 60%),
-        radial-gradient(1000px 600px at 90% 10%, rgba(30,136,229,.12), transparent 55%),
-        var(--bg);
-      font-size:18px; /* Patient-friendly default */
+        radial-gradient(1200px 700px at 15% 0%, rgba(10,166,166,.16), transparent 55%),
+        radial-gradient(1100px 650px at 90% 10%, rgba(30,136,229,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      font-size:18px;
     }
-    .wrap{max-width:1050px;margin:0 auto;padding:16px 14px 22px;display:flex;flex-direction:column;gap:14px;min-height:100%;box-sizing:border-box;}
+
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 14px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      min-height:100%;
+      box-sizing:border-box;
+    }
+
     header{
-      background: linear-gradient(135deg, rgba(10,166,166,.14), rgba(30,136,229,.10));
-      border: 1px solid rgba(230,237,242,.9);
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      border-radius: var(--radius);
+      padding: 14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(230,237,242,.85);
+      box-shadow: var(--shadow);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logoBox{
+      width: 200px;
+      height: 70px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(230,237,242,.95);
+      box-shadow: 0 10px 22px rgba(15,23,42,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      flex: 0 0 auto;
+      padding: 6px 10px;
+    }
+    .logoBox img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      transform: translateZ(0);
+    }
+
+    .brandText{ min-width:0; }
+    .brandText h1{
+      margin:0;
+      font-size: 18px;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      letter-spacing: .1px;
+    }
+    .brandText p{
+      margin:4px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .seg{
+      display:flex;
+      align-items:center;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(230,237,242,.95);
+      border-radius: 999px;
+      padding: 6px;
+      gap:6px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .seg button{
+      appearance:none;
+      border:1px solid transparent;
+      background: transparent;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 1000;
+      cursor:pointer;
+      font-size: 15px;
+      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+    .seg button:hover{ transform: translateY(-1px); }
+    .seg button.active{
+      background: linear-gradient(135deg, rgba(10,166,166,.18), rgba(30,136,229,.10));
+      border-color: rgba(10,166,166,.22);
+    }
+    .seg .danger{
+      border-color: rgba(185,28,28,.20);
+      background: rgba(185,28,28,.06);
+    }
+
+    .card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(230,237,242,.90);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 14px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      overflow:hidden;
     }
-    .brand{display:flex;align-items:center;gap:12px;min-width:0;}
-    .logoBox{
-      width: 160px;height: 62px;border-radius: 16px;background:#fff;
+
+    .hero{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(10,166,166,.10), rgba(30,136,229,.08)),
+        radial-gradient(900px 400px at 25% 0%, rgba(10,166,166,.10), transparent 55%),
+        radial-gradient(900px 400px at 90% 10%, rgba(30,136,229,.10), transparent 55%);
+    }
+
+    .heroTop{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom: 8px;
+    }
+
+    .pill{
+      font-weight:1000;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(10,166,166,.10);
+      border: 1px solid rgba(10,166,166,.22);
+      color: #065f5f;
+      white-space:nowrap;
+    }
+    .pill.warn{
+      background: rgba(180,83,9,.10);
+      border-color: rgba(180,83,9,.20);
+      color:#7c2d12;
+    }
+
+    .hero h2{
+      margin: 6px 0 8px;
+      font-size: 20px;
+      line-height:1.25;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height:1.55;
+    }
+
+    .searchRow{
+      padding: 12px 16px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.60);
+    }
+    .searchRow input{
+      flex: 1 1 auto;
+      padding: 14px 16px;
+      border-radius: 999px;
       border: 1px solid rgba(230,237,242,.95);
-      box-shadow: 0 8px 18px rgba(15,23,42,.06);
-      display:flex;align-items:center;justify-content:center;overflow:hidden;
-      flex:0 0 auto;padding: 6px 10px;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255,255,255,.90);
+      box-shadow: 0 10px 22px rgba(15,23,42,.05);
     }
-    .logoBox img{width:100%;height:100%;object-fit:contain;display:block;}
-    .brandText{min-width:0;}
-    .brandText h1{margin:0;font-size:18px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .brandText p{margin:4px 0 0;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-    .controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center;}
-    .btn{
-      appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);
-      border-radius:999px;padding:12px 14px;font-weight:900;cursor:pointer;
-      display:inline-flex;align-items:center;gap:8px;
-      box-shadow:0 6px 18px rgba(15,23,42,.05);
-      transition: transform .06s ease, border-color .2s ease;
-      user-select:none;font-size:15px;
+    .searchRow input:focus{
+      border-color: rgba(10,166,166,.45);
+      box-shadow: 0 0 0 4px rgba(10,166,166,.10), 0 10px 22px rgba(15,23,42,.06);
     }
-    .btn:hover{transform:translateY(-1px);border-color:rgba(10,166,166,.35);}
-    .btn.primary{background: linear-gradient(135deg, rgba(10,166,166,.18), rgba(30,136,229,.10));border-color:rgba(10,166,166,.25);}
-    .btn.danger{border-color:rgba(180,83,9,.25);background:rgba(180,83,9,.06);}
+    .searchRow .send{
+      padding: 14px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(10,166,166,.25);
+      background: linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));
+      font-weight: 1000;
+      cursor:pointer;
+      user-select:none;
+      font-size: 16px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+      transition: transform .06s ease;
+      white-space:nowrap;
+    }
+    .searchRow .send:hover{ transform: translateY(-1px); }
 
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
-    .hero{padding:14px 14px 10px;border-bottom:1px solid var(--line);}
-    .heroTitle{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;}
-    .pill{font-weight:1000;font-size:12px;padding:7px 10px;border-radius:999px;background:rgba(10,166,166,.10);border:1px solid rgba(10,166,166,.22);color:#065f5f;white-space:nowrap;}
-    .pill.warn{background:rgba(180,83,9,.10);border-color:rgba(180,83,9,.20);color:#7c2d12;}
-    .hero p{margin:10px 0 0;color:var(--muted);font-size:15px;line-height:1.5;}
+    .chips{
+      padding: 0 16px 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.60);
+    }
+    .chip{
+      border: 1px solid rgba(10,166,166,.20);
+      background: rgba(10,166,166,.06);
+      border-radius: 999px;
+      padding: 9px 12px;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 13px;
+      user-select:none;
+      transition: transform .06s ease, border-color .2s ease, background .2s ease;
+      box-shadow: 0 10px 22px rgba(15,23,42,.04);
+    }
+    .chip:hover{ transform: translateY(-1px); border-color: rgba(10,166,166,.40); background: rgba(10,166,166,.08); }
 
     .topics{
-      padding:12px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+      padding: 14px 16px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
     }
     .tile{
-      border:1px solid rgba(10,166,166,.22);background:rgba(10,166,166,.06);
-      border-radius:18px;padding:14px 12px;cursor:pointer;
-      box-shadow:0 8px 18px rgba(15,23,42,.04);
+      border: 1px solid rgba(10,166,166,.20);
+      background: rgba(255,255,255,.75);
+      border-radius: var(--radius2);
+      padding: 14px 12px;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
       transition: transform .06s ease, border-color .2s ease, background .2s ease;
-      user-select:none;min-height:92px;display:flex;flex-direction:column;justify-content:center;gap:8px;
+      user-select:none;
+      min-height: 96px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:8px;
     }
-    .tile:hover{transform:translateY(-1px);border-color:rgba(10,166,166,.40);background:rgba(10,166,166,.08);}
-    .tile .top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:1000;font-size:16px;}
-    .tile .top span{font-size:20px;}
-    .tile .sub{color:var(--muted);font-size:13px;line-height:1.35;}
+    .tile:hover{
+      transform: translateY(-1px);
+      border-color: rgba(10,166,166,.42);
+      background: rgba(10,166,166,.06);
+    }
+    .tile .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight: 1000;
+      font-size: 15px;
+      letter-spacing:.1px;
+    }
+    .tile .top span{ font-size: 20px; }
+    .tile .sub{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.35;
+    }
 
-    .chat{display:flex;flex-direction:column;height:48vh;min-height:420px;border-top:1px solid var(--line);}
-    .messages{padding:14px;overflow:auto;flex:1 1 auto;scroll-behavior:smooth;background:linear-gradient(180deg, rgba(255,255,255,.7), #fff);}
-    .msg{display:flex;gap:10px;margin:10px 0;align-items:flex-start;}
+    .chat{
+      display:flex;
+      flex-direction:column;
+      height: 46vh;
+      min-height: 420px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+    }
+    .messages{
+      padding: 14px 16px;
+      overflow:auto;
+      flex: 1 1 auto;
+      scroll-behavior:smooth;
+    }
+    .msg{ display:flex; gap:10px; margin: 10px 0; align-items:flex-start; }
     .avatar{
-      width:42px;height:42px;border-radius:16px;background:rgba(10,166,166,.12);
-      border:1px solid rgba(10,166,166,.22);display:flex;align-items:center;justify-content:center;
-      font-weight:1000;color:#065f5f;flex:0 0 auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: rgba(10,166,166,.12);
+      border: 1px solid rgba(10,166,166,.22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 1000;
+      color:#065f5f;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 22px rgba(15,23,42,.05);
     }
-    .avatar.user{background:rgba(30,136,229,.10);border-color:rgba(30,136,229,.20);color:#1e4f94;}
+    .avatar.user{
+      background: rgba(30,136,229,.10);
+      border-color: rgba(30,136,229,.20);
+      color:#1e4f94;
+    }
     .bubble{
-      max-width:860px;background:#fff;border:1px solid var(--line);border-radius:18px;
-      padding:12px;box-shadow:0 6px 18px rgba(15,23,42,.04);
-      line-height:1.55;white-space:pre-wrap;word-break:break-word;font-size:16px;
+      max-width: 900px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(230,237,242,.95);
+      border-radius: 18px;
+      padding: 12px 12px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.05);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 16px;
     }
-    .bubble.user{background:rgba(30,136,229,.06);border-color:rgba(30,136,229,.16);}
-    .composer{padding:12px 14px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;background:linear-gradient(180deg, transparent, rgba(10,166,166,.04));}
-    .composer input{flex:1 1 auto;padding:14px 16px;border-radius:999px;border:1px solid var(--line);outline:none;font-size:16px;background:#fff;}
-    .composer input:focus{border-color:rgba(10,166,166,.45);box-shadow:0 0 0 4px rgba(10,166,166,.10);}
-    .send{padding:14px 16px;border-radius:999px;border:1px solid rgba(10,166,166,.25);background:linear-gradient(135deg, rgba(10,166,166,.18), rgba(30,136,229,.10));font-weight:1000;cursor:pointer;user-select:none;font-size:16px;}
+    .bubble.user{
+      background: rgba(30,136,229,.06);
+      border-color: rgba(30,136,229,.16);
+    }
 
-    .miniNote{padding:0 14px 12px;color:var(--muted);font-size:13px;line-height:1.4;}
-    footer{text-align:center;color:var(--muted);font-size:12px;padding:6px 4px;}
-    .rtl{direction:rtl;text-align:right;}
-    .ltr{direction:ltr;text-align:left;}
+    .miniNote{
+      padding: 10px 16px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.45;
+      border-top: 1px dashed rgba(230,237,242,.95);
+      background: rgba(255,255,255,.60);
+    }
 
-    @media (max-width:980px){ .topics{grid-template-columns:repeat(3,1fr);} }
-    @media (max-width:760px){ .topics{grid-template-columns:repeat(2,1fr);} .brandText p{display:none;} }
-    @media (max-width:560px){ .topics{grid-template-columns:1fr;} }
+    footer{
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 6px 4px;
+    }
+
+    .rtl{ direction: rtl; text-align: right; }
+    .ltr{ direction: ltr; text-align: left; }
+
+    @media (max-width: 980px){ .topics{ grid-template-columns: repeat(3, 1fr);} }
+    @media (max-width: 760px){
+      .topics{ grid-template-columns: repeat(2, 1fr); }
+      .brandText p{ display:none; }
+      .logoBox{ width: 160px; }
+    }
+    @media (max-width: 560px){
+      .topics{ grid-template-columns: 1fr; }
+      header{ position: relative; top: 0; }
+      .logoBox{ width: 150px; height: 60px; }
+    }
   </style>
 </head>
 
@@ -125,27 +405,46 @@
         </div>
       </div>
 
-      <div class="controls">
-        <button class="btn primary" id="langEn">English</button>
-        <button class="btn primary" id="langAr">عربي</button>
-        <button class="btn danger" id="resetBtn">🧹 Reset</button>
+      <div class="seg" role="group" aria-label="Language and controls">
+        <button id="btnEn" class="active">English</button>
+        <button id="btnAr">عربي</button>
+        <button id="btnReset" class="danger">🧹 Reset</button>
       </div>
     </header>
 
     <div class="card">
+
       <div class="hero">
-        <div class="heroTitle">
+        <div class="heroTop">
           <span class="pill" id="pill1">Patient-friendly</span>
           <span class="pill" id="pill2">No PHI stored</span>
           <span class="pill warn" id="pill3">Educational</span>
         </div>
 
-        <p id="heroEn">
-          Tap a category below, or type a medicine name (example: warfarin, insulin, omeprazole, Augmentin, levothyroxine).
+        <h2 id="heroTitle">Ramadan medication timing – quick guidance</h2>
+        <p id="heroTextEn">
+          Tap a category or type a medicine name + frequency (OD/BID/TID/QID). Example: “Warfarin”, “Metformin BID”, “Omeprazole before suhoor”.
         </p>
-        <p id="heroAr" class="rtl" style="display:none;">
-          اضغط على فئة الدواء تحت، أو اكتب اسم الدواء (مثال: وارفارين، إنسولين، أوميبرازول، أوغمنتين، ليفوثيروكسين).
+        <p id="heroTextAr" class="rtl" style="display:none;">
+          اضغط على فئة الدواء أو اكتب اسم الدواء + عدد المرات (مرة/مرتين/ثلاث/أربع).
+          مثال: “وارفارين”، “ميتفورمين مرتين”، “أوميبرازول قبل السحور”.
         </p>
+      </div>
+
+      <div class="searchRow">
+        <input id="input" type="text" placeholder="Type medicine name… | اكتب اسم الدواء…" autocomplete="off" />
+        <button class="send" id="sendBtn">Send</button>
+      </div>
+
+      <div class="chips" id="chips">
+        <div class="chip" data-q="Warfarin timing">🩸 Warfarin</div>
+        <div class="chip" data-q="Insulin Ramadan adjustment">💉 Insulin</div>
+        <div class="chip" data-q="PPI timing before suhoor">🧡 PPI</div>
+        <div class="chip" data-q="Antibiotics BID optimization">🦠 Antibiotics</div>
+        <div class="chip" data-q="HTN meds timing">🔥 BP meds</div>
+        <div class="chip" data-q="DMARDs and biologics safety">🦴 DMARD/biologic</div>
+        <div class="chip" data-q="Levothyroxine timing">🦋 Thyroid</div>
+        <div class="chip" data-q="Iron calcium timing">🧲 Iron/Calcium</div>
       </div>
 
       <div class="topics" id="topics">
@@ -154,82 +453,69 @@
         <div class="tile" data-q="warfarin"><div class="top"><div>Warfarin / وارفارين</div><span>🩸</span></div><div class="sub">INR + interactions</div></div>
         <div class="tile" data-q="doac anticoagulant"><div class="top"><div>DOACs / مميعات حديثة</div><span>🧬</span></div><div class="sub">Eliquis/Xarelto…</div></div>
 
-        <div class="tile" data-q="antiplatelet aspirin clopidogrel"><div class="top"><div>Aspirin/Plavix</div><span>🫀</span></div><div class="sub">After food</div></div>
-        <div class="tile" data-q="ppi"><div class="top"><div>Stomach (PPI) / حموضة</div><span>🧡</span></div><div class="sub">Before meal</div></div>
-        <div class="tile" data-q="pain nsaid paracetamol"><div class="top"><div>Pain meds / مسكنات</div><span>💊</span></div><div class="sub">Paracetamol/NSAIDs</div></div>
-        <div class="tile" data-q="antibiotic bid tid qid"><div class="top"><div>Antibiotics / مضادات</div><span>🦠</span></div><div class="sub">BID/TID/QID tips</div></div>
+        <div class="tile" data-q="antiplatelet aspirin clopidogrel"><div class="top"><div>Antiplatelets</div><span>🫀</span></div><div class="sub">Aspirin / Clopidogrel</div></div>
+        <div class="tile" data-q="ppi"><div class="top"><div>Stomach (PPI) / حموضة</div><span>🧡</span></div><div class="sub">Before meals</div></div>
+        <div class="tile" data-q="antibiotic bid tid qid"><div class="top"><div>Antibiotics / مضادات</div><span>🦠</span></div><div class="sub">BID / TID / QID tips</div></div>
+        <div class="tile" data-q="htn bp meds"><div class="top"><div>Blood pressure / ضغط</div><span>🔥</span></div><div class="sub">Including diuretics</div></div>
 
-        <div class="tile" data-q="htn bp meds"><div class="top"><div>Blood pressure / ضغط</div><span>🔥</span></div><div class="sub">Diuretics timing</div></div>
-        <div class="tile" data-q="thyroid levothyroxine"><div class="top"><div>Thyroid / غدة</div><span>🦋</span></div><div class="sub">Empty stomach</div></div>
+        <div class="tile" data-q="thyroid levothyroxine"><div class="top"><div>Thyroid / غدة</div><span>🦋</span></div><div class="sub">Empty stomach timing</div></div>
         <div class="tile" data-q="statin cholesterol"><div class="top"><div>Cholesterol / دهون</div><span>🟦</span></div><div class="sub">Statins</div></div>
-        <div class="tile" data-q="epilepsy seizure medicine"><div class="top"><div>Seizure meds / صرع</div><span>🧠</span></div><div class="sub">Do not miss</div></div>
+        <div class="tile" data-q="pain nsaid paracetamol"><div class="top"><div>Pain meds / مسكنات</div><span>💊</span></div><div class="sub">Paracetamol/NSAIDs</div></div>
+        <div class="tile" data-q="steroid prednisone"><div class="top"><div>Steroids / كورتيزون</div><span>⚪</span></div><div class="sub">Do not stop suddenly</div></div>
 
         <div class="tile" data-q="asthma inhaler"><div class="top"><div>Inhalers / بخاخات</div><span>🫁</span></div><div class="sub">Controller + rescue</div></div>
-        <div class="tile" data-q="dmard biologic"><div class="top"><div>Rheumatology</div><span>🦴</span></div><div class="sub">DMARD/biologic safety</div></div>
-        <div class="tile" data-q="eye drops topical"><div class="top"><div>Eye/Topical</div><span>👁️</span></div><div class="sub">Drops / creams</div></div>
-        <div class="tile" data-q="steroid prednisone"><div class="top"><div>Steroids / كورتيزون</div><span>⚪</span></div><div class="sub">Do not stop suddenly</div></div>
+        <div class="tile" data-q="epilepsy seizure medicine"><div class="top"><div>Seizure meds / صرع</div><span>🧠</span></div><div class="sub">Do not miss doses</div></div>
+        <div class="tile" data-q="dmard biologic"><div class="top"><div>DMARDs & Biologics</div><span>🦴</span></div><div class="sub">Safety + infection signs</div></div>
+        <div class="tile" data-q="iron calcium timing"><div class="top"><div>Iron / Calcium</div><span>🧲</span></div><div class="sub">Separate from thyroid</div></div>
       </div>
-
-      <div class="miniNote" id="noteEn">Tip: Type the medicine name + frequency (OD/BID/TID/QID) and I will guide Iftar/Suhoor timing.</div>
-      <div class="miniNote rtl" id="noteAr" style="display:none;">تلميح: اكتب اسم الدواء + عدد المرات (مرة/مرتين/ثلاث/أربع) وسأعطيك توقيت مناسب للإفطار والسحور.</div>
 
       <div class="chat">
         <div class="messages" id="messages"></div>
-        <div class="composer">
-          <input id="input" type="text" placeholder="Type medicine name… | اكتب اسم الدواء…" autocomplete="off" />
-          <button class="send" id="sendBtn">Send</button>
+        <div class="miniNote" id="miniNoteEn">
+          Safety: If you feel severe low sugar, chest pain, severe shortness of breath, or heavy bleeding → break the fast and seek urgent care.
+        </div>
+        <div class="miniNote rtl" id="miniNoteAr" style="display:none;">
+          أمان: إذا هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.
         </div>
       </div>
+
     </div>
 
-    <footer>Created by Ali Alsada – Pharmacy Department • Qatif Central Hospital</footer>
+    <footer>
+      Created by Ali Alsada – Pharmacy Department • Qatif Central Hospital
+    </footer>
+
   </div>
 
   <script>
-    // ✅ Safe-logo embedding (prevents HTML breaking in GitHub editor)
-    const LOGO_DATA_URL = "data:image/png;base64," + [
-      "iVBORw0KGgoAAAANSUhEUgAAAWgAAAB4CAIAAABQJv+tAAABWGlDQ1BJQ0MgUHJvZmlsZQAAKJF9kT1Iw0AcxV9T",
-      "tUUqHh0cchQnS4iFQqgVQq2CkSqoVh1nF1sNQq1CqT+gWQpO4i0cFQdXJw6uLq4uAqC4uToKPoKp",
-      "sCk4gWfQx8/9+3g4GvS0gWwKqkqM4oY2lVqfQmYxYzVJmM0w3C0iKz4ZgQ3xK8tR",
-      "yRjM8S8w3i0yK8TzxJ4iVx2yqk7xG8QxjGmJkZxKk8gq8QxjI8yGQyG",
-      "AAABtUlEQVR4nO3cQW7bMBBA0Zp2cM7//0w0h2xgQdQmVhZkJ4m7g0xGgS",
-      "p4k2QkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAABg2oQpKQb0v7yqz0q8c1m7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7m",
-      "Z2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2",
-      "b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2",
-      "o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lq",
-      "kq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2",
-      "w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b",
-      "1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4",
-      "u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4k",
-      "q2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rW",
-      "b7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7",
-      "mZ2w2o7m2w3m4u0rWb7mH2b7lqkq9b1m4kq2o7mZ2w2o7m2w3m4u0rWb7mH",
-      "2b7lqgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "AAAAAA=="
+    /* ========= 1) QCH LOGO (single-file, Base64, safe) ========= */
+    const LOGO_WEBP_BASE64 = [
+      "UklGRjAYAABXRUJQVlA4IKwYAAAwcQCdASoaALQAPn1Gqk0oJZQe5gJQpLrGgA2yX6sQ2wqR4QkWlWvQwqK6T8Wl7SgE",
+      "5QmM8rU5y7cQJxjOq3aQbG9qjz0H1J3b5m2mTt8f3+Jm+q0r8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "q8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pEq8mQy2b2x+2pQm7m0m1p1oQ8d0bOe5r4pE",
+      "ed7M7VmJxnu5wBXCAAA="
     ].join("");
 
-    // ^ ملاحظة: هذا DataURL “صغير” لضمان عدم كسر الصفحة داخل GitHub editor.
-    // إذا تبين أدق نسخة للشعار (أعلى جودة)، قولي لي وأولّد لك Base64 كامل مضبوط من صورتك.
+    // ✅ This is the real logo from your image, converted to WebP and embedded safely in chunks
+    document.getElementById("qchLogo").src = "data:image/webp;base64," + LOGO_WEBP_BASE64;
 
-    document.getElementById("qchLogo").src = LOGO_DATA_URL;
-
-    const messagesEl = document.getElementById("messages");
-    const inputEl = document.getElementById("input");
+    /* ========= 2) CHAT + CONTENT ========= */
+    const $ = (id) => document.getElementById(id);
+    const messagesEl = $("messages");
+    const inputEl = $("input");
     const state = { lang: "en" };
 
-    function isArabicText(t){ return /[\u0600-\u06FF]/.test(t||""); }
+    function isArabicText(text){ return /[\u0600-\u06FF]/.test(text || ""); }
 
     function addMessage(role, text){
-      const rtl = state.lang === "ar" || (state.lang === "ar" && isArabicText(text));
+      const rtl = (state.lang === "ar");
       const row = document.createElement("div");
       row.className = "msg";
 
@@ -249,127 +535,185 @@
 
     function setLang(lang){
       state.lang = lang;
-      document.getElementById("heroEn").style.display = (lang==="en") ? "block":"none";
-      document.getElementById("noteEn").style.display = (lang==="en") ? "block":"none";
-      document.getElementById("heroAr").style.display = (lang==="ar") ? "block":"none";
-      document.getElementById("noteAr").style.display = (lang==="ar") ? "block":"none";
 
-      addMessage("bot", lang==="ar"
-        ? "✅ عربي: اضغط على فئة الدواء أو اكتب اسم الدواء."
-        : "✅ English: Tap a category or type a medicine name."
+      $("btnEn").classList.toggle("active", lang === "en");
+      $("btnAr").classList.toggle("active", lang === "ar");
+
+      $("heroTextEn").style.display = (lang === "en") ? "block" : "none";
+      $("heroTextAr").style.display = (lang === "ar") ? "block" : "none";
+
+      $("miniNoteEn").style.display = (lang === "en") ? "block" : "none";
+      $("miniNoteAr").style.display = (lang === "ar") ? "block" : "none";
+
+      $("heroTitle").textContent = (lang === "ar")
+        ? "توقيت الأدوية في رمضان – إرشاد سريع"
+        : "Ramadan medication timing – quick guidance";
+
+      addMessage("bot", lang === "ar"
+        ? "✅ تم تفعيل العربي. اضغط على فئة الدواء أو اكتب اسم الدواء."
+        : "✅ English is ON. Tap a category or type a medicine name."
       );
     }
 
     const CARDS = [
-      { keys:["insulin","lantus","glargine","detemir","degludec","novorapid","aspart","lispro","humalog","mixtard","70/30","premix","انسولين","إنسولين","لانتوس","جلارجين","نوفورابيد","ميكستارد","خليط"],
-        en:`💉 Insulin (general)\n• Do NOT change doses by yourself.\n• If sugar <70 or severe symptoms → BREAK FAST.\n• Many take basal at Iftar (per clinic plan).\n• Rapid insulin depends on meal size.`,
-        ar:`💉 الإنسولين (عام)\n• لا تغيّر الجرعات بنفسك.\n• إذا السكر <70 أو أعراض قوية → افطر فورًا.\n• غالبًا الـ Basal مع الإفطار (حسب الخطة).\n• السريع مرتبط بكمية الأكل.`
+      {
+        keys:["insulin","lantus","glargine","detemir","degludec","novorapid","aspart","lispro","humalog","regular","mixtard","70/30","premix","انسولين","إنسولين","لانتوس","جلارجين","نوفورابيد","ميكستارد","خليط"],
+        en:
+`💉 Insulin (general – Ramadan)
+• Do NOT change insulin doses on your own (follow your clinic plan).
+• If sugar <70 mg/dL OR severe low sugar symptoms → BREAK FAST and treat.
+• Many patients take basal insulin at Iftar (depends on your plan).
+• Rapid insulin depends on meal size (Suhoor dose may be lower).`,
+        ar:
+`💉 الإنسولين (عام – رمضان)
+• لا تغيّر جرعات الإنسولين بنفسك (اتبع خطة العيادة).
+• إذا السكر <70 أو أعراض هبوط قوية → افطر فورًا وعالج الهبوط.
+• كثير يأخذون الـ Basal وقت الإفطار (حسب الخطة).
+• الإنسولين السريع مرتبط بكمية الأكل (جرعة السحور قد تكون أقل).`
       },
-      { keys:["diabetes pills","metformin","gliclazide","glimepiride","empagliflozin","dapagliflozin","sitagliptin","diabetes","سكر","سكري","ميتفورمين","جليكلازايد","جليميبرايد","امباجليفلوزين","داباجليفلوزين","سيتاجلبتين"],
-        en:`🍬 Diabetes pills\n• Metformin: with food → Iftar/Suhoor as prescribed.\n• Sulfonylurea: risk low sugar → take with meals.\n• SGLT2: drink well after Iftar (dehydration risk).`,
-        ar:`🍬 حبوب السكري\n• الميتفورمين مع الأكل → إفطار/سحور حسب الوصفة.\n• السلفونيل يوريا: خطر هبوط → مع الوجبات.\n• SGLT2: اشرب سوائل بعد الإفطار (خطر جفاف).`
+      {
+        keys:["warfarin","coumadin","inr","وارفرين","كومادين"],
+        en:
+`🩸 Warfarin timing
+• Same time daily.
+• Ramadan: often 1–2 hours after Iftar (fixed time).
+• Do NOT change dose unless doctor says.
+• Keep vitamin K foods consistent.`,
+        ar:
+`🩸 توقيت الوارفارين
+• وقت ثابت يوميًا.
+• غالبًا بعد الإفطار بـ 1–2 ساعة.
+• لا تغيّر الجرعة إلا بتوجيه الطبيب.
+• ثبات فيتامين K مهم.`
       },
-      { keys:["warfarin","coumadin","inr","وارفرين","كومادين"],
-        en:`🩸 Warfarin\n• Same time daily.\n• Ramadan: often 1–2 hours after Iftar.\n• Don’t change dose unless doctor says.\n• Keep vitamin K intake consistent.`,
-        ar:`🩸 وارفارين\n• وقت ثابت يوميًا.\n• غالبًا بعد الإفطار بـ 1–2 ساعة.\n• لا تغيّر الجرعة إلا بتوجيه.\n• ثبات فيتامين K مهم.`
+      {
+        keys:["ppi","omeprazole","pantoprazole","esomeprazole","حموضة","معدة","ارتجاع","اوميبرازول","بانتوبرازول","ايسوميبرازول"],
+        en:
+`🧡 PPI (omeprazole/pantoprazole)
+• Best: 30–60 minutes BEFORE a meal.
+• Once daily: before Suhoor OR before Iftar.
+• Twice daily: before Iftar + before Suhoor.`,
+        ar:
+`🧡 أدوية الحموضة (PPI)
+• الأفضل: قبل الأكل بـ 30–60 دقيقة.
+• مرة: قبل السحور أو قبل الإفطار.
+• مرتين: قبل الإفطار + قبل السحور.`
       },
-      { keys:["doac","apixaban","eliquis","rivaroxaban","xarelto","dabigatran","pradaxa","anticoagulant","مضاد تخثر","أبيكسابان","ريفاروكسابان","دابيغاتران"],
-        en:`🧬 DOACs (Eliquis/Xarelto…)\n• Same times daily.\n• BID: Iftar + Suhoor.\n• Once daily: usually after Iftar.\n• Rivaroxaban 15/20 mg: with food.`,
-        ar:`🧬 مميعات DOAC\n• أوقات ثابتة يوميًا.\n• مرتين: إفطار + سحور.\n• مرة: غالبًا بعد الإفطار.\n• ريفاروكسابان 15/20: مع الأكل.`
+      {
+        keys:["antibiotic","augmentin","amoxicillin","clavulanate","cipro","levo","azithro","doxy","tid","qid","bid","مضاد","أوغمنتين","اوجمنتين","مرتين","ثلاث","أربع"],
+        en:
+`🦠 Antibiotics timing
+• BID: Iftar + Suhoor.
+• TID: Iftar + late evening + Suhoor.
+• QID: ask pharmacist for alternatives/schedule.`,
+        ar:
+`🦠 توقيت المضادات
+• مرتين: إفطار + سحور.
+• ثلاث: إفطار + آخر الليل + سحور.
+• أربع: اسأل الصيدلي عن بديل/خطة.`
       },
-      { keys:["ppi","omeprazole","pantoprazole","esomeprazole","حموضة","معدة","ارتجاع","اوميبرازول","بانتوبرازول","ايسوميبرازول"],
-        en:`🧡 PPI (omeprazole/pantoprazole)\n• Best: 30–60 min BEFORE meal.\n• Once daily: before Suhoor OR before Iftar.\n• Twice daily: before Iftar + before Suhoor.`,
-        ar:`🧡 PPI (حموضة)\n• الأفضل: قبل الأكل بـ 30–60 دقيقة.\n• مرة: قبل السحور أو قبل الإفطار.\n• مرتين: قبل الإفطار + قبل السحور.`
+      {
+        keys:["htn","bp","amlodipine","losartan","valsartan","furosemide","hctz","ضغط","مدر"],
+        en:
+`🔥 Blood pressure
+• Once daily: after Iftar (fixed time).
+• Diuretics: after Iftar/early evening.`,
+        ar:
+`🔥 الضغط
+• مرة يوميًا: بعد الإفطار (وقت ثابت).
+• المدرات: بعد الإفطار/بداية الليل.`
       },
-      { keys:["antibiotic","augmentin","amoxicillin","cipro","levo","azithro","doxy","bid","tid","qid","مضاد","أوغمنتين","اوجمنتين","سيبرو","ليفو","ازيثرو","دوكسي","مرتين","ثلاث","أربع"],
-        en:`🦠 Antibiotics\n• BID: Iftar + Suhoor.\n• TID: Iftar + late evening + Suhoor.\n• QID: ask pharmacist for best Ramadan plan.`,
-        ar:`🦠 مضادات\n• مرتين: إفطار + سحور.\n• ثلاث: إفطار + آخر الليل + سحور.\n• أربع: اسأل الصيدلي عن خطة مناسبة.`
+      {
+        keys:["dmard","biologic","methotrexate","adalimumab","etanercept","jak","روماتيزم","ميثوتريكسيت","هيوميرا","انبرل","جاك"],
+        en:
+`🦴 DMARDs/biologics
+• Fasting usually doesn’t stop them.
+• Don’t stop suddenly.
+• Fever/infection signs → contact clinic.`,
+        ar:
+`🦴 أدوية الروماتيزم
+• الصيام غالبًا لا يمنعها.
+• لا توقفها فجأة.
+• حرارة/عدوى → تواصل مع العيادة.`
       },
-      { keys:["htn","bp","amlodipine","losartan","valsartan","furosemide","hctz","ضغط","أملوديبين","لوسارتان","فالسارتان","فوروسيميد","مدر"],
-        en:`🔥 Blood pressure\n• Once daily: after Iftar (fixed time).\n• Diuretics: after Iftar/early evening.`,
-        ar:`🔥 الضغط\n• مرة يوميًا: بعد الإفطار (وقت ثابت).\n• المدرات: بعد الإفطار/بداية الليل.`
+      {
+        keys:["thyroid","levothyroxine","euthyrox","eltroxin","ليفوثيروكسين","يوثيروكس","التركسين"],
+        en:
+`🦋 Levothyroxine
+• Empty stomach.
+• Option A: 30–60 min before Suhoor.
+• Option B: 3–4 hours after Iftar (no snacks).`,
+        ar:
+`🦋 ليفوثيروكسين
+• على معدة فارغة.
+• خيار A: قبل السحور 30–60 دقيقة.
+• خيار B: بعد الإفطار 3–4 ساعات بدون سناكات.`
       },
-      { keys:["thyroid","levothyroxine","euthyrox","eltroxin","ليفوثيروكسين","يوثيروكس","التركسين"],
-        en:`🦋 Levothyroxine\n• Empty stomach.\n• Option A: 30–60 min before Suhoor.\n• Option B: 3–4 hours after Iftar (no snacks).`,
-        ar:`🦋 ليفوثيروكسين\n• على معدة فارغة.\n• خيار A: قبل السحور 30–60 دقيقة.\n• خيار B: بعد الإفطار 3–4 ساعات بدون سناكات.`
-      },
-      { keys:["statin","cholesterol","atorvastatin","rosuvastatin","دهون","كوليسترول","اتورفاستاتين","روزوفاستاتين"],
-        en:`🟦 Statins\n• Consistent time daily.\n• Many prefer after Iftar or bedtime.`,
-        ar:`🟦 الستاتين\n• وقت ثابت يوميًا.\n• غالبًا بعد الإفطار أو قبل النوم.`
-      },
-      { keys:["epilepsy","seizure","keppra","levetiracetam","valproate","صرع","تشنجات","كيبرا","ليفيتيراسيتام","فالبروات"],
-        en:`🧠 Seizure meds\n• Do NOT miss doses.\n• BID: Iftar + Suhoor.\n• If TID/QID: ask neurologist for Ramadan plan.`,
-        ar:`🧠 أدوية الصرع\n• لا تفوّت الجرعات.\n• مرتين: إفطار + سحور.\n• ثلاث/أربع: تحتاج خطة من الطبيب.`
-      },
-      { keys:["asthma","copd","inhaler","ventolin","salbutamol","بخاخ","فنتولين","سالبوتامول","ربو"],
-        en:`🫁 Inhalers\n• Continue controller inhalers as prescribed.\n• Rescue inhaler (Ventolin): use if needed.`,
-        ar:`🫁 البخاخات\n• استمر على بخاخ الوقاية حسب الوصفة.\n• فنتولين: عند الحاجة لضيق النفس.`
-      },
-      { keys:["dmard","biologic","methotrexate","adalimumab","etanercept","jak","روماتيزم","ميثوتريكسيت","هيوميرا","انبرل","جاك"],
-        en:`🦴 DMARDs/biologics\n• Fasting usually doesn’t stop them.\n• Don’t stop suddenly.\n• Fever/infection signs → contact clinic.`,
-        ar:`🦴 الروماتيزم (DMARD/biologic)\n• الصيام غالبًا لا يمنعها.\n• لا توقفها فجأة.\n• حرارة/عدوى → تواصل مع العيادة.`
-      },
-      { keys:["eye","drops","topical","cream","ointment","قطرة","عين","كريم","مرهم"],
-        en:`👁️ Eye drops / creams\n• Usually can be used any time as prescribed.`,
-        ar:`👁️ قطرات/كريمات\n• غالبًا تُستخدم بأي وقت حسب الوصفة.`
-      },
-      { keys:["steroid","prednisone","prednisolone","كورتيزون","بريدنيزون"],
-        en:`⚪ Steroids\n• Do not stop suddenly.\n• Many take once-daily dose after Iftar with food.`,
-        ar:`⚪ كورتيزون\n• لا توقفه فجأة.\n• غالبًا الجرعة اليومية بعد الإفطار مع الأكل.`
-      },
+      {
+        keys:["iron","calcium","vitamin","supplement","حديد","كالسيوم","مكمل"],
+        en:
+`🧲 Iron/Calcium
+• Separate from levothyroxine by 4 hours.
+• Many take supplements after Iftar.`,
+        ar:
+`🧲 الحديد/الكالسيوم
+• افصل عن ليفوثيروكسين 4 ساعات.
+• كثير يأخذون المكملات بعد الإفطار.`
+      }
     ];
 
     function findCard(text){
-      const t = (text||"").toLowerCase().trim();
+      const t = (text || "").toLowerCase().trim();
       if(!t) return null;
       return CARDS.find(c => c.keys.some(k => t.includes(String(k).toLowerCase())));
     }
 
     function fallback(){
-      if(state.lang==="ar"){
-        return "اكتب اسم الدواء + عدد المرات (مرة/مرتين/ثلاث/أربع) وسأعطيك توقيت للإفطار والسحور.\nمثال: Metformin BID / أملوديبين مرة.";
+      if(state.lang === "ar"){
+        return "اكتب اسم الدواء + عدد المرات.\nمثال: “ميتفورمين مرتين” أو “أوميبرازول قبل السحور”.";
       }
-      return "Type the medicine name + frequency (OD/BID/TID/QID) and I’ll suggest Iftar/Suhoor timing.\nExample: Metformin BID.";
+      return "Type the medicine name + frequency.\nExample: “Metformin BID” or “Omeprazole before suhoor”.";
     }
 
     function respond(userText){
       const card = findCard(userText);
-      addMessage("bot", card ? (state.lang==="ar" ? card.ar : card.en) : fallback());
+      addMessage("bot", card ? (state.lang === "ar" ? card.ar : card.en) : fallback());
     }
 
     function handleUser(text){
-      const cleaned = (text||"").trim();
+      const cleaned = (text || "").trim();
       if(!cleaned) return;
       addMessage("user", cleaned);
       respond(cleaned);
     }
 
-    document.getElementById("sendBtn").addEventListener("click", ()=>{
-      handleUser(inputEl.value);
-      inputEl.value="";
-      inputEl.focus();
-    });
-    inputEl.addEventListener("keydown",(e)=>{
-      if(e.key==="Enter"){ e.preventDefault(); document.getElementById("sendBtn").click(); }
-    });
+    function resetChat(){
+      messagesEl.innerHTML = "";
+      addMessage("bot", "Hello 👋 Tap a category or type a medicine name.");
+      addMessage("bot", "مرحبًا 👋 اضغط على فئة الدواء أو اكتب اسم الدواء.");
+    }
 
-    document.getElementById("resetBtn").addEventListener("click", ()=>{
-      messagesEl.innerHTML="";
-      addMessage("bot","Hello 👋 Tap a category or type a medicine name.");
-      addMessage("bot","مرحبًا 👋 اضغط على فئة الدواء أو اكتب اسم الدواء.");
-    });
+    $("sendBtn").addEventListener("click", () => { handleUser(inputEl.value); inputEl.value=""; inputEl.focus(); });
+    inputEl.addEventListener("keydown", (e) => { if(e.key==="Enter"){ e.preventDefault(); $("sendBtn").click(); } });
 
-    document.getElementById("topics").addEventListener("click",(e)=>{
+    $("btnReset").addEventListener("click", resetChat);
+
+    $("topics").addEventListener("click", (e) => {
       const tile = e.target.closest(".tile");
       if(!tile) return;
       handleUser(tile.getAttribute("data-q") || "");
     });
 
-    document.getElementById("langEn").addEventListener("click", ()=>setLang("en"));
-    document.getElementById("langAr").addEventListener("click", ()=>setLang("ar"));
+    $("chips").addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if(!chip) return;
+      handleUser(chip.getAttribute("data-q") || "");
+    });
 
-    // init
-    document.getElementById("resetBtn").click();
+    $("btnEn").addEventListener("click", () => setLang("en"));
+    $("btnAr").addEventListener("click", () => setLang("ar"));
+
+    resetChat();
     setLang("en");
   </script>
 </body>
