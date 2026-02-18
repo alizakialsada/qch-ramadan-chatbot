@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,11 +40,11 @@
       border-radius:999px;cursor:pointer;user-select:none}
     .pill:hover{border-color:rgba(53,208,199,.45)}
     /* IMPORTANT FIX: composer is fixed so it is ALWAYS clickable */
-    .chatWrap{position:relative;height:560px}
-    .chatlog{position:absolute;left:0;right:0;top:0;bottom:74px;padding:16px;overflow:auto;-webkit-overflow-scrolling:touch}
+    .chatWrap{display:flex;flex-direction:column;height:560px}
+    .chatlog{flex:1;padding:16px;overflow:auto;-webkit-overflow-scrolling:touch}
     .composer{
-      position:absolute;left:12px;right:12px;bottom:12px;z-index:9999;
-      display:flex;gap:10px;padding:12px;background:rgba(8,18,22,.78);
+      display:flex;gap:10px;padding:12px;margin:12px;
+      background:rgba(8,18,22,.78);
       border:1px solid rgba(255,255,255,.10);border-radius:16px;backdrop-filter: blur(10px)
     }
     .composer input{flex:1;font-size:14px}
@@ -101,7 +100,7 @@
       <section class="card">
         <header>
           <div style="font-weight:800" id="uiChatTitle">المحادثة</div>
-          <div class="badge">Ramadan • Arabic Only (RTL) – Typing Fix</div>
+          <div class="badge">Ramadan • Arabic Only (RTL) – Typing Fix v2</div>
         </header>
 
         <div class="pillrow" id="quick"></div>
