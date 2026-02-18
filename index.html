@@ -12,8 +12,8 @@
       --card:#ffffff;
       --ink:#071827;
       --muted:#516274;
-      --brand:#0aa6a6;
-      --brand2:#1e88e5;
+      --brand:#0aa6a6;     /* turquoise */
+      --brand2:#1e88e5;    /* blue */
       --warn:#b45309;
       --line:#e6edf2;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
@@ -29,11 +29,14 @@
         radial-gradient(1200px 700px at 20% 0%, rgba(10,166,166,.12), transparent 60%),
         radial-gradient(1000px 600px at 90% 10%, rgba(30,136,229,.12), transparent 55%),
         var(--bg);
-      font-size:18px; /* Patient-friendly default */
     }
 
+    /* Patient-friendly defaults: bigger text, simpler */
+    body.patient-mode{ font-size: 18px; }
+    .detail{ display:none !important; } /* always hide details (patient-focused) */
+
     .wrap{
-      max-width: 1050px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 16px 14px 22px;
       display:flex;
@@ -48,17 +51,23 @@
       border: 1px solid rgba(230,237,242,.9);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 14px;
+      padding: 14px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
     }
 
-    .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
     .logoBox{
-      width: 140px;
-      height: 56px;
+      width: 78px;
+      height: 52px;
       border-radius: 16px;
       background: #fff;
       border: 1px solid rgba(230,237,242,.95);
@@ -68,9 +77,14 @@
       justify-content:center;
       overflow:hidden;
       flex: 0 0 auto;
-      padding: 6px 10px;
+      padding: 6px 8px;
     }
-    .logoBox img{ width:100%; height:100%; object-fit:contain; display:block; }
+    .logoBox img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
 
     .brandText{ min-width:0; }
     .brandText h1{
@@ -90,7 +104,13 @@
       text-overflow:ellipsis;
     }
 
-    .controls{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; align-items:center; }
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
     .btn{
       appearance:none;
       border: 1px solid var(--line);
@@ -98,7 +118,7 @@
       color: var(--ink);
       border-radius: 999px;
       padding: 12px 14px;
-      font-weight: 900;
+      font-weight: 800;
       cursor:pointer;
       display:inline-flex;
       align-items:center;
@@ -138,7 +158,7 @@
       justify-content:space-between;
     }
     .pill{
-      font-weight:1000;
+      font-weight:900;
       font-size: 12px;
       padding: 7px 10px;
       border-radius: 999px;
@@ -159,6 +179,7 @@
       line-height: 1.5;
     }
 
+    /* Big language buttons */
     .langRow{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -175,7 +196,7 @@
       cursor:pointer;
       box-shadow: 0 8px 18px rgba(15,23,42,.05);
       text-align:center;
-      font-weight: 1000;
+      font-weight: 900;
       font-size: 18px;
       user-select:none;
       transition: transform .06s ease, border-color .2s ease;
@@ -183,7 +204,7 @@
     .langBtn:hover{ transform: translateY(-1px); border-color: rgba(10,166,166,.40); }
     .langBtn small{
       display:block;
-      font-weight:800;
+      font-weight:700;
       color: var(--muted);
       margin-top:6px;
       font-size: 13px;
@@ -193,7 +214,7 @@
     .topics{
       padding: 12px 14px;
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap:12px;
     }
     .tile{
@@ -205,7 +226,7 @@
       box-shadow: 0 8px 18px rgba(15,23,42,.04);
       transition: transform .06s ease, border-color .2s ease, background .2s ease;
       user-select:none;
-      min-height: 92px;
+      min-height: 84px;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -227,6 +248,7 @@
       line-height:1.35;
     }
 
+    /* Chat area */
     .chat{
       display:flex;
       flex-direction:column;
@@ -241,14 +263,24 @@
       scroll-behavior:smooth;
       background: linear-gradient(180deg, rgba(255,255,255,.7), #fff);
     }
-    .msg{ display:flex; gap:10px; margin: 10px 0; align-items:flex-start; }
+    .msg{
+      display:flex;
+      gap:10px;
+      margin: 10px 0;
+      align-items:flex-start;
+    }
     .avatar{
-      width: 42px; height: 42px;
+      width: 42px;
+      height: 42px;
       border-radius: 16px;
       background: rgba(10,166,166,.12);
       border:1px solid rgba(10,166,166,.22);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:1000; color:#065f5f; flex: 0 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:1000;
+      color:#065f5f;
+      flex: 0 0 auto;
     }
     .avatar.user{
       background: rgba(30,136,229,.10);
@@ -256,18 +288,21 @@
       color:#1e4f94;
     }
     .bubble{
-      max-width: 860px;
+      max-width: 820px;
       background: #fff;
       border:1px solid var(--line);
       border-radius: 18px;
       padding: 12px 12px;
       box-shadow: 0 6px 18px rgba(15,23,42,.04);
-      line-height: 1.55;
+      line-height: 1.5;
       white-space: pre-wrap;
       word-break: break-word;
       font-size: 16px;
     }
-    .bubble.user{ background: rgba(30,136,229,.06); border-color: rgba(30,136,229,.16); }
+    .bubble.user{
+      background: rgba(30,136,229,.06);
+      border-color: rgba(30,136,229,.16);
+    }
 
     .composer{
       padding: 12px 14px;
@@ -301,13 +336,6 @@
       font-size: 16px;
     }
 
-    .miniNote{
-      padding: 0 14px 12px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height:1.4;
-    }
-
     footer{
       text-align:center;
       color: var(--muted);
@@ -318,131 +346,28 @@
     .rtl{ direction: rtl; text-align: right; }
     .ltr{ direction: ltr; text-align: left; }
 
-    @media (max-width: 980px){
-      .topics{ grid-template-columns: repeat(3, 1fr); }
+    .miniNote{
+      padding: 0 14px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.4;
     }
-    @media (max-width: 760px){
+
+    @media (max-width: 920px){
       .topics{ grid-template-columns: repeat(2, 1fr); }
-      .brandText p{ display:none; }
     }
     @media (max-width: 560px){
       .langRow{ grid-template-columns: 1fr; }
       .topics{ grid-template-columns: 1fr; }
+      .brandText p{ display:none; }
     }
   </style>
 </head>
 
-<body>
+<body class="patient-mode">
   <div class="wrap">
 
     <header>
       <div class="brand">
         <div class="logoBox" aria-label="QCH Logo">
-          <!-- QCH logo embedded (no files needed) -->
-          <img alt="Qatif Central Hospital" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA8ALMDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAECAwQFBgcI/8QAPRAAAgEDAgQDBQUJAAAAAAAAAQIDAAQRBRIhMUETIlFhcQYUIzKBkaGx0RQjQmKS8DNScuHw/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAEDAgQF/8QAJREAAgICAgICAgMAAAAAAAAAAAECEQMhEjEEE0FRImFxgZGh/9oADAMBAAIRAxEAPwD1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ0xwWvKf2m2L2q6a8p9H0iQk6wqkqFvQ6b1X+YzqGmWmQn2c0u8Qk0bJ5cH0qg0yM2X3u4uU0yGmG8r7gkq0mXrO0gqQ0U8o1fGz3xY0fDk8zqj1o1UuS6lYxjzqYd4cGkX4mQw4uX9p5oHnF0X1pZlYpZ7s4jBv0Gm0mCw4t8Fh0p2GQv4dW+2ZbGZq3cQxF1Gkq3Pq2r8HqHf2bqj7o0s8x9n7VqG1o4Wm9Xk7t8bK5g8k9v2tXQ0rV0v1tK8tq0h7c+o9Z9k6nO0nWZp0m7g0qZQ7oWm7n5o+fS3mQ5d3qf2q3y0lWc3b9u7mWbQeW2pWk7f0r8ZP4yZ7n8SxQyq8pGf1mGf7u8fQv8A0b2nHh1m3yQ2o9kzv0nYpK0rZb2vVvEwZfGQe0UeYyJxgS5O0c8m7o2xqk2ZQv2lq2o7f9b8mVdP8A3y3x8FJ3c0Wc9n0f4b6p1Yp7s4z9c1+GQ7W0j3xjYcU7S0m2mQq7f3dY6yU+Zk9z8e4qvS9y3y0m7e2k2a0n8e7mV7ZbGk8Xq1g3q0u7V4u2d2v6uS7m0m2m9xjv7o0h+eZcZp2r7f2bZbV4u2h0m2m4qk0sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//Z" />
-        </div>
-        <div class="brandText">
-          <h1>QCH – Ramadan Medication Assistant</h1>
-          <p>Pharmacy Department • Qatif Central Hospital • Arabic / English</p>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button class="btn primary" id="langEn">English</button>
-        <button class="btn primary" id="langAr">عربي</button>
-        <button class="btn danger" id="resetBtn">🧹 Reset</button>
-      </div>
-    </header>
-
-    <div class="card">
-      <div class="hero">
-        <div class="heroTitle">
-          <span class="pill">Patient-friendly</span>
-          <span class="pill">No PHI stored</span>
-          <span class="pill warn">Educational</span>
-        </div>
-
-        <p id="heroTextEn">
-          Tap a category below, or type a medicine name (example: warfarin, insulin, omeprazole, Augmentin, levothyroxine).
-        </p>
-        <p id="heroTextAr" class="rtl" style="display:none;">
-          اضغط على فئة الدواء تحت، أو اكتب اسم الدواء (مثال: وارفارين، إنسولين، أوميبرازول، أوغمنتين، ليفوثيروكسين).
-        </p>
-      </div>
-
-      <!-- Big language row (optional – already have buttons on top; kept for patients) -->
-      <div class="langRow">
-        <div class="langBtn" id="langBtnEn">English <small>Easy instructions</small></div>
-        <div class="langBtn" id="langBtnAr">عربي <small>إرشادات مبسطة</small></div>
-      </div>
-
-      <!-- MORE medication categories -->
-      <div class="topics" id="topics">
-        <div class="tile" data-q="insulin">
-          <div class="top"><div>Insulin</div><span>💉</span></div>
-          <div class="sub">Basal / Rapid / Premix</div>
-        </div>
-
-        <div class="tile" data-q="diabetes pills">
-          <div class="top"><div>Diabetes pills</div><span>🍬</span></div>
-          <div class="sub">Metformin, SU, SGLT2…</div>
-        </div>
-
-        <div class="tile" data-q="warfarin">
-          <div class="top"><div>Warfarin</div><span>🩸</span></div>
-          <div class="sub">INR + interactions</div>
-        </div>
-
-        <div class="tile" data-q="doac anticoagulant">
-          <div class="top"><div>DOACs</div><span>🧬</span></div>
-          <div class="sub">Apixaban/Rivaroxaban…</div>
-        </div>
-
-        <div class="tile" data-q="antiplatelet aspirin clopidogrel">
-          <div class="top"><div>Antiplatelets</div><span>🫀</span></div>
-          <div class="sub">Aspirin / Clopidogrel</div>
-        </div>
-
-        <div class="tile" data-q="ppi">
-          <div class="top"><div>Stomach (PPI)</div><span>🧡</span></div>
-          <div class="sub">Before Suhoor/Iftar</div>
-        </div>
-
-        <div class="tile" data-q="pain nsaid paracetamol">
-          <div class="top"><div>Pain meds</div><span>💊</span></div>
-          <div class="sub">Paracetamol/NSAIDs</div>
-        </div>
-
-        <div class="tile" data-q="antibiotic bid tid qid">
-          <div class="top"><div>Antibiotics</div><span>🦠</span></div>
-          <div class="sub">BID / TID / QID tips</div>
-        </div>
-
-        <div class="tile" data-q="htn bp meds">
-          <div class="top"><div>Blood pressure</div><span>🔥</span></div>
-          <div class="sub">Including diuretics</div>
-        </div>
-
-        <div class="tile" data-q="thyroid levothyroxine">
-          <div class="top"><div>Thyroid</div><span>🦋</span></div>
-          <div class="sub">Levothyroxine empty stomach</div>
-        </div>
-
-        <div class="tile" data-q="statin cholesterol">
-          <div class="top"><div>Cholesterol</div><span>🟦</span></div>
-          <div class="sub">Statins timing</div>
-        </div>
-
-        <div class="tile" data-q="epilepsy seizure medicine">
-          <div class="top"><div>Seizure meds</div><span>🧠</span></div>
-          <div class="sub">Do not miss doses</div>
-        </div>
-
-        <div class="tile" data-q="asthma inhaler">
-          <div class="top"><div>Asthma/COPD</div><span>🫁</span></div>
-          <div class="sub">Inhalers schedule</div>
-        </div>
-
-        <div class="tile" data-q="dmard biologic">
-          <div class="top"><div>Rheumatology</div><span>🦴</span></div>
-          <div class="sub">DMARDs & biologics safety</div>
+          <img alt="QCH Logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAkACQAAD/4QECRXhpZgAATU0AKgAAAAgABwEOAAIAAAALAAAAYgESAAMAAAABAAEAAAEaAAUAAAABAAAAbgEbAAUAAAABAAAAdgEoAAMAAAABAAIAAAExAAIAAAAhAAAAfgEyAAIAAAAUAAAAoAITAAMAAAABAAEAAIdpAAQAAAABAAAAtgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAATygAwAEAAAAAQAAAGIAAAAA/9sAQwABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCABiATgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5kooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
