@@ -10,11 +10,10 @@
 --brand:#0aa6a6;
 --brand2:#1e88e5;
 --bg:#f4fbfb;
---card:#ffffff;
 --text:#0b1b2b;
 --muted:#5b6b7a;
 --radius:20px;
-font-family: system-ui,-apple-system,Segoe UI,Roboto;
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
 }
 
 body{
@@ -30,44 +29,31 @@ padding:12px;
 
 /* HEADER */
 .header{
-background:white;
-border-radius:20px;
-padding:14px;
-box-shadow:0 8px 22px rgba(0,0,0,.08);
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:10px;
-flex-wrap:wrap;
+background:white;
+padding:14px;
+border-radius:20px;
+box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
-.logo{
-font-weight:bold;
-font-size:13px;
-padding:8px 12px;
-border-radius:14px;
-background:#f0fbfb;
-border:1px solid #d0eeee;
+.logoBox{
+display:flex;
+align-items:center;
+gap:8px;
 }
 
-.logo.qch{color:var(--brand);}
-.logo.ehc{color:var(--brand2);}
+.logoText{
+font-size:12px;
+}
 
+/* TITLE */
 .title{
 text-align:center;
-flex:1;
-}
-
-.title h1{
-margin:0;
-font-size:18px;
 color:var(--brand);
-}
-
-.title p{
-margin:4px 0 0;
-font-size:13px;
-color:var(--muted);
+font-weight:bold;
+font-size:18px;
 }
 
 /* CHAT */
@@ -75,18 +61,17 @@ color:var(--muted);
 background:white;
 border-radius:20px;
 padding:12px;
-margin-top:10px;
-box-shadow:0 8px 22px rgba(0,0,0,.08);
-height:340px;
+margin-top:12px;
+height:320px;
 overflow:auto;
+box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
 .msg{
-background:#f3f8f8;
+background:#f0f8f8;
 padding:10px;
 border-radius:14px;
 margin:6px 0;
-font-size:15px;
 }
 
 /* BUTTONS */
@@ -94,7 +79,7 @@ font-size:15px;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px;
-margin-top:10px;
+margin-top:12px;
 }
 
 .btn{
@@ -109,8 +94,8 @@ box-shadow:0 4px 10px rgba(0,0,0,.05);
 }
 
 .btn:hover{
-background:#f0fbfb;
 border-color:var(--brand);
+background:#f0fbfb;
 }
 
 /* FOOTER */
@@ -120,11 +105,10 @@ text-align:center;
 font-size:12px;
 color:var(--muted);
 background:white;
-padding:10px;
+padding:12px;
 border-radius:14px;
 box-shadow:0 4px 12px rgba(0,0,0,.05);
 }
-
 </style>
 </head>
 
@@ -132,51 +116,80 @@ box-shadow:0 4px 12px rgba(0,0,0,.05);
 
 <div class="container">
 
+<!-- HEADER -->
 <div class="header">
 
-<div class="logo qch">
-🏥 Qatif Central Hospital<br>
+<!-- QCH LOGO -->
+<div class="logoBox">
+<svg width="50" height="50">
+<circle cx="25" cy="25" r="22" fill="#0aa6a6"/>
+<text x="25" y="30" font-size="14" fill="white" text-anchor="middle">QCH</text>
+</svg>
+
+<div class="logoText">
+<b>Qatif Central Hospital</b><br>
 مستشفى القطيف المركزي
+</div>
 </div>
 
 <div class="title">
-<h1>Ramadan Medication Assistant</h1>
-<p>Eastern Health Cluster – التجمع الصحي الشرقي</p>
+Ramadan Medication Assistant
 </div>
 
-<div class="logo ehc">
-🏥 Eastern Health Cluster<br>
+<!-- EHC LOGO -->
+<div class="logoBox">
+<svg width="50" height="50">
+<circle cx="25" cy="25" r="22" fill="#1e88e5"/>
+<text x="25" y="30" font-size="14" fill="white" text-anchor="middle">EHC</text>
+</svg>
+
+<div class="logoText">
+<b>Eastern Health Cluster</b><br>
 التجمع الصحي الشرقي
 </div>
+</div>
 
 </div>
 
+<!-- CHAT -->
 <div class="chat" id="chat">
-<div class="msg">مرحبًا 👋 اختر الدواء من الأسفل</div>
+
+<div class="msg">
+مرحبًا 👋 اختر الدواء من الأسفل
 </div>
 
+</div>
+
+<!-- BUTTONS -->
 <div class="buttons">
 
-<button class="btn" onclick="reply('insulin')">💉 Insulin / الإنسولين</button>
+<button class="btn" onclick="reply('insulin')">💉 Insulin</button>
+
 <button class="btn" onclick="reply('metformin')">🍬 Metformin</button>
 
 <button class="btn" onclick="reply('bp')">🔥 Blood Pressure</button>
+
 <button class="btn" onclick="reply('warfarin')">🩸 Warfarin</button>
 
-<button class="btn" onclick="reply('ppi')">🧡 Omeprazole / Pantoprazole</button>
+<button class="btn" onclick="reply('ppi')">🧡 Omeprazole</button>
+
 <button class="btn" onclick="reply('antibiotic')">🦠 Antibiotics</button>
 
 <button class="btn" onclick="reply('thyroid')">🦋 Levothyroxine</button>
-<button class="btn" onclick="reply('pain')">💊 Paracetamol / Pain meds</button>
 
-<button class="btn" onclick="reply('statin')">🫀 Atorvastatin / Statins</button>
+<button class="btn" onclick="reply('pain')">💊 Pain meds</button>
+
+<button class="btn" onclick="reply('statin')">🫀 Statins</button>
+
 <button class="btn" onclick="reply('vitamin')">🧲 Vitamins</button>
 
-<button class="btn" onclick="reply('asthma')">🫁 Asthma inhalers</button>
+<button class="btn" onclick="reply('asthma')">🫁 Asthma inhaler</button>
+
 <button class="btn" onclick="reply('dmard')">🦴 Rheumatology meds</button>
 
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
 Created by Automation Supervisor Ali Alsada<br>
 Qatif Central Hospital – Eastern Health Cluster
@@ -198,13 +211,13 @@ bp:
 "🔥 Blood pressure meds:\nخذ بعد الإفطار.",
 
 warfarin:
-"🩸 Warfarin:\nخذ وقت ثابت بعد الإفطار.",
+"🩸 Warfarin:\nخذ بعد الإفطار يوميًا.",
 
 ppi:
-"🧡 PPI:\nخذ قبل السحور أو الإفطار بـ30 دقيقة.",
+"🧡 Omeprazole:\nخذ قبل السحور أو الإفطار بـ30 دقيقة.",
 
 antibiotic:
-"🦠 Antibiotics:\nمرتين يوميًا: إفطار + سحور.",
+"🦠 Antibiotics:\nخذ إفطار + سحور.",
 
 thyroid:
 "🦋 Levothyroxine:\nخذ قبل السحور 30 دقيقة.",
@@ -219,10 +232,10 @@ vitamin:
 "🧲 Vitamins:\nخذ بعد الإفطار.",
 
 asthma:
-"🫁 Asthma:\nاستمر حسب وصف الطبيب.",
+"🫁 Asthma inhaler:\nاستخدم حسب وصف الطبيب.",
 
 dmard:
-"🦴 DMARDs:\nلا توقف بدون الطبيب."
+"🦴 Rheumatology meds:\nلا توقف بدون الطبيب."
 
 };
 
