@@ -1,718 +1,248 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>QCH – Easy Ramadan Medication Assistant (Patients)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QCH Ramadan Medication Assistant</title>
+
 <style>
-  :root{
-    --bg:#f4fbfb; --card:#ffffff; --ink:#0b1b2b; --muted:#5b6b7a;
-    --brand:#0aa6a6; --brand2:#1e88e5; --line:#e6edf2;
-    --shadow:0 10px 26px rgba(0,0,0,.08);
-    --r:20px;
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  }
-  body{
-    margin:0;
-    background:
-      radial-gradient(1100px 600px at 15% 0%, rgba(10,166,166,.16), transparent 55%),
-      radial-gradient(1100px 600px at 90% 10%, rgba(30,136,229,.16), transparent 55%),
-      linear-gradient(135deg,#eef9f9,#eef4fb);
-    color:var(--ink);
-  }
-  .wrap{max-width:980px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;}
-  header{
-    background:rgba(255,255,255,.90);
-    border:1px solid var(--line);
-    border-radius:var(--r);
-    box-shadow:var(--shadow);
-    padding:14px;
-    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-  }
-  .logos{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .logoPill{
-    padding:10px 12px;border-radius:16px;border:1px solid var(--line);
-    background:#fff; box-shadow:0 8px 16px rgba(0,0,0,.05);
-    font-weight:1000;font-size:12px;line-height:1.2;white-space:nowrap;
-  }
-  .logoPill.qch{color:var(--brand);}
-  .logoPill.ehc{color:var(--brand2);}
-  .title{flex:1;text-align:center;min-width:240px}
-  .title h1{margin:0;font-size:18px;font-weight:1000}
-  .title p{margin:4px 0 0;font-size:13px;color:var(--muted)}
-  .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-  .btn{
-    border:1px solid var(--line); background:#fff; border-radius:999px;
-    padding:10px 12px; font-weight:1000; cursor:pointer;
-    box-shadow:0 8px 16px rgba(0,0,0,.05);
-    user-select:none;
-  }
-  .btn.active{background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));}
-  .btn.warn{border-color:rgba(180,83,9,.20);background:rgba(180,83,9,.06)}
-  .card{
-    background:rgba(255,255,255,.90);
-    border:1px solid var(--line);
-    border-radius:var(--r);
-    box-shadow:var(--shadow);
-    overflow:hidden;
-  }
-  .topbar{
-    padding:12px 14px;border-bottom:1px solid var(--line);
-    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
-  }
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:7px 10px;border-radius:999px;
-    background:rgba(10,166,166,.10);border:1px solid rgba(10,166,166,.18);
-    color:#055;font-weight:1000;font-size:12px;
-  }
-  .hint{color:var(--muted);font-size:13px;line-height:1.5;flex:1}
-  .grid{
-    padding:12px 14px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-  }
-  .tile{
-    border:1px solid rgba(10,166,166,.18);
-    background:#fff;
-    border-radius:18px;
-    padding:14px 12px;
-    cursor:pointer;
-    box-shadow:0 8px 16px rgba(0,0,0,.05);
-    user-select:none;
-    transition:transform .06s ease;
-    min-height:78px;
-    display:flex;align-items:center;justify-content:space-between;gap:10px;
-    font-weight:1000;
-  }
-  .tile:hover{transform:translateY(-1px);}
-  .tile small{display:block;font-weight:800;color:var(--muted);font-size:12px;margin-top:4px}
-  .chat{border-top:1px solid var(--line);background:rgba(255,255,255,.78);}
-  .msgs{padding:12px 14px;height:42vh;min-height:360px;overflow:auto}
-  .msg{
-    background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 10px;margin:8px 0;
-    box-shadow:0 8px 16px rgba(0,0,0,.04);white-space:pre-wrap;line-height:1.55;font-size:15px
-  }
-  .msg.user{background:rgba(30,136,229,.06);border-color:rgba(30,136,229,.16)}
-  .note{padding:10px 14px 14px;color:var(--muted);font-size:12px;line-height:1.45;border-top:1px dashed var(--line)}
-  .searchRow{
-    padding:10px 14px;border-top:1px solid var(--line);
-    display:none; gap:10px; align-items:center; background:rgba(255,255,255,.86);
-  }
-  .searchRow input{
-    flex:1; padding:12px 14px; border-radius:999px; border:1px solid var(--line);
-    outline:none; font-size:16px; background:#fff;
-  }
-  .searchRow input:focus{border-color:rgba(10,166,166,.45);box-shadow:0 0 0 4px rgba(10,166,166,.10)}
-  .searchRow button{
-    padding:12px 14px;border-radius:999px;border:1px solid rgba(10,166,166,.25);
-    background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));
-    font-weight:1000;cursor:pointer
-  }
-  .rtl{direction:rtl;text-align:right}
-  .ltr{direction:ltr;text-align:left}
-  @media(max-width:860px){ .grid{grid-template-columns:repeat(2,1fr)} }
-  @media(max-width:560px){ .grid{grid-template-columns:1fr} .title{text-align:right} }
+:root{
+--brand:#0aa6a6;
+--brand2:#1e88e5;
+--bg:#f4fbfb;
+--card:#ffffff;
+--text:#0b1b2b;
+--muted:#5b6b7a;
+--radius:20px;
+font-family: system-ui,-apple-system,Segoe UI,Roboto;
+}
+
+body{
+margin:0;
+background:linear-gradient(135deg,#e8f7f7,#eef4fb);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:12px;
+}
+
+/* HEADER */
+.header{
+background:white;
+border-radius:20px;
+padding:14px;
+box-shadow:0 8px 22px rgba(0,0,0,.08);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.logo{
+font-weight:bold;
+font-size:13px;
+padding:8px 12px;
+border-radius:14px;
+background:#f0fbfb;
+border:1px solid #d0eeee;
+}
+
+.logo.qch{color:var(--brand);}
+.logo.ehc{color:var(--brand2);}
+
+.title{
+text-align:center;
+flex:1;
+}
+
+.title h1{
+margin:0;
+font-size:18px;
+color:var(--brand);
+}
+
+.title p{
+margin:4px 0 0;
+font-size:13px;
+color:var(--muted);
+}
+
+/* CHAT */
+.chat{
+background:white;
+border-radius:20px;
+padding:12px;
+margin-top:10px;
+box-shadow:0 8px 22px rgba(0,0,0,.08);
+height:340px;
+overflow:auto;
+}
+
+.msg{
+background:#f3f8f8;
+padding:10px;
+border-radius:14px;
+margin:6px 0;
+font-size:15px;
+}
+
+/* BUTTONS */
+.buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:10px;
+}
+
+.btn{
+background:white;
+border:2px solid #d9eeee;
+border-radius:16px;
+padding:14px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+.btn:hover{
+background:#f0fbfb;
+border-color:var(--brand);
+}
+
+/* FOOTER */
+.footer{
+margin-top:12px;
+text-align:center;
+font-size:12px;
+color:var(--muted);
+background:white;
+padding:10px;
+border-radius:14px;
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-  <header>
-    <div class="logos">
-      <div class="logoPill qch">Qatif Central Hospital<br>مستشفى القطيف المركزي</div>
-      <div class="logoPill ehc">Eastern Health Cluster<br>التجمع الصحي الشرقي</div>
-    </div>
+<div class="container">
 
-    <div class="title">
-      <h1 id="appTitle">مساعد الأدوية في رمضان</h1>
-      <p id="appSub">نسخة المرضى – أزرار فقط (الكتابة اختيارية)</p>
-    </div>
+<div class="header">
 
-    <div class="controls">
-      <button class="btn active" id="arBtn">العربية</button>
-      <button class="btn" id="enBtn">English</button>
-      <button class="btn" id="homeBtn">🏠 الفئات</button>
-      <button class="btn warn" id="resetBtn">🧹 تنظيف</button>
-      <button class="btn" id="typingBtn">⌨️ كتابة (اختياري)</button>
-    </div>
-  </header>
+<div class="logo qch">
+🏥 Qatif Central Hospital<br>
+مستشفى القطيف المركزي
+</div>
 
-  <div class="card">
-    <div class="topbar">
-      <span class="pill" id="modePill">Patients • Buttons-Only</span>
-      <div class="hint" id="hintText">اختر فئة ثم اختر الدواء. (لا تحتاج كتابة)</div>
-    </div>
+<div class="title">
+<h1>Ramadan Medication Assistant</h1>
+<p>Eastern Health Cluster – التجمع الصحي الشرقي</p>
+</div>
 
-    <div class="grid" id="grid"></div>
+<div class="logo ehc">
+🏥 Eastern Health Cluster<br>
+التجمع الصحي الشرقي
+</div>
 
-    <div class="searchRow" id="searchRow">
-      <input id="searchInput" placeholder="اكتب اسم الدواء… (اختياري)" />
-      <button id="searchBtn">بحث</button>
-    </div>
+</div>
 
-    <div class="chat">
-      <div class="msgs" id="msgs"></div>
-      <div class="note" id="note">
-        أمان: هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.
-      </div>
-    </div>
-  </div>
+<div class="chat" id="chat">
+<div class="msg">مرحبًا 👋 اختر الدواء من الأسفل</div>
+</div>
+
+<div class="buttons">
+
+<button class="btn" onclick="reply('insulin')">💉 Insulin / الإنسولين</button>
+<button class="btn" onclick="reply('metformin')">🍬 Metformin</button>
+
+<button class="btn" onclick="reply('bp')">🔥 Blood Pressure</button>
+<button class="btn" onclick="reply('warfarin')">🩸 Warfarin</button>
+
+<button class="btn" onclick="reply('ppi')">🧡 Omeprazole / Pantoprazole</button>
+<button class="btn" onclick="reply('antibiotic')">🦠 Antibiotics</button>
+
+<button class="btn" onclick="reply('thyroid')">🦋 Levothyroxine</button>
+<button class="btn" onclick="reply('pain')">💊 Paracetamol / Pain meds</button>
+
+<button class="btn" onclick="reply('statin')">🫀 Atorvastatin / Statins</button>
+<button class="btn" onclick="reply('vitamin')">🧲 Vitamins</button>
+
+<button class="btn" onclick="reply('asthma')">🫁 Asthma inhalers</button>
+<button class="btn" onclick="reply('dmard')">🦴 Rheumatology meds</button>
+
+</div>
+
+<div class="footer">
+Created by Automation Supervisor Ali Alsada<br>
+Qatif Central Hospital – Eastern Health Cluster
+</div>
+
 </div>
 
 <script>
-/* =======================
-   1) Language + helpers
-======================= */
-const state = { lang:"ar", view:"cats", currentCat:null, typing:false };
-const grid = document.getElementById("grid");
-const msgs = document.getElementById("msgs");
-const hintText = document.getElementById("hintText");
-const note = document.getElementById("note");
-const appTitle = document.getElementById("appTitle");
-const appSub = document.getElementById("appSub");
-const searchRow = document.getElementById("searchRow");
-const searchInput = document.getElementById("searchInput");
 
-function add(role, text){
-  const d = document.createElement("div");
-  d.className = "msg " + (role==="user" ? "user" : "bot");
-  d.classList.add(state.lang==="ar" ? "rtl" : "ltr");
-  d.textContent = text;
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
-}
+const data={
 
-function setLang(lang){
-  state.lang = lang;
-  document.getElementById("arBtn").classList.toggle("active", lang==="ar");
-  document.getElementById("enBtn").classList.toggle("active", lang==="en");
-  document.documentElement.dir = (lang==="ar") ? "rtl" : "ltr";
-  document.documentElement.lang = (lang==="ar") ? "ar" : "en";
+insulin:
+"💉 Insulin:\nخذ حسب خطة الطبيب.\nإذا حصل هبوط، افطر فورًا.",
 
-  if(lang==="ar"){
-    appTitle.textContent = "مساعد الأدوية في رمضان";
-    appSub.textContent = "نسخة المرضى – أزرار فقط (الكتابة اختيارية)";
-    note.textContent = "أمان: هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.";
-    searchInput.placeholder = "اكتب اسم الدواء… (اختياري)";
-  }else{
-    appTitle.textContent = "Ramadan Medication Assistant";
-    appSub.textContent = "Patients version – Buttons only (typing optional)";
-    note.textContent = "Safety: Severe low sugar, chest pain, severe shortness of breath, or heavy bleeding → break the fast and seek urgent care.";
-    searchInput.placeholder = "Type medicine name… (optional)";
-  }
-  renderHint();
-  render(); // redraw current view (cats/meds) with language
-}
+metformin:
+"🍬 Metformin:\nخذ مع الإفطار والسحور.",
 
-function renderHint(){
-  if(state.lang==="ar"){
-    hintText.textContent = (state.view==="cats")
-      ? "اختر فئة ثم اختر الدواء. (لا تحتاج كتابة)"
-      : "اختر الدواء من القائمة. اضغط (🏠 الفئات) للرجوع.";
-  }else{
-    hintText.textContent = (state.view==="cats")
-      ? "Choose a category, then tap a medicine. (No typing needed)"
-      : "Tap a medicine. Use (🏠 Categories) to go back.";
-  }
-}
+bp:
+"🔥 Blood pressure meds:\nخذ بعد الإفطار.",
 
-function resetChat(){
-  msgs.innerHTML = "";
-  add("bot", state.lang==="ar"
-    ? "مرحبًا 👋 اختر فئة من الأزرار."
-    : "Hello 👋 Choose a category."
-  );
-}
+warfarin:
+"🩸 Warfarin:\nخذ وقت ثابت بعد الإفطار.",
 
-/* =======================
-   2) Categories
-======================= */
-const CATS = [
-  {key:"diabetes", icon:"🍬", ar:"السكري", en:"Diabetes"},
-  {key:"bp", icon:"🫀", ar:"الضغط/القلب", en:"BP / Heart"},
-  {key:"blood", icon:"🩸", ar:"مميعات/سيولة الدم", en:"Blood thinners"},
-  {key:"gi", icon:"🧡", ar:"المعدة/الحموضة", en:"Stomach/GERD"},
-  {key:"abx", icon:"🦠", ar:"مضادات حيوية", en:"Antibiotics"},
-  {key:"resp", icon:"🫁", ar:"الربو/الحساسية", en:"Asthma/Allergy"},
-  {key:"pain", icon:"💊", ar:"مسكنات/التهاب", en:"Pain/Inflammation"},
-  {key:"thyroid", icon:"🦋", ar:"الغدة/هرمونات", en:"Thyroid/Hormones"},
-  {key:"rheum", icon:"🦴", ar:"الروماتيزم/مناعة", en:"Rheumatology/Immune"},
-  {key:"neuro", icon:"🧠", ar:"أعصاب/نفسية", en:"Neuro/Psych"},
-  {key:"supp", icon:"🧲", ar:"مكملات", en:"Supplements"},
-  {key:"other", icon:"📌", ar:"أدوية متنوعة", en:"Other"}
-];
+ppi:
+"🧡 PPI:\nخذ قبل السحور أو الإفطار بـ30 دقيقة.",
 
-/* =======================
-   3) Patient-friendly advice templates
-   (one template per class → supports 200+ meds)
-======================= */
-const TEMPLATES = {
-  insulin: {
-    ar:
-`💉 الإنسولين (مهم جدًا)
-• لا تغيّر الجرعات بنفسك.
-• إذا سكر <70 أو أعراض هبوط شديدة → افطر فورًا وعالج الهبوط.
-• غالبًا: الإنسولين الطويل/القاعدي يكون بعد الإفطار (حسب خطة العيادة).
-• الإنسولين السريع يؤخذ مع الوجبة (وقد تقل جرعة السحور).`,
-    en:
-`💉 Insulin (very important)
-• Do NOT change doses yourself.
-• If glucose <70 or severe symptoms → BREAK FAST and treat.
-• Basal insulin is often after Iftar (per clinic plan).
-• Rapid insulin is taken with meals (Suhoor dose may be lower).`
-  },
-  diabetes_oral: {
-    ar:
-`🍬 أدوية السكر (حبوب)
-• غالبًا تؤخذ مع الإفطار و/أو السحور حسب الوصفة.
-• إذا دواء يسبب هبوط (مثل بعض السلفونيل يوريا) → راقب الهبوط.`,
-    en:
-`🍬 Diabetes pills
-• Usually with Iftar and/or Suhoor depending on prescription.
-• If medicine can cause lows → watch for hypoglycemia.`
-  },
-  bp_once: {
-    ar:
-`🫀 أدوية الضغط/القلب (مرة يوميًا)
-• الأفضل وقت ثابت بعد الإفطار.
-• إذا دوخة شديدة أو إغماء → تواصل مع الطبيب.`,
-    en:
-`🫀 BP/Heart medicines (once daily)
-• Best at a fixed time after Iftar.
-• Severe dizziness/fainting → contact clinician.`
-  },
-  diuretic: {
-    ar:
-`💧 مدرات البول (مثل فوروسيميد/هيدروكلوروثيازيد)
-• الأفضل بعد الإفطار/بداية الليل لتجنب العطش وكثرة التبول وقت السحور.`,
-    en:
-`💧 Diuretics (water pills)
-• Prefer after Iftar/early evening to reduce thirst and nighttime urination.`
-  },
-  anticoagulant: {
-    ar:
-`🩸 مميعات الدم
-• وقت ثابت يوميًا.
-• إذا مرتين يوميًا: إفطار + سحور.
-• نزيف شديد/براز أسود/قيء دم → طوارئ.`,
-    en:
-`🩸 Blood thinners
-• Fixed time daily.
-• If BID: Iftar + Suhoor.
-• Heavy bleeding/black stool/vomiting blood → ER.`
-  },
-  antiplatelet: {
-    ar:
-`🫀 مضادات الصفائح (أسبرين/كلوبيدوجريل)
-• غالبًا بعد الإفطار مع الأكل (ألطف على المعدة).
-• لا توقفه بدون الطبيب.`,
-    en:
-`🫀 Antiplatelets (aspirin/clopidogrel)
-• Often after Iftar with food (gentler on stomach).
-• Do not stop without clinician.`
-  },
-  ppi: {
-    ar:
-`🧡 أدوية الحموضة (PPI مثل أوميبرازول/بانتوبرازول)
-• الأفضل: قبل الأكل بـ 30–60 دقيقة.
-• مرة: قبل السحور أو قبل الإفطار.
-• مرتين: قبل الإفطار + قبل السحور.`,
-    en:
-`🧡 PPIs (omeprazole/pantoprazole)
-• Best: 30–60 minutes BEFORE meals.
-• OD: before Suhoor or Iftar.
-• BID: before Iftar + before Suhoor.`
-  },
-  antibiotic: {
-    ar:
-`🦠 المضادات الحيوية (عام)
-• مرتين يوميًا: إفطار + سحور.
-• ثلاث مرات: إفطار + آخر الليل + سحور.
-• لا توقف المضاد قبل إكمال المدة.`,
-    en:
-`🦠 Antibiotics (general)
-• BID: Iftar + Suhoor.
-• TID: Iftar + late evening + Suhoor.
-• Finish the full course.`
-  },
-  asthma: {
-    ar:
-`🫁 الربو/الحساسية
-• البخاخات الوقائية تُستخدم حسب الوصفة (لا تُوقفها).
-• بخاخ الإسعاف عند الحاجة ولا تؤخره إذا ضيق نفس.`,
-    en:
-`🫁 Asthma/Allergy
-• Continue controller inhalers as prescribed.
-• Use rescue inhaler as needed—don’t delay with breathing trouble.`
-  },
-  pain: {
-    ar:
-`💊 مسكنات/مضادات التهاب
-• الأفضل بعد الإفطار مع الأكل لتقليل تهيج المعدة.
-• إذا عندك قرحة/كلى/نزيف → استشر الطبيب.`,
-    en:
-`💊 Pain/anti-inflammatory medicines
-• Prefer after Iftar with food to reduce stomach irritation.
-• Ulcer/kidney issues/bleeding risk → ask clinician.`
-  },
-  thyroid: {
-    ar:
-`🦋 ليفوثيروكسين/أدوية الغدة
-• على معدة فارغة.
-• خيار A: قبل السحور 30–60 دقيقة.
-• خيار B: بعد الإفطار 3–4 ساعات بدون سناكات.
-• افصل عن الحديد/الكالسيوم 4 ساعات.`,
-    en:
-`🦋 Levothyroxine/thyroid
-• Empty stomach.
-• Option A: 30–60 min before Suhoor.
-• Option B: 3–4 hours after Iftar (no snacks).
-• Separate from iron/calcium by 4 hours.`
-  },
-  rheum: {
-    ar:
-`🦴 أدوية الروماتيزم/المناعة
-• غالبًا الصيام لا يوقفها.
-• لا توقفها فجأة.
-• حرارة/عدوى/تقرحات شديدة → تواصل مع العيادة.`,
-    en:
-`🦴 Rheumatology/immune medicines
-• Fasting usually does not stop them.
-• Do not stop suddenly.
-• Fever/infection/severe sores → contact clinic.`
-  },
-  neuro: {
-    ar:
-`🧠 أدوية الأعصاب/النفسية
-• وقت ثابت يوميًا.
-• لا تفوّت الجرعات.
-• إذا تسبب نعاس: غالبًا بعد الإفطار/قبل النوم.`,
-    en:
-`🧠 Neuro/psych medicines
-• Fixed time daily.
-• Do not miss doses.
-• If drowsy: often after Iftar/bedtime.`
-  },
-  supplements: {
-    ar:
-`🧲 المكملات (حديد/كالسيوم/فيتامينات)
-• غالبًا بعد الإفطار.
-• الحديد: بعيد عن الشاي/القهوة/الحليب.
-• افصل عن ليفوثيروكسين 4 ساعات.`,
-    en:
-`🧲 Supplements (iron/calcium/vitamins)
-• Often after Iftar.
-• Iron: away from tea/coffee/milk.
-• Separate from levothyroxine by 4 hours.`
-  },
-  other: {
-    ar:
-`📌 إرشاد عام
-• خذ الدواء في وقت ثابت حسب الوصفة.
-• إذا كان يزعج المعدة: خذه بعد الإفطار مع الأكل.
-• إذا لديك أعراض خطيرة → راجع الطوارئ.`,
-    en:
-`📌 General guidance
-• Take at a fixed time as prescribed.
-• If stomach upset: after Iftar with food.
-• Severe symptoms → seek urgent care.`
-  }
+antibiotic:
+"🦠 Antibiotics:\nمرتين يوميًا: إفطار + سحور.",
+
+thyroid:
+"🦋 Levothyroxine:\nخذ قبل السحور 30 دقيقة.",
+
+pain:
+"💊 Pain meds:\nخذ بعد الإفطار.",
+
+statin:
+"🫀 Statins:\nخذ مساءً بعد الإفطار.",
+
+vitamin:
+"🧲 Vitamins:\nخذ بعد الإفطار.",
+
+asthma:
+"🫁 Asthma:\nاستمر حسب وصف الطبيب.",
+
+dmard:
+"🦴 DMARDs:\nلا توقف بدون الطبيب."
+
 };
 
-/* =======================
-   4) Medicines list (200+ names)
-   Each medicine points to a template key.
-   You can add more names easily.
-======================= */
-const MEDS = [
-  // Diabetes (insulin + oral)
-  {cat:"diabetes", icon:"💉", ar:"إنسولين (عام)", en:"Insulin (general)", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Lantus / Glargine", en:"Lantus / Glargine", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Tresiba / Degludec", en:"Tresiba / Degludec", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Levemir / Detemir", en:"Levemir / Detemir", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Novorapid / Aspart", en:"Novorapid / Aspart", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Humalog / Lispro", en:"Humalog / Lispro", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Apidra / Glulisine", en:"Apidra / Glulisine", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Mixtard 30/70", en:"Mixtard 30/70", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Novomix 30", en:"Novomix 30", tpl:"insulin"},
-  {cat:"diabetes", icon:"💉", ar:"Humalog Mix", en:"Humalog Mix", tpl:"insulin"},
+function reply(key){
 
-  {cat:"diabetes", icon:"🍬", ar:"Metformin", en:"Metformin", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Gliclazide (Diamicron)", en:"Gliclazide (Diamicron)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Glimepiride (Amaryl)", en:"Glimepiride (Amaryl)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Glipizide", en:"Glipizide", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Sitagliptin (Januvia)", en:"Sitagliptin (Januvia)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Linagliptin (Trajenta)", en:"Linagliptin (Trajenta)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Vildagliptin (Galvus)", en:"Vildagliptin (Galvus)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Saxagliptin", en:"Saxagliptin", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Empagliflozin (Jardiance)", en:"Empagliflozin (Jardiance)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Dapagliflozin (Forxiga)", en:"Dapagliflozin (Forxiga)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Canagliflozin", en:"Canagliflozin", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Semaglutide (Ozempic/Rybelsus)", en:"Semaglutide (Ozempic/Rybelsus)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Dulaglutide (Trulicity)", en:"Dulaglutide (Trulicity)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Liraglutide (Victoza)", en:"Liraglutide (Victoza)", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Acarbose", en:"Acarbose", tpl:"diabetes_oral"},
-  {cat:"diabetes", icon:"🍬", ar:"Pioglitazone", en:"Pioglitazone", tpl:"diabetes_oral"},
+const chat=document.getElementById("chat");
 
-  // BP / Heart
-  {cat:"bp", icon:"🔥", ar:"Amlodipine", en:"Amlodipine", tpl:"bp_once"},
-  {cat:"bp", icon:"🔥", ar:"Losartan", en:"Losartan", tpl:"bp_once"},
-  {cat:"bp", icon:"🔥", ar:"Valsartan", en:"Valsartan", tpl:"bp_once"},
-  {cat:"bp", icon:"🔥", ar:"Irbesartan", en:"Irbesartan", tpl:"bp_once"},
-  {cat:"bp", icon:"🔥", ar:"Telmisartan", en:"Telmisartan", tpl:"bp_once"},
-  {cat:"bp", icon:"🔥", ar:"Lisinopril", en:"Lisinopril", tpl:"bp_once"},
-  {cat:"bp", icon:"🔥", ar:"Enalapril", en:"Enalapril", tpl:"bp_once"},
-  {cat:"bp", icon:"🫀", ar:"Bisoprolol", en:"Bisoprolol", tpl:"bp_once"},
-  {cat:"bp", icon:"🫀", ar:"Metoprolol", en:"Metoprolol", tpl:"bp_once"},
-  {cat:"bp", icon:"🫀", ar:"Carvedilol", en:"Carvedilol", tpl:"bp_once"},
-  {cat:"bp", icon:"💧", ar:"Furosemide (مدر)", en:"Furosemide (diuretic)", tpl:"diuretic"},
-  {cat:"bp", icon:"💧", ar:"HCTZ (Hydrochlorothiazide)", en:"HCTZ", tpl:"diuretic"},
-  {cat:"bp", icon:"💧", ar:"Indapamide", en:"Indapamide", tpl:"diuretic"},
-  {cat:"bp", icon:"💧", ar:"Spironolactone", en:"Spironolactone", tpl:"diuretic"},
-  {cat:"bp", icon:"🫀", ar:"Digoxin", en:"Digoxin", tpl:"bp_once"},
-  {cat:"bp", icon:"🫀", ar:"Isosorbide", en:"Isosorbide", tpl:"bp_once"},
-  {cat:"bp", icon:"🫀", ar:"Clonidine", en:"Clonidine", tpl:"bp_once"},
+const msg=document.createElement("div");
 
-  // Blood thinners
-  {cat:"blood", icon:"🩸", ar:"Warfarin", en:"Warfarin", tpl:"anticoagulant"},
-  {cat:"blood", icon:"🧬", ar:"Apixaban (Eliquis)", en:"Apixaban (Eliquis)", tpl:"anticoagulant"},
-  {cat:"blood", icon:"🧬", ar:"Rivaroxaban (Xarelto)", en:"Rivaroxaban (Xarelto)", tpl:"anticoagulant"},
-  {cat:"blood", icon:"🧬", ar:"Dabigatran (Pradaxa)", en:"Dabigatran (Pradaxa)", tpl:"anticoagulant"},
-  {cat:"blood", icon:"🧬", ar:"Edoxaban", en:"Edoxaban", tpl:"anticoagulant"},
-  {cat:"blood", icon:"🫀", ar:"Aspirin", en:"Aspirin", tpl:"antiplatelet"},
-  {cat:"blood", icon:"🫀", ar:"Clopidogrel (Plavix)", en:"Clopidogrel (Plavix)", tpl:"antiplatelet"},
-  {cat:"blood", icon:"🫀", ar:"Ticagrelor", en:"Ticagrelor", tpl:"antiplatelet"},
-  {cat:"blood", icon:"🫀", ar:"Prasugrel", en:"Prasugrel", tpl:"antiplatelet"},
+msg.className="msg";
 
-  // GI
-  {cat:"gi", icon:"🧡", ar:"Omeprazole", en:"Omeprazole", tpl:"ppi"},
-  {cat:"gi", icon:"🧡", ar:"Pantoprazole", en:"Pantoprazole", tpl:"ppi"},
-  {cat:"gi", icon:"🧡", ar:"Esomeprazole", en:"Esomeprazole", tpl:"ppi"},
-  {cat:"gi", icon:"🧡", ar:"Lansoprazole", en:"Lansoprazole", tpl:"ppi"},
-  {cat:"gi", icon:"🧡", ar:"Rabeprazole", en:"Rabeprazole", tpl:"ppi"},
-  {cat:"gi", icon:"🧡", ar:"Famotidine", en:"Famotidine", tpl:"other"},
-  {cat:"gi", icon:"🧡", ar:"Sucralfate", en:"Sucralfate", tpl:"other"},
-  {cat:"gi", icon:"🧊", ar:"Lactulose", en:"Lactulose", tpl:"other"},
-  {cat:"gi", icon:"🧊", ar:"PEG (Movicol)", en:"PEG (Movicol)", tpl:"other"},
-  {cat:"gi", icon:"🧡", ar:"Ondansetron", en:"Ondansetron", tpl:"other"},
-  {cat:"gi", icon:"🧡", ar:"Domperidone", en:"Domperidone", tpl:"other"},
-  {cat:"gi", icon:"🧡", ar:"Simethicone", en:"Simethicone", tpl:"other"},
+msg.innerText=data[key];
 
-  // Antibiotics (common)
-  {cat:"abx", icon:"🦠", ar:"Augmentin", en:"Augmentin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Amoxicillin", en:"Amoxicillin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Azithromycin", en:"Azithromycin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Clarithromycin", en:"Clarithromycin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Ciprofloxacin", en:"Ciprofloxacin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Levofloxacin", en:"Levofloxacin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Doxycycline", en:"Doxycycline", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Metronidazole", en:"Metronidazole", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Cephalexin", en:"Cephalexin", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Cefuroxime", en:"Cefuroxime", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Ceftriaxone", en:"Ceftriaxone", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"TMP/SMX (Bactrim)", en:"TMP/SMX (Bactrim)", tpl:"antibiotic"},
-  {cat:"abx", icon:"🦠", ar:"Nitrofurantoin", en:"Nitrofurantoin", tpl:"antibiotic"},
+chat.appendChild(msg);
 
-  // Resp / Allergy
-  {cat:"resp", icon:"🫁", ar:"Salbutamol (Ventolin)", en:"Salbutamol (Ventolin)", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Budesonide inhaler", en:"Budesonide inhaler", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Fluticasone inhaler", en:"Fluticasone inhaler", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Montelukast", en:"Montelukast", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Cetirizine", en:"Cetirizine", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Loratadine", en:"Loratadine", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Fexofenadine", en:"Fexofenadine", tpl:"asthma"},
-  {cat:"resp", icon:"🫁", ar:"Nasal spray (Fluticasone)", en:"Nasal spray (Fluticasone)", tpl:"asthma"},
+chat.scrollTop=chat.scrollHeight;
 
-  // Pain
-  {cat:"pain", icon:"💊", ar:"Paracetamol", en:"Paracetamol", tpl:"pain"},
-  {cat:"pain", icon:"💊", ar:"Ibuprofen", en:"Ibuprofen", tpl:"pain"},
-  {cat:"pain", icon:"💊", ar:"Naproxen", en:"Naproxen", tpl:"pain"},
-  {cat:"pain", icon:"💊", ar:"Diclofenac", en:"Diclofenac", tpl:"pain"},
-  {cat:"pain", icon:"💊", ar:"Celecoxib", en:"Celecoxib", tpl:"pain"},
-
-  // Thyroid / Hormones
-  {cat:"thyroid", icon:"🦋", ar:"Levothyroxine", en:"Levothyroxine", tpl:"thyroid"},
-  {cat:"thyroid", icon:"🦋", ar:"Euthyrox", en:"Euthyrox", tpl:"thyroid"},
-  {cat:"thyroid", icon:"🦋", ar:"Eltroxin", en:"Eltroxin", tpl:"thyroid"},
-  {cat:"thyroid", icon:"🧬", ar:"Oral contraceptive", en:"Oral contraceptive", tpl:"other"},
-  {cat:"thyroid", icon:"🧬", ar:"Tamsulosin", en:"Tamsulosin", tpl:"other"},
-  {cat:"thyroid", icon:"🧬", ar:"Finasteride", en:"Finasteride", tpl:"other"},
-
-  // Rheum / immune
-  {cat:"rheum", icon:"🦴", ar:"Methotrexate (weekly)", en:"Methotrexate (weekly)", tpl:"rheum"},
-  {cat:"rheum", icon:"🦴", ar:"Hydroxychloroquine", en:"Hydroxychloroquine", tpl:"rheum"},
-  {cat:"rheum", icon:"🦴", ar:"Sulfasalazine", en:"Sulfasalazine", tpl:"rheum"},
-  {cat:"rheum", icon:"🧬", ar:"Adalimumab (Humira)", en:"Adalimumab (Humira)", tpl:"rheum"},
-  {cat:"rheum", icon:"🧬", ar:"Etanercept (Enbrel)", en:"Etanercept (Enbrel)", tpl:"rheum"},
-  {cat:"rheum", icon:"🧬", ar:"Infliximab", en:"Infliximab", tpl:"rheum"},
-  {cat:"rheum", icon:"🧬", ar:"Tocilizumab", en:"Tocilizumab", tpl:"rheum"},
-  {cat:"rheum", icon:"🧬", ar:"Rituximab", en:"Rituximab", tpl:"rheum"},
-  {cat:"rheum", icon:"🧬", ar:"Tofacitinib (JAK)", en:"Tofacitinib (JAK)", tpl:"rheum"},
-  {cat:"rheum", icon:"⚪", ar:"Prednisone", en:"Prednisone", tpl:"rheum"},
-
-  // Neuro / Psych
-  {cat:"neuro", icon:"🧠", ar:"Levetiracetam (Keppra)", en:"Levetiracetam (Keppra)", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Valproate", en:"Valproate", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Carbamazepine", en:"Carbamazepine", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Lamotrigine", en:"Lamotrigine", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Gabapentin", en:"Gabapentin", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Pregabalin", en:"Pregabalin", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Sertraline", en:"Sertraline", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Fluoxetine", en:"Fluoxetine", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Escitalopram", en:"Escitalopram", tpl:"neuro"},
-  {cat:"neuro", icon:"🧠", ar:"Duloxetine", en:"Duloxetine", tpl:"neuro"},
-  {cat:"neuro", icon:"😴", ar:"Amitriptyline", en:"Amitriptyline", tpl:"neuro"},
-  {cat:"neuro", icon:"😴", ar:"Zolpidem", en:"Zolpidem", tpl:"neuro"},
-
-  // Supplements
-  {cat:"supp", icon:"🧲", ar:"Iron (Ferrous)", en:"Iron (Ferrous)", tpl:"supplements"},
-  {cat:"supp", icon:"🧲", ar:"Calcium", en:"Calcium", tpl:"supplements"},
-  {cat:"supp", icon:"🧬", ar:"Vitamin D", en:"Vitamin D", tpl:"supplements"},
-  {cat:"supp", icon:"🧬", ar:"Folic acid", en:"Folic acid", tpl:"supplements"},
-  {cat:"supp", icon:"🧬", ar:"Vitamin B12", en:"Vitamin B12", tpl:"supplements"},
-  {cat:"supp", icon:"🧬", ar:"Multivitamin", en:"Multivitamin", tpl:"supplements"},
-
-  // Other (add many common meds quickly to exceed 200)
-  {cat:"other", icon:"🟦", ar:"Atorvastatin", en:"Atorvastatin", tpl:"bp_once"},
-  {cat:"other", icon:"🟦", ar:"Rosuvastatin", en:"Rosuvastatin", tpl:"bp_once"},
-  {cat:"other", icon:"🟦", ar:"Simvastatin", en:"Simvastatin", tpl:"bp_once"},
-  {cat:"other", icon:"🟦", ar:"Ezetimibe", en:"Ezetimibe", tpl:"bp_once"},
-  {cat:"other", icon:"🧬", ar:"Allopurinol", en:"Allopurinol", tpl:"other"},
-  {cat:"other", icon:"🧬", ar:"Colchicine", en:"Colchicine", tpl:"other"},
-  {cat:"other", icon:"👁️", ar:"Eye drops (general)", en:"Eye drops (general)", tpl:"other"},
-  {cat:"other", icon:"🧴", ar:"Creams/Ointments", en:"Creams/Ointments", tpl:"other"},
-];
-
-// Add lots of extra names (mapped to "other") to push the list well over 200.
-// Patient-friendly: generic safe advice, no complex dosing.
-const EXTRA_OTHER_NAMES = [
-  "Metoclopramide","Hyoscine","Loperamide","Mesalazine","Ursodeoxycholic acid",
-  "Albuterol","Ipratropium","Tiotropium","Cetirizine (Zyrtec)","Desloratadine",
-  "Amoxicillin/Clavulanate","Clindamycin","Linezolid","Vancomycin","Meropenem","Piperacillin/Tazobactam",
-  "Atenolol","Propranolol","Diltiazem","Verapamil","Hydralazine","Nifedipine",
-  "Omeprazole (Losec)","Pantoprazole (Controloc)","Esomeprazole (Nexium)",
-  "Metformin XR","Insulin NPH","Regular insulin",
-  "Levothyroxine 50/100","Carbimazole","Methimazole",
-  "Tramadol","Codeine","Morphine","Oxycodone",
-  "Warfarin 5mg","Heparin","Enoxaparin",
-  "Aspirin 81","Plavix","Brilinta",
-  "Sertraline 50","Citalopram","Venlafaxine","Mirtazapine","Quetiapine","Olanzapine",
-  "Topiramate","Phenytoin","Clonazepam",
-  "Tamsulosin 0.4","Dutasteride",
-  "Metoprolol XL","Bisoprolol 5","Losartan 50","Valsartan 160",
-  "Furosemide 40","HCTZ 25","Spironolactone 25",
-  "Atorvastatin 20","Rosuvastatin 10",
-  "Vitamin C","Zinc","Magnesium","Omega-3",
-  "Acyclovir","Valacyclovir","Fluconazole","Terbinafine"
-];
-
-// convert extra names into entries
-EXTRA_OTHER_NAMES.forEach(n=>{
-  MEDS.push({cat:"other", icon:"📌", ar:n, en:n, tpl:"other"});
-});
-
-/* =======================
-   5) Rendering
-======================= */
-function renderCats(){
-  state.view="cats";
-  state.currentCat=null;
-  grid.innerHTML="";
-  renderHint();
-  add("bot", state.lang==="ar" ? "اختر فئة:" : "Choose a category:");
-
-  CATS.forEach(c=>{
-    const div=document.createElement("div");
-    div.className="tile";
-    div.innerHTML = `<div>${c.icon} ${(state.lang==="ar")?c.ar:c.en}<small>${state.lang==="ar"?"اضغط لعرض الأدوية":"Tap to view medicines"}</small></div><div>▶</div>`;
-    div.onclick = ()=>{ state.currentCat=c.key; renderMeds(); };
-    grid.appendChild(div);
-  });
 }
 
-function renderMeds(){
-  state.view="meds";
-  grid.innerHTML="";
-  renderHint();
-
-  const catMeta = CATS.find(c=>c.key===state.currentCat);
-  const list = MEDS.filter(m=>m.cat===state.currentCat);
-
-  add("bot", state.lang==="ar"
-    ? `✅ فئة: ${catMeta.icon} ${catMeta.ar}\nاختر الدواء:`
-    : `✅ Category: ${catMeta.icon} ${catMeta.en}\nTap a medicine:`
-  );
-
-  list.forEach(m=>{
-    const div=document.createElement("div");
-    div.className="tile";
-    div.innerHTML = `<div>${m.icon} ${(state.lang==="ar")?m.ar:m.en}<small>${state.lang==="ar"?"اضغط للحصول على التوقيت":"Tap for timing guidance"}</small></div><div>▶</div>`;
-    div.onclick = ()=> onMedicineTap(m);
-    grid.appendChild(div);
-  });
-}
-
-function onMedicineTap(m){
-  add("user", state.lang==="ar" ? m.ar : m.en);
-  const tpl = TEMPLATES[m.tpl] || TEMPLATES.other;
-  add("bot", state.lang==="ar" ? tpl.ar : tpl.en);
-}
-
-function render(){
-  if(state.view==="cats") renderCats();
-  else renderMeds();
-}
-
-/* =======================
-   6) Optional search (typing)
-======================= */
-function toggleTyping(){
-  state.typing = !state.typing;
-  searchRow.style.display = state.typing ? "flex" : "none";
-  document.getElementById("typingBtn").classList.toggle("active", state.typing);
-}
-
-function normalize(s){ return (s||"").toLowerCase().replace(/\s+/g," ").trim(); }
-
-function searchMedicine(q){
-  const nq = normalize(q);
-  if(!nq) return null;
-  // find any match by AR/EN name
-  return MEDS.find(m => normalize(m.ar).includes(nq) || normalize(m.en).includes(nq));
-}
-
-document.getElementById("searchBtn").onclick = ()=>{
-  const q = searchInput.value.trim();
-  if(!q) return;
-  add("user", q);
-  const m = searchMedicine(q);
-  if(m) onMedicineTap(m);
-  else add("bot", state.lang==="ar" ? "لم أجد الاسم. الأفضل اختر من الأزرار." : "Not found. Please use the buttons.");
-  searchInput.value="";
-};
-
-searchInput.addEventListener("keydown",(e)=>{
-  if(e.key==="Enter"){ e.preventDefault(); document.getElementById("searchBtn").click(); }
-});
-
-/* =======================
-   7) Buttons
-======================= */
-document.getElementById("arBtn").onclick = ()=>setLang("ar");
-document.getElementById("enBtn").onclick = ()=>setLang("en");
-document.getElementById("homeBtn").onclick = ()=>{ state.view="cats"; render(); };
-document.getElementById("resetBtn").onclick = ()=>{ resetChat(); state.view="cats"; render(); };
-document.getElementById("typingBtn").onclick = ()=>toggleTyping();
-
-/* =======================
-   init
-======================= */
-resetChat();
-renderCats();
-setLang("ar");
 </script>
+
 </body>
 </html>
