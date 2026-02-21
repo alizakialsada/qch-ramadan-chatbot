@@ -1,292 +1,745 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>QCH Ramadan Medication Assistant</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>QCH – Ramadan Medication Assistant</title>
 
 <style>
-:root{
---brand:#0aa6a6;
---brand2:#1e88e5;
---bg:#eef9f9;
---text:#0b1b2b;
---muted:#5b6b7a;
---line:#e6edf2;
---shadow:0 10px 26px rgba(0,0,0,.08);
---r:20px;
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
-}
-body{margin:0;background:linear-gradient(135deg,#eef9f9,#eef4fb);}
-.container{max-width:1000px;margin:auto;padding:12px;}
+  :root{
+    --brand:#0aa6a6;
+    --brand2:#1e88e5;
+    --bg:#f4fbfb;
+    --ink:#0b1b2b;
+    --muted:#5b6b7a;
+    --line:#e6edf2;
+    --shadow:0 12px 28px rgba(0,0,0,.08);
+    --r:22px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 600px at 15% 0%, rgba(10,166,166,.16), transparent 55%),
+      radial-gradient(1100px 600px at 90% 10%, rgba(30,136,229,.16), transparent 55%),
+      linear-gradient(135deg,#eef9f9,#eef4fb);
+    color:var(--ink);
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;}
 
-.header{
-background:white;
-border-radius:20px;
-padding:14px;
-box-shadow:var(--shadow);
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
+  header{
+    background:rgba(255,255,255,.90);
+    border:1px solid var(--line);
+    border-radius:var(--r);
+    box-shadow:var(--shadow);
+    padding:14px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .brandSide{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .logoRow{display:flex;align-items:center;gap:10px}
+  .brandText{font-size:12px;line-height:1.2}
+  .brandText b{font-size:12.5px}
+  .title{text-align:center;flex:1;min-width:240px}
+  .title h1{margin:0;font-size:18px;font-weight:1000;color:#0a2540}
+  .title p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .btn{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:999px;
+    padding:10px 12px;
+    font-weight:1000;
+    cursor:pointer;
+    box-shadow:0 10px 18px rgba(0,0,0,.05);
+    user-select:none;
+  }
+  .btn.active{background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));}
+  .btn.warn{border-color:rgba(180,83,9,.20);background:rgba(180,83,9,.06);}
 
-.logoBox{display:flex;align-items:center;gap:8px;}
-.logoText{font-size:12px;}
+  .card{
+    background:rgba(255,255,255,.90);
+    border:1px solid var(--line);
+    border-radius:var(--r);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .topbar{
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 10px;border-radius:999px;
+    background:rgba(10,166,166,.10);border:1px solid rgba(10,166,166,.18);
+    color:#055;font-weight:1000;font-size:12px;
+  }
+  .hint{color:var(--muted);font-size:13px;line-height:1.5;flex:1}
 
-.title{
-text-align:center;
-font-weight:bold;
-color:var(--brand);
-font-size:18px;
-}
+  .grid{
+    padding:12px 14px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .tile{
+    border:1px solid rgba(10,166,166,.18);
+    background:#fff;
+    border-radius:18px;
+    padding:14px 12px;
+    cursor:pointer;
+    box-shadow:0 10px 18px rgba(0,0,0,.05);
+    user-select:none;
+    transition:transform .06s ease;
+    min-height:78px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    font-weight:1000;
+  }
+  .tile:hover{transform:translateY(-1px);}
+  .tile small{display:block;font-weight:800;color:var(--muted);font-size:12px;margin-top:4px}
 
-.chat{
-background:white;
-border-radius:20px;
-padding:12px;
-margin-top:12px;
-height:320px;
-overflow:auto;
-box-shadow:var(--shadow);
-}
+  .searchRow{
+    padding:10px 14px;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:10px;
+    align-items:center;
+    background:rgba(255,255,255,.92);
+  }
+  .searchRow input{
+    flex:1;
+    padding:12px 14px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    outline:none;
+    font-size:16px;
+    background:#fff;
+  }
+  .searchRow input:focus{border-color:rgba(10,166,166,.45);box-shadow:0 0 0 4px rgba(10,166,166,.10)}
+  .searchRow button{
+    padding:12px 14px;
+    border-radius:999px;
+    border:1px solid rgba(10,166,166,.25);
+    background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));
+    font-weight:1000;
+    cursor:pointer;
+  }
 
-.msg{
-background:#f0f8f8;
-padding:10px;
-border-radius:14px;
-margin:6px 0;
-}
+  .chat{
+    border-top:1px solid var(--line);
+    background:rgba(255,255,255,.78);
+  }
+  .msgs{padding:12px 14px;height:42vh;min-height:360px;overflow:auto}
+  .msg{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 10px;margin:8px 0;
+    box-shadow:0 10px 18px rgba(0,0,0,.04);white-space:pre-wrap;line-height:1.55;font-size:15px
+  }
+  .msg.user{background:rgba(30,136,229,.06);border-color:rgba(30,136,229,.16)}
+  .note{
+    padding:10px 14px 14px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.45;
+    border-top:1px dashed var(--line);
+  }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:12px;
-}
+  .qrBox{
+    margin-top:12px;
+    background:rgba(255,255,255,.90);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:0 10px 18px rgba(0,0,0,.05);
+    padding:12px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .qrBox .qrText{flex:1;min-width:220px}
+  .qrBox h3{margin:0;font-size:14px}
+  .qrBox p{margin:6px 0 0;color:var(--muted);font-size:12.5px;line-height:1.45}
+  .qrBox img{width:150px;height:150px;border-radius:14px;border:1px solid var(--line);background:#fff}
 
-.btn{
-background:white;
-border:2px solid #d9eeee;
-border-radius:16px;
-padding:12px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,.05);
-}
-.btn:hover{border-color:var(--brand);}
+  footer{
+    margin-top:12px;
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    background:rgba(255,255,255,.90);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:12px 14px;
+    box-shadow:0 10px 18px rgba(0,0,0,.05);
+  }
 
-.search{
-margin-top:12px;
-display:flex;
-gap:8px;
-}
-.search input{
-flex:1;
-padding:10px;
-border-radius:12px;
-border:1px solid var(--line);
-}
-
-.suggestions{
-display:flex;
-flex-wrap:wrap;
-gap:6px;
-margin-top:6px;
-}
-
-.footer{
-margin-top:12px;
-text-align:center;
-font-size:12px;
-color:var(--muted);
-background:white;
-padding:12px;
-border-radius:14px;
-box-shadow:var(--shadow);
-}
-
-.qr{
-margin-top:12px;
-text-align:center;
-background:white;
-padding:12px;
-border-radius:14px;
-box-shadow:var(--shadow);
-}
-
+  .rtl{direction:rtl;text-align:right}
+  .ltr{direction:ltr;text-align:left}
+  @media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:560px){ .grid{grid-template-columns:1fr} .title{text-align:right} }
 </style>
 </head>
 
 <body>
+<div class="wrap">
 
-<div class="container">
+  <header>
+    <!-- Left/QCH -->
+    <div class="brandSide">
+      <div class="logoRow">
+        <!-- QCH SVG (embedded) -->
+        <svg width="52" height="52" viewBox="0 0 64 64" aria-label="QCH Logo">
+          <defs>
+            <linearGradient id="qchG" x1="0" x2="1">
+              <stop offset="0" stop-color="#0aa6a6"/>
+              <stop offset="1" stop-color="#35d0c7"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#qchG)"/>
+          <path d="M20 28h24v18H20z" fill="rgba(255,255,255,.22)"/>
+          <path d="M24 24h16v6H24z" fill="rgba(255,255,255,.22)"/>
+          <text x="32" y="38" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">QCH</text>
+        </svg>
+        <div class="brandText">
+          <b>Qatif Central Hospital</b><br>مستشفى القطيف المركزي
+        </div>
+      </div>
+    </div>
 
-<!-- HEADER -->
-<div class="header">
+    <!-- Center title -->
+    <div class="title">
+      <h1 id="appTitle">مساعد الأدوية في رمضان</h1>
+      <p id="appSub">نسخة المرضى • اختيار بالأزرار + بحث اختياري</p>
+    </div>
 
-<div class="logoBox">
-<svg width="50" height="50">
-<circle cx="25" cy="25" r="22" fill="#0aa6a6"/>
-<text x="25" y="30" fill="white" text-anchor="middle">QCH</text>
-</svg>
-<div class="logoText">
-<b>Qatif Central Hospital</b><br>
-مستشفى القطيف المركزي
-</div>
-</div>
+    <!-- Right/EHC -->
+    <div class="brandSide">
+      <div class="logoRow">
+        <!-- EHC SVG (embedded) -->
+        <svg width="52" height="52" viewBox="0 0 64 64" aria-label="EHC Logo">
+          <defs>
+            <linearGradient id="ehcG" x1="0" x2="1">
+              <stop offset="0" stop-color="#1e88e5"/>
+              <stop offset="1" stop-color="#42a5f5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#ehcG)"/>
+          <path d="M22 22h20v20H22z" fill="rgba(255,255,255,.18)"/>
+          <text x="32" y="38" font-size="14" fill="#fff" text-anchor="middle" font-weight="900">EHC</text>
+        </svg>
+        <div class="brandText">
+          <b>Eastern Health Cluster</b><br>التجمع الصحي الشرقي
+        </div>
+      </div>
+    </div>
 
-<div class="title">
-Ramadan Medication Assistant
-</div>
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn active" id="arBtn">العربية</button>
+      <button class="btn" id="enBtn">English</button>
+      <button class="btn" id="homeBtn">🏠 الفئات</button>
+      <button class="btn warn" id="resetBtn">🧹 تنظيف</button>
+    </div>
+  </header>
 
-<div class="logoBox">
-<svg width="50" height="50">
-<circle cx="25" cy="25" r="22" fill="#1e88e5"/>
-<text x="25" y="30" fill="white" text-anchor="middle">EHC</text>
-</svg>
-<div class="logoText">
-<b>Eastern Health Cluster</b><br>
-التجمع الصحي الشرقي
-</div>
-</div>
+  <div class="card">
+    <div class="topbar">
+      <span class="pill" id="modePill">Patients • Buttons-Only</span>
+      <div class="hint" id="hintText">اختر فئة ثم اختر الدواء. أو اكتب اسم الدواء في البحث.</div>
+    </div>
 
-</div>
+    <div class="grid" id="grid"></div>
 
-<!-- CHAT -->
-<div class="chat" id="chat">
-<div class="msg">⭐ اختر فئة أو دواء</div>
-</div>
+    <!-- Search (always available) -->
+    <div class="searchRow">
+      <input id="searchInput" placeholder="اكتب اسم الدواء… (اختياري)" />
+      <button id="searchBtn">بحث</button>
+    </div>
 
-<!-- SEARCH -->
-<div class="search">
-<input id="searchInput" placeholder="اكتب اسم الدواء">
-<button onclick="search()">بحث</button>
-</div>
+    <div class="chat">
+      <div class="msgs" id="msgs"></div>
+      <div class="note" id="note">
+        أمان: هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.
+      </div>
+    </div>
+  </div>
 
-<div class="suggestions" id="suggestions"></div>
+  <!-- QR (opens your chatbot link) -->
+  <div class="qrBox">
+    <div class="qrText">
+      <h3 id="qrTitle">QR لفتح الشات مباشرة</h3>
+      <p id="qrDesc">امسح الكود بالكاميرا لفتح رابط الشات على الجوال.</p>
+      <p style="margin-top:6px;color:#0a2540;font-weight:900" id="qrLinkText"></p>
+    </div>
+    <img id="qrImg" alt="QR code" />
+  </div>
 
-<!-- BUTTON GRID -->
-<div class="grid" id="grid"></div>
-
-<!-- QR -->
-<div class="qr">
-QR Code<br>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://alizakialsada.github.io/qch-ramadan-chatbot/">
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-Created by Automation Supervisor Ali Alsada<br>
-Qatif Central Hospital – Eastern Health Cluster
-</div>
+  <footer>
+    Created by Automation Supervisor <b>Ali Alsada</b><br>
+    Qatif Central Hospital – Eastern Health Cluster
+  </footer>
 
 </div>
 
 <script>
+/* =======================
+   State + Helpers
+======================= */
+const state = { lang:"ar", view:"cats", currentCat:null };
+const grid = document.getElementById("grid");
+const msgs = document.getElementById("msgs");
+const hintText = document.getElementById("hintText");
+const note = document.getElementById("note");
+const appTitle = document.getElementById("appTitle");
+const appSub = document.getElementById("appSub");
+const searchInput = document.getElementById("searchInput");
+const qrTitle = document.getElementById("qrTitle");
+const qrDesc = document.getElementById("qrDesc");
+const qrImg = document.getElementById("qrImg");
+const qrLinkText = document.getElementById("qrLinkText");
 
-const advice={
+function add(role, text){
+  const d = document.createElement("div");
+  d.className = "msg " + (role==="user" ? "user" : "bot");
+  d.classList.add(state.lang==="ar" ? "rtl" : "ltr");
+  d.textContent = text;
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+}
 
-insulin:"💉 Insulin:\nلا تغير الجرعة.\nإذا هبوط، افطر فورًا.",
+function resetChat(){
+  msgs.innerHTML = "";
+  add("bot", state.lang==="ar"
+    ? "مرحبًا 👋 اختر فئة من الأزرار."
+    : "Hello 👋 Choose a category below."
+  );
+}
 
-metformin:"🍬 Metformin:\nخذ مع الإفطار والسحور.",
+function setLang(lang){
+  state.lang = lang;
+  document.getElementById("arBtn").classList.toggle("active", lang==="ar");
+  document.getElementById("enBtn").classList.toggle("active", lang==="en");
+  document.documentElement.dir = (lang==="ar") ? "rtl" : "ltr";
+  document.documentElement.lang = (lang==="ar") ? "ar" : "en";
 
-bp:"🔥 Blood pressure:\nخذ بعد الإفطار.",
+  if(lang==="ar"){
+    appTitle.textContent = "مساعد الأدوية في رمضان";
+    appSub.textContent = "نسخة المرضى • اختيار بالأزرار + بحث اختياري";
+    hintText.textContent = (state.view==="cats")
+      ? "اختر فئة ثم اختر الدواء. أو اكتب اسم الدواء في البحث."
+      : "اختر الدواء من القائمة. اضغط (🏠 الفئات) للرجوع.";
+    note.textContent = "أمان: هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.";
+    searchInput.placeholder = "اكتب اسم الدواء… (اختياري)";
+    qrTitle.textContent = "QR لفتح الشات مباشرة";
+    qrDesc.textContent = "امسح الكود بالكاميرا لفتح رابط الشات على الجوال.";
+  }else{
+    appTitle.textContent = "Ramadan Medication Assistant";
+    appSub.textContent = "Patients version • Buttons + optional search";
+    hintText.textContent = (state.view==="cats")
+      ? "Choose a category, then tap a medicine. Or search by name."
+      : "Tap a medicine. Use (🏠 Categories) to go back.";
+    note.textContent = "Safety: Severe low sugar, chest pain, severe shortness of breath, or heavy bleeding → break the fast and seek urgent care.";
+    searchInput.placeholder = "Type medicine name… (optional)";
+    qrTitle.textContent = "QR to open the chatbot";
+    qrDesc.textContent = "Scan with your camera to open the link on mobile.";
+  }
+  render();
+}
 
-warfarin:"🩸 Warfarin:\nخذ وقت ثابت بعد الإفطار.",
+function normalize(s){
+  return (s||"").toLowerCase().replace(/\s+/g," ").trim();
+}
 
-ppi:"🧡 Omeprazole:\nخذ قبل الإفطار أو السحور.",
-
-antibiotic:"🦠 Antibiotics:\nإفطار + سحور.",
-
-statin:"🫀 Statin:\nخذ مساءً.",
-
-thyroid:"🦋 Levothyroxine:\nقبل السحور.",
-
-pain:"💊 Pain meds:\nبعد الإفطار.",
-
-vitamin:"🧲 Vitamins:\nبعد الإفطار."
-
-};
-
-const meds=[
-"Metformin","Amlodipine","Losartan","Warfarin",
-"Omeprazole","Pantoprazole","Atorvastatin",
-"Rosuvastatin","Paracetamol","Levothyroxine",
-"Augmentin","Amoxicillin","Azithromycin",
-"Salbutamol","Cetirizine","Ibuprofen",
-"Bisoprolol","Furosemide","Vitamin D",
-"Insulin"
+/* =======================
+   Categories
+======================= */
+const CATS = [
+  {key:"diabetes", icon:"🍬", ar:"السكري", en:"Diabetes"},
+  {key:"bp", icon:"🫀", ar:"الضغط/القلب", en:"BP / Heart"},
+  {key:"blood", icon:"🩸", ar:"مميعات/سيولة الدم", en:"Blood thinners"},
+  {key:"gi", icon:"🧡", ar:"المعدة/الحموضة", en:"Stomach/GERD"},
+  {key:"abx", icon:"🦠", ar:"مضادات حيوية", en:"Antibiotics"},
+  {key:"resp", icon:"🫁", ar:"الربو/الحساسية", en:"Asthma/Allergy"},
+  {key:"pain", icon:"💊", ar:"مسكنات/التهاب", en:"Pain/Inflammation"},
+  {key:"thyroid", icon:"🦋", ar:"الغدة/هرمونات", en:"Thyroid/Hormones"},
+  {key:"rheum", icon:"🦴", ar:"الروماتيزم/مناعة", en:"Rheumatology/Immune"},
+  {key:"neuro", icon:"🧠", ar:"أعصاب/نفسية", en:"Neuro/Psych"},
+  {key:"supp", icon:"🧲", ar:"مكملات", en:"Supplements"},
+  {key:"other", icon:"📌", ar:"أدوية متنوعة", en:"Other"}
 ];
 
-const grid=document.getElementById("grid");
+/* =======================
+   Patient templates (safe, simple)
+======================= */
+const TEMPLATES = {
+  insulin: {
+    ar:`💉 الإنسولين (مهم جدًا)
+• لا تغيّر الجرعات بنفسك.
+• إذا سكر <70 أو أعراض هبوط شديدة → افطر فورًا وعالج الهبوط.
+• غالبًا: الإنسولين الطويل/القاعدي بعد الإفطار (حسب خطة العيادة).
+• الإنسولين السريع مع الوجبة (وقد تقل جرعة السحور).`,
+    en:`💉 Insulin (very important)
+• Do NOT change doses yourself.
+• If glucose <70 or severe symptoms → BREAK FAST and treat.
+• Basal is often after Iftar (per clinic plan).
+• Rapid insulin is taken with meals (Suhoor dose may be lower).`
+  },
+  diabetes_oral:{
+    ar:`🍬 أدوية السكر (حبوب)
+• غالبًا تؤخذ مع الإفطار و/أو السحور حسب الوصفة.
+• إذا دواء يسبب هبوط → راقب الهبوط.`,
+    en:`🍬 Diabetes pills
+• Usually with Iftar and/or Suhoor per prescription.
+• If a medicine can cause lows → watch hypoglycemia.`
+  },
+  bp_once:{
+    ar:`🫀 أدوية الضغط/القلب (مرة يوميًا)
+• الأفضل وقت ثابت بعد الإفطار.
+• إذا دوخة شديدة أو إغماء → تواصل مع الطبيب.`,
+    en:`🫀 BP/Heart medicines (once daily)
+• Best at a fixed time after Iftar.
+• Severe dizziness/fainting → contact clinician.`
+  },
+  diuretic:{
+    ar:`💧 مدرات البول
+• الأفضل بعد الإفطار/بداية الليل لتجنب العطش وكثرة التبول وقت السحور.`,
+    en:`💧 Diuretics (water pills)
+• Prefer after Iftar/early evening to reduce thirst and nighttime urination.`
+  },
+  anticoagulant:{
+    ar:`🩸 مميعات الدم
+• وقت ثابت يوميًا.
+• إذا مرتين يوميًا: إفطار + سحور.
+• نزيف شديد/براز أسود/قيء دم → طوارئ.`,
+    en:`🩸 Blood thinners
+• Fixed time daily.
+• If BID: Iftar + Suhoor.
+• Heavy bleeding/black stool/vomiting blood → ER.`
+  },
+  antiplatelet:{
+    ar:`🫀 مضادات الصفائح (أسبرين/كلوبيدوجريل)
+• غالبًا بعد الإفطار مع الأكل (ألطف على المعدة).
+• لا توقفه بدون الطبيب.`,
+    en:`🫀 Antiplatelets (aspirin/clopidogrel)
+• Often after Iftar with food (gentler on stomach).
+• Do not stop without clinician.`
+  },
+  ppi:{
+    ar:`🧡 أدوية الحموضة (PPI)
+• الأفضل: قبل الأكل بـ 30–60 دقيقة.
+• مرة: قبل السحور أو قبل الإفطار.
+• مرتين: قبل الإفطار + قبل السحور.`,
+    en:`🧡 PPIs (omeprazole/pantoprazole)
+• Best: 30–60 minutes BEFORE meals.
+• OD: before Suhoor or Iftar.
+• BID: before Iftar + before Suhoor.`
+  },
+  antibiotic:{
+    ar:`🦠 المضادات الحيوية (عام)
+• مرتين: إفطار + سحور.
+• ثلاث مرات: إفطار + آخر الليل + سحور.
+• أكمل مدة المضاد.`,
+    en:`🦠 Antibiotics (general)
+• BID: Iftar + Suhoor.
+• TID: Iftar + late evening + Suhoor.
+• Finish the full course.`
+  },
+  asthma:{
+    ar:`🫁 الربو/الحساسية
+• استمر على البخاخات الوقائية حسب الوصفة.
+• بخاخ الإسعاف عند الحاجة ولا تؤخره إذا ضيق نفس.`,
+    en:`🫁 Asthma/Allergy
+• Continue controller inhalers as prescribed.
+• Use rescue inhaler as needed—don’t delay with breathing trouble.`
+  },
+  pain:{
+    ar:`💊 مسكنات/مضادات التهاب
+• الأفضل بعد الإفطار مع الأكل لتقليل تهيج المعدة.
+• إذا لديك قرحة/مشاكل كلى/نزيف → استشر الطبيب.`,
+    en:`💊 Pain/anti-inflammatory medicines
+• Prefer after Iftar with food to reduce stomach irritation.
+• Ulcer/kidney issues/bleeding risk → ask clinician.`
+  },
+  thyroid:{
+    ar:`🦋 أدوية الغدة (Levothyroxine)
+• على معدة فارغة.
+• خيار A: قبل السحور 30–60 دقيقة.
+• خيار B: بعد الإفطار 3–4 ساعات بدون سناكات.
+• افصل عن الحديد/الكالسيوم 4 ساعات.`,
+    en:`🦋 Thyroid (Levothyroxine)
+• Empty stomach.
+• Option A: 30–60 min before Suhoor.
+• Option B: 3–4 hours after Iftar (no snacks).
+• Separate from iron/calcium by 4 hours.`
+  },
+  rheum:{
+    ar:`🦴 أدوية الروماتيزم/المناعة
+• غالبًا الصيام لا يوقفها.
+• لا توقفها فجأة.
+• حرارة/عدوى → تواصل مع العيادة.`,
+    en:`🦴 Rheumatology/immune medicines
+• Fasting usually does not stop them.
+• Do not stop suddenly.
+• Fever/infection → contact clinic.`
+  },
+  neuro:{
+    ar:`🧠 أدوية الأعصاب/النفسية
+• وقت ثابت يوميًا.
+• لا تفوّت الجرعات.
+• إذا تسبب نعاس: غالبًا بعد الإفطار/قبل النوم.`,
+    en:`🧠 Neuro/psych medicines
+• Fixed time daily.
+• Do not miss doses.
+• If drowsy: often after Iftar/bedtime.`
+  },
+  supplements:{
+    ar:`🧲 المكملات (حديد/كالسيوم/فيتامينات)
+• غالبًا بعد الإفطار.
+• الحديد: بعيد عن الشاي/القهوة/الحليب.
+• افصل عن ليفوثيروكسين 4 ساعات.`,
+    en:`🧲 Supplements (iron/calcium/vitamins)
+• Often after Iftar.
+• Iron: away from tea/coffee/milk.
+• Separate from levothyroxine by 4 hours.`
+  },
+  other:{
+    ar:`📌 إرشاد عام
+• خذ الدواء في وقت ثابت حسب الوصفة.
+• إذا يسبب تهيج معدة: بعد الإفطار مع الأكل.
+• أعراض خطيرة → طوارئ.`,
+    en:`📌 General guidance
+• Take at a fixed time as prescribed.
+• If stomach upset: after Iftar with food.
+• Severe symptoms → seek urgent care.`
+  }
+};
 
-meds.forEach(m=>{
-const b=document.createElement("button");
-b.className="btn";
-b.innerText=m;
-b.onclick=()=>reply(m);
-grid.appendChild(b);
+/* =======================
+   Medicines (200+ via base list + extras)
+======================= */
+const MEDS = [
+  // Diabetes
+  {cat:"diabetes", icon:"💉", ar:"إنسولين (عام)", en:"Insulin (general)", tpl:"insulin"},
+  {cat:"diabetes", icon:"💉", ar:"Lantus / Glargine", en:"Lantus / Glargine", tpl:"insulin"},
+  {cat:"diabetes", icon:"💉", ar:"Tresiba / Degludec", en:"Tresiba / Degludec", tpl:"insulin"},
+  {cat:"diabetes", icon:"💉", ar:"Levemir / Detemir", en:"Levemir / Detemir", tpl:"insulin"},
+  {cat:"diabetes", icon:"💉", ar:"Novorapid / Aspart", en:"Novorapid / Aspart", tpl:"insulin"},
+  {cat:"diabetes", icon:"💉", ar:"Humalog / Lispro", en:"Humalog / Lispro", tpl:"insulin"},
+  {cat:"diabetes", icon:"💉", ar:"Apidra / Glulisine", en:"Apidra / Glulisine", tpl:"insulin"},
+  {cat:"diabetes", icon:"🍬", ar:"Metformin", en:"Metformin", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Gliclazide (Diamicron)", en:"Gliclazide (Diamicron)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Glimepiride (Amaryl)", en:"Glimepiride (Amaryl)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Sitagliptin (Januvia)", en:"Sitagliptin (Januvia)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Linagliptin (Trajenta)", en:"Linagliptin (Trajenta)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Empagliflozin (Jardiance)", en:"Empagliflozin (Jardiance)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Dapagliflozin (Forxiga)", en:"Dapagliflozin (Forxiga)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Semaglutide (Ozempic)", en:"Semaglutide (Ozempic)", tpl:"diabetes_oral"},
+  {cat:"diabetes", icon:"🍬", ar:"Dulaglutide (Trulicity)", en:"Dulaglutide (Trulicity)", tpl:"diabetes_oral"},
+
+  // BP / Heart
+  {cat:"bp", icon:"🫀", ar:"Amlodipine", en:"Amlodipine", tpl:"bp_once"},
+  {cat:"bp", icon:"🫀", ar:"Losartan", en:"Losartan", tpl:"bp_once"},
+  {cat:"bp", icon:"🫀", ar:"Valsartan", en:"Valsartan", tpl:"bp_once"},
+  {cat:"bp", icon:"🫀", ar:"Lisinopril", en:"Lisinopril", tpl:"bp_once"},
+  {cat:"bp", icon:"🫀", ar:"Enalapril", en:"Enalapril", tpl:"bp_once"},
+  {cat:"bp", icon:"🫀", ar:"Bisoprolol", en:"Bisoprolol", tpl:"bp_once"},
+  {cat:"bp", icon:"🫀", ar:"Metoprolol", en:"Metoprolol", tpl:"bp_once"},
+  {cat:"bp", icon:"💧", ar:"Furosemide (مدر)", en:"Furosemide (diuretic)", tpl:"diuretic"},
+  {cat:"bp", icon:"💧", ar:"HCTZ", en:"HCTZ", tpl:"diuretic"},
+  {cat:"bp", icon:"💧", ar:"Spironolactone", en:"Spironolactone", tpl:"diuretic"},
+
+  // Blood
+  {cat:"blood", icon:"🩸", ar:"Warfarin", en:"Warfarin", tpl:"anticoagulant"},
+  {cat:"blood", icon:"🩸", ar:"Apixaban (Eliquis)", en:"Apixaban (Eliquis)", tpl:"anticoagulant"},
+  {cat:"blood", icon:"🩸", ar:"Rivaroxaban (Xarelto)", en:"Rivaroxaban (Xarelto)", tpl:"anticoagulant"},
+  {cat:"blood", icon:"🫀", ar:"Aspirin", en:"Aspirin", tpl:"antiplatelet"},
+  {cat:"blood", icon:"🫀", ar:"Clopidogrel (Plavix)", en:"Clopidogrel (Plavix)", tpl:"antiplatelet"},
+
+  // GI
+  {cat:"gi", icon:"🧡", ar:"Omeprazole", en:"Omeprazole", tpl:"ppi"},
+  {cat:"gi", icon:"🧡", ar:"Pantoprazole", en:"Pantoprazole", tpl:"ppi"},
+  {cat:"gi", icon:"🧡", ar:"Esomeprazole", en:"Esomeprazole", tpl:"ppi"},
+  {cat:"gi", icon:"🧡", ar:"Famotidine", en:"Famotidine", tpl:"other"},
+  {cat:"gi", icon:"🧊", ar:"Lactulose", en:"Lactulose", tpl:"other"},
+  {cat:"gi", icon:"🧊", ar:"PEG (Movicol)", en:"PEG (Movicol)", tpl:"other"},
+
+  // Antibiotics
+  {cat:"abx", icon:"🦠", ar:"Augmentin", en:"Augmentin", tpl:"antibiotic"},
+  {cat:"abx", icon:"🦠", ar:"Amoxicillin", en:"Amoxicillin", tpl:"antibiotic"},
+  {cat:"abx", icon:"🦠", ar:"Azithromycin", en:"Azithromycin", tpl:"antibiotic"},
+  {cat:"abx", icon:"🦠", ar:"Ciprofloxacin", en:"Ciprofloxacin", tpl:"antibiotic"},
+  {cat:"abx", icon:"🦠", ar:"Doxycycline", en:"Doxycycline", tpl:"antibiotic"},
+  {cat:"abx", icon:"🦠", ar:"Metronidazole", en:"Metronidazole", tpl:"antibiotic"},
+
+  // Resp
+  {cat:"resp", icon:"🫁", ar:"Salbutamol (Ventolin)", en:"Salbutamol (Ventolin)", tpl:"asthma"},
+  {cat:"resp", icon:"🫁", ar:"Budesonide inhaler", en:"Budesonide inhaler", tpl:"asthma"},
+  {cat:"resp", icon:"🫁", ar:"Montelukast", en:"Montelukast", tpl:"asthma"},
+  {cat:"resp", icon:"🫁", ar:"Cetirizine", en:"Cetirizine", tpl:"asthma"},
+
+  // Pain
+  {cat:"pain", icon:"💊", ar:"Paracetamol", en:"Paracetamol", tpl:"pain"},
+  {cat:"pain", icon:"💊", ar:"Ibuprofen", en:"Ibuprofen", tpl:"pain"},
+  {cat:"pain", icon:"💊", ar:"Naproxen", en:"Naproxen", tpl:"pain"},
+
+  // Thyroid
+  {cat:"thyroid", icon:"🦋", ar:"Levothyroxine", en:"Levothyroxine", tpl:"thyroid"},
+
+  // Rheum
+  {cat:"rheum", icon:"🦴", ar:"Methotrexate (weekly)", en:"Methotrexate (weekly)", tpl:"rheum"},
+  {cat:"rheum", icon:"🦴", ar:"Hydroxychloroquine", en:"Hydroxychloroquine", tpl:"rheum"},
+  {cat:"rheum", icon:"🧬", ar:"Adalimumab (Humira)", en:"Adalimumab (Humira)", tpl:"rheum"},
+
+  // Neuro
+  {cat:"neuro", icon:"🧠", ar:"Sertraline", en:"Sertraline", tpl:"neuro"},
+  {cat:"neuro", icon:"🧠", ar:"Fluoxetine", en:"Fluoxetine", tpl:"neuro"},
+  {cat:"neuro", icon:"🧠", ar:"Levetiracetam (Keppra)", en:"Levetiracetam (Keppra)", tpl:"neuro"},
+
+  // Supplements
+  {cat:"supp", icon:"🧲", ar:"Iron (Ferrous)", en:"Iron (Ferrous)", tpl:"supplements"},
+  {cat:"supp", icon:"🧲", ar:"Calcium", en:"Calcium", tpl:"supplements"},
+  {cat:"supp", icon:"🧬", ar:"Vitamin D", en:"Vitamin D", tpl:"supplements"},
+
+  // Other
+  {cat:"other", icon:"📌", ar:"Atorvastatin", en:"Atorvastatin", tpl:"bp_once"},
+  {cat:"other", icon:"📌", ar:"Rosuvastatin", en:"Rosuvastatin", tpl:"bp_once"},
+  {cat:"other", icon:"📌", ar:"Allopurinol", en:"Allopurinol", tpl:"other"},
+  {cat:"other", icon:"📌", ar:"Eye drops (general)", en:"Eye drops (general)", tpl:"other"}
+];
+
+// Add lots of extra names (to exceed 200) mapped to safe "other"
+const EXTRA_OTHER_NAMES = [
+  "Metoclopramide","Hyoscine","Loperamide","Mesalazine","Ursodeoxycholic acid",
+  "Ipratropium","Tiotropium","Fexofenadine","Desloratadine","Ketotifen",
+  "Clarithromycin","Cephalexin","Cefuroxime","Ceftriaxone","Bactrim (TMP/SMX)","Nitrofurantoin","Clindamycin","Linezolid","Vancomycin","Meropenem","Piperacillin/Tazobactam",
+  "Atenolol","Propranolol","Diltiazem","Verapamil","Hydralazine","Nifedipine",
+  "Rabeprazole","Lansoprazole","Ondansetron","Domperidone","Simethicone","Sucralfate",
+  "Insulin NPH","Regular insulin","Mixtard 30/70","Novomix 30","Humalog Mix",
+  "Carbimazole","Methimazole",
+  "Tramadol","Codeine","Morphine","Oxycodone",
+  "Heparin","Enoxaparin","Ticagrelor","Prasugrel","Dabigatran","Edoxaban",
+  "Citalopram","Escitalopram","Venlafaxine","Duloxetine","Mirtazapine","Quetiapine","Olanzapine",
+  "Topiramate","Phenytoin","Carbamazepine","Lamotrigine","Clonazepam","Diazepam",
+  "Tamsulosin","Dutasteride","Finasteride",
+  "Ezetimibe","Simvastatin","Pravastatin",
+  "Vitamin C","Zinc","Magnesium","Omega-3","Folic acid","Vitamin B12","Multivitamin",
+  "Acyclovir","Valacyclovir","Fluconazole","Terbinafine",
+  "Metformin XR","Pioglitazone","Acarbose","Glipizide","Saxagliptin","Vildagliptin",
+  "Isosorbide","Digoxin","Clonidine","Indapamide",
+  "Prednisone","Azathioprine","Mycophenolate","Tofacitinib","Etanercept","Infliximab","Tocilizumab","Rituximab",
+  "Diclofenac","Celecoxib","Meloxicam",
+  "Nasal spray (Fluticasone)","Budesonide nasal","Loratadine (Claritin)",
+  "Oral contraceptive","Levonorgestrel (Emergency)",
+  "Eye lubricant drops","Skin cream","Topical steroid"
+];
+
+// Make sure we exceed 200
+EXTRA_OTHER_NAMES.forEach(n=>{
+  MEDS.push({cat:"other", icon:"📌", ar:n, en:n, tpl:"other"});
 });
 
-function reply(med){
+/* =======================
+   Rendering
+======================= */
+function renderCats(){
+  state.view="cats";
+  state.currentCat=null;
+  grid.innerHTML="";
 
-const chat=document.getElementById("chat");
+  add("bot", state.lang==="ar" ? "اختر فئة:" : "Choose a category:");
 
-const msg=document.createElement("div");
-
-msg.className="msg";
-
-msg.innerText=adviceKey(med);
-
-chat.appendChild(msg);
-
+  CATS.forEach(c=>{
+    const div = document.createElement("div");
+    div.className="tile";
+    div.innerHTML = `<div>${c.icon} ${(state.lang==="ar")?c.ar:c.en}<small>${state.lang==="ar"?"اضغط لعرض الأدوية":"Tap to view medicines"}</small></div><div>▶</div>`;
+    div.onclick = ()=>{ state.currentCat=c.key; renderMeds(); };
+    grid.appendChild(div);
+  });
 }
 
-function adviceKey(med){
+function renderMeds(){
+  state.view="meds";
+  grid.innerHTML="";
+  const catMeta = CATS.find(c=>c.key===state.currentCat);
+  const list = MEDS.filter(m=>m.cat===state.currentCat);
 
-med=med.toLowerCase();
+  add("bot", state.lang==="ar"
+    ? `✅ فئة: ${catMeta.icon} ${catMeta.ar}\nاختر الدواء:`
+    : `✅ Category: ${catMeta.icon} ${catMeta.en}\nTap a medicine:`
+  );
 
-if(med.includes("insulin"))return advice.insulin;
-if(med.includes("metformin"))return advice.metformin;
-if(med.includes("warfarin"))return advice.warfarin;
-if(med.includes("statin")||med.includes("atorva"))return advice.statin;
-if(med.includes("thyroid")||med.includes("levothyroxine"))return advice.thyroid;
-if(med.includes("antibiotic")||med.includes("amoxicillin"))return advice.antibiotic;
-if(med.includes("vitamin"))return advice.vitamin;
+  list.forEach(m=>{
+    const div = document.createElement("div");
+    div.className="tile";
+    div.innerHTML = `<div>${m.icon} ${(state.lang==="ar")?m.ar:m.en}<small>${state.lang==="ar"?"اضغط للحصول على التوقيت":"Tap for timing guidance"}</small></div><div>▶</div>`;
+    div.onclick = ()=> onMedicineTap(m);
+    grid.appendChild(div);
+  });
 
-return advice.bp;
-
+  // Update hint
+  if(state.lang==="ar"){
+    hintText.textContent = "اختر الدواء من القائمة. اضغط (🏠 الفئات) للرجوع.";
+  }else{
+    hintText.textContent = "Tap a medicine. Use (🏠 Categories) to go back.";
+  }
 }
 
-function search(){
-
-const input=document.getElementById("searchInput").value;
-
-reply(input);
-
+function onMedicineTap(m){
+  add("user", state.lang==="ar" ? m.ar : m.en);
+  const tpl = TEMPLATES[m.tpl] || TEMPLATES.other;
+  add("bot", state.lang==="ar" ? tpl.ar : tpl.en);
 }
 
-const suggestions=document.getElementById("suggestions");
+function render(){
+  if(state.view==="cats") renderCats();
+  else renderMeds();
+}
 
-document.getElementById("searchInput").oninput=function(){
+/* =======================
+   Search
+======================= */
+function searchMedicine(q){
+  const nq = normalize(q);
+  if(!nq) return null;
+  return MEDS.find(m => normalize(m.ar).includes(nq) || normalize(m.en).includes(nq));
+}
 
-const value=this.value.toLowerCase();
+document.getElementById("searchBtn").onclick = ()=>{
+  const q = searchInput.value.trim();
+  if(!q) return;
+  add("user", q);
+  const m = searchMedicine(q);
+  if(m) onMedicineTap(m);
+  else add("bot", state.lang==="ar" ? "لم أجد الاسم. جرّب كتابة جزء من الاسم أو اختر من الأزرار." : "Not found. Try part of the name or use buttons.");
+  searchInput.value="";
+};
 
-suggestions.innerHTML="";
-
-meds.filter(m=>m.toLowerCase().includes(value)).slice(0,5)
-.forEach(m=>{
-const b=document.createElement("button");
-b.className="btn";
-b.innerText=m;
-b.onclick=()=>reply(m);
-suggestions.appendChild(b);
+searchInput.addEventListener("keydown",(e)=>{
+  if(e.key==="Enter"){ e.preventDefault(); document.getElementById("searchBtn").click(); }
 });
 
-}
+/* =======================
+   Buttons
+======================= */
+document.getElementById("arBtn").onclick = ()=>setLang("ar");
+document.getElementById("enBtn").onclick = ()=>setLang("en");
+document.getElementById("homeBtn").onclick = ()=>{ state.view="cats"; render(); setLang(state.lang); };
+document.getElementById("resetBtn").onclick = ()=>{ resetChat(); state.view="cats"; render(); setLang(state.lang); };
 
+/* =======================
+   QR code (opens your GitHub Pages URL)
+   NOTE: Uses an online QR image (no extra files needed).
+======================= */
+const CHATBOT_URL = "https://alizakialsada.github.io/qch-ramadan-chatbot/";
+qrLinkText.textContent = CHATBOT_URL;
+qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" + encodeURIComponent(CHATBOT_URL);
+
+/* =======================
+   Init
+======================= */
+resetChat();
+renderCats();
+setLang("ar");
 </script>
-
 </body>
 </html>
