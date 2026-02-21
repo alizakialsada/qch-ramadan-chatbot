@@ -1,56 +1,52 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QCH – Ramadan Medication Assistant (Buttons Only)</title>
 <style>
   :root{
-    --bg:#f4fbfb; --card:#ffffff; --ink:#0b1b2b; --muted:#566577;
+    --bg:#f4fbfb; --card:#ffffff; --ink:#0b1b2b; --muted:#5b6b7a;
     --brand:#0aa6a6; --brand2:#1e88e5; --line:#e6edf2;
-    --shadow:0 12px 30px rgba(0,0,0,.08);
+    --shadow:0 10px 26px rgba(0,0,0,.08);
     --r:20px;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   }
-  body{
-    margin:0;
-    background:
-      radial-gradient(1100px 600px at 20% 0%, rgba(10,166,166,.16), transparent 55%),
-      radial-gradient(1100px 600px at 90% 10%, rgba(30,136,229,.16), transparent 55%),
-      linear-gradient(135deg,#e9f7f7,#eef4fb);
+  body{margin:0;background:
+    radial-gradient(1100px 600px at 15% 0%, rgba(10,166,166,.16), transparent 55%),
+    radial-gradient(1100px 600px at 90% 10%, rgba(30,136,229,.16), transparent 55%),
+    linear-gradient(135deg,#eef9f9,#eef4fb);
     color:var(--ink);
   }
-  .wrap{max-width:980px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;box-sizing:border-box;}
+  .wrap{max-width:900px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;}
   header{
     background:rgba(255,255,255,.88);
     border:1px solid var(--line);
     border-radius:var(--r);
     box-shadow:var(--shadow);
-    padding:14px 16px;
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    flex-wrap:wrap;
+    padding:14px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   }
   .logos{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .logoPill{
     padding:10px 12px;border-radius:16px;border:1px solid var(--line);
-    background:#fff; box-shadow:0 10px 20px rgba(0,0,0,.05);
+    background:#fff; box-shadow:0 8px 16px rgba(0,0,0,.05);
     font-weight:900;font-size:12px;line-height:1.2;white-space:nowrap;
   }
   .logoPill.qch{color:var(--brand);}
   .logoPill.ehc{color:var(--brand2);}
-  .title{flex:1;min-width:260px;text-align:center;}
-  .title h1{margin:0;font-size:18px;font-weight:1000;}
-  .title p{margin:4px 0 0;font-size:13px;color:var(--muted);}
+  .title{flex:1;text-align:center;min-width:220px}
+  .title h1{margin:0;font-size:18px;font-weight:1000}
+  .title p{margin:4px 0 0;font-size:13px;color:var(--muted)}
   .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
   .btn{
     border:1px solid var(--line); background:#fff; border-radius:999px;
     padding:10px 12px; font-weight:1000; cursor:pointer;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
+    box-shadow:0 8px 16px rgba(0,0,0,.05);
     user-select:none;
   }
   .btn.active{background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));}
-  .btn.warn{border-color:rgba(180,83,9,.25); background:rgba(180,83,9,.06);}
-
+  .btn.warn{border-color:rgba(180,83,9,.20);background:rgba(180,83,9,.06)}
   .card{
     background:rgba(255,255,255,.88);
     border:1px solid var(--line);
@@ -58,73 +54,57 @@
     box-shadow:var(--shadow);
     overflow:hidden;
   }
-  .intro{padding:12px 16px;border-bottom:1px solid var(--line);}
+  .topbar{
+    padding:12px 14px;border-bottom:1px solid var(--line);
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  }
   .pill{
-    display:inline-block;
+    display:inline-flex;align-items:center;gap:8px;
     padding:7px 10px;border-radius:999px;
-    background:rgba(10,166,166,.10); border:1px solid rgba(10,166,166,.22);
-    color:#055; font-weight:1000; font-size:12px;
+    background:rgba(10,166,166,.10);border:1px solid rgba(10,166,166,.18);
+    color:#055;font-weight:1000;font-size:12px;
   }
-  .intro p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
-
-  .chat{border-top:1px solid var(--line); background:rgba(255,255,255,.70);}
-  .msgs{padding:12px 16px; height:40vh; min-height:360px; overflow:auto;}
-  .msg{display:flex;gap:10px;margin:10px 0;align-items:flex-start;}
-  .av{
-    width:42px;height:42px;border-radius:16px;
-    display:flex;align-items:center;justify-content:center;font-weight:1000;
-    border:1px solid var(--line); background:#fff;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
-    flex:0 0 auto;
+  .hint{color:var(--muted);font-size:13px;line-height:1.5;flex:1}
+  .grid{
+    padding:12px 14px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
   }
-  .av.bot{color:var(--brand);}
-  .av.user{color:var(--brand2);}
-  .bubble{
-    max-width:820px;
-    background:#fff;border:1px solid var(--line);
-    border-radius:18px;padding:12px;
-    box-shadow:0 10px 20px rgba(0,0,0,.04);
-    white-space:pre-wrap; line-height:1.55; font-size:15px;
-  }
-  .bubble.user{background:rgba(30,136,229,.06); border-color:rgba(30,136,229,.16);}
-  .note{padding:10px 16px 14px;color:var(--muted);font-size:12px;line-height:1.45;border-top:1px dashed var(--line);}
-
-  /* Categories */
-  .cats{padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);background:rgba(255,255,255,.55)}
-  .cat{
-    border:1px solid rgba(10,166,166,.20);
-    background:rgba(10,166,166,.06);
-    border-radius:999px;padding:9px 12px;cursor:pointer;font-weight:1000;font-size:13px;
-    box-shadow:0 10px 20px rgba(0,0,0,.04);
+  .tile{
+    border:1px solid rgba(10,166,166,.18);
+    background:#fff;
+    border-radius:18px;
+    padding:14px 12px;
+    cursor:pointer;
+    box-shadow:0 8px 16px rgba(0,0,0,.05);
     user-select:none;
-  }
-  .cat.active{border-color:rgba(10,166,166,.45); background:rgba(10,166,166,.10);}
-  .panel{padding:12px 16px;}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-  .med{
-    background:#fff;border:1px solid rgba(10,166,166,.18);
-    border-radius:16px;padding:12px;cursor:pointer;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
     transition:transform .06s ease;
-    user-select:none;
+    min-height:74px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    font-weight:1000;
   }
-  .med:hover{transform:translateY(-1px);border-color:rgba(10,166,166,.40);}
-  .med .t{font-weight:1000;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:center;}
-  .med .s{margin-top:6px;color:var(--muted);font-size:12px;line-height:1.35}
-  .hidden{display:none!important;}
-
-  /* Optional typing */
-  .typeRow{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:10px;background:rgba(255,255,255,.60)}
-  input{
-    flex:1; padding:14px 16px; border-radius:999px;
-    border:1px solid var(--line); outline:none; font-size:16px; background:#fff;
+  .tile:hover{transform:translateY(-1px);}
+  .tile small{display:block;font-weight:800;color:var(--muted);font-size:12px;margin-top:4px}
+  .chat{
+    border-top:1px solid var(--line);
+    background:rgba(255,255,255,.75);
   }
-  input:focus{border-color:rgba(10,166,166,.45); box-shadow:0 0 0 4px rgba(10,166,166,.10);}
-  .send{padding:14px 16px;border-radius:999px;border:1px solid rgba(10,166,166,.25);
-    background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12)); font-weight:1000; cursor:pointer;}
-  @media (max-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)} .title{text-align:left}}
-  @media (max-width:520px){.grid{grid-template-columns:1fr}}
+  .msgs{padding:12px 14px;height:42vh;min-height:360px;overflow:auto}
+  .msg{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 10px;margin:8px 0;
+       box-shadow:0 8px 16px rgba(0,0,0,.04);white-space:pre-wrap;line-height:1.55;font-size:15px}
+  .msg.user{background:rgba(30,136,229,.06);border-color:rgba(30,136,229,.16)}
+  .note{padding:10px 14px 14px;color:var(--muted);font-size:12px;line-height:1.45;border-top:1px dashed var(--line)}
+  .composer{display:none;padding:12px 14px;border-top:1px solid var(--line);gap:10px;align-items:center}
+  .composer input{flex:1;padding:12px 14px;border-radius:999px;border:1px solid var(--line);outline:none;font-size:16px}
+  .composer input:focus{border-color:rgba(10,166,166,.45);box-shadow:0 0 0 4px rgba(10,166,166,.10)}
+  .composer button{padding:12px 14px;border-radius:999px;border:1px solid rgba(10,166,166,.25);
+                   background:linear-gradient(135deg, rgba(10,166,166,.20), rgba(30,136,229,.12));
+                   font-weight:1000;cursor:pointer}
+  .rtl{direction:rtl;text-align:right}
+  .ltr{direction:ltr;text-align:left}
+  @media(max-width:860px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:560px){ .grid{grid-template-columns:1fr} .title{text-align:right} }
 </style>
 </head>
 
@@ -138,581 +118,579 @@
     </div>
 
     <div class="title">
-      <h1 id="hTitle">مساعد الأدوية في رمضان</h1>
-      <p id="hSub">نسخة سهلة للمريض • أزرار فقط (الكتابة اختيارية)</p>
+      <h1 id="appTitle">مساعد الأدوية في رمضان</h1>
+      <p id="appSub">اختيار بالأزرار فقط • مناسب للمريض</p>
     </div>
 
     <div class="controls">
       <button class="btn active" id="arBtn">العربية</button>
       <button class="btn" id="enBtn">English</button>
-      <button class="btn warn" id="toggleTypeBtn">إظهار الكتابة</button>
-      <button class="btn" id="resetBtn">Reset</button>
+      <button class="btn" id="homeBtn">🏠 الفئات</button>
+      <button class="btn warn" id="resetBtn">🧹 تنظيف</button>
+      <button class="btn" id="toggleTypingBtn">⌨️ كتابة (اختياري)</button>
     </div>
   </header>
 
   <div class="card">
-
-    <div class="intro">
-      <span class="pill" id="pill">سهل للمريض</span>
-      <p id="introAr">اضغط على الفئة ثم اختر الدواء. سيظهر إرشاد عام لتوقيت الدواء في رمضان.</p>
-      <p id="introEn" class="hidden">Tap a category then choose the medicine. You will get general Ramadan timing guidance.</p>
+    <div class="topbar">
+      <span class="pill" id="modePill">Buttons-Only</span>
+      <div class="hint" id="hintText">
+        اختر فئة ثم اختر الدواء. (الكتابة اختيارية وليست مطلوبة)
+      </div>
     </div>
 
-    <!-- Categories -->
-    <div class="cats" id="cats"></div>
+    <!-- Categories / Meds grid -->
+    <div class="grid" id="grid"></div>
 
-    <!-- Medicines grid -->
-    <div class="panel">
-      <div class="grid" id="medGrid"></div>
+    <!-- Optional typing -->
+    <div class="composer" id="composer">
+      <input id="input" placeholder="اكتب اسم الدواء… (اختياري)">
+      <button id="sendBtn">إرسال</button>
     </div>
 
-    <!-- Chat -->
     <div class="chat">
       <div class="msgs" id="msgs"></div>
-
-      <!-- Optional typing (hidden by default) -->
-      <div class="typeRow hidden" id="typeRow">
-        <input id="input" placeholder="اكتب اسم الدواء (اختياري)..." />
-        <button class="send" id="sendBtn">Send</button>
-      </div>
-
-      <div class="note" id="noteAr">
+      <div class="note" id="note">
         أمان: هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.
       </div>
-      <div class="note hidden" id="noteEn">
-        Safety: Severe low sugar, chest pain, severe shortness of breath, or heavy bleeding → break the fast and seek urgent care.
-      </div>
     </div>
-
   </div>
 </div>
 
 <script>
-  // ===== State =====
-  const state = { lang: "ar", activeCat: null, typingShown: false };
-  const $ = (id)=>document.getElementById(id);
-  const msgs = $("msgs");
-  const medGrid = $("medGrid");
-  const catsEl = $("cats");
+  // ===== Language =====
+  const state = { lang: "ar", view: "cats", currentCat: null, typing:false };
+
+  // ===== UI helpers =====
+  const grid = document.getElementById("grid");
+  const msgs = document.getElementById("msgs");
+  const hintText = document.getElementById("hintText");
+  const note = document.getElementById("note");
+  const appTitle = document.getElementById("appTitle");
+  const appSub = document.getElementById("appSub");
+  const composer = document.getElementById("composer");
+  const input = document.getElementById("input");
 
   function add(role, text){
-    const row = document.createElement("div");
-    row.className = "msg";
-    const av = document.createElement("div");
-    av.className = "av " + (role==="user" ? "user" : "bot");
-    av.textContent = role==="user" ? "U" : "Q";
-    const bubble = document.createElement("div");
-    bubble.className = "bubble " + (role==="user" ? "user" : "");
-    bubble.textContent = text;
-    row.appendChild(av);
-    row.appendChild(bubble);
-    msgs.appendChild(row);
+    const d = document.createElement("div");
+    d.className = "msg " + (role==="user" ? "user" : "bot");
+    d.classList.add(state.lang==="ar" ? "rtl" : "ltr");
+    d.textContent = text;
+    msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
   }
 
   function setLang(lang){
     state.lang = lang;
+    document.getElementById("arBtn").classList.toggle("active", lang==="ar");
+    document.getElementById("enBtn").classList.toggle("active", lang==="en");
     document.documentElement.dir = (lang==="ar") ? "rtl" : "ltr";
-    document.documentElement.lang = lang;
+    document.documentElement.lang = (lang==="ar") ? "ar" : "en";
 
-    $("arBtn").classList.toggle("active", lang==="ar");
-    $("enBtn").classList.toggle("active", lang==="en");
-
-    $("introAr").classList.toggle("hidden", lang!=="ar");
-    $("introEn").classList.toggle("hidden", lang!=="en");
-
-    $("noteAr").classList.toggle("hidden", lang!=="ar");
-    $("noteEn").classList.toggle("hidden", lang!=="en");
-
-    $("hTitle").textContent = (lang==="ar") ? "مساعد الأدوية في رمضان" : "Ramadan Medication Assistant";
-    $("hSub").textContent = (lang==="ar") ? "نسخة سهلة للمريض • أزرار فقط (الكتابة اختيارية)" : "Patient-friendly • Buttons only (typing optional)";
-    $("toggleTypeBtn").textContent = state.typingShown
-      ? (lang==="ar" ? "إخفاء الكتابة" : "Hide typing")
-      : (lang==="ar" ? "إظهار الكتابة" : "Show typing");
-
-    add("bot", lang==="ar" ? "✅ تم تفعيل العربية." : "✅ English enabled.");
-    renderCats();
-    renderMeds();
+    if(lang==="ar"){
+      appTitle.textContent = "مساعد الأدوية في رمضان";
+      appSub.textContent = "اختيار بالأزرار فقط • مناسب للمريض";
+      hintText.textContent = (state.view==="cats")
+        ? "اختر فئة ثم اختر الدواء. (الكتابة اختيارية وليست مطلوبة)"
+        : "اختر الدواء من القائمة. اضغط (🏠 الفئات) للرجوع.";
+      note.textContent = "أمان: هبوط سكر شديد، ألم صدر، ضيق نفس شديد، أو نزيف قوي → افطر فورًا وراجع الطوارئ.";
+      input.placeholder = "اكتب اسم الدواء… (اختياري)";
+    }else{
+      appTitle.textContent = "Ramadan Medication Assistant";
+      appSub.textContent = "Buttons-only • Patient-friendly";
+      hintText.textContent = (state.view==="cats")
+        ? "Pick a category, then tap the medicine. (Typing is optional)"
+        : "Tap the medicine. Use (🏠 Categories) to go back.";
+      note.textContent = "Safety: Severe low sugar, chest pain, severe shortness of breath, or heavy bleeding → break the fast and seek urgent care.";
+      input.placeholder = "Type medicine name… (optional)";
+    }
+    render();
   }
 
-  function toggleTyping(){
-    state.typingShown = !state.typingShown;
-    $("typeRow").classList.toggle("hidden", !state.typingShown);
-    $("toggleTypeBtn").textContent = state.typingShown
-      ? (state.lang==="ar" ? "إخفاء الكتابة" : "Hide typing")
-      : (state.lang==="ar" ? "إظهار الكتابة" : "Show typing");
-  }
-
-  function reset(){
+  function resetChat(){
     msgs.innerHTML = "";
     add("bot", state.lang==="ar"
-      ? "مرحبًا 👋 اختر فئة ثم اضغط اسم الدواء."
-      : "Hi 👋 Choose a category then tap the medicine."
+      ? "مرحبًا 👋 اختر فئة من الأزرار."
+      : "Hello 👋 Please choose a category."
     );
   }
 
-  // ===== Knowledge base (80+ meds) =====
-  // Each med includes: name_ar, name_en, icon, hint, response_ar, response_en, keywords[]
+  // ===== Content (60 meds) =====
+  // Each medicine has: key, icon, names, category, response (AR/EN)
+  const MEDS = [
+    // Diabetes - Insulin
+    {cat:"diabetes", icon:"💉", key:"insulin_general", arName:"إنسولين (عام)", enName:"Insulin (general)",
+     ar:"💉 الإنسولين (عام)\n• لا تغيّر الجرعة بنفسك.\n• إذا السكر <70 أو أعراض هبوط شديدة → افطر فورًا.\n• غالبًا الـ Basal مع الإفطار حسب خطة العيادة.\n• السريع يعتمد على كمية الوجبة.",
+     en:"💉 Insulin (general)\n• Do not change dose by yourself.\n• If glucose <70 or severe hypoglycemia → BREAK FAST.\n• Basal is often taken at Iftar (per clinic plan).\n• Rapid insulin depends on meal size."
+    },
+    {cat:"diabetes", icon:"💉", key:"lantus", arName:"Lantus/Glargine", enName:"Lantus/Glargine",
+     ar:"💉 جلارجين (Lantus)\n• كثير يأخذونه وقت الإفطار.\n• انتبه لهبوط السكر خصوصًا أول أسبوع.\n• أي تعديل يكون حسب الطبيب.",
+     en:"💉 Glargine (Lantus)\n• Often taken at Iftar.\n• Watch for lows especially first week.\n• Dose changes only per clinician."
+    },
+    {cat:"diabetes", icon:"💉", key:"rapid_insulin", arName:"إنسولين سريع (Novorapid/Humalog)", enName:"Rapid insulin",
+     ar:"💉 إنسولين سريع\n• يؤخذ مع الوجبة.\n• جرعة السحور قد تكون أقل حسب حجم الأكل.\n• إذا هبوط متكرر → تواصل مع العيادة.",
+     en:"💉 Rapid insulin\n• Take with meals.\n• Suhoor dose may be lower depending on meal.\n• Recurrent lows → contact clinic."
+    },
+    {cat:"diabetes", icon:"💉", key:"premix", arName:"Premix (Mixtard/70-30)", enName:"Premix (70/30)",
+     ar:"💉 إنسولين مخلوط (70/30)\n• غالبًا جرعتان: إفطار + سحور.\n• انتبه لهبوط السكر منتصف النهار.\n• اتبع خطة الطبيب.",
+     en:"💉 Premix (70/30)\n• Often BID: Iftar + Suhoor.\n• Watch for midday lows.\n• Follow clinic plan."
+    },
+
+    // Diabetes - oral
+    {cat:"diabetes", icon:"🍬", key:"metformin", arName:"Metformin", enName:"Metformin",
+     ar:"🍬 ميتفورمين\n• يؤخذ مع الأكل.\n• مناسب: إفطار و/أو سحور حسب الوصفة.",
+     en:"🍬 Metformin\n• Take with food.\n• Common: Iftar and/or Suhoor per prescription."
+    },
+    {cat:"diabetes", icon:"🍬", key:"gliclazide", arName:"Gliclazide", enName:"Gliclazide",
+     ar:"🍬 جليكلازايد (قد يسبب هبوط)\n• يؤخذ مع الوجبة.\n• راقب أعراض الهبوط.\n• إذا هبوط شديد → افطر.",
+     en:"🍬 Gliclazide (can cause lows)\n• Take with meals.\n• Watch hypoglycemia.\n• Severe low → break fast."
+    },
+    {cat:"diabetes", icon:"🍬", key:"sglt2", arName:"SGLT2 (Empa/Dapa)", enName:"SGLT2 (Empa/Dapa)",
+     ar:"🍬 SGLT2\n• اشرب سوائل كفاية بعد الإفطار.\n• إذا مريض/قيء/جفاف → تواصل مع الطبيب.",
+     en:"🍬 SGLT2\n• Hydrate well after Iftar.\n• If sick/vomiting/dehydrated → contact clinician."
+    },
+    {cat:"diabetes", icon:"🍬", key:"dpp4", arName:"DPP-4 (Sitagliptin)", enName:"DPP-4 (Sitagliptin)",
+     ar:"🍬 سيتاجلبتين\n• غالبًا لا يسبب هبوط.\n• وقت ثابت بعد الإفطار أو مع السحور حسب الوصفة.",
+     en:"🍬 Sitagliptin\n• Usually low hypoglycemia risk.\n• Fixed time after Iftar or with Suhoor per Rx."
+    },
+
+    // Anticoagulation
+    {cat:"blood", icon:"🩸", key:"warfarin", arName:"Warfarin", enName:"Warfarin",
+     ar:"🩸 وارفارين\n• وقت ثابت يوميًا.\n• في رمضان: غالبًا بعد الإفطار بـ 1–2 ساعة.\n• لا تغيّر الجرعة إلا بتوجيه.\n• انتبه للتداخلات والنزيف.",
+     en:"🩸 Warfarin\n• Same time daily.\n• Ramadan: often 1–2 hours after Iftar.\n• Do not change dose unless instructed.\n• Watch interactions/bleeding."
+    },
+    {cat:"blood", icon:"🧬", key:"apixaban", arName:"Apixaban (Eliquis)", enName:"Apixaban (Eliquis)",
+     ar:"🧬 أبيكسابان\n• مرتين يوميًا: إفطار + سحور.\n• وقت ثابت.\n• لا توقف بدون الطبيب.",
+     en:"🧬 Apixaban\n• BID: Iftar + Suhoor.\n• Fixed times.\n• Do not stop without clinician."
+    },
+    {cat:"blood", icon:"🧬", key:"rivaroxaban", arName:"Rivaroxaban (Xarelto)", enName:"Rivaroxaban (Xarelto)",
+     ar:"🧬 ريفاروكسابان\n• غالبًا مرة يوميًا بعد الإفطار.\n• جرعة 15/20 ملغ: تؤخذ مع الأكل.",
+     en:"🧬 Rivaroxaban\n• Often once daily after Iftar.\n• 15/20 mg: take WITH food."
+    },
+    {cat:"blood", icon:"🫀", key:"aspirin", arName:"Aspirin", enName:"Aspirin",
+     ar:"🫀 أسبرين\n• الأفضل بعد الإفطار مع الأكل (ألطف على المعدة).\n• وقت ثابت يوميًا.",
+     en:"🫀 Aspirin\n• Prefer after Iftar with food (gentler on stomach).\n• Fixed time daily."
+    },
+    {cat:"blood", icon:"🫀", key:"clopidogrel", arName:"Clopidogrel (Plavix)", enName:"Clopidogrel (Plavix)",
+     ar:"🫀 كلوبيدوجريل\n• غالبًا بعد الإفطار.\n• لا توقف بدون الطبيب.",
+     en:"🫀 Clopidogrel\n• Often after Iftar.\n• Do not stop without clinician."
+    },
+
+    // GI
+    {cat:"gi", icon:"🧡", key:"omeprazole", arName:"Omeprazole", enName:"Omeprazole",
+     ar:"🧡 أوميبرازول\n• الأفضل قبل الأكل بـ 30–60 دقيقة.\n• مرة: قبل السحور أو قبل الإفطار.\n• مرتين: قبل الإفطار + قبل السحور.",
+     en:"🧡 Omeprazole\n• Best 30–60 min BEFORE meals.\n• OD: before Suhoor or Iftar.\n• BID: before Iftar + before Suhoor."
+    },
+    {cat:"gi", icon:"🧡", key:"pantoprazole", arName:"Pantoprazole", enName:"Pantoprazole",
+     ar:"🧡 بانتوبرازول\n• مثل الأوميبرازول: قبل الوجبة بـ 30–60 دقيقة.",
+     en:"🧡 Pantoprazole\n• Same concept: 30–60 min before meals."
+    },
+    {cat:"gi", icon:"🧡", key:"famotidine", arName:"Famotidine", enName:"Famotidine",
+     ar:"🧡 فاموتيدين\n• غالبًا بعد الإفطار أو قبل النوم حسب الأعراض.\n• وقت ثابت.",
+     en:"🧡 Famotidine\n• Often after Iftar or bedtime depending on symptoms.\n• Fixed time."
+    },
+    {cat:"gi", icon:"🧡", key:"sucralfate", arName:"Sucralfate", enName:"Sucralfate",
+     ar:"🧡 سوكرالفات\n• على معدة فارغة.\n• افصل عن الأدوية الأخرى (ساعتين).",
+     en:"🧡 Sucralfate\n• Empty stomach.\n• Separate from other meds (~2 hours)."
+    },
+    {cat:"gi", icon:"🧊", key:"lactulose", arName:"Lactulose", enName:"Lactulose",
+     ar:"🧊 لاكتولوز\n• يمكن بعد الإفطار أو قبل النوم.\n• اشرب سوائل كفاية.",
+     en:"🧊 Lactulose\n• After Iftar or bedtime.\n• Hydrate well."
+    },
+    {cat:"gi", icon:"🧊", key:"peg", arName:"PEG (Movicol)", enName:"PEG (Movicol)",
+     ar:"🧊 ملين PEG\n• بعد الإفطار مناسب.\n• اشرب سوائل كفاية.",
+     en:"🧊 PEG laxative\n• After Iftar works well.\n• Hydrate."
+    },
+
+    // Antibiotics (common examples)
+    {cat:"abx", icon:"🦠", key:"augmentin", arName:"Augmentin", enName:"Augmentin",
+     ar:"🦠 أوغمنتين\n• عادة مرتين: إفطار + سحور.\n• يفضل مع الأكل لتخفيف الغثيان.",
+     en:"🦠 Augmentin\n• Usually BID: Iftar + Suhoor.\n• Prefer with food."
+    },
+    {cat:"abx", icon:"🦠", key:"amoxicillin", arName:"Amoxicillin", enName:"Amoxicillin",
+     ar:"🦠 أموكسيسيلين\n• غالبًا 3 مرات: إفطار + آخر الليل + سحور.\n• إذا مرتين حسب الوصفة: إفطار + سحور.",
+     en:"🦠 Amoxicillin\n• Often TID: Iftar + late evening + Suhoor.\n• If BID per Rx: Iftar + Suhoor."
+    },
+    {cat:"abx", icon:"🦠", key:"azithromycin", arName:"Azithromycin", enName:"Azithromycin",
+     ar:"🦠 أزيثرومايسين\n• غالبًا مرة يوميًا بعد الإفطار.\n• اتبع الوصفة.",
+     en:"🦠 Azithromycin\n• Often once daily after Iftar.\n• Follow Rx."
+    },
+    {cat:"abx", icon:"🦠", key:"ciprofloxacin", arName:"Ciprofloxacin", enName:"Ciprofloxacin",
+     ar:"🦠 سيبروفلوكساسين\n• مرتين: إفطار + سحور.\n• تجنب أخذه مع الحليب/الكالسيوم (افصل ساعتين).",
+     en:"🦠 Ciprofloxacin\n• BID: Iftar + Suhoor.\n• Avoid with milk/calcium (separate by ~2 hours)."
+    },
+    {cat:"abx", icon:"🦠", key:"doxycycline", arName:"Doxycycline", enName:"Doxycycline",
+     ar:"🦠 دوكسي\n• مرة أو مرتين حسب الوصفة.\n• خذه مع ماء كثير ولا تنام مباشرة بعده.",
+     en:"🦠 Doxycycline\n• OD/BID per Rx.\n• Take with plenty of water; don’t lie down right after."
+    },
+    {cat:"abx", icon:"🦠", key:"metronidazole", arName:"Metronidazole", enName:"Metronidazole",
+     ar:"🦠 ميترونيدازول\n• غالبًا 3 مرات: إفطار + آخر الليل + سحور.\n• قد يسبب طعم معدني.",
+     en:"🦠 Metronidazole\n• Often TID: Iftar + late evening + Suhoor.\n• Metallic taste possible."
+    },
+
+    // HTN / Heart
+    {cat:"heart", icon:"🔥", key:"amlodipine", arName:"Amlodipine", enName:"Amlodipine",
+     ar:"🔥 أملوديبين\n• مرة يوميًا بعد الإفطار.\n• وقت ثابت.",
+     en:"🔥 Amlodipine\n• Once daily after Iftar.\n• Fixed time."
+    },
+    {cat:"heart", icon:"🔥", key:"losartan", arName:"Losartan", enName:"Losartan",
+     ar:"🔥 لوسارتان\n• مرة يوميًا بعد الإفطار.\n• إذا دوخة شديدة → راجع الطبيب.",
+     en:"🔥 Losartan\n• Once daily after Iftar.\n• Severe dizziness → contact clinic."
+    },
+    {cat:"heart", icon:"🔥", key:"valsartan", arName:"Valsartan", enName:"Valsartan",
+     ar:"🔥 فالسارتان\n• بعد الإفطار مناسب.\n• وقت ثابت.",
+     en:"🔥 Valsartan\n• After Iftar works well.\n• Fixed time."
+    },
+    {cat:"heart", icon:"💧", key:"furosemide", arName:"Furosemide (مدر)", enName:"Furosemide (diuretic)",
+     ar:"💧 فوروسيميد (مدر)\n• الأفضل بعد الإفطار/بداية الليل لتقليل العطش.\n• تجنب قبل السحور مباشرة.",
+     en:"💧 Furosemide (diuretic)\n• Prefer after Iftar/early evening.\n• Avoid right before Suhoor."
+    },
+    {cat:"heart", icon:"💧", key:"hctz", arName:"HCTZ (مدر)", enName:"HCTZ (diuretic)",
+     ar:"💧 هيدروكلوروثيازيد\n• بعد الإفطار أفضل.\n• راقب الجفاف.",
+     en:"💧 HCTZ\n• Better after Iftar.\n• Watch dehydration."
+    },
+    {cat:"heart", icon:"🫀", key:"bisoprolol", arName:"Bisoprolol", enName:"Bisoprolol",
+     ar:"🫀 بيسوبرولول\n• وقت ثابت بعد الإفطار أو قبل النوم.\n• لا توقف فجأة.",
+     en:"🫀 Bisoprolol\n• Fixed time after Iftar or bedtime.\n• Do not stop suddenly."
+    },
+    {cat:"heart", icon:"🫀", key:"metoprolol", arName:"Metoprolol", enName:"Metoprolol",
+     ar:"🫀 ميتوبرولول\n• حسب الوصفة (مرة/مرتين).\n• مرتين: إفطار + سحور.",
+     en:"🫀 Metoprolol\n• OD/BID per Rx.\n• If BID: Iftar + Suhoor."
+    },
+
+    // Lipids
+    {cat:"lipids", icon:"🟦", key:"atorvastatin", arName:"Atorvastatin", enName:"Atorvastatin",
+     ar:"🟦 أتورفاستاتين\n• غالبًا بعد الإفطار أو قبل النوم.\n• وقت ثابت.",
+     en:"🟦 Atorvastatin\n• Often after Iftar or bedtime.\n• Fixed time."
+    },
+    {cat:"lipids", icon:"🟦", key:"rosuvastatin", arName:"Rosuvastatin", enName:"Rosuvastatin",
+     ar:"🟦 روزوفاستاتين\n• بعد الإفطار أو قبل النوم.\n• وقت ثابت.",
+     en:"🟦 Rosuvastatin\n• After Iftar or bedtime.\n• Fixed time."
+    },
+
+    // Thyroid
+    {cat:"thyroid", icon:"🦋", key:"levothyroxine", arName:"Levothyroxine", enName:"Levothyroxine",
+     ar:"🦋 ليفوثيروكسين\n• على معدة فارغة.\n• خيار A: قبل السحور 30–60 دقيقة.\n• خيار B: بعد الإفطار 3–4 ساعات بدون سناكات.\n• افصل عن الحديد/الكالسيوم 4 ساعات.",
+     en:"🦋 Levothyroxine\n• Empty stomach.\n• Option A: 30–60 min before Suhoor.\n• Option B: 3–4 hours after Iftar (no snacks).\n• Separate from iron/calcium by 4 hours."
+    },
+
+    // Rheum (DMARDs/biologics)
+    {cat:"rheum", icon:"🦴", key:"methotrexate", arName:"Methotrexate (أسبوعي)", enName:"Methotrexate (weekly)",
+     ar:"🦴 ميثوتريكسيت (أسبوعي)\n• خذه في يوم ثابت (مساءً غالبًا).\n• الصيام عادة لا يمنعه.\n• إذا حرارة/عدوى → تواصل مع العيادة.",
+     en:"🦴 Methotrexate (weekly)\n• Take on a fixed day (often evening).\n• Fasting usually OK.\n• Fever/infection signs → contact clinic."
+    },
+    {cat:"rheum", icon:"🦴", key:"hydroxychloroquine", arName:"Hydroxychloroquine", enName:"Hydroxychloroquine",
+     ar:"🦴 هيدروكسي كلوروكوين\n• يؤخذ مع الأكل.\n• بعد الإفطار مناسب.",
+     en:"🦴 Hydroxychloroquine\n• Take with food.\n• After Iftar works well."
+    },
+    {cat:"rheum", icon:"🦴", key:"sulfasalazine", arName:"Sulfasalazine", enName:"Sulfasalazine",
+     ar:"🦴 سلفاسالازين\n• غالبًا مرتين: إفطار + سحور.\n• مع الأكل.",
+     en:"🦴 Sulfasalazine\n• Often BID: Iftar + Suhoor.\n• With food."
+    },
+    {cat:"rheum", icon:"🧬", key:"adalimumab", arName:"Adalimumab (Humira)", enName:"Adalimumab (Humira)",
+     ar:"🧬 هيوميرا\n• حقنة حسب الجدول.\n• لا توقف بدون الطبيب.\n• علامات عدوى → تواصل مع العيادة.",
+     en:"🧬 Humira\n• Injection on schedule.\n• Do not stop without clinician.\n• Infection signs → contact clinic."
+    },
+    {cat:"rheum", icon:"🧬", key:"etanercept", arName:"Etanercept (Enbrel)", enName:"Etanercept (Enbrel)",
+     ar:"🧬 إنبرل\n• حقنة حسب الجدول.\n• الصيام لا يغيّر موعد الحقنة.",
+     en:"🧬 Enbrel\n• Injection on schedule.\n• Fasting doesn’t change injection timing."
+    },
+
+    // Pain / NSAIDs
+    {cat:"pain", icon:"💊", key:"paracetamol", arName:"Paracetamol", enName:"Paracetamol",
+     ar:"💊 باراسيتامول\n• يمكن بعد الإفطار أو السحور.\n• لا تتجاوز الجرعة اليومية.",
+     en:"💊 Paracetamol\n• After Iftar or Suhoor.\n• Don’t exceed max daily dose."
+    },
+    {cat:"pain", icon:"💊", key:"ibuprofen", arName:"Ibuprofen", enName:"Ibuprofen",
+     ar:"💊 إيبوبروفين\n• يفضل بعد الإفطار مع الأكل.\n• تجنب إذا قرحة/مشاكل كلى إلا بتوجيه.",
+     en:"💊 Ibuprofen\n• Prefer after Iftar with food.\n• Avoid with ulcer/kidney issues unless advised."
+    },
+    {cat:"pain", icon:"💊", key:"naproxen", arName:"Naproxen", enName:"Naproxen",
+     ar:"💊 نابروكسين\n• بعد الإفطار مع الأكل.\n• انتبه للمعدة.",
+     en:"💊 Naproxen\n• After Iftar with food.\n• Watch stomach irritation."
+    },
+    {cat:"pain", icon:"💊", key:"celecoxib", arName:"Celecoxib", enName:"Celecoxib",
+     ar:"💊 سيليكوكسيب\n• بعد الإفطار مناسب.\n• حسب الوصفة.",
+     en:"💊 Celecoxib\n• After Iftar works well.\n• Per prescription."
+    },
+
+    // Respiratory
+    {cat:"resp", icon:"🫁", key:"salbutamol", arName:"Ventolin (Salbutamol)", enName:"Ventolin (Salbutamol)",
+     ar:"🫁 فنتولين\n• يُستخدم عند الحاجة.\n• لا تؤخر العلاج إذا ضيق نفس.",
+     en:"🫁 Ventolin\n• Use as needed.\n• Don’t delay if short of breath."
+    },
+    {cat:"resp", icon:"🫁", key:"budesonide", arName:"Budesonide inhaler", enName:"Budesonide inhaler",
+     ar:"🫁 بخاخ وقائي\n• استمر عليه حسب الوصفة.\n• الالتزام يقلل الأعراض.",
+     en:"🫁 Controller inhaler\n• Continue as prescribed.\n• Adherence reduces symptoms."
+    },
+    {cat:"resp", icon:"🫁", key:"montelukast", arName:"Montelukast", enName:"Montelukast",
+     ar:"🫁 مونتيلوكاست\n• غالبًا مساءً بعد الإفطار أو قبل النوم.",
+     en:"🫁 Montelukast\n• Often evening after Iftar or bedtime."
+    },
+
+    // Neuro / psych
+    {cat:"neuro", icon:"🧠", key:"levetiracetam", arName:"Levetiracetam (Keppra)", enName:"Levetiracetam (Keppra)",
+     ar:"🧠 كيبرا\n• لا تفوّت الجرعات.\n• مرتين: إفطار + سحور.",
+     en:"🧠 Keppra\n• Do not miss doses.\n• BID: Iftar + Suhoor."
+    },
+    {cat:"neuro", icon:"🧠", key:"valproate", arName:"Valproate", enName:"Valproate",
+     ar:"🧠 فالبروات\n• حسب الوصفة (مرة/مرتين).\n• مع الأكل أفضل.",
+     en:"🧠 Valproate\n• OD/BID per Rx.\n• Prefer with food."
+    },
+    {cat:"neuro", icon:"🧠", key:"sertraline", arName:"Sertraline", enName:"Sertraline",
+     ar:"🧠 سيرترالين\n• وقت ثابت يوميًا.\n• بعد الإفطار مناسب.",
+     en:"🧠 Sertraline\n• Fixed time daily.\n• After Iftar works well."
+    },
+    {cat:"neuro", icon:"🧠", key:"fluoxetine", arName:"Fluoxetine", enName:"Fluoxetine",
+     ar:"🧠 فلوكسيتين\n• وقت ثابت يوميًا.\n• صباحًا أو بعد الإفطار حسب التحمل.",
+     en:"🧠 Fluoxetine\n• Fixed time daily.\n• Morning or after Iftar depending on tolerance."
+    },
+    {cat:"neuro", icon:"😴", key:"zolpidem", arName:"Zolpidem", enName:"Zolpidem",
+     ar:"😴 زولبيديم\n• فقط قبل النوم.\n• تجنب القيادة بعده.",
+     en:"😴 Zolpidem\n• Only at bedtime.\n• Avoid driving after dose."
+    },
+
+    // Endocrine / others
+    {cat:"endo", icon:"🧲", key:"iron", arName:"Iron (Ferrous)", enName:"Iron (Ferrous)",
+     ar:"🧲 الحديد\n• بعيد عن الشاي/القهوة/الحليب.\n• افصل عن ليفوثيروكسين 4 ساعات.\n• غالبًا بعد الإفطار.",
+     en:"🧲 Iron\n• Away from tea/coffee/milk.\n• Separate from levothyroxine by 4 hours.\n• Often after Iftar."
+    },
+    {cat:"endo", icon:"🧲", key:"calcium", arName:"Calcium", enName:"Calcium",
+     ar:"🧲 الكالسيوم\n• افصل عن ليفوثيروكسين 4 ساعات.\n• بعد الإفطار مناسب.",
+     en:"🧲 Calcium\n• Separate from levothyroxine by 4 hours.\n• After Iftar works well."
+    },
+    {cat:"endo", icon:"🧬", key:"vitd", arName:"Vitamin D", enName:"Vitamin D",
+     ar:"🧬 فيتامين د\n• بعد الإفطار مناسب.\n• وقت ثابت أسبوعي/شهري حسب الوصفة.",
+     en:"🧬 Vitamin D\n• After Iftar works well.\n• Fixed schedule weekly/monthly per Rx."
+    },
+
+    // Eye / derm
+    {cat:"other", icon:"👁️", key:"eye_drops", arName:"قطرات العين", enName:"Eye drops",
+     ar:"👁️ قطرات العين\n• غالبًا تُستخدم بأي وقت حسب الوصفة.",
+     en:"👁️ Eye drops\n• Usually can be used anytime as prescribed."
+    },
+    {cat:"other", icon:"🧴", key:"topicals", arName:"كريمات/مراهم", enName:"Creams/Ointments",
+     ar:"🧴 كريمات/مراهم\n• عادة تُستخدم بأي وقت حسب الوصفة.",
+     en:"🧴 Creams/Ointments\n• Usually anytime as prescribed."
+    },
+
+    // Steroids
+    {cat:"other", icon:"⚪", key:"prednisone", arName:"Prednisone", enName:"Prednisone",
+     ar:"⚪ بريدنيزون\n• لا توقفه فجأة.\n• غالبًا بعد الإفطار مع الأكل.\n• حسب خطة الطبيب.",
+     en:"⚪ Prednisone\n• Do not stop suddenly.\n• Often after Iftar with food.\n• Per clinician plan."
+    },
+
+    // Add more common meds to exceed 50 (short safe tips)
+    {cat:"gi", icon:"🧡", key:"ondansetron", arName:"Ondansetron", enName:"Ondansetron",
+     ar:"🧡 أوندانسيترون (غثيان)\n• عند الحاجة.\n• بعد الإفطار مناسب.",
+     en:"🧡 Ondansetron (nausea)\n• Use as needed.\n• After Iftar works well."
+    },
+    {cat:"gi", icon:"🧡", key:"simethicone", arName:"Simethicone", enName:"Simethicone",
+     ar:"🧡 سيميثيكون (غازات)\n• بعد الوجبات.\n• بعد الإفطار والسحور مناسب.",
+     en:"🧡 Simethicone (gas)\n• After meals.\n• After Iftar/Suhoor works well."
+    },
+
+    // 60 meds target: include common chronic meds
+    {cat:"heart", icon:"🫀", key:"spironolactone", arName:"Spironolactone", enName:"Spironolactone",
+     ar:"🫀 سبيرونولاكتون\n• غالبًا بعد الإفطار.\n• راقب البوتاسيوم حسب الطبيب.",
+     en:"🫀 Spironolactone\n• Often after Iftar.\n• Monitor potassium as advised."
+    },
+    {cat:"heart", icon:"🫀", key:"digoxin", arName:"Digoxin", enName:"Digoxin",
+     ar:"🫀 ديجوكسين\n• وقت ثابت يوميًا.\n• لا تغيّر الجرعة بدون الطبيب.",
+     en:"🫀 Digoxin\n• Fixed time daily.\n• Do not adjust without clinician."
+    },
+    {cat:"lipids", icon:"🟦", key:"ezetimibe", arName:"Ezetimibe", enName:"Ezetimibe",
+     ar:"🟦 إيزيتيميب\n• بعد الإفطار أو قبل النوم.\n• وقت ثابت.",
+     en:"🟦 Ezetimibe\n• After Iftar or bedtime.\n• Fixed time."
+    },
+
+    {cat:"neuro", icon:"🧠", key:"pregabalin", arName:"Pregabalin", enName:"Pregabalin",
+     ar:"🧠 بريجابالين\n• قد يسبب نعاس.\n• غالبًا بعد الإفطار/قبل النوم.",
+     en:"🧠 Pregabalin\n• May cause drowsiness.\n• Often after Iftar/bedtime."
+    },
+    {cat:"neuro", icon:"🧠", key:"gabapentin", arName:"Gabapentin", enName:"Gabapentin",
+     ar:"🧠 جابابنتين\n• حسب الوصفة.\n• إذا مرتين: إفطار + سحور.",
+     en:"🧠 Gabapentin\n• Per prescription.\n• If BID: Iftar + Suhoor."
+    },
+
+    {cat:"other", icon:"🧬", key:"allopurinol", arName:"Allopurinol", enName:"Allopurinol",
+     ar:"🧬 ألوبورينول (نقرس)\n• وقت ثابت يوميًا.\n• بعد الإفطار مناسب.",
+     en:"🧬 Allopurinol (gout)\n• Fixed time daily.\n• After Iftar works well."
+    },
+    {cat:"other", icon:"🧬", key:"colchicine", arName:"Colchicine", enName:"Colchicine",
+     ar:"🧬 كولشيسين\n• حسب الوصفة.\n• قد يسبب إسهال.",
+     en:"🧬 Colchicine\n• Per prescription.\n• Diarrhea possible."
+    },
+
+    {cat:"endo", icon:"🧬", key:"tamsulosin", arName:"Tamsulosin", enName:"Tamsulosin",
+     ar:"🧬 تامسولوسين\n• بعد الإفطار مناسب.\n• قد يسبب دوخة عند الوقوف.",
+     en:"🧬 Tamsulosin\n• After Iftar works well.\n• May cause dizziness on standing."
+    },
+    {cat:"other", icon:"🧬", key:"finasteride", arName:"Finasteride", enName:"Finasteride",
+     ar:"🧬 فيناسترايد\n• وقت ثابت يوميًا.\n• بعد الإفطار مناسب.",
+     en:"🧬 Finasteride\n• Fixed time daily.\n• After Iftar works well."
+    },
+
+    {cat:"other", icon:"🧡", key:"cetirizine", arName:"Cetirizine", enName:"Cetirizine",
+     ar:"🧡 سيتريزين (حساسية)\n• قد يسبب نعاس.\n• بعد الإفطار/قبل النوم مناسب.",
+     en:"🧡 Cetirizine (allergy)\n• May cause drowsiness.\n• After Iftar/bedtime works well."
+    },
+    {cat:"other", icon:"🧡", key:"loratadine", arName:"Loratadine", enName:"Loratadine",
+     ar:"🧡 لوراتادين\n• مرة يوميًا.\n• وقت ثابت.",
+     en:"🧡 Loratadine\n• Once daily.\n• Fixed time."
+    },
+
+    // Add to hit 60 with common meds
+    {cat:"gi", icon:"🧡", key:"domperidone", arName:"Domperidone", enName:"Domperidone",
+     ar:"🧡 دومبيريدون\n• غالبًا قبل الوجبة.\n• قبل الإفطار/السحور حسب الوصفة.",
+     en:"🧡 Domperidone\n• Often before meals.\n• Before Iftar/Suhoor per Rx."
+    },
+    {cat:"heart", icon:"🫀", key:"isosorbide", arName:"Isosorbide", enName:"Isosorbide",
+     ar:"🫀 إيزوسوربيد\n• حسب الوصفة.\n• غالبًا بعد الإفطار.",
+     en:"🫀 Isosorbide\n• Per prescription.\n• Often after Iftar."
+    },
+    {cat:"pain", icon:"💊", key:"diclofenac", arName:"Diclofenac", enName:"Diclofenac",
+     ar:"💊 ديكلوفيناك\n• بعد الإفطار مع الأكل.\n• انتبه للمعدة.",
+     en:"💊 Diclofenac\n• After Iftar with food.\n• Watch stomach."
+    },
+    {cat:"resp", icon:"🫁", key:"fluticasone_nasal", arName:"بخاخ أنف (Fluticasone)", enName:"Nasal spray (Fluticasone)",
+     ar:"🫁 بخاخ الأنف\n• يستخدم حسب الوصفة.\n• غالبًا مرة يوميًا.",
+     en:"🫁 Nasal spray\n• Use as prescribed.\n• Often once daily."
+    },
+
+    {cat:"other", icon:"🧬", key:"oral_contraceptive", arName:"حبوب منع الحمل", enName:"Oral contraceptive",
+     ar:"🧬 حبوب منع الحمل\n• وقت ثابت يوميًا.\n• بعد الإفطار مناسب.",
+     en:"🧬 Oral contraceptive\n• Same time daily.\n• After Iftar works well."
+    },
+    {cat:"other", icon:"🧬", key:"levonorgestrel", arName:"Levonorgestrel (طارئ)", enName:"Levonorgestrel (emergency)",
+     ar:"🧬 حبة طارئة\n• تُؤخذ بأسرع وقت ممكن حسب الإرشادات.\n• إذا احتجت توجيه: تواصل مع الصيدلي.",
+     en:"🧬 Emergency pill\n• Take as soon as possible per instructions.\n• If unsure: ask pharmacist."
+    },
+
+    // A few more to ensure >50 comfortably
+    {cat:"heart", icon:"🫀", key:"clonidine", arName:"Clonidine", enName:"Clonidine",
+     ar:"🫀 كلونيدين\n• لا توقف فجأة.\n• وقت ثابت.",
+     en:"🫀 Clonidine\n• Do not stop suddenly.\n• Fixed time."
+    },
+    {cat:"gi", icon:"🧡", key:"bismuth", arName:"Bismuth", enName:"Bismuth",
+     ar:"🧡 بزموت\n• حسب الوصفة.\n• قد يسبب سواد بالبراز/اللسان (غير خطير غالبًا).",
+     en:"🧡 Bismuth\n• Per Rx.\n• Can darken stool/tongue (usually harmless)."
+    },
+    {cat:"neuro", icon:"🧠", key:"amitriptyline", arName:"Amitriptyline", enName:"Amitriptyline",
+     ar:"🧠 أميتريبتيلين\n• قد يسبب نعاس.\n• غالبًا قبل النوم.",
+     en:"🧠 Amitriptyline\n• Can cause drowsiness.\n• Often bedtime."
+    }
+  ];
+
+  // ===== Categories =====
   const CATS = [
-    {id:"diabetes", ar:"السكري", en:"Diabetes"},
-    {id:"anticoag", ar:"مميعات الدم", en:"Blood thinners"},
-    {id:"gi", ar:"المعدة", en:"Stomach (GI)"},
-    {id:"abx", ar:"المضادات", en:"Antibiotics"},
-    {id:"htn", ar:"الضغط والقلب", en:"BP & Heart"},
-    {id:"rheum", ar:"الروماتيزم والمناعة", en:"Rheum & Immunity"},
-    {id:"asthma", ar:"الربو والحساسية", en:"Asthma & Allergy"},
-    {id:"thyroid", ar:"الغدة والهرمونات", en:"Thyroid & Hormones"},
-    {id:"pain", ar:"الألم والمسكنات", en:"Pain"},
-    {id:"neuro", ar:"الأعصاب", en:"Neuro"},
-    {id:"lipids", ar:"الدهون", en:"Lipids"},
-    {id:"supp", ar:"المكملات", en:"Supplements"}
+    {key:"diabetes", icon:"🍬", ar:"السكري", en:"Diabetes"},
+    {key:"blood", icon:"🩸", ar:"مميعات الدم", en:"Blood thinners"},
+    {key:"gi", icon:"🧡", ar:"المعدة/الحموضة", en:"Stomach/GERD"},
+    {key:"abx", icon:"🦠", ar:"مضادات حيوية", en:"Antibiotics"},
+    {key:"heart", icon:"🫀", ar:"القلب/الضغط", en:"Heart/BP"},
+    {key:"lipids", icon:"🟦", ar:"الدهون", en:"Lipids"},
+    {key:"thyroid", icon:"🦋", ar:"الغدة", en:"Thyroid"},
+    {key:"rheum", icon:"🦴", ar:"الروماتيزم", en:"Rheumatology"},
+    {key:"pain", icon:"💊", ar:"مسكنات", en:"Pain meds"},
+    {key:"resp", icon:"🫁", ar:"الربو/تنفس", en:"Respiratory"},
+    {key:"neuro", icon:"🧠", ar:"أعصاب/نفسية", en:"Neuro/Psych"},
+    {key:"endo", icon:"🧲", ar:"مكملات/أخرى", en:"Supplements"},
+    {key:"other", icon:"📌", ar:"أدوية متنوعة", en:"Other"}
   ];
 
-  const KB = [
-    // ===== Diabetes (many) =====
-    med("diabetes","💉","إنسولين (عام)","Insulin (general)",
-`• لا تغيّر الجرعات بنفسك.\n• إذا السكر <70 أو أعراض هبوط شديدة → افطر فورًا.\n• كثير من المرضى يأخذون الـ basal وقت الإفطار (حسب خطة الطبيب).\n• السريع يعتمد على كمية الأكل.`,
-`• Do not change doses on your own.\n• If sugar <70 or severe symptoms → break fast.\n• Many take basal at Iftar (per plan).\n• Rapid insulin depends on meal size.`,
-["insulin","lantus","glargine","detemir","degludec","novorapid","aspart","lispro","humalog","mixtard","premix","انسولين","إنسولين","لانتوس","نوفورابيد","ميكستارد"]),
-
-    med("diabetes","💊","Metformin","Metformin",
-`• يؤخذ مع الأكل لتقليل تهيج المعدة.\n• غالبًا: إفطار و/أو سحور حسب الوصفة.`,
-`• Take with food.\n• Usually at Iftar and/or Suhoor as prescribed.`,
-["metformin","ميتفورمين"]),
-
-    med("diabetes","🍬","Gliclazide","Gliclazide (SU)",
-`• قد يسبب هبوط سكر.\n• يؤخذ مع وجبة (إفطار/سحور) وتابع السكر.`,
-`• Can cause low sugar.\n• Take with meals and monitor glucose.`,
-["gliclazide","جليكلازايد"]),
-
-    med("diabetes","🍬","Glimepiride","Glimepiride (SU)",
-`• خطر هبوط سكر.\n• مع وجبة، ولا تأخذها بدون أكل.`,
-`• Risk of hypoglycemia.\n• Take with a meal (do not take without food).`,
-["glimepiride","جليميبرايد"]),
-
-    med("diabetes","🧃","Empagliflozin","Empagliflozin (SGLT2)",
-`• قد يسبب جفاف.\n• اشرب سوائل كفاية بعد الإفطار.\n• إذا مرض/قيء/إسهال → تواصل مع الطبيب.`,
-`• Dehydration risk.\n• Hydrate well after Iftar.\n• If sick/vomiting/diarrhea → contact clinician.`,
-["empagliflozin","امباجليفلوزين"]),
-
-    med("diabetes","🧃","Dapagliflozin","Dapagliflozin (SGLT2)",
-`• نفس إرشاد SGLT2: سوائل بعد الإفطار.\n• إذا مرض شديد → استشارة.`,
-`• Same SGLT2 advice: hydrate well.\n• Seek advice if unwell.`,
-["dapagliflozin","داباجليفلوزين"]),
-
-    med("diabetes","🧩","Sitagliptin","Sitagliptin (DPP-4)",
-`• عادةً خطر هبوط أقل.\n• خذه في وقت ثابت (غالبًا بعد الإفطار).`,
-`• Usually low hypoglycemia risk.\n• Take at a fixed time (often after Iftar).`,
-["sitagliptin","سيتاجلبتين"]),
-
-    med("diabetes","🧩","Linagliptin","Linagliptin (DPP-4)",
-`• وقت ثابت يوميًا.\n• غالبًا بعد الإفطار.`,
-`• Fixed daily time.\n• Often after Iftar.`,
-["linagliptin","ليناجلبتين"]),
-
-    med("diabetes","🧬","Semaglutide","Semaglutide (GLP-1)",
-`• حقنة أسبوعية غالبًا.\n• استمر حسب الجدول.\n• إذا غثيان شديد/جفاف → تواصل.`,
-`• Often weekly injection.\n• Continue schedule.\n• If severe nausea/dehydration → contact clinician.`,
-["semaglutide","سيماغلوتايد","ozempic"]),
-
-    med("diabetes","🧬","Liraglutide","Liraglutide (GLP-1)",
-`• حقنة يومية.\n• خذها في وقت ثابت (يفضل بعد الإفطار لتقليل الغثيان).`,
-`• Daily injection.\n• Fixed time (many prefer after Iftar).`,
-["liraglutide","ليراغلوتايد","victoza"]),
-
-    med("diabetes","🩺","Glargine","Insulin Glargine (basal)",
-`• غالبًا تؤخذ مرة يوميًا.\n• كثير يثبتونها بعد الإفطار.\n• اتبع خطة الطبيب.`,
-`• Often once daily.\n• Many fix it after Iftar.\n• Follow your plan.`,
-["glargine","لانتوس","lantus","glargine insulin"]),
-
-    med("diabetes","⚡","Aspart","Insulin Aspart (rapid)",
-`• يؤخذ مع الوجبة.\n• جرعة السحور قد تختلف حسب حجم الوجبة.\n• إذا هبوط → افطر.`,
-`• Take with meals.\n• Suhoor dose depends on meal.\n• Break fast if hypoglycemia.`,
-["aspart","novorapid","نوفورابيد"]),
-
-    // ===== Anticoag / antiplatelet =====
-    med("anticoag","🩸","Warfarin","Warfarin",
-`• وقت ثابت يوميًا.\n• في رمضان: كثير يأخذونه بعد الإفطار بـ 1–2 ساعة.\n• لا تغيّر الجرعة إلا بتوجيه الطبيب.\n• انتبه للنزف واسأل عن التداخلات.`,
-`• Same time daily.\n• Ramadan: often 1–2 hours after Iftar.\n• Do not change dose without clinician.\n• Watch bleeding and interactions.`,
-["warfarin","coumadin","وارفارين","كومادين"]),
-
-    med("anticoag","🧬","Apixaban","Apixaban (Eliquis)",
-`• مرتين يوميًا: إفطار + سحور.\n• وقت ثابت.`,
-`• BID: Iftar + Suhoor.\n• Fixed times.`,
-["apixaban","eliquis","أبيكسابان","اليكويس"]),
-
-    med("anticoag","🧬","Rivaroxaban","Rivaroxaban (Xarelto)",
-`• مرة يوميًا غالبًا بعد الإفطار.\n• جرعات 15/20mg تؤخذ مع الأكل.`,
-`• Usually once daily after Iftar.\n• 15/20 mg should be taken with food.`,
-["rivaroxaban","xarelto","ريفاروكسابان","زارلتو"]),
-
-    med("anticoag","🧬","Dabigatran","Dabigatran (Pradaxa)",
-`• مرتين: إفطار + سحور.\n• لا تفتح الكبسولة.`,
-`• BID: Iftar + Suhoor.\n• Do not open capsules.`,
-["dabigatran","pradaxa","دابيغاتران","براداكسا"]),
-
-    med("anticoag","🫀","Aspirin","Aspirin",
-`• غالبًا بعد الإفطار مع الأكل لتقليل تهيج المعدة.\n• وقت ثابت يوميًا.`,
-`• Often after Iftar with food.\n• Fixed daily time.`,
-["aspirin","أسبرين"]),
-
-    med("anticoag","🫀","Clopidogrel","Clopidogrel (Plavix)",
-`• بعد الإفطار مع الأكل.\n• لا توقف إلا بتوجيه الطبيب.`,
-`• After Iftar with food.\n• Don’t stop unless instructed.`,
-["clopidogrel","plavix","كلوبيدوجريل","بلافيكس"]),
-
-    // ===== GI =====
-    med("gi","🧡","Omeprazole","Omeprazole (PPI)",
-`• الأفضل: قبل الأكل بـ 30–60 دقيقة.\n• مرة: قبل السحور أو قبل الإفطار.\n• مرتين: قبل الإفطار + قبل السحور.`,
-`• Best 30–60 min before meals.\n• OD: before Suhoor or Iftar.\n• BID: before Iftar + before Suhoor.`,
-["omeprazole","اوميبرازول","حموضة","معدة","ppi"]),
-
-    med("gi","🧡","Pantoprazole","Pantoprazole (PPI)",
-`• نفس طريقة PPI: قبل الوجبة بـ 30–60 دقيقة.`,
-`• Same as PPI: 30–60 min before meals.`,
-["pantoprazole","بانتوبرازول"]),
-
-    med("gi","🧡","Esomeprazole","Esomeprazole (PPI)",
-`• قبل الوجبة بـ 30–60 دقيقة.`,
-`• 30–60 min before meals.`,
-["esomeprazole","ايسوميبرازول"]),
-
-    med("gi","🧡","Famotidine","Famotidine",
-`• يمكن بعد الإفطار أو قبل النوم.\n• يساعد للحموضة الليلية.`,
-`• Can be taken after Iftar or bedtime.\n• Helps night reflux.`,
-["famotidine","فاموتيدين"]),
-
-    med("gi","🟦","Sucralfate","Sucralfate",
-`• على معدة فارغة.\n• افصل عن الأدوية الأخرى ساعتين.`,
-`• Empty stomach.\n• Separate from other meds by 2 hours.`,
-["sucralfate","سوكرافات"]),
-
-    med("gi","🟫","Lactulose","Lactulose",
-`• يمكن بعد الإفطار.\n• اشرب سوائل كفاية.`,
-`• Can be after Iftar.\n• Maintain hydration.`,
-["lactulose","لاكتولوز"]),
-
-    med("gi","🟫","PEG","PEG (Macrogol)",
-`• ملين: غالبًا بعد الإفطار.\n• سوائل كفاية.`,
-`• Laxative: often after Iftar.\n• Hydrate.`,
-["macrogol","peg","movicol","ماكروغول"]),
-
-    // ===== Antibiotics (many) =====
-    med("abx","🦠","Amoxicillin","Amoxicillin",
-`• مرتين: إفطار + سحور.\n• إذا ثلاث: إفطار + آخر الليل + سحور.`,
-`• BID: Iftar + Suhoor.\n• TID: Iftar + late evening + Suhoor.`,
-["amoxicillin","اموكسيسيلين","amox"]),
-
-    med("abx","🦠","Augmentin","Amoxicillin/Clavulanate (Augmentin)",
-`• يؤخذ مع الأكل لتقليل اضطراب المعدة.\n• مرتين: إفطار + سحور.`,
-`• Take with food.\n• BID: Iftar + Suhoor.`,
-["augmentin","أوغمنتين","اوجمنتين","clavulanate"]),
-
-    med("abx","🦠","Azithromycin","Azithromycin",
-`• مرة يوميًا: يفضّل بعد الإفطار.\n• وقت ثابت.`,
-`• Once daily: often after Iftar.\n• Fixed time.`,
-["azithromycin","azithro","ازيثرومايسين"]),
-
-    med("abx","🦠","Ciprofloxacin","Ciprofloxacin",
-`• غالبًا مرتين: إفطار + سحور.\n• تجنب الحليب/الكالسيوم قريب من الجرعة.`,
-`• Often BID: Iftar + Suhoor.\n• Avoid dairy/calcium close to dose.`,
-["ciprofloxacin","cipro","سيبروفلوكساسين"]),
-
-    med("abx","🦠","Levofloxacin","Levofloxacin",
-`• مرة يوميًا غالبًا بعد الإفطار.\n• افصل عن الحديد/الكالسيوم.`,
-`• Once daily often after Iftar.\n• Separate from iron/calcium.`,
-["levofloxacin","levo","ليفوفلوكساسين"]),
-
-    med("abx","🦠","Doxycycline","Doxycycline",
-`• مرة/مرتين حسب الوصفة.\n• يؤخذ مع ماء كثير، ولا تستلقِ مباشرة.`,
-`• OD/BID as prescribed.\n• Take with plenty of water; don’t lie down immediately.`,
-["doxycycline","doxy","دوكسيسيكلين"]),
-
-    med("abx","🦠","Metronidazole","Metronidazole",
-`• غالبًا 2–3 مرات.\n• إن كان ثلاث: إفطار + آخر الليل + سحور.\n• تجنب الكحول (إن وُجد).`,
-`• Often 2–3 times.\n• If TID: Iftar + late evening + Suhoor.\n• Avoid alcohol.`,
-["metronidazole","flagyl","ميترونيدازول","فلاجيل"]),
-
-    med("abx","🦠","Cephalexin","Cephalexin",
-`• 2–4 مرات.\n• إذا أربع مرات صعبة مع الصيام → اسأل الصيدلي عن بديل.`,
-`• 2–4 times/day.\n• QID is hard in fasting → ask pharmacist for alternatives.`,
-["cephalexin","سيفاليكسين"]),
-
-    // ===== HTN & Heart =====
-    med("htn","🔥","Amlodipine","Amlodipine",
-`• مرة يوميًا.\n• غالبًا بعد الإفطار (وقت ثابت).`,
-`• Once daily.\n• Often after Iftar (fixed time).`,
-["amlodipine","أملوديبين"]),
-
-    med("htn","🔥","Losartan","Losartan",
-`• مرة يوميًا غالبًا بعد الإفطار.\n• إذا دوخة شديدة → راجع الطبيب.`,
-`• Once daily often after Iftar.\n• If severe dizziness → seek advice.`,
-["losartan","لوسارتان"]),
-
-    med("htn","🔥","Valsartan","Valsartan",
-`• مرة يوميًا بعد الإفطار غالبًا.`,
-`• Once daily often after Iftar.`,
-["valsartan","فالسارتان"]),
-
-    med("htn","🫀","Bisoprolol","Bisoprolol",
-`• مرة يوميًا.\n• بعد الإفطار أو قبل النوم (وقت ثابت).`,
-`• Once daily.\n• After Iftar or bedtime (fixed time).`,
-["bisoprolol","بيسوبرولول"]),
-
-    med("htn","🫀","Metoprolol","Metoprolol",
-`• مرة/مرتين حسب الوصفة.\n• مرتين: إفطار + سحور.`,
-`• OD/BID as prescribed.\n• If BID: Iftar + Suhoor.`,
-["metoprolol","ميتوبرولول"]),
-
-    med("htn","💧","Furosemide","Furosemide (diuretic)",
-`• مُدر بول: الأفضل بعد الإفطار/بداية الليل لتقليل الجفاف نهارًا.`,
-`• Diuretic: best after Iftar/early evening to reduce daytime dehydration.`,
-["furosemide","لازيكس","فوروسيميد"]),
-
-    med("htn","💧","HCTZ","Hydrochlorothiazide (diuretic)",
-`• مُدر: بعد الإفطار.\n• انتبه للجفاف.`,
-`• Diuretic: after Iftar.\n• Watch dehydration.`,
-["hctz","hydrochlorothiazide","هيدروكلوروثيازايد"]),
-
-    med("htn","🫀","Spironolactone","Spironolactone",
-`• غالبًا بعد الإفطار.\n• راقب البوتاسيوم حسب الطبيب.`,
-`• Often after Iftar.\n• Monitor potassium if instructed.`,
-["spironolactone","سبيرونولاكتون"]),
-
-    med("htn","🫀","Nitroglycerin","Nitroglycerin (spray/tablet)",
-`• يستخدم عند ألم الصدر حسب توجيه الطبيب.\n• إذا ألم شديد لا يتحسن → طوارئ.`,
-`• Use for chest pain as instructed.\n• If severe/persistent pain → emergency.`,
-["nitroglycerin","nitro","نتروليجرين"]),
-
-    // ===== Rheum & Immunity =====
-    med("rheum","🦴","Methotrexate","Methotrexate",
-`• غالبًا أسبوعي.\n• خذه في نفس اليوم/الوقت.\n• إذا حرارة/عدوى → تواصل مع العيادة.`,
-`• Often weekly.\n• Same day/time.\n• Fever/infection → contact clinic.`,
-["methotrexate","mtx","ميثوتريكسيت"]),
-
-    med("rheum","🦴","Hydroxychloroquine","Hydroxychloroquine",
-`• خذه مع الأكل لتقليل الغثيان.\n• غالبًا بعد الإفطار.`,
-`• Take with food.\n• Often after Iftar.`,
-["hydroxychloroquine","plaquenil","هيدروكسي كلوروكوين","بلاكوينيل"]),
-
-    med("rheum","🦴","Sulfasalazine","Sulfasalazine",
-`• مع الأكل.\n• إذا مرتين: إفطار + سحور.`,
-`• With food.\n• If BID: Iftar + Suhoor.`,
-["sulfasalazine","سلفاسالازين"]),
-
-    med("rheum","🦴","Leflunomide","Leflunomide",
-`• مرة يوميًا غالبًا بعد الإفطار.\n• وقت ثابت.`,
-`• Once daily often after Iftar.\n• Fixed time.`,
-["leflunomide","ليفلو نوميد"]),
-
-    med("rheum","🧬","Adalimumab","Adalimumab (Humira)",
-`• حقنة كل أسبوعين غالبًا.\n• استمر حسب جدولك.\n• علامات عدوى → تواصل.`,
-`• Often every 2 weeks.\n• Keep schedule.\n• Infection signs → contact clinic.`,
-["adalimumab","humira","اداليموماب","هيوميرا"]),
-
-    med("rheum","🧬","Etanercept","Etanercept (Enbrel)",
-`• حقنة أسبوعية غالبًا.\n• استمر حسب الجدول.`,
-`• Often weekly.\n• Keep schedule.`,
-["etanercept","enbrel","ايتانرسبت","انبرل"]),
-
-    med("rheum","🧬","Tofacitinib","Tofacitinib (JAK inhibitor)",
-`• مرة/مرتين حسب الوصفة.\n• لا توقف بدون الطبيب.\n• علامات عدوى → تواصل.`,
-`• OD/BID as prescribed.\n• Don’t stop without clinician.\n• Infection signs → contact clinic.`,
-["tofacitinib","زلفجانز","tofa"]),
-
-    // ===== Asthma & Allergy =====
-    med("asthma","🫁","Salbutamol","Salbutamol (Ventolin)",
-`• بخاخ إسعافي عند الحاجة.\n• إذا ضيق نفس شديد → طوارئ.`,
-`• Rescue inhaler as needed.\n• Severe breathlessness → emergency.`,
-["salbutamol","ventolin","فنتولين","سالبوتامول"]),
-
-    med("asthma","🫁","Budesonide/Formoterol","Symbicort",
-`• بخاخ وقائي حسب الوصفة.\n• استمر عليه في رمضان.`,
-`• Controller inhaler as prescribed.\n• Continue during Ramadan.`,
-["symbicort","budesonide","formoterol","سيمبيكورت"]),
-
-    med("asthma","🤧","Cetirizine","Cetirizine",
-`• مرة يوميًا.\n• غالبًا بعد الإفطار.`,
-`• Once daily.\n• Often after Iftar.`,
-["cetirizine","سيتريزين"]),
-
-    med("asthma","🤧","Loratadine","Loratadine",
-`• مرة يوميًا بعد الإفطار غالبًا.`,
-`• Once daily often after Iftar.`,
-["loratadine","لوراتادين"]),
-
-    // ===== Thyroid & Hormones =====
-    med("thyroid","🦋","Levothyroxine","Levothyroxine",
-`• على معدة فارغة.\n• خيار A: قبل السحور 30–60 دقيقة.\n• خيار B: بعد الإفطار 3–4 ساعات (بدون سناكات).`,
-`• Empty stomach.\n• Option A: 30–60 min before Suhoor.\n• Option B: 3–4 hours after Iftar (no snacks).`,
-["levothyroxine","euthyrox","eltroxin","ليفوثيروكسين","يوثيروكس","التركسين"]),
-
-    med("thyroid","🌙","Prednisone","Prednisone (steroid)",
-`• لا توقفه فجأة.\n• غالبًا يؤخذ بعد الإفطار مع الأكل.`,
-`• Do not stop suddenly.\n• Often after Iftar with food.`,
-["prednisone","prednisolone","بريدنيزون","كورتيزون"]),
-
-    med("thyroid","🧬","Metformin (PCOS)","Metformin (PCOS use)",
-`• نفس الميتفورمين: مع الأكل (إفطار/سحور).`,
-`• Same as metformin: take with food (Iftar/Suhoor).`,
-["pcos","تكيس","metformin pcos"]),
-
-    // ===== Pain =====
-    med("pain","💊","Paracetamol","Paracetamol (Acetaminophen)",
-`• يمكن بعد الإفطار/السحور حسب الحاجة.\n• لا تتجاوز الجرعة اليومية.`,
-`• Can be after Iftar/Suhoor as needed.\n• Do not exceed daily max dose.`,
-["paracetamol","acetaminophen","بنادول","باراسيتامول"]),
-
-    med("pain","💊","Ibuprofen","Ibuprofen (NSAID)",
-`• يفضّل بعد الإفطار مع الأكل.\n• انتبه لقرحة المعدة/الكلى.`,
-`• Prefer after Iftar with food.\n• Caution in ulcers/kidney disease.`,
-["ibuprofen","بروفين","ايبوبروفين"]),
-
-    med("pain","💊","Naproxen","Naproxen",
-`• بعد الإفطار مع الأكل.\n• نفس احتياطات NSAIDs.`,
-`• After Iftar with food.\n• Same NSAID cautions.`,
-["naproxen","نابروكسين"]),
-
-    med("pain","💊","Diclofenac","Diclofenac",
-`• بعد الإفطار مع الأكل.\n• تجنب إن لديك قرحة/كلى إلا بتوجيه.`,
-`• After Iftar with food.\n• Avoid with ulcers/kidney disease unless advised.`,
-["diclofenac","فولتارين","ديكلوفيناك"]),
-
-    // ===== Neuro =====
-    med("neuro","🧠","Levetiracetam","Levetiracetam (Keppra)",
-`• لا تفوّت الجرعات.\n• مرتين: إفطار + سحور.`,
-`• Do not miss doses.\n• BID: Iftar + Suhoor.`,
-["levetiracetam","keppra","كيبرا","ليفيتيراسيتام"]),
-
-    med("neuro","🧠","Valproate","Valproate",
-`• وقت ثابت.\n• غالبًا مع الأكل لتقليل اضطراب المعدة.`,
-`• Fixed time.\n• Often with food to reduce GI upset.`,
-["valproate","ديباكين","فالبروات"]),
-
-    med("neuro","🧠","Gabapentin","Gabapentin",
-`• مرة-ثلاث حسب الوصفة.\n• إذا ثلاث: إفطار + آخر الليل + سحور.`,
-`• 1–3 times/day.\n• If TID: Iftar + late evening + Suhoor.`,
-["gabapentin","جابابنتين"]),
-
-    med("neuro","😴","Amitriptyline","Amitriptyline",
-`• يسبب نعاس.\n• غالبًا بعد الإفطار/قبل النوم.`,
-`• Can cause drowsiness.\n• Often after Iftar/bedtime.`,
-["amitriptyline","اميتريبتيلين"]),
-
-    // ===== Lipids =====
-    med("lipids","🟦","Atorvastatin","Atorvastatin",
-`• وقت ثابت.\n• كثير يفضلون بعد الإفطار أو قبل النوم.`,
-`• Fixed time.\n• Many prefer after Iftar or bedtime.`,
-["atorvastatin","ليبيتور","اتورفاستاتين"]),
-
-    med("lipids","🟦","Rosuvastatin","Rosuvastatin",
-`• وقت ثابت.\n• بعد الإفطار أو قبل النوم.`,
-`• Fixed time.\n• After Iftar or bedtime.`,
-["rosuvastatin","روزوفاستاتين","crestor"]),
-
-    // ===== Supplements =====
-    med("supp","🧲","Iron","Iron (Ferrous)",
-`• يفضّل بعيد عن الشاي/القهوة/الحليب.\n• افصل عن ليفوثيروكسين 4 ساعات.\n• غالبًا بعد الإفطار.`,
-`• Avoid taking with tea/coffee/dairy.\n• Separate from levothyroxine by 4 hours.\n• Often after Iftar.`,
-["iron","ferrous","حديد"]),
-
-    med("supp","🧲","Calcium","Calcium",
-`• افصل عن ليفوثيروكسين 4 ساعات.\n• غالبًا بعد الإفطار.`,
-`• Separate from levothyroxine by 4 hours.\n• Often after Iftar.`,
-["calcium","كالسيوم"]),
-
-    med("supp","☀️","Vitamin D","Vitamin D",
-`• يمكن بعد الإفطار.\n• وقت ثابت حسب الوصفة.`,
-`• Can be after Iftar.\n• Fixed schedule.`,
-["vitamin d","vit d","فيتامين د"]),
-
-    med("supp","🧴","Multivitamin","Multivitamin",
-`• غالبًا بعد الإفطار مع الأكل.`,
-`• Often after Iftar with food.`,
-["multivitamin","multivit","فيتامينات","مكمل"])
-  ];
-
-  // Helper to define meds
-  function med(cat, icon, name_ar, name_en, arText, enText, keywords){
-    return { cat, icon, name_ar, name_en, arText, enText, keywords: keywords || [] };
-  }
-
-  // ===== Render UI =====
   function renderCats(){
-    catsEl.innerHTML = "";
+    state.view = "cats";
+    state.currentCat = null;
+    grid.innerHTML = "";
+    const label = (state.lang==="ar")
+      ? "اختر فئة:"
+      : "Choose a category:";
+    add("bot", label);
+
     CATS.forEach(c=>{
-      const b = document.createElement("div");
-      b.className = "cat" + ((state.activeCat===c.id) ? " active" : "");
-      b.textContent = (state.lang==="ar") ? c.ar : c.en;
-      b.onclick = ()=>{ state.activeCat = c.id; renderCats(); renderMeds(); };
-      catsEl.appendChild(b);
+      const div = document.createElement("div");
+      div.className = "tile";
+      div.innerHTML = `<div>${c.icon} ${(state.lang==="ar")?c.ar:c.en}<small>${state.lang==="ar"?"اضغط لعرض الأدوية":"Tap to view medicines"}</small></div><div>▶</div>`;
+      div.onclick = ()=> { state.currentCat = c.key; renderMeds(); };
+      grid.appendChild(div);
     });
+    setLang(state.lang); // refresh hint text per view
   }
 
   function renderMeds(){
-    medGrid.innerHTML = "";
-    const list = KB.filter(m => !state.activeCat || m.cat===state.activeCat);
-    list.forEach(m=>{
-      const d = document.createElement("div");
-      d.className = "med";
-      d.innerHTML = `
-        <div class="t">
-          <span>${m.icon} ${(state.lang==="ar") ? m.name_ar : m.name_en}</span>
-          <span>▶</span>
-        </div>
-        <div class="s">${state.lang==="ar" ? "اضغط للإرشاد" : "Tap for guidance"}</div>
-      `;
-      d.onclick = ()=>{
-        add("user", (state.lang==="ar") ? m.name_ar : m.name_en);
-        add("bot", (state.lang==="ar") ? m.arText : m.enText);
+    state.view = "meds";
+    grid.innerHTML = "";
+    const meds = MEDS.filter(m=>m.cat===state.currentCat);
+    const title = CATS.find(c=>c.key===state.currentCat);
+    add("bot", state.lang==="ar"
+      ? `✅ فئة: ${title.icon} ${title.ar}\nاختر الدواء:`
+      : `✅ Category: ${title.icon} ${title.en}\nTap a medicine:`
+    );
+
+    meds.forEach(m=>{
+      const div = document.createElement("div");
+      div.className = "tile";
+      div.innerHTML = `<div>${m.icon} ${(state.lang==="ar")?m.arName:m.enName}<small>${state.lang==="ar"?"اضغط للحصول على التوقيت":"Tap for timing guidance"}</small></div><div>▶</div>`;
+      div.onclick = ()=>{
+        add("user", (state.lang==="ar")?m.arName:m.enName);
+        add("bot", (state.lang==="ar")?m.ar:m.en);
       };
-      medGrid.appendChild(d);
+      grid.appendChild(div);
     });
+
+    setLang(state.lang);
   }
 
-  // ===== Optional typing =====
-  function matchText(q){
-    const t = (q||"").toLowerCase().trim();
-    if(!t) return null;
-    // match by keywords OR names
-    return KB.find(m=>{
-      const names = [m.name_ar, m.name_en].map(x => (x||"").toLowerCase());
-      const kw = (m.keywords||[]).map(x => String(x).toLowerCase());
-      return names.some(n=>t.includes(n)) || kw.some(k=>t.includes(k));
-    }) || null;
+  function render(){
+    if(state.view==="cats") renderCats();
+    else renderMeds();
   }
 
-  $("sendBtn").addEventListener("click", ()=>{
-    const q = $("input").value.trim();
-    if(!q) return;
-    add("user", q);
-    $("input").value = "";
-    const hit = matchText(q);
-    if(hit){
-      add("bot", state.lang==="ar" ? hit.arText : hit.enText);
+  // ===== Optional typing (hidden by default) =====
+  function toggleTyping(){
+    state.typing = !state.typing;
+    composer.style.display = state.typing ? "flex" : "none";
+    document.getElementById("toggleTypingBtn").classList.toggle("active", state.typing);
+  }
+
+  function findByText(t){
+    const q = (t||"").toLowerCase().trim();
+    if(!q) return null;
+    return MEDS.find(m =>
+      (m.arName && m.arName.toLowerCase().includes(q)) ||
+      (m.enName && m.enName.toLowerCase().includes(q)) ||
+      (m.key && m.key.toLowerCase().includes(q))
+    );
+  }
+
+  document.getElementById("sendBtn").onclick = ()=>{
+    const t = input.value.trim();
+    if(!t) return;
+    add("user", t);
+    input.value = "";
+    const m = findByText(t);
+    if(m){
+      add("bot", state.lang==="ar" ? m.ar : m.en);
     }else{
       add("bot", state.lang==="ar"
-        ? "لم أجد الدواء. اختر من الأزرار أو اكتب اسمًا أوضح."
-        : "I couldn’t find it. Please use buttons or type a clearer name."
+        ? "لم أجد هذا الاسم. الأفضل اختر من الأزرار."
+        : "I couldn’t find that name. Please use the buttons."
       );
     }
-  });
-  $("input").addEventListener("keydown",(e)=>{
-    if(e.key==="Enter"){ e.preventDefault(); $("sendBtn").click(); }
-  });
+  };
+  input.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("sendBtn").click(); } });
 
   // ===== Buttons =====
-  $("arBtn").addEventListener("click", ()=>setLang("ar"));
-  $("enBtn").addEventListener("click", ()=>setLang("en"));
-  $("toggleTypeBtn").addEventListener("click", toggleTyping);
-  $("resetBtn").addEventListener("click", reset);
+  document.getElementById("arBtn").onclick = ()=>setLang("ar");
+  document.getElementById("enBtn").onclick = ()=>setLang("en");
+  document.getElementById("homeBtn").onclick = ()=>renderCats();
+  document.getElementById("resetBtn").onclick = ()=>{ resetChat(); renderCats(); };
+  document.getElementById("toggleTypingBtn").onclick = ()=>toggleTyping();
 
-  // ===== Init =====
-  state.activeCat = "diabetes";
+  // ===== init =====
+  resetChat();
   renderCats();
-  renderMeds();
-  reset();
-  add("bot","اختر فئة من الأعلى ثم اضغط اسم الدواء. ✅");
 </script>
 </body>
 </html>
