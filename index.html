@@ -22,8 +22,82 @@
   --danger:#ff4d4f;
   --ok:#22c55e;
 }
+/* ===== EXECUTIVE PRINT HEADER/FOOTER (PDF) ===== */
+@media print{
+  @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
 
-*{box-sizing:border-box}
+  /* Hide UI */
+  header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
+
+  body{ background:#fff; }
+  .container{ padding:0; }
+  .card{ border:none; box-shadow:none; padding:0; }
+  .chat{ max-height:none; overflow:visible; }
+
+  /* Show only print area */
+  #printArea{ display:block !important; }
+
+  /* Bubbles formatting for print */
+  .bubble{
+    page-break-inside: avoid;
+    border:1px solid #dbe7ef;
+    background:#fff;
+  }
+}
+
+#printArea{ display:none; }
+
+/* Print Header Layout */
+.printHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 0 12px;
+  border-bottom:2px solid #dbe7ef;
+  margin-bottom:12px;
+}
+.printLogo{ height:52px; object-fit:contain; }
+.printTitle{
+  text-align:center;
+  flex:1;
+}
+.printTitle h2{
+  margin:0;
+  font-size:16px;
+  color:#0b2230;
+}
+.printTitle p{
+  margin:4px 0 0;
+  font-size:11px;
+  color:#6b8796;
+}
+
+/* Print Meta Line */
+.printMeta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:11px;
+  color:#6b8796;
+  margin:10px 0 12px;
+  padding-bottom:10px;
+  border-bottom:1px solid #dbe7ef;
+}
+.printMeta strong{ color:#0b2230; }
+
+/* Print Footer */
+.printFooter{
+  margin-top:14px;
+  padding-top:10px;
+  border-top:1px solid #dbe7ef;
+  font-size:10.5px;
+  color:#6b8796;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.printFooter .warn{ color:#0b2230; }*{box-sizing:border-box}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
