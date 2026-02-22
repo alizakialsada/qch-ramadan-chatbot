@@ -6,102 +6,33 @@
 <title>QCH – Smart Ramadan Medication Assistant</title>
 
 <link rel="manifest" href="manifest.webmanifest" />
-<meta name="theme-color" content="#35d0c7" />
+<meta name="theme-color" content="#0ea5a6" />
 
 <style>
 :root{
-  --primary:#2aa6ff;
-  --accent:#35d0c7;
-  --bg:#f4f9fc;
+  /* Theme tuned to logos (turquoise + hospital blue) */
+  --accent:#0ea5a6;        /* turquoise */
+  --accent2:#2aa6ff;       /* hospital blue */
+  --accentDark:#0b7f80;
+  --bg:#f3fbff;
   --card:#ffffff;
-  --border:#dbe7ef;
-  --text:#0b2230;
-  --muted:#6b8796;
-  --radius:20px;
-  --shadow:0 15px 40px rgba(0,0,0,.08);
+  --border:#d7e9f2;
+  --text:#08202a;
+  --muted:#5f7f8f;
+  --radius:22px;
+  --shadow:0 18px 45px rgba(0,0,0,.08);
   --danger:#ff4d4f;
   --ok:#22c55e;
 }
-/* ===== EXECUTIVE PRINT HEADER/FOOTER (PDF) ===== */
-@media print{
-  @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
 
-  /* Hide UI */
-  header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
-
-  body{ background:#fff; }
-  .container{ padding:0; }
-  .card{ border:none; box-shadow:none; padding:0; }
-  .chat{ max-height:none; overflow:visible; }
-
-  /* Show only print area */
-  #printArea{ display:block !important; }
-
-  /* Bubbles formatting for print */
-  .bubble{
-    page-break-inside: avoid;
-    border:1px solid #dbe7ef;
-    background:#fff;
-  }
-}
-
-#printArea{ display:none; }
-
-/* Print Header Layout */
-.printHeader{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:10px 0 12px;
-  border-bottom:2px solid #dbe7ef;
-  margin-bottom:12px;
-}
-.printLogo{ height:52px; object-fit:contain; }
-.printTitle{
-  text-align:center;
-  flex:1;
-}
-.printTitle h2{
-  margin:0;
-  font-size:16px;
-  color:#0b2230;
-}
-.printTitle p{
-  margin:4px 0 0;
-  font-size:11px;
-  color:#6b8796;
-}
-
-/* Print Meta Line */
-.printMeta{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  font-size:11px;
-  color:#6b8796;
-  margin:10px 0 12px;
-  padding-bottom:10px;
-  border-bottom:1px solid #dbe7ef;
-}
-.printMeta strong{ color:#0b2230; }
-
-/* Print Footer */
-.printFooter{
-  margin-top:14px;
-  padding-top:10px;
-  border-top:1px solid #dbe7ef;
-  font-size:10.5px;
-  color:#6b8796;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-.printFooter .warn{ color:#0b2230; }*{box-sizing:border-box}
+*{box-sizing:border-box}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:var(--bg);
+  background:
+    radial-gradient(900px 450px at 20% -10%, rgba(14,165,166,.16), transparent 60%),
+    radial-gradient(900px 450px at 80% -10%, rgba(42,166,255,.14), transparent 60%),
+    var(--bg);
   color:var(--text);
 }
 
@@ -109,9 +40,9 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:12px;
-  padding:16px 20px;
-  background:var(--card);
+  gap:14px;
+  padding:18px 22px;
+  background:linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
   border-bottom:1px solid var(--border);
   box-shadow:var(--shadow);
   position:sticky;
@@ -119,26 +50,39 @@ header{
   z-index:10;
 }
 
-.logo{ height:58px; object-fit:contain; }
+.logo{
+  height:86px;              /* enlarged */
+  width:auto;
+  object-fit:contain;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.08));
+}
 
 .title{
   text-align:center;
   flex:1;
-  min-width:200px;
+  min-width:210px;
 }
-.title h1{ margin:0; font-size:18px; }
-.title p{ margin:6px 0 0; color:var(--muted); font-size:13px; }
+.title h1{
+  margin:0;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+.title p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
 
 .container{
   display:grid;
-  grid-template-columns:340px 1fr;
+  grid-template-columns:360px 1fr;
   gap:18px;
   padding:18px;
 }
 @media (max-width: 980px){
   .container{ grid-template-columns:1fr; }
   header{ position:relative; }
-  .logo{ height:50px; }
+  .logo{ height:72px; }
 }
 
 .card{
@@ -158,25 +102,30 @@ header{
   justify-content:center;
   gap:8px;
   padding:10px 12px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid var(--border);
   background:#fff;
   cursor:pointer;
   margin:6px 6px 0 0;
   font-size:13px;
   user-select:none;
-  transition:transform .05s ease;
+  transition:transform .05s ease, box-shadow .15s ease;
 }
+.btn:hover{ box-shadow:0 10px 25px rgba(0,0,0,.06); }
 .btn:active{ transform:scale(.98); }
-.btn.primary{ background:var(--accent); color:#fff; border:none; }
+.btn.primary{
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color:#fff;
+  border:none;
+}
 .btn.danger{ background:var(--danger); color:#fff; border:none; }
 .btn.ghost{ background:#f7fbff; }
 .btn.full{ width:100%; margin:10px 0 0; }
 
 .kpi{
-  background:#f6fbff;
+  background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
   padding:12px;
-  border-radius:14px;
+  border-radius:16px;
   border:1px solid var(--border);
   margin-bottom:10px;
   display:flex;
@@ -190,7 +139,7 @@ header{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  padding:6px 10px;
+  padding:7px 10px;
   border-radius:999px;
   border:1px solid var(--border);
   background:#fff;
@@ -199,18 +148,18 @@ header{
 }
 
 .chat{
-  min-height:340px;
-  max-height:58vh;
+  min-height:360px;
+  max-height:60vh;
   overflow:auto;
   padding-right:4px;
 }
 .bubble{
-  background:#f0f7fb;
+  background:linear-gradient(180deg, #f2fbff 0%, #ffffff 100%);
   padding:12px 14px;
-  border-radius:14px;
+  border-radius:16px;
   margin-bottom:12px;
   border:1px solid var(--border);
-  line-height:1.65;
+  line-height:1.75;
 }
 .bubble .meta{
   color:var(--muted);
@@ -224,7 +173,7 @@ header{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  padding:4px 8px;
+  padding:5px 9px;
   border-radius:999px;
   border:1px solid var(--border);
   background:#fff;
@@ -244,20 +193,23 @@ header{
 input{
   width:100%;
   padding:12px 12px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid var(--border);
   outline:none;
 }
-input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,255,.12); }
+input:focus{
+  border-color:rgba(14,165,166,.55);
+  box-shadow:0 0 0 5px rgba(14,165,166,.14);
+}
 
 .suggest{
   position:absolute;
-  top:46px;
+  top:48px;
   right:0;
   left:0;
   background:#fff;
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:16px;
   box-shadow:var(--shadow);
   overflow:hidden;
   display:none;
@@ -272,7 +224,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   cursor:pointer;
   font-size:13px;
 }
-.suggest button:hover{ background:#f6fbff; }
+.suggest button:hover{ background:#f4fbff; }
 .suggest .line2{ color:var(--muted); font-size:12px; margin-top:2px; }
 
 .chips{
@@ -282,7 +234,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   margin-top:12px;
 }
 .chip{
-  border:1px dashed var(--border);
+  border:1px dashed rgba(14,165,166,.35);
   background:#fff;
   border-radius:999px;
   padding:8px 10px;
@@ -290,6 +242,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   font-size:12px;
   color:var(--muted);
 }
+.chip:hover{ border-color:rgba(42,166,255,.45); }
 
 .footer{
   text-align:center;
@@ -302,7 +255,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
 .modalBack{
   position:fixed;
   inset:0;
-  background:rgba(11,34,48,.45);
+  background:rgba(8,32,42,.45);
   display:none;
   align-items:center;
   justify-content:center;
@@ -310,9 +263,9 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   z-index:999;
 }
 .modal{
-  width:min(780px, 96vw);
+  width:min(820px, 96vw);
   background:#fff;
-  border-radius:22px;
+  border-radius:24px;
   border:1px solid var(--border);
   box-shadow:var(--shadow);
   overflow:hidden;
@@ -324,6 +277,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   justify-content:space-between;
   gap:10px;
   border-bottom:1px solid var(--border);
+  background:linear-gradient(135deg, rgba(14,165,166,.10) 0%, rgba(42,166,255,.10) 100%);
 }
 .modalHead strong{ font-size:15px; }
 .modalBody{
@@ -337,28 +291,97 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   border-spacing:0;
   overflow:hidden;
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:16px;
 }
 .table th, .table td{
   padding:10px 10px;
   border-bottom:1px solid var(--border);
   font-size:13px;
+  vertical-align:top;
 }
 .table th{
-  background:#f6fbff;
+  background:#f4fbff;
   text-align:right;
   color:var(--muted);
 }
 .table tr:last-child td{ border-bottom:none; }
 
-/* ===== PRINT / PDF ===== */
+/* ===== EXECUTIVE PRINT AREA ===== */
+#printArea{ display:none; }
+
+.printHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0 12px;
+  border-bottom:2px solid #d7e9f2;
+  margin-bottom:10px;
+}
+.printLogo{
+  height:70px;   /* enlarged for PDF */
+  width:auto;
+  object-fit:contain;
+}
+.printTitle{
+  text-align:center;
+  flex:1;
+}
+.printTitle h2{
+  margin:0;
+  font-size:16px;
+  color:#08202a;
+}
+.printTitle p{
+  margin:4px 0 0;
+  font-size:11px;
+  color:#5f7f8f;
+}
+
+.printMeta{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:11px;
+  color:#5f7f8f;
+  margin:10px 0 12px;
+  padding-bottom:10px;
+  border-bottom:1px solid #d7e9f2;
+}
+.printMeta strong{ color:#08202a; }
+
+.printFooter{
+  margin-top:14px;
+  padding-top:10px;
+  border-top:1px solid #d7e9f2;
+  font-size:10.5px;
+  color:#5f7f8f;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.printFooter .warn{ color:#08202a; }
+
+/* ===== PRINT RULES ===== */
 @media print{
-  body{ background:#fff; }
-  header, .sidebar, .row, .footer, .chips, #openTopBtn { display:none !important; }
+  @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
+
+  /* Hide interactive UI */
+  header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
+
+  body{ background:#fff !important; }
   .container{ padding:0; }
-  .card{ border:none; box-shadow:none; }
+  .card{ border:none; box-shadow:none; padding:0; }
   .chat{ max-height:none; overflow:visible; }
-  .bubble{ page-break-inside:avoid; }
+
+  /* Only print executive area */
+  #printArea{ display:block !important; }
+
+  .bubble{
+    page-break-inside: avoid;
+    border:1px solid #d7e9f2;
+    background:#fff;
+  }
 }
 </style>
 </head>
@@ -369,7 +392,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   <img src="logo_qch.png" class="logo" alt="QCH Logo">
   <div class="title">
     <h1>QCH – مساعد رمضان الذكي للأدوية</h1>
-    <p>Arabic • English • Patient Friendly • Offline Tracking • PDF</p>
+    <p>Arabic • English • Patient Friendly • Offline Tracking • Executive PDF</p>
   </div>
   <img src="logo_health_holding.png" class="logo" alt="Health Holding Logo">
 </header>
@@ -402,7 +425,9 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
     <div class="hr"></div>
 
     <button id="openTopBtn" class="btn ghost full" onclick="openTop10()">⭐ Top 10 Dashboard</button>
-    <button class="btn ghost full" onclick="exportDrugPDF()">📄 Export PDF (Selected)</button>
+    <button class="btn primary full" onclick="exportDrugPDF()">📄 Export PDF (Selected)</button>
+    <button class="btn ghost full" onclick="exportTop10PDF()">📄 Export PDF (Top 10)</button>
+
     <button class="btn danger full" onclick="resetTracking()">إعادة ضبط التتبع ♻️</button>
     <button class="btn danger full" onclick="clearChat()">مسح المحادثة 🗑</button>
 
@@ -421,7 +446,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
 
     <div class="row">
       <div class="inputWrap">
-        <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / أو الشركة..." autocomplete="off">
+        <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / أو الشركة / أو التركيز..." autocomplete="off">
         <div id="suggest" class="suggest"></div>
       </div>
       <button class="btn primary" onclick="searchDrug()">إرسال</button>
@@ -435,7 +460,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
 <div class="footer">Created by Automation Supervisor Ali Alsada</div>
 
 <!-- TOP10 MODAL -->
-<div class="modalBack" id="modalBack" onclick="closeModal(event)">
+<div class="modalBack" id="modalBack" onclick="closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modalHead">
       <strong>⭐ Top 10 Dashboard</strong>
@@ -446,15 +471,43 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
     </div>
     <div class="modalBody">
       <div id="top10Content"></div>
+      <div style="margin-top:10px;color:var(--muted);font-size:12px">
+        ملاحظة: البيانات محفوظة محليًا على الجهاز (بدون بيانات مرضى).
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- EXECUTIVE PRINT AREA -->
+<div id="printArea">
+  <div class="printHeader">
+    <img src="logo_qch.png" class="printLogo" alt="QCH">
+    <div class="printTitle">
+      <h2>Qatif Central Hospital – Smart Ramadan Medication Assistant</h2>
+      <p>Arabic • English • Patient Friendly • Offline Tracking • Executive PDF</p>
+    </div>
+    <img src="logo_health_holding.png" class="printLogo" alt="Health Holding">
+  </div>
+
+  <div class="printMeta">
+    <div>Document: <strong id="printDocType">Medication Guidance</strong></div>
+    <div>Generated: <strong id="printDate">—</strong></div>
+    <div>Created by: <strong>Automation Supervisor Ali Alsada</strong></div>
+  </div>
+
+  <div id="printContent"></div>
+
+  <div class="printFooter">
+    <div class="warn">⚠️ This guidance does not replace clinician advice.</div>
+    <div>QCH Pharmacy • For patient education use</div>
   </div>
 </div>
 
 <script>
 /* ========= SETTINGS ========= */
 let LANG = localStorage.getItem("qch_lang") || "ar"; // ar | en
-const TRACK_KEY = "qch_track_counts_v2";  // { "Amlodipine": 3, ... }
-const TOTAL_KEY = "qch_total_selections_v2";
+const TRACK_KEY = "qch_track_counts_v3";  // { "Amlodipine": 3, ... }
+const TOTAL_KEY = "qch_total_selections_v3";
 
 /* ========= STATE ========= */
 let DRUGS = [];
@@ -463,9 +516,16 @@ let lastSelectedDrug = null;
 /* ========= HELPERS ========= */
 const $ = (id) => document.getElementById(id);
 function safeText(s){ return (s ?? "").toString(); }
-function norm(s){
-  return safeText(s).toLowerCase().trim().replace(/\s+/g,' ');
+function norm(s){ return safeText(s).toLowerCase().trim().replace(/\s+/g,' '); }
+
+function escapeHtml(s){
+  return safeText(s)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
 }
+function escapeQuotes(s){ return safeText(s).replace(/'/g,"\\'"); }
+
 function getTrackMap(){
   try{ return JSON.parse(localStorage.getItem(TRACK_KEY) || "{}"); }
   catch{ return {}; }
@@ -485,7 +545,6 @@ async function loadDrugs(){
     $("tracked").innerText = getTotal();
     updateTopCount();
     renderChips();
-
     greet();
   }catch(e){
     addMessage("⚠️ تعذر تحميل ملف الأدوية (drugs.json). تأكد أنه JSON صحيح.");
@@ -505,13 +564,13 @@ function addMessage(html){
 function clearChat(){ $("chat").innerHTML=""; greet(); }
 
 function greet(){
-  const msg = (LANG==="ar")
-    ? "مرحبًا 👋 اكتب اسم الدواء (عربي/إنجليزي/الشركة/التركيز) وستظهر لك اقتراحات فورية."
-    : "Hello 👋 Type medication name (Arabic/English/brand/strength) and instant suggestions will appear.";
-  addMessage(`<strong>${msg}</strong><div class="meta"><span>QCH Ramadan Assistant</span></div>`);
+  addMessage(`<strong>مرحبًا 👋</strong><div style="margin-top:6px">
+  اكتب اسم الدواء (عربي/إنجليزي/Brand/Strength) وستظهر اقتراحات فورية.
+  </div>
+  <div class="meta"><span>QCH Ramadan Assistant</span></div>`);
 }
 
-/* ========= SEARCH + AUTOCOMPLETE (PRO) ========= */
+/* ========= SEARCH + AUTOCOMPLETE ========= */
 $("input").addEventListener("input", onType);
 $("input").addEventListener("keydown", (e)=>{
   if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }
@@ -524,10 +583,7 @@ function hideSuggest(){
 }
 
 function drugSearchBlob(d){
-  // search across multiple fields
-  return norm([
-    d.name, d.name_ar, d.brand, d.strength, d.form, d.category
-  ].map(safeText).join(" "));
+  return norm([d.name, d.name_ar, d.brand, d.strength, d.form, d.category].map(safeText).join(" "));
 }
 
 function scoreDrug(d, q){
@@ -543,7 +599,6 @@ function scoreDrug(d, q){
   if(en.startsWith(q) || ar.startsWith(q)) s += 6;
   if(brand.startsWith(q)) s += 4;
   if(strength.startsWith(q)) s += 2;
-  // contains bonuses
   if(en.includes(q) || ar.includes(q)) s += 2;
   if(brand.includes(q)) s += 1;
   return s;
@@ -569,9 +624,9 @@ function onType(){
     const st = safeText(d.strength);
     const cat = safeText(d.category);
 
-    const title = (LANG==="ar" && ar) ? ar : en;
+    const title = (ar ? ar : en);
     const sub = [
-      (LANG==="ar" ? en : ar),
+      en && ar ? en : "",
       br ? `Brand: ${br}` : "",
       st ? `Strength: ${st}` : "",
       cat ? `• ${cat}` : ""
@@ -587,14 +642,6 @@ function onType(){
   $("suggest").style.display="block";
 }
 
-function escapeQuotes(s){ return safeText(s).replace(/'/g,"\\'"); }
-function escapeHtml(s){
-  return safeText(s)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;");
-}
-
 function pickDrug(englishName){
   $("input").value = englishName;
   hideSuggest();
@@ -605,10 +652,7 @@ function findBestDrug(qRaw){
   const q = norm(qRaw);
   if(!q) return null;
 
-  const ranked = DRUGS
-    .map(d=>({ d, s: scoreDrug(d, q) }))
-    .sort((a,b)=>b.s-a.s);
-
+  const ranked = DRUGS.map(d=>({ d, s: scoreDrug(d, q) })).sort((a,b)=>b.s-a.s);
   if(ranked.length && ranked[0].s > 0) return ranked[0].d;
   return null;
 }
@@ -626,14 +670,11 @@ function searchDrug(){
     $("input").value = "";
     hideSuggest();
   }else{
-    addMessage(LANG==="ar"
-      ? "❌ لا يوجد تطابق. اكتب أول حرفين أو اختر من الاقتراحات."
-      : "❌ No match. Type 2+ letters or choose a suggestion."
-    );
+    addMessage("❌ لا يوجد تطابق. اكتب أول حرفين أو اختر من الاقتراحات.");
   }
 }
 
-/* ========= RENDER DRUG (EXEC) ========= */
+/* ========= RENDER ========= */
 function riskLabel(r){
   const v = norm(r);
   if(v==="high") return "High Risk";
@@ -659,13 +700,19 @@ function renderDrug(d){
   const map = getTrackMap();
   const count = map[en] || 0;
 
-  const title = (LANG==="ar" ? (ar || en) : en);
-  const alt   = (LANG==="ar" ? (en ? `(${en})` : "") : (ar ? `(${ar})` : ""));
+  const title = ar || en;
+  const alt = en && ar ? `(${en})` : "";
 
-  const guide = (LANG==="ar") ? (guideAR || "لا توجد إرشادات عربية بعد.") : (guideEN || guideAR || "No guidance yet.");
-  const notes = (LANG==="ar") ? notesAR : (notesEN || notesAR);
+  const guide = guideAR || "لا توجد إرشادات عربية بعد.";
+  const notes = notesAR || "";
 
-  const metaTags = `
+  const notesBlock = notes ? `<div style="margin-top:10px"><strong>ملاحظات</strong><div>${escapeHtml(notes).replaceAll("\n","<br>")}</div></div>` : "";
+
+  addMessage(`
+    <strong>${escapeHtml(title)}</strong>
+    ${alt ? `<small style="color:var(--muted)"> ${escapeHtml(alt)}</small>` : ""}
+    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
+    ${notesBlock}
     <div class="meta">
       ${cat ? `<span class="tag">🏷 ${escapeHtml(cat)}</span>` : ""}
       ${br ? `<span class="tag">🏭 ${escapeHtml(br)}</span>` : ""}
@@ -674,18 +721,8 @@ function renderDrug(d){
       ${risk ? `<span class="tag">⚠️ ${escapeHtml(riskLabel(risk))}</span>` : ""}
       <span class="tag">⭐ Selected: <strong>${count}</strong>x</span>
     </div>
-  `;
-
-  const notesBlock = notes ? `<div style="margin-top:10px"><strong>${LANG==="ar"?"ملاحظات":"Notes"}</strong><div>${escapeHtml(notes).replaceAll("\n","<br>")}</div></div>` : "";
-
-  addMessage(`
-    <strong>${escapeHtml(title)}</strong>
-    ${alt ? `<small style="color:var(--muted)"> ${escapeHtml(alt)}</small>` : ""}
-    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
-    ${notesBlock}
-    ${metaTags}
     <div class="meta">
-      <span style="color:var(--ok)">✅ Ready for PDF</span>
+      <span style="color:var(--ok)">✅ Ready for Executive PDF</span>
       <span>Qatif Central Hospital</span>
     </div>
   `);
@@ -695,14 +732,14 @@ function renderDrug(d){
 function filterCategory(cat){
   const results = DRUGS.filter(d => safeText(d.category) === cat);
   if(results.length === 0){
-    addMessage(LANG==="ar" ? "لا توجد عناصر في هذا التصنيف." : "No items in this category.");
+    addMessage("لا توجد عناصر في هذا التصنيف.");
     return;
   }
 
-  addMessage(`<strong>${LANG==="ar" ? "نتائج التصنيف:" : "Category results:"} ${escapeHtml(cat)}</strong>`);
+  addMessage(`<strong>نتائج التصنيف: ${escapeHtml(cat)}</strong>`);
   results.slice(0, 20).forEach(d => renderDrug(d));
   if(results.length > 20){
-    addMessage(LANG==="ar" ? `… تم عرض 20 فقط من أصل ${results.length}` : `… showing 20 of ${results.length}`);
+    addMessage(`… تم عرض 20 فقط من أصل ${results.length}`);
   }
 }
 
@@ -718,6 +755,7 @@ function trackSelection(d){
   $("tracked").innerText = total;
 
   updateTopCount();
+  renderChips();
 }
 
 function updateTopCount(){
@@ -732,7 +770,7 @@ function openTop10(){
   const entries = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
 
   if(entries.length === 0){
-    addMessage(LANG==="ar" ? "لا توجد بيانات تتبع بعد." : "No tracking data yet.");
+    addMessage("لا توجد بيانات تتبع بعد.");
     return;
   }
 
@@ -743,7 +781,7 @@ function openTop10(){
     const st = d ? safeText(d.strength) : "";
     const cat = d ? safeText(d.category) : "";
 
-    const label = (LANG==="ar" && ar) ? `${ar} (${name})` : `${name}${ar?` (${ar})`:""}`;
+    const label = ar ? `${ar} (${name})` : name;
     const sub = [cat, br, st].filter(Boolean).join(" — ");
 
     return `
@@ -760,81 +798,153 @@ function openTop10(){
       <thead>
         <tr>
           <th style="width:70px">#</th>
-          <th>${LANG==="ar" ? "الدواء" : "Medication"}</th>
-          <th style="width:140px">${LANG==="ar" ? "عدد الاستخدام" : "Count"}</th>
+          <th>الدواء</th>
+          <th style="width:140px">عدد الاستخدام</th>
         </tr>
       </thead>
       <tbody>${rows}</tbody>
     </table>
-    <div style="margin-top:12px;color:var(--muted);font-size:12px">
-      ${LANG==="ar" ? "ملاحظة: البيانات محفوظة محليًا على الجهاز (بدون أسماء مرضى)." : "Note: Data stored locally on this device (no patient identifiers)."}
-    </div>
   `;
 
   $("modalBack").style.display="flex";
 }
+function closeModal(){ $("modalBack").style.display="none"; }
 
-function closeModal(){
-  $("modalBack").style.display="none";
-}
-
-/* ========= RESET ========= */
 function resetTracking(){
   localStorage.removeItem(TRACK_KEY);
   localStorage.removeItem(TOTAL_KEY);
   $("tracked").innerText = "0";
   updateTopCount();
-  addMessage(LANG==="ar" ? "✅ تم إعادة ضبط التتبع." : "✅ Tracking reset.");
+  renderChips();
+  addMessage("✅ تم إعادة ضبط التتبع.");
 }
 
-/* ========= CHIPS (COMMON / FAST) ========= */
+/* ========= CHIPS ========= */
 function renderChips(){
   const container = $("chips");
   if(!container) return;
 
-  // Prefer top tracked, else show curated
   const map = getTrackMap();
   const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);
   const fallback = ["Amlodipine","Losartan","Metformin","Omeprazole","Levothyroxine","Warfarin","Atorvastatin","Cetirizine"];
 
-  const list = (top.length ? top : fallback)
-    .map(n=>{
-      const d = DRUGS.find(x=>norm(x.name)===norm(n));
-      const label = d ? (LANG==="ar" ? (d.name_ar || d.name) : d.name) : n;
-      return `<div class="chip" onclick="pickDrug('${escapeQuotes(d?d.name:n)}')">⭐ ${escapeHtml(label)}</div>`;
-    }).join("");
+  const list = (top.length ? top : fallback).map(n=>{
+    const d = DRUGS.find(x=>norm(x.name)===norm(n));
+    const label = d ? (d.name_ar || d.name) : n;
+    const key = d ? d.name : n;
+    return `<div class="chip" onclick="pickDrug('${escapeQuotes(key)}')">⭐ ${escapeHtml(label)}</div>`;
+  }).join("");
 
   container.innerHTML = list;
 }
 
-/* ========= EXPORT PDF (Selected Drug) ========= */
+/* ========= EXECUTIVE PDF EXPORT (Selected) ========= */
 function exportDrugPDF(){
   if(!lastSelectedDrug){
-    addMessage(LANG==="ar" ? "اختر دواء أولاً ثم Export PDF." : "Select a medication first, then export PDF.");
+    addMessage("اختر دواء أولاً ثم Export PDF.");
     return;
   }
-  // Add a print-friendly bubble header then print
+
   const d = lastSelectedDrug;
-  const title = LANG==="ar" ? "QCH – إرشادات رمضان للدواء" : "QCH – Ramadan Medication Guidance";
 
-  addMessage(`
-    <strong>${escapeHtml(title)}</strong>
-    <div style="margin-top:10px;color:var(--muted);font-size:12px">
-      ${LANG==="ar" ? "يمكنك حفظ الملف PDF من شاشة الطباعة." : "Save as PDF from the print dialog."}
+  const medTitle = (d.name_ar || d.name || "-");
+  const alt = (d.name && d.name_ar) ? `(${d.name})` : "";
+  const cat = d.category || "-";
+  const brand = d.brand || "-";
+  const strength = d.strength || "-";
+  const form = d.form || "-";
+
+  const guide = (d.ramadan_ar || d.ramadan || "لا توجد إرشادات بعد.");
+  const notes = (d.notes_ar || "");
+
+  $("printDocType").innerText = "Medication Guidance (Ramadan)";
+  $("printDate").innerText = new Date().toLocaleString();
+
+  $("printContent").innerHTML = `
+    <div class="bubble">
+      <strong style="font-size:15px">${escapeHtml(medTitle)}</strong>
+      ${alt ? `<span style="color:#5f7f8f; font-size:12px"> ${escapeHtml(alt)}</span>` : ""}
+
+      <div style="margin-top:10px; font-size:12px; color:#5f7f8f">
+        <div><strong>Category:</strong> ${escapeHtml(cat)}</div>
+        <div><strong>Brand:</strong> ${escapeHtml(brand)}</div>
+        <div><strong>Strength:</strong> ${escapeHtml(strength)}</div>
+        <div><strong>Form:</strong> ${escapeHtml(form)}</div>
+      </div>
+
+      <div style="margin-top:12px; line-height:1.7">
+        <strong>إرشادات رمضان</strong>
+        <div style="margin-top:6px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
+      </div>
+
+      ${notes ? `
+      <div style="margin-top:12px; line-height:1.7">
+        <strong>ملاحظات</strong>
+        <div style="margin-top:6px">${escapeHtml(notes).replaceAll("\n","<br>")}</div>
+      </div>` : ""}
+
+      <div style="margin-top:12px; font-size:11px; color:#5f7f8f">
+        ملاحظة: لا يتم حفظ بيانات المرضى.
+      </div>
     </div>
-  `);
+  `;
 
-  setTimeout(()=>window.print(), 350);
+  setTimeout(()=>window.print(), 250);
 }
 
-/* ========= EXPORT PDF (Top10) ========= */
+/* ========= EXECUTIVE PDF EXPORT (Top10) ========= */
 function exportTop10PDF(){
-  // Print current modal content
-  const back = $("modalBack");
-  if(back.style.display !== "flex"){
-    openTop10();
+  const map = getTrackMap();
+  const entries = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
+
+  if(entries.length === 0){
+    addMessage("لا توجد بيانات تتبع بعد.");
+    return;
   }
-  setTimeout(()=>window.print(), 300);
+
+  $("printDocType").innerText = "Top 10 Dashboard";
+  $("printDate").innerText = new Date().toLocaleString();
+
+  const rows = entries.map(([name,count], i)=>{
+    const d = DRUGS.find(x=>safeText(x.name)===name);
+    const ar = d ? safeText(d.name_ar) : "";
+    const br = d ? safeText(d.brand) : "";
+    const st = d ? safeText(d.strength) : "";
+    const cat = d ? safeText(d.category) : "";
+    const label = ar ? `${ar} (${name})` : name;
+    const sub = [cat, br, st].filter(Boolean).join(" — ");
+
+    return `
+      <tr>
+        <td>${i+1}</td>
+        <td><strong>${escapeHtml(label)}</strong><div style="color:#5f7f8f;font-size:12px;margin-top:3px">${escapeHtml(sub)}</div></td>
+        <td><strong>${count}</strong></td>
+      </tr>
+    `;
+  }).join("");
+
+  $("printContent").innerHTML = `
+    <div class="bubble">
+      <strong style="font-size:15px">⭐ Top 10 Most Selected Medications</strong>
+      <div style="margin-top:10px">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:70px">#</th>
+              <th>Medication</th>
+              <th style="width:140px">Count</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:#5f7f8f">
+        This data is stored locally on the device (no patient identifiers).
+      </div>
+    </div>
+  `;
+
+  setTimeout(()=>window.print(), 250);
 }
 
 /* ========= PWA REGISTER ========= */
