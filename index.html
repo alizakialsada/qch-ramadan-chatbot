@@ -8,318 +8,288 @@
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#dfeef8">
+  <meta name="theme-color" content="#0b1f26">
   <link rel="icon" href="icon-192.png">
   <link rel="apple-touch-icon" href="icon-192.png">
 
   <style>
     :root{
-      --bg:#f7fcff;
-      --panel:#ffffff;
-      --stroke:#cfe0ec;
-      --stroke2:#bcd2e2;
-      --text:#0f2a3a;
-      --muted:#466274;
-
-      --bubble:#eaf4fb;
-      --bubble2:#dff0fb;
-
-      --btn:#6bb6d6;
-      --btnText:#0a2230;
-
-      --shadow: 0 10px 35px rgba(15,42,58,.12);
-      --radius: 22px;
+      --bg:#0b1f26;
+      --bg2:#081a20;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.04);
+      --stroke:rgba(255,255,255,.12);
+      --stroke2:rgba(255,255,255,.18);
+      --text:#eaf6fb;
+      --muted:#b7d2dd;
+      --accent:#35d0c7;
+      --accent2:#2aa6ff;
+      --danger:#ff4d4f;
+      --warn:#f5a524;
+      --ok:#22c55e;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius:22px;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #f7fcff, #eef7ff);
-      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(53,208,199,.18), transparent 55%),
+        radial-gradient(1200px 700px at 85% 20%, rgba(42,166,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
     }
-    .wrap{max-width:1180px; margin:0 auto; padding:18px;}
+    .wrap{max-width:1200px; margin:0 auto; padding:18px;}
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
 
-    /* Header with logos right & left */
+    /* Header */
     .header{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:18px 18px;
-      border:2px solid var(--stroke);
-      background: rgba(255,255,255,.90);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
+      padding:14px 16px;
     }
-    .logoBox{
-      background:#fff;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 12px;
       border-radius:18px;
       border:1px solid var(--stroke);
-      padding:10px 20px;
+      background: rgba(0,0,0,.10);
+    }
+    .logoBox{
       display:flex;
       align-items:center;
       justify-content:center;
+      padding:8px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
     }
-    .logoBox img{
-      height:110px; /* ✅ BIG LOGO: change 110 -> 130 if you want bigger */
-      width:auto;
-      object-fit:contain;
-      display:block;
-    }
-    .titleBox{
-      flex:1;
-      text-align:center;
-      line-height:1.2;
-      padding:0 10px;
-    }
-    .titleBox h1{margin:0; font-size:22px; font-weight:900;}
-    .titleBox .sub{margin-top:6px; font-size:14px; color:var(--muted);}
+    .logoBox img{height:58px; width:auto; display:block; object-fit:contain;}
+    .sep{width:1px; height:36px; background:rgba(255,255,255,.18);}
+    .titles{line-height:1.15}
+    .titles h1{margin:0; font-size:18px; font-weight:900; letter-spacing:.2px;}
+    .titles .sub{margin-top:6px; font-size:13px; color:var(--muted);}
 
-    /* Top action buttons */
-    .topBtns{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top:12px;
-    }
-    .pillBtn{
-      border:1px solid var(--stroke2);
-      background:#fff;
+    .headerActions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .btn{
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
       color:var(--text);
-      padding:10px 14px;
-      border-radius: 999px;
+      padding:10px 12px;
+      border-radius:14px;
       cursor:pointer;
-      font-size:14px;
+      font-size:13px;
       display:inline-flex;
       align-items:center;
       gap:8px;
-      box-shadow: 0 6px 18px rgba(15,42,58,.08);
+      user-select:none;
     }
-    .pillBtn:hover{filter:brightness(0.98)}
-    .pillBtn.primary{
-      background: linear-gradient(180deg, #e7f6ff, #d8eefc);
-      border-color:#9ec7dd;
+    .btn:hover{background: rgba(255,255,255,.10);}
+    .btn.primary{
+      border-color: rgba(53,208,199,.55);
+      background: linear-gradient(180deg, rgba(53,208,199,.22), rgba(53,208,199,.10));
+      font-weight:800;
+    }
+    .btn.danger{
+      border-color: rgba(255,77,79,.55);
+      background: linear-gradient(180deg, rgba(255,77,79,.20), rgba(255,77,79,.10));
       font-weight:800;
     }
 
-    /* Layout: main chat + right panel */
+    /* Layout */
     .grid{
       display:grid;
-      grid-template-columns: 1.6fr 1fr;
+      grid-template-columns: 1.7fr 1fr;
       gap:14px;
       margin-top:14px;
     }
-    @media (max-width: 980px){
-      .grid{grid-template-columns:1fr;}
-      .logoBox img{height:85px;}
-    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr;} }
 
-    .card{
-      border:2px solid var(--stroke);
-      border-radius: 28px;
-      background: rgba(255,255,255,.90);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
+    /* Cards */
+    .card{overflow:hidden;}
     .cardHead{
-      padding:14px 16px;
-      border-bottom:1px solid var(--stroke);
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:10px;
-      background: linear-gradient(180deg, rgba(223,240,251,.70), rgba(255,255,255,.55));
+      align-items:center;
+      gap:12px;
+      background: rgba(0,0,0,.10);
     }
-    .cardHead .left{
-      display:flex; flex-direction:column; gap:4px;
-    }
-    .cardHead .title{font-weight:900; font-size:16px;}
-    .cardHead .hint{font-size:13px; color:var(--muted);}
-    .status{font-size:13px; color:var(--muted);}
+    .cardHead .title{font-weight:900; font-size:13px;}
+    .cardHead .hint{font-size:12px; color:var(--muted);}
 
+    /* Chat */
     #chat{
-      padding:16px;
-      min-height: 560px;
-      max-height: 560px;
+      height:560px;
       overflow:auto;
-      background: linear-gradient(180deg, rgba(245,251,255,.75), rgba(232,245,255,.55));
+      padding:14px;
+      background: linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.06));
     }
-
-    /* Bubbles like your screenshot */
-    .msg{display:flex; flex-direction:column; gap:10px; margin:14px 0;}
-    .msg.bot{align-items:stretch;}
-    .msg.user{align-items:flex-start;}
+    .msg{display:flex; flex-direction:column; gap:8px; margin:12px 0;}
+    .msg.user{align-items:flex-end;}
+    .msg.bot{align-items:flex-start;}
 
     .bubble{
-      border-radius: 22px;
-      border:2px solid var(--stroke);
-      background: radial-gradient(140% 160% at 50% 0%, rgba(255,255,255,.95), var(--bubble));
-      padding:18px 18px;
-      box-shadow: 0 8px 22px rgba(15,42,58,.08);
-      line-height:1.9;
-      font-size:18px;
+      max-width: 92%;
+      padding:12px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      line-height:1.55;
+      font-size:14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
+      white-space:pre-wrap;
     }
-    .bubble.user{
-      background: radial-gradient(140% 160% at 50% 0%, rgba(255,255,255,.95), var(--bubble2));
+    .msg.user .bubble{
+      background: linear-gradient(180deg, rgba(42,166,255,.22), rgba(42,166,255,.10));
+      border-color: rgba(42,166,255,.28);
+    }
+    .msg.bot .bubble{
+      background: linear-gradient(180deg, rgba(53,208,199,.18), rgba(255,255,255,.04));
+      border-color: rgba(53,208,199,.26);
     }
 
-    .botTitle{
-      font-weight:950;
-      font-size:22px;
-      margin-bottom:8px;
+    .bubble .h{
+      font-weight:900;
+      font-size:15px;
+      margin-bottom:6px;
       display:flex;
-      align-items:center;
-      gap:10px;
       flex-wrap:wrap;
-    }
-    .metaLine{
-      font-size:17px;
-      color: #1c3a4d;
-      margin:6px 0 0 0;
-      display:flex;
+      gap:8px;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
     }
     .tag{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius: 999px;
-      border:1px solid var(--stroke2);
-      background:#fff;
-      color:#17374a;
-      font-weight:800;
-      font-size:14px;
-    }
-    .warn{
-      border:1px solid #f3d08a;
-      background: #fff7df;
-      color:#6a4b00;
-    }
-    .ok{
-      border:1px solid #bfe7c8;
-      background:#effbf2;
-      color:#165a2b;
-    }
-
-    .sectionText{font-size:18px; margin-top:10px;}
-    .finePrint{
-      font-size:15px;
-      color: var(--muted);
-      border-top:1px solid var(--stroke);
-      margin-top:14px;
-      padding-top:10px;
-      line-height:1.8;
-    }
-
-    .actionsRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
-    .copyBtn{
-      border:1px solid var(--stroke2);
-      background:#fff;
+      gap:6px;
+      padding:5px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
       color:var(--text);
-      padding:10px 14px;
-      border-radius: 16px;
+      font-size:12px;
+      font-weight:800;
+    }
+    .tag.warn{border-color: rgba(245,165,36,.45); background: rgba(245,165,36,.12);}
+    .tag.danger{border-color: rgba(255,77,79,.45); background: rgba(255,77,79,.12);}
+    .tag.ok{border-color: rgba(34,197,94,.45); background: rgba(34,197,94,.12);}
+
+    .bubbleActions{display:flex; gap:8px; flex-wrap:wrap;}
+    .mini{
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:12px;
       cursor:pointer;
-      font-size:15px;
+      font-size:12px;
       display:inline-flex;
       gap:8px;
       align-items:center;
-      box-shadow: 0 6px 18px rgba(15,42,58,.08);
-      width: fit-content;
     }
+    .mini:hover{background: rgba(255,255,255,.10);}
 
     /* Composer */
     .composer{
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.10);
       display:flex;
-      gap:14px;
-      padding:16px;
-      border-top:1px solid var(--stroke);
-      background: rgba(255,255,255,.80);
+      gap:10px;
+      background: rgba(0,0,0,.10);
       align-items:center;
     }
     #userInput{
       flex:1;
-      padding:18px 18px;
-      border-radius: 22px;
-      border:2px solid var(--stroke);
-      background:#fff;
-      font-size:18px;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
       outline:none;
+      font-size:14px;
     }
+    #userInput::placeholder{color: rgba(183,210,221,.85);}
     #sendBtn{
-      padding:18px 22px;
-      border-radius: 22px;
-      border:0;
-      background: var(--btn);
-      color: #083047;
-      font-size:18px;
-      font-weight:950;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(53,208,199,.55);
+      background: linear-gradient(180deg, rgba(53,208,199,.28), rgba(53,208,199,.12));
+      color:var(--text);
       cursor:pointer;
-      box-shadow: 0 10px 25px rgba(107,182,214,.35);
+      font-weight:900;
     }
+    #sendBtn:hover{filter:brightness(1.05);}
 
-    /* Right panel */
-    .panelBody{padding:14px;}
-    .panelTitle{font-weight:950; font-size:16px; margin:0 0 8px 0;}
-    .chips{display:flex; gap:10px; flex-wrap:wrap;}
+    /* Sidebar */
+    .side{padding:14px;}
+    .section{margin-bottom:14px;}
+    .section h3{margin:0 0 10px 0; font-size:13px; font-weight:900;}
+    .chips{display:flex; flex-wrap:wrap; gap:10px;}
     .chip{
-      border:1px solid var(--stroke2);
-      background:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
       padding:10px 12px;
       border-radius: 999px;
       cursor:pointer;
-      font-weight:900;
-      font-size:14px;
-      display:inline-flex; align-items:center; gap:8px;
-      box-shadow: 0 6px 18px rgba(15,42,58,.08);
+      font-size:13px;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
-    .chip:hover{filter:brightness(0.98)}
-    .kpis{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+    .chip:hover{background: rgba(255,255,255,.10);}
+
+    .kpis{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
     .kpi{
-      border:1px solid var(--stroke2);
-      border-radius: 18px;
       padding:12px;
-      background:#fff;
-      box-shadow: 0 6px 18px rgba(15,42,58,.08);
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
     }
-    .kpi .num{font-size:22px; font-weight:950;}
-    .kpi .lbl{font-size:13px; color:var(--muted); margin-top:4px;}
+    .kpi .num{font-size:20px; font-weight:950;}
+    .kpi .lbl{margin-top:4px; font-size:12px; color:var(--muted);}
 
-    .notes{
-      margin-top:12px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.8;
+    .note{
+      font-size:12px;
+      color: rgba(183,210,221,.92);
+      line-height:1.6;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:10px;
     }
-
     .footer{
       margin-top:12px;
       text-align:center;
-      color: var(--muted);
-      font-size:13px;
-      padding:10px 0 2px 0;
+      font-size:12px;
+      color: rgba(183,210,221,.9);
     }
 
     /* Modal */
-    #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999;}
+    #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999;}
     .modalBox{
       max-width:560px;
-      margin: 10vh auto;
-      background:#fff;
-      border-radius: 22px;
-      border:2px solid var(--stroke);
+      margin: 9vh auto;
+      background: #0b1f26;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
       box-shadow: var(--shadow);
       padding:16px;
+      color:var(--text);
     }
-    .modalHead{
-      display:flex; justify-content:space-between; align-items:center; gap:10px;
-      margin-bottom:10px;
-    }
-    .modalHead h3{margin:0; font-size:18px;}
-    .row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--stroke); font-size:16px;}
+    .modalHead{display:flex; justify-content:space-between; align-items:center; gap:10px;}
+    .row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.12); font-size:13px;}
   </style>
 </head>
 
@@ -327,80 +297,85 @@
   <div class="wrap">
 
     <!-- Header -->
-    <div class="header">
-      <!-- RIGHT (RTL) -->
-      <div class="logoBox" title="QCH">
-        <img src="logo_qch.png" alt="QCH Logo">
+    <div class="header glass">
+      <div class="brand">
+        <div class="logoBox" title="QCH">
+          <img src="logo_qch.png" alt="QCH Logo">
+        </div>
+        <div class="sep"></div>
+        <div class="logoBox" title="Health Holding">
+          <img src="logo_health_holding.png" alt="Health Holding Logo">
+        </div>
+        <div class="titles">
+          <h1 id="appTitle">QCH – مساعد رمضان الذكي للأدوية</h1>
+          <div class="sub" id="appSub">عربي / English · Patient-friendly · Offline analytics</div>
+        </div>
       </div>
 
-      <div class="titleBox">
-        <h1 id="appTitle">QCH – مساعد رمضان الذكي للأدوية</h1>
-        <div class="sub" id="appSub">عربي / إنجليزي · سهل للمريض · تحليلات محلية</div>
+      <div class="headerActions">
+        <button id="langBtn" class="btn primary" type="button">🌐 English</button>
+        <button id="topBtn" class="btn" type="button">📊 Top 10</button>
+        <button id="installBtn" class="btn" type="button" style="display:none;">⬇️ Install</button>
+        <button id="clearBtn" class="btn danger" type="button">🗑 مسح المحادثة</button>
       </div>
-
-      <!-- LEFT -->
-      <div class="logoBox" title="Health Holding Company">
-        <img src="logo_health_holding.png" alt="Health Holding Logo">
-      </div>
-    </div>
-
-    <div class="topBtns">
-      <button id="langBtn" class="pillBtn primary" type="button">🌐 English</button>
-      <button id="topBtn" class="pillBtn" type="button">📊 Top 10</button>
-      <button id="installBtn" class="pillBtn" type="button" style="display:none;">⬇️ Install</button>
     </div>
 
     <div class="grid">
 
-      <!-- Chat -->
-      <div class="card">
+      <!-- Chat Card -->
+      <div class="card glass">
         <div class="cardHead">
-          <div class="left">
+          <div>
             <div class="title" id="chatTitle">الدردشة</div>
-            <div class="hint" id="chatHint">اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة</div>
+            <div class="hint" id="chatHint">اكتب اسم الدواء… وسيظهر اقتراح تلقائي أثناء الكتابة</div>
           </div>
-          <div class="status" id="statusHint">…</div>
+          <div class="hint" id="statusHint">Loading…</div>
         </div>
 
         <div id="chat"></div>
 
         <div class="composer">
-          <input id="userInput" list="drugHints" placeholder="اكتب اسم الدواء هنا…" autocomplete="off" />
+          <input id="userInput" list="drugHints" placeholder="اكتب اسم الدواء أو السؤال…" autocomplete="off" />
           <datalist id="drugHints"></datalist>
           <button id="sendBtn" type="button">إرسال</button>
         </div>
       </div>
 
-      <!-- Right panel: easy icon buttons -->
-      <div class="card">
+      <!-- Side Card -->
+      <div class="card glass">
         <div class="cardHead">
-          <div class="left">
-            <div class="title" id="panelTitle">أزرار سريعة</div>
-            <div class="hint" id="panelHint">اضغط زر أو اكتب اسم الدواء</div>
+          <div>
+            <div class="title" id="sideTitle">أزرار سريعة</div>
+            <div class="hint" id="sideHint">اختيار تصنيف أو نصائح</div>
           </div>
-          <div class="status" id="panelStatus">Patient-friendly</div>
+          <div class="hint" id="sideStatus">Executive</div>
         </div>
 
-        <div class="panelBody">
-          <div class="panelTitle" id="quickTitle">اقتراحات سريعة</div>
-          <div class="chips" id="chips"></div>
+        <div class="side">
 
-          <div class="panelTitle" style="margin-top:14px;" id="analyticsTitle">Analytics (local)</div>
-          <div class="kpis">
-            <div class="kpi">
-              <div class="num" id="kpiUsed">0</div>
-              <div class="lbl" id="kpiUsedLbl">Tracked selections</div>
-            </div>
-            <div class="kpi">
-              <div class="num" id="kpiDrugs">0</div>
-              <div class="lbl" id="kpiDrugsLbl">Drugs loaded</div>
+          <div class="section">
+            <h3 id="chipsTitle">Categories</h3>
+            <div class="chips" id="chips"></div>
+          </div>
+
+          <div class="section">
+            <h3 id="kpiTitle">Analytics (local)</h3>
+            <div class="kpis">
+              <div class="kpi">
+                <div class="num" id="kpiUsed">0</div>
+                <div class="lbl" id="kpiUsedLbl">Tracked selections</div>
+              </div>
+              <div class="kpi">
+                <div class="num" id="kpiDrugs">0</div>
+                <div class="lbl" id="kpiDrugsLbl">Drugs loaded</div>
+              </div>
             </div>
           </div>
 
-          <div class="notes" id="notesBox">
-            • This tool provides general guidance only.<br>
-            • Always follow the clinician plan.<br>
-            • For emergencies, contact your hospital/911.
+          <div class="note" id="noteBox">
+            • هذه الأداة للتوعية العامة فقط وليست بديلاً عن الطبيب/الصيدلي.<br>
+            • لا تغيّر الجرعات بنفسك خصوصاً (الأنسولين/السيولة/مدرات البول).<br>
+            • للطوارئ: تواصل مع المستشفى/911.
           </div>
 
           <div class="footer" id="footerText">Created by Automation Supervisor Ali Alsada</div>
@@ -410,62 +385,75 @@
     </div>
   </div>
 
-  <!-- Top 10 modal -->
+  <!-- Top 10 Modal -->
   <div id="topModal">
     <div class="modalBox">
       <div class="modalHead">
-        <h3 id="topTitle">📊 Top 10 أدوية</h3>
-        <button id="topClose" class="pillBtn" type="button">✕ إغلاق</button>
+        <div style="font-weight:950" id="topTitle">📊 Top 10</div>
+        <button id="topClose" class="btn" type="button">✕ Close</button>
       </div>
-      <div id="topList"></div>
-      <div style="margin-top:10px; color:var(--muted); font-size:13px;" id="topNote">
-        يتم حفظ البيانات محليًا على نفس المتصفح (بدون سيرفر).
+      <div id="topList" style="margin-top:12px;"></div>
+      <div style="margin-top:10px; color:rgba(183,210,221,.9); font-size:12px" id="topNote">
+        Stored locally in your browser (no server).
       </div>
     </div>
   </div>
 
   <script>
-    // ================= Language =================
-    let LANG = "ar"; // start Arabic
+    // ==============================
+    //  Executive Ramadan Assistant
+    // ==============================
+
+    // ---------- Language ----------
+    let LANG = "ar";
     const T = {
       ar: {
         dir:"rtl", htmlLang:"ar",
         langBtn:"🌐 English",
         appTitle:"QCH – مساعد رمضان الذكي للأدوية",
-        appSub:"عربي / إنجليزي · سهل للمريض · تحليلات محلية",
+        appSub:"عربي / English · Patient-friendly · Offline analytics",
         chatTitle:"الدردشة",
-        chatHint:"اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة",
-        panelTitle:"أزرار سريعة",
-        panelHint:"اضغط زر أو اكتب اسم الدواء",
-        statusLoading:"جاري تحميل drugs.json…",
-        statusReady:"Ready",
-        inputPh:"اكتب اسم الدواء هنا…",
-        send:"إرسال",
-        you:"أنت",
-        welcomeTitle:"مرحباً 👋",
-        welcome:"أنا مساعد رمضان الذكي. اكتب اسم الدواء وسأعطيك إرشادات عامة لتوقيت الجرعة في رمضان.",
-        copy:"📋 نسخ الرد",
-        copied:"✅ تم النسخ",
-        topTitle:"📊 Top 10 أدوية",
-        topEmpty:"لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
-        disclaimer:"تنبيه: معلومات عامة للتثقيف وليست بديلاً عن الطبيب/الصيدلي. إذا لديك سكر على أنسولين/أدوية سيولة، أو مرض كلى/قلب—استشر طبيبك قبل أي تعديل.",
-        classLabel:"التصنيف",
-        notesLabel:"ملاحظات",
-        ramadanLabel:"توقيت رمضان",
-        missing:"لم أجد هذا الدواء في القائمة حالياً. جرّب كتابة الاسم بالإنجليزي أو جزء من الاسم.",
-        analyticsTitle:"Analytics (local)",
+        chatHint:"اكتب اسم الدواء… وسيظهر اقتراح تلقائي أثناء الكتابة",
+        sideTitle:"أزرار سريعة",
+        sideHint:"اختيار تصنيف أو نصائح",
+        chipsTitle:"التصنيفات",
+        kpiTitle:"Analytics (local)",
         usedLbl:"Tracked selections",
         drugsLbl:"Drugs loaded",
-        footer:"Created by Automation Supervisor Ali Alsada",
+        statusLoading:"جاري تحميل drugs.json…",
+        statusReady:"Ready",
+        placeholder:"اكتب اسم الدواء أو السؤال…",
+        send:"إرسال",
+        clear:"🗑 مسح المحادثة",
+        top:"📊 Top 10",
+        topTitle:"📊 Top 10 أدوية",
+        topEmpty:"لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
+        welcomeTitle:"مرحباً 👋",
+        welcome:"اكتب اسم الدواء (مثال: Metformin 500 mg) أو اختر تصنيف من الأزرار.",
+        disclaimer:"تنبيه: معلومات عامة للتثقيف وليست بديلاً عن الطبيب/الصيدلي. خصوصاً (الأنسولين/السيولة/مدرات البول) اتبع الخطة الطبية.",
+        copy:"📋 نسخ الرد",
+        copied:"✅ تم النسخ",
+        notFound:"لم أجد هذا الدواء في القائمة حالياً. جرّب كتابة الاسم بالإنجليزي أو جزء من الاسم.",
+        tipsTitle:"🕒 نصائح رمضان",
+        tipsText:"• لا تغيّر الجرعات بنفسك.\n• بعض الأدوية تُقسم بين الإفطار والسحور حسب الخطة.\n• راقب السكر إذا كنت مريض سكري.\n• مدرات البول قد تزيد الجفاف—اسأل الطبيب.\n• الأدوية الحساسة (الأنسولين/السيولة) تحتاج خطة فردية.",
         chips: [
-          {k:"top",   label:"⭐ الأدوية الشائعة", q:"__TOP__"},
-          {k:"dm",    label:"🩸 أدوية السكر",     q:"__CAT__:Diabetes"},
-          {k:"bp",    label:"❤️ أدوية الضغط",     q:"__CAT__:Hypertension"},
-          {k:"pain",  label:"🟦 مسكنات",          q:"__CAT__:Pain"},
-          {k:"abx",   label:"🧫 مضادات حيوية",    q:"__CAT__:Antibiotic"},
-          {k:"gi",    label:"🫧 أدوية المعدة",    q:"__CAT__:GI"},
-          {k:"war",   label:"⚠️ وارفارين",        q:"warfarin"},
-          {k:"tips",  label:"🕒 نصائح رمضان",      q:"__RAMADAN_TIPS__"}
+          { label:"⭐ الشائع", q:"__TOP__" },
+          { label:"❤️ ضغط", q:"__CAT__:Hypertension" },
+          { label:"🩸 سكر", q:"__CAT__:Diabetes" },
+          { label:"🦋 الغدة", q:"__CAT__:Thyroid" },
+          { label:"🫧 المعدة", q:"__CAT__:GI" },
+          { label:"💊 مسكنات", q:"__CAT__:Pain" },
+          { label:"🦠 مضادات", q:"__CAT__:Antibiotic" },
+          { label:"🧈 دهون", q:"__CAT__:Lipids" },
+          { label:"🌬 ربو", q:"__CAT__:Asthma" },
+          { label:"🤧 حساسية", q:"__CAT__:Allergy" },
+          { label:"⚠️ سيولة", q:"__CAT__:Anticoagulant" },
+          { label:"🧠 نفسية", q:"__CAT__:Psych" },
+          { label:"🦴 فيتامينات", q:"__CAT__:Vitamin" },
+          { label:"🧂 أملاح", q:"__CAT__:Electrolytes" },
+          { label:"🫀 فشل قلبي", q:"__CAT__:HeartFailure" },
+          { label:"💉 ستيرويد/مناعة", q:"__CAT__:Steroid" },
+          { label:"🕒 نصائح رمضان", q:"__RAMADAN_TIPS__" }
         ]
       },
       en: {
@@ -474,38 +462,47 @@
         appTitle:"QCH – Smart Ramadan Medication Assistant",
         appSub:"Arabic / English · Patient-friendly · Offline analytics",
         chatTitle:"Chat",
-        chatHint:"Type the medication name and get autocomplete while typing",
-        panelTitle:"Quick Buttons",
-        panelHint:"Tap a button or type a medication name",
-        statusLoading:"Loading drugs.json…",
-        statusReady:"Ready",
-        inputPh:"Type medication name here…",
-        send:"Send",
-        you:"You",
-        welcomeTitle:"Hello 👋",
-        welcome:"I’m the Ramadan Medication Assistant. Type a medication name and I’ll give general timing guidance for Ramadan.",
-        copy:"📋 Copy reply",
-        copied:"✅ Copied",
-        topTitle:"📊 Top 10 meds",
-        topEmpty:"No data yet. Use the chat and it will auto-build Top 10.",
-        disclaimer:"Note: General guidance only, not a substitute for a clinician/pharmacist. If you use insulin/anticoagulants, or have kidney/heart disease—consult your clinician before changes.",
-        classLabel:"Class",
-        notesLabel:"Notes",
-        ramadanLabel:"Ramadan timing",
-        missing:"I couldn’t find this medication in the list. Try English name or part of the name.",
-        analyticsTitle:"Analytics (local)",
+        chatHint:"Type medication name… autocomplete appears while typing",
+        sideTitle:"Quick buttons",
+        sideHint:"Choose a category or tips",
+        chipsTitle:"Categories",
+        kpiTitle:"Analytics (local)",
         usedLbl:"Tracked selections",
         drugsLbl:"Drugs loaded",
-        footer:"Created by Automation Supervisor Ali Alsada",
+        statusLoading:"Loading drugs.json…",
+        statusReady:"Ready",
+        placeholder:"Type medication name or question…",
+        send:"Send",
+        clear:"🗑 Clear chat",
+        top:"📊 Top 10",
+        topTitle:"📊 Top 10 meds",
+        topEmpty:"No data yet. Use the chatbot and it will auto-build Top 10.",
+        welcomeTitle:"Hello 👋",
+        welcome:"Type a medication name (e.g., Metformin 500 mg) or tap a category button.",
+        disclaimer:"Note: General guidance only, not a substitute for a clinician/pharmacist. High-risk meds (insulin/anticoagulants/diuretics) need an individualized plan.",
+        copy:"📋 Copy reply",
+        copied:"✅ Copied",
+        notFound:"I couldn’t find this medication in the list. Try English name or part of the name.",
+        tipsTitle:"🕒 Ramadan tips",
+        tipsText:"• Don’t change doses on your own.\n• Some meds are split between Iftar/Suhoor per plan.\n• Monitor glucose if diabetic.\n• Diuretics can worsen dehydration—ask clinician.\n• High-risk meds (insulin/anticoagulants) need a plan.",
         chips: [
-          {k:"top",   label:"⭐ Common meds",      q:"__TOP__"},
-          {k:"dm",    label:"🩸 Diabetes meds",    q:"__CAT__:Diabetes"},
-          {k:"bp",    label:"❤️ Blood pressure",   q:"__CAT__:Hypertension"},
-          {k:"pain",  label:"🟦 Pain relief",      q:"__CAT__:Pain"},
-          {k:"abx",   label:"🧫 Antibiotics",      q:"__CAT__:Antibiotic"},
-          {k:"gi",    label:"🫧 Stomach / GI",     q:"__CAT__:GI"},
-          {k:"war",   label:"⚠️ Warfarin",         q:"warfarin"},
-          {k:"tips",  label:"🕒 Ramadan tips",      q:"__RAMADAN_TIPS__"}
+          { label:"⭐ Common", q:"__TOP__" },
+          { label:"❤️ BP", q:"__CAT__:Hypertension" },
+          { label:"🩸 Diabetes", q:"__CAT__:Diabetes" },
+          { label:"🦋 Thyroid", q:"__CAT__:Thyroid" },
+          { label:"🫧 GI", q:"__CAT__:GI" },
+          { label:"💊 Pain", q:"__CAT__:Pain" },
+          { label:"🦠 Antibiotic", q:"__CAT__:Antibiotic" },
+          { label:"🧈 Lipids", q:"__CAT__:Lipids" },
+          { label:"🌬 Asthma", q:"__CAT__:Asthma" },
+          { label:"🤧 Allergy", q:"__CAT__:Allergy" },
+          { label:"⚠️ Anticoagulant", q:"__CAT__:Anticoagulant" },
+          { label:"🧠 Psych", q:"__CAT__:Psych" },
+          { label:"🦴 Vitamins", q:"__CAT__:Vitamin" },
+          { label:"🧂 Electrolytes", q:"__CAT__:Electrolytes" },
+          { label:"🫀 Heart failure", q:"__CAT__:HeartFailure" },
+          { label:"💉 Steroid/Immuno", q:"__CAT__:Steroid" },
+          { label:"🕒 Ramadan tips", q:"__RAMADAN_TIPS__" }
         ]
       }
     };
@@ -517,28 +514,24 @@
       document.getElementById("langBtn").textContent = T[LANG].langBtn;
       document.getElementById("appTitle").textContent = T[LANG].appTitle;
       document.getElementById("appSub").textContent = T[LANG].appSub;
-
       document.getElementById("chatTitle").textContent = T[LANG].chatTitle;
       document.getElementById("chatHint").textContent = T[LANG].chatHint;
-
-      document.getElementById("panelTitle").textContent = T[LANG].panelTitle;
-      document.getElementById("panelHint").textContent = T[LANG].panelHint;
-
-      document.getElementById("userInput").placeholder = T[LANG].inputPh;
-      document.getElementById("sendBtn").textContent = T[LANG].send;
-
-      document.getElementById("topTitle").textContent = T[LANG].topTitle;
-
-      document.getElementById("analyticsTitle").textContent = T[LANG].analyticsTitle;
+      document.getElementById("sideTitle").textContent = T[LANG].sideTitle;
+      document.getElementById("sideHint").textContent = T[LANG].sideHint;
+      document.getElementById("chipsTitle").textContent = T[LANG].chipsTitle;
+      document.getElementById("kpiTitle").textContent = T[LANG].kpiTitle;
       document.getElementById("kpiUsedLbl").textContent = T[LANG].usedLbl;
       document.getElementById("kpiDrugsLbl").textContent = T[LANG].drugsLbl;
 
-      document.getElementById("footerText").textContent = T[LANG].footer;
-
+      document.getElementById("userInput").placeholder = T[LANG].placeholder;
+      document.getElementById("sendBtn").textContent = T[LANG].send;
+      document.getElementById("clearBtn").textContent = T[LANG].clear;
+      document.getElementById("topBtn").textContent = T[LANG].top;
+      document.getElementById("topTitle").textContent = T[LANG].topTitle;
       renderChips();
     }
 
-    // ================= Analytics (local) =================
+    // ---------- Analytics ----------
     function trackDrugUse(drugKey){
       try{
         const key = "qch_drug_analytics_v1";
@@ -558,115 +551,122 @@
       const db = JSON.parse(localStorage.getItem(key) || "{}");
       return Object.values(db).reduce((a,b)=>a+b,0);
     }
+    function updateKpis(){
+      document.getElementById("kpiUsed").textContent = String(getTotalTracked());
+      document.getElementById("kpiDrugs").textContent = String(DRUGS.length || 0);
+    }
 
-    // ================= Helpers =================
+    // ---------- Helpers ----------
     function escapeHtml(s){
       return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     }
+    function normalize(s){ return (s||"").toString().trim().toLowerCase(); }
     function scrollChat(){
       const c = document.getElementById("chat");
       c.scrollTop = c.scrollHeight;
     }
 
-    // ================= Chat UI =================
+    // ---------- Chat UI ----------
     function addUserMessage(text){
       const chat = document.getElementById("chat");
       const wrap = document.createElement("div");
       wrap.className = "msg user";
-
       const bubble = document.createElement("div");
-      bubble.className = "bubble user";
-      bubble.innerHTML = `<div style="font-weight:950; margin-bottom:6px;">${T[LANG].you} : ${escapeHtml(text)}</div>`;
-
+      bubble.className = "bubble";
+      bubble.textContent = text;
       wrap.appendChild(bubble);
       chat.appendChild(wrap);
       scrollChat();
     }
 
-    function addBotBubble(html, copyText){
+    function addBotMessage({title, lines=[], tags=[], disclaimer=true, copyText=""}){
       const chat = document.getElementById("chat");
       const wrap = document.createElement("div");
       wrap.className = "msg bot";
 
       const bubble = document.createElement("div");
       bubble.className = "bubble";
-      bubble.innerHTML = html;
+
+      const h = document.createElement("div");
+      h.className = "h";
+      h.innerHTML = escapeHtml(title);
+
+      // tags
+      tags.forEach(t=>{
+        const span = document.createElement("span");
+        span.className = "tag " + (t.type || "");
+        span.textContent = t.text;
+        h.appendChild(span);
+      });
+
+      bubble.appendChild(h);
+
+      if(lines.length){
+        const body = document.createElement("div");
+        body.style.marginTop = "6px";
+        body.textContent = lines.join("\n");
+        bubble.appendChild(body);
+      }
+
+      if(disclaimer){
+        const d = document.createElement("div");
+        d.style.marginTop = "10px";
+        d.style.paddingTop = "10px";
+        d.style.borderTop = "1px solid rgba(255,255,255,.12)";
+        d.style.color = "rgba(183,210,221,.95)";
+        d.style.fontSize = "12px";
+        d.textContent = "⚠️ " + T[LANG].disclaimer;
+        bubble.appendChild(d);
+      }
 
       const actions = document.createElement("div");
-      actions.className = "actionsRow";
+      actions.className = "bubbleActions";
 
       const copyBtn = document.createElement("button");
-      copyBtn.className = "copyBtn";
+      copyBtn.className = "mini";
       copyBtn.type = "button";
       copyBtn.textContent = T[LANG].copy;
       copyBtn.onclick = async () => {
-        const text = copyText || bubble.innerText;
+        const textToCopy = copyText || bubble.innerText;
         try{
-          await navigator.clipboard.writeText(text);
+          await navigator.clipboard.writeText(textToCopy);
           copyBtn.textContent = T[LANG].copied;
-          setTimeout(()=> copyBtn.textContent = T[LANG].copy, 1200);
+          setTimeout(()=>copyBtn.textContent = T[LANG].copy, 1200);
         }catch(e){
           const ta = document.createElement("textarea");
-          ta.value = text; document.body.appendChild(ta);
+          ta.value = textToCopy; document.body.appendChild(ta);
           ta.select(); document.execCommand("copy");
           document.body.removeChild(ta);
           copyBtn.textContent = T[LANG].copied;
-          setTimeout(()=> copyBtn.textContent = T[LANG].copy, 1200);
+          setTimeout(()=>copyBtn.textContent = T[LANG].copy, 1200);
         }
       };
 
       actions.appendChild(copyBtn);
+
       wrap.appendChild(bubble);
       wrap.appendChild(actions);
       chat.appendChild(wrap);
       scrollChat();
     }
 
+    function clearChat(){
+      document.getElementById("chat").innerHTML = "";
+      addWelcome();
+    }
+
     function addWelcome(){
-      const html = `
-        <div class="botTitle">${escapeHtml(T[LANG].welcomeTitle)}</div>
-        <div class="sectionText">${escapeHtml(T[LANG].welcome)}</div>
-      `;
-      addBotBubble(html, T[LANG].welcome);
+      addBotMessage({
+        title: T[LANG].welcomeTitle,
+        lines: [T[LANG].welcome],
+        tags: [{text:"QCH", type:"ok"}],
+        disclaimer: false,
+        copyText: T[LANG].welcome
+      });
     }
 
-    // ================= Drugs + Autocomplete =================
+    // ---------- Drugs + Autocomplete ----------
     let DRUGS = [];
-    function setDrugs(drugs){
-      DRUGS = Array.isArray(drugs) ? drugs : [];
-      document.getElementById("kpiDrugs").textContent = String(DRUGS.length || 0);
-    }
-
-    function normalize(s){
-      return (s||"").toString().trim().toLowerCase();
-    }
-
-    function updateHints(q){
-      const dl = document.getElementById("drugHints");
-      dl.innerHTML = "";
-      const query = normalize(q);
-      if(query.length < 2) return;
-
-      const matches = [];
-      for(const d of DRUGS){
-        const name = normalize(d.name);
-        const brand = normalize(d.brand);
-        const nameAr = normalize(d.name_ar);
-        const strength = normalize(d.strength);
-
-        if(name.includes(query) || brand.includes(query) || nameAr.includes(query)){
-          matches.push(d);
-          if(matches.length >= 12) break;
-        }
-      }
-
-      for(const m of matches){
-        const label = (LANG==="ar" && m.name_ar) ? m.name_ar : m.name;
-        const opt = document.createElement("option");
-        opt.value = (label || m.name || "") + (m.strength ? ` ${m.strength}` : "");
-        dl.appendChild(opt);
-      }
-    }
 
     async function loadDrugsJson(){
       const status = document.getElementById("statusHint");
@@ -675,11 +675,33 @@
         const res = await fetch("drugs.json", {cache:"no-store"});
         if(!res.ok) throw new Error("no drugs.json");
         const data = await res.json();
-        setDrugs(data);
+        DRUGS = Array.isArray(data) ? data : [];
         status.textContent = T[LANG].statusReady;
+        updateKpis();
       }catch(e){
-        setDrugs([]);
+        DRUGS = [];
         status.textContent = "drugs.json not found";
+        updateKpis();
+      }
+    }
+
+    function updateHints(q){
+      const dl = document.getElementById("drugHints");
+      dl.innerHTML = "";
+      const query = normalize(q);
+      if(query.length < 2) return;
+
+      let count = 0;
+      for(const d of DRUGS){
+        const hay = normalize((d.name||"") + " " + (d.brand||"") + " " + (d.name_ar||"") + " " + (d.strength||""));
+        if(hay.includes(query)){
+          const opt = document.createElement("option");
+          const label = (LANG==="ar" && d.name_ar) ? d.name_ar : (d.name||"");
+          opt.value = (label || "") + (d.strength ? (" " + d.strength) : "");
+          dl.appendChild(opt);
+          count++;
+          if(count >= 12) break;
+        }
       }
     }
 
@@ -687,13 +709,12 @@
       const query = normalize(q);
       if(!query) return null;
 
-      // Exact: name + strength (any language)
+      // Exact match (name+strength) in either language
       for(const d of DRUGS){
         const k1 = normalize((d.name||"") + " " + (d.strength||""));
         const k2 = normalize((d.name_ar||"") + " " + (d.strength||""));
         if(k1 === query || k2 === query) return d;
       }
-
       // Contains
       for(const d of DRUGS){
         const hay = normalize((d.name||"") + " " + (d.brand||"") + " " + (d.name_ar||"") + " " + (d.strength||""));
@@ -702,135 +723,172 @@
       return null;
     }
 
-    function buildReply(d){
-      const title = (LANG==="ar" && d.name_ar) ? d.name_ar : (d.name || "");
-      const strength = d.strength ? ` — ${d.strength}` : "";
+    function buildDrugReply(d){
+      const title = (LANG==="ar" && d.name_ar) ? d.name_ar : (d.name || "Medication");
       const brand = d.brand ? ` (${d.brand})` : "";
-      const cls = (LANG==="ar" ? d.class_ar : d.class_en) || d.class || "";
+      const strength = d.strength ? ` — ${d.strength}` : "";
+      const cls = (LANG==="ar" ? (d.class_ar || "") : (d.class_en || "")) || (d.class || "");
+      const category = d.category || "";
+
       const notes = (LANG==="ar" ? d.notes_ar : d.notes_en) || "";
       const ramadan = (LANG==="ar" ? d.ramadan_ar : d.ramadan_en) || "";
 
-      // Risk tag
       const risk = normalize(d.risk || "");
-      const riskTag = risk === "high"
-        ? `<span class="tag warn">⚠️ يحتاج حذر/خطة فردية</span>`
-        : `<span class="tag ok">✅ إرشاد عام</span>`;
+      let riskTag = {text:"✅ General", type:"ok"};
+      if(LANG==="ar") riskTag = {text:"✅ إرشاد عام", type:"ok"};
+      if(risk === "moderate") riskTag = (LANG==="ar") ? {text:"⚠️ يحتاج انتباه", type:"warn"} : {text:"⚠️ Caution", type:"warn"};
+      if(risk === "high") riskTag = (LANG==="ar") ? {text:"⛔ يحتاج خطة فردية", type:"danger"} : {text:"⛔ Needs plan", type:"danger"};
 
-      const html = `
-        <div class="botTitle">💊 ${escapeHtml(title)}${escapeHtml(brand)}${escapeHtml(strength)}</div>
-        <div class="metaLine">
-          <span class="tag">🏷️ ${escapeHtml(T[LANG].classLabel)}: ${escapeHtml(cls || "—")}</span>
-          ${riskTag}
-        </div>
-        ${notes ? `<div class="sectionText">📝 <b>${escapeHtml(T[LANG].notesLabel)}:</b> ${escapeHtml(notes)}</div>` : ""}
-        ${ramadan ? `<div class="sectionText">🌙 <b>${escapeHtml(T[LANG].ramadanLabel)}:</b> ${escapeHtml(ramadan)}</div>` : ""}
-        <div class="finePrint">⚠️ ${escapeHtml(T[LANG].disclaimer)}</div>
-      `;
+      const tags = [];
+      if(category) tags.push({text: category, type:""});
+      if(cls) tags.push({text: cls, type:""});
+      tags.push(riskTag);
+
+      const lines = [];
+      if(notes) lines.push("📝 " + notes);
+      if(ramadan) lines.push("🌙 " + ramadan);
 
       const copyText =
         `💊 ${title}${brand}${strength}\n` +
-        `${T[LANG].classLabel}: ${cls || "—"}\n` +
-        (notes ? `\n${T[LANG].notesLabel}: ${notes}\n` : "") +
-        (ramadan ? `\n${T[LANG].ramadanLabel}: ${ramadan}\n` : "") +
+        (category ? `Category: ${category}\n` : "") +
+        (cls ? `Class: ${cls}\n` : "") +
+        (notes ? `\nNotes:\n${notes}\n` : "") +
+        (ramadan ? `\nRamadan:\n${ramadan}\n` : "") +
         `\n⚠️ ${T[LANG].disclaimer}`;
 
-      return {html, copyText};
+      return {
+        title: `💊 ${title}${brand}${strength}`,
+        lines,
+        tags,
+        copyText
+      };
     }
 
-    function handleQuery(q){
-      const text = (q||"").trim();
-      if(!text) return;
+    // ---------- Category Listing ----------
+    function listByCategory(cat){
+      const c = normalize(cat);
+      const items = DRUGS.filter(d => normalize(d.category) === c).slice(0, 30);
 
-      // Quick chips commands
-      if(text === "__RAMADAN_TIPS__"){
-        const tips = (LANG==="ar")
-          ? "🕒 نصائح عامة لرمضان:\n• لا تغيّر الجرعات بنفسك.\n• بعض الأدوية تُقسم بين الإفطار والسحور حسب الخطة.\n• راقب سكر الدم إذا كنت مريض سكري.\n• راجع الطبيب للأدوية الحساسة (السكري/السيولة/الضغط)."
-          : "🕒 General Ramadan tips:\n• Don’t change doses on your own.\n• Some meds are split between Iftar/Suhoor per plan.\n• Monitor glucose if diabetic.\n• Ask clinician for sensitive meds (diabetes/anticoagulants/BP).";
+      const title = (LANG==="ar") ? `📌 ${cat}` : `📌 ${cat}`;
+      if(!items.length){
+        addBotMessage({
+          title,
+          lines: [ (LANG==="ar") ? "لا توجد عناصر في القائمة لهذا التصنيف. تأكد أن drugs.json يحتوي على category صحيح." : "No items found. Ensure drugs.json includes correct category values." ],
+          tags: [{text:"Info", type:"warn"}],
+          disclaimer:false
+        });
+        return;
+      }
+
+      const lines = items.map(d=>{
+        const nm = (LANG==="ar" && d.name_ar) ? d.name_ar : (d.name||"");
+        return `• ${nm}${d.strength ? " " + d.strength : ""}`;
+      });
+
+      addBotMessage({
+        title,
+        lines,
+        tags: [{text: `Count: ${items.length}`, type:"ok"}],
+        disclaimer:false,
+        copyText: `${title}\n` + lines.join("\n")
+      });
+    }
+
+    // ---------- Chips ----------
+    function renderChips(){
+      const box = document.getElementById("chips");
+      box.innerHTML = "";
+      T[LANG].chips.forEach(item=>{
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.type = "button";
+        b.textContent = item.label;
+        b.onclick = () => handleCommand(item.q);
+        box.appendChild(b);
+      });
+    }
+
+    function handleCommand(cmd){
+      if(cmd === "__RAMADAN_TIPS__"){
         addUserMessage(LANG==="ar" ? "نصائح رمضان" : "Ramadan tips");
-        addBotBubble(`<div class="botTitle">🕒</div><div class="sectionText">${escapeHtml(tips).replace(/\n/g,"<br>")}</div>`, tips);
+        addBotMessage({
+          title: T[LANG].tipsTitle,
+          lines: [T[LANG].tipsText],
+          tags: [{text:"Guidance", type:"ok"}],
+          disclaimer:false,
+          copyText: T[LANG].tipsText
+        });
         return;
       }
-
-      if(text.startsWith("__CAT__:")){
-        const cat = text.split(":")[1] || "";
-        const list = DRUGS.filter(d => normalize(d.category) === normalize(cat))
-                          .slice(0, 20)
-                          .map(d => {
-                            const nm = (LANG==="ar" && d.name_ar) ? d.name_ar : d.name;
-                            return `• ${nm}${d.strength ? " " + d.strength : ""}`;
-                          }).join("\n");
-
-        const title = (LANG==="ar") ? `أدوية التصنيف: ${cat}` : `Category: ${cat}`;
-        addUserMessage(title);
-        addBotBubble(`<div class="botTitle">📌 ${escapeHtml(title)}</div><div class="sectionText">${escapeHtml(list || (LANG==="ar"?"لا توجد عناصر في القائمة":"No items found")).replace(/\n/g,"<br>")}</div>`, `${title}\n${list}`);
-        return;
-      }
-
-      if(text === "__TOP__"){
+      if(cmd === "__TOP__"){
+        addUserMessage(LANG==="ar" ? "الأدوية الشائعة" : "Common");
         const top = getTopDrugs(10);
-        const msg = top.length ? top.map(([n,c],i)=> `${i+1}. ${n} — ${c}`).join("\n")
-                               : T[LANG].topEmpty;
-        addUserMessage(LANG==="ar" ? "الأدوية الشائعة" : "Common meds");
-        addBotBubble(`<div class="botTitle">⭐</div><div class="sectionText">${escapeHtml(msg).replace(/\n/g,"<br>")}</div>`, msg);
+        if(!top.length){
+          addBotMessage({title:T[LANG].topTitle, lines:[T[LANG].topEmpty], tags:[{text:"Empty", type:"warn"}], disclaimer:false});
+          return;
+        }
+        const lines = top.map(([n,c],i)=> `${i+1}. ${n} — ${c}`);
+        addBotMessage({title:T[LANG].topTitle, lines, tags:[{text:"Local", type:"ok"}], disclaimer:false, copyText: lines.join("\n")});
+        return;
+      }
+      if(cmd.startsWith("__CAT__:")){
+        const cat = cmd.split(":")[1] || "";
+        addUserMessage((LANG==="ar") ? `تصنيف: ${cat}` : `Category: ${cat}`);
+        listByCategory(cat);
         return;
       }
 
-      // Normal search
-      addUserMessage(text);
+      // fallback: treat as text query
+      handleMessage(cmd);
+    }
 
-      const d = findDrug(text);
+    // ---------- Message Handling ----------
+    function handleMessage(text){
+      const q = (text||"").trim();
+      if(!q) return;
+
+      addUserMessage(q);
+
+      const d = findDrug(q);
       if(d){
-        const {html, copyText} = buildReply(d);
-        addBotBubble(html, copyText);
-
+        const rep = buildDrugReply(d);
+        addBotMessage({
+          title: rep.title,
+          lines: rep.lines.length ? rep.lines : [(LANG==="ar" ? "لا توجد ملاحظات إضافية." : "No extra notes.")],
+          tags: rep.tags,
+          disclaimer:true,
+          copyText: rep.copyText
+        });
         const key = ((d.name||"") + (d.strength ? " " + d.strength : "")).trim();
         trackDrugUse(key);
         return;
       }
 
-      addBotBubble(`<div class="botTitle">ℹ️</div><div class="sectionText">${escapeHtml(T[LANG].missing)}</div>`, T[LANG].missing);
+      addBotMessage({
+        title: "ℹ️",
+        lines: [T[LANG].notFound],
+        tags: [{text:"Not found", type:"warn"}],
+        disclaimer:false
+      });
     }
 
-    // ================= Chips =================
-    function renderChips(){
-      const box = document.getElementById("chips");
-      box.innerHTML = "";
-      for(const item of T[LANG].chips){
-        const b = document.createElement("button");
-        b.className = "chip";
-        b.type = "button";
-        b.textContent = item.label;
-        b.onclick = () => handleQuery(item.q);
-        box.appendChild(b);
-      }
-      // notes language
-      document.getElementById("notesBox").innerHTML =
-        (LANG==="ar")
-        ? "• هذه الأداة للتوعية العامة فقط.<br>• اتبع خطة الطبيب/الصيدلي دائمًا.<br>• للطوارئ: تواصل مع المستشفى/911."
-        : "• This tool provides general guidance only.<br>• Always follow the clinician plan.<br>• For emergencies, contact your hospital/911.";
-    }
-
-    function updateKpis(){
-      document.getElementById("kpiUsed").textContent = String(getTotalTracked());
-    }
-
-    // ================= Top 10 modal =================
-    function renderTop(){
+    // ---------- Top 10 Modal ----------
+    function renderTopModal(){
       const list = document.getElementById("topList");
       const top = getTopDrugs(10);
       if(!top.length){
-        list.innerHTML = `<div style="color:var(--muted); font-size:15px;">${escapeHtml(T[LANG].topEmpty)}</div>`;
+        list.innerHTML = `<div style="color:rgba(183,210,221,.9); font-size:13px;">${escapeHtml(T[LANG].topEmpty)}</div>`;
         return;
       }
       list.innerHTML = top.map(([name,count],i)=>`
         <div class="row">
           <div>${i+1}. ${escapeHtml(name)}</div>
-          <div style="color:var(--muted)">${count}</div>
+          <div style="color:rgba(183,210,221,.9)">${count}</div>
         </div>
       `).join("");
     }
 
-    // ================= Install prompt =================
+    // ---------- Install prompt ----------
     let deferredPrompt = null;
     window.addEventListener("beforeinstallprompt", (e)=>{
       e.preventDefault();
@@ -838,32 +896,23 @@
       document.getElementById("installBtn").style.display = "inline-flex";
     });
 
-    // ================= Boot =================
+    // ---------- Boot ----------
     document.addEventListener("DOMContentLoaded", ()=>{
       applyLang();
       loadDrugsJson();
       updateKpis();
 
-      // Welcome only once
-      const chat = document.getElementById("chat");
-      if(chat.children.length === 0) addWelcome();
+      // welcome once
+      clearChat();
 
-      document.getElementById("langBtn").onclick = ()=>{
-        LANG = (LANG === "ar") ? "en" : "ar";
-        document.getElementById("chat").innerHTML = "";
-        applyLang();
-        loadDrugsJson();
-        updateKpis();
-        addWelcome();
-      };
-
+      // events
       document.getElementById("sendBtn").onclick = ()=>{
         const input = document.getElementById("userInput");
         const v = input.value.trim();
         if(!v) return;
         input.value = "";
         updateHints("");
-        handleQuery(v);
+        handleMessage(v);
       };
 
       document.getElementById("userInput").addEventListener("keydown", (e)=>{
@@ -874,9 +923,21 @@
       });
       document.getElementById("userInput").addEventListener("input", (e)=> updateHints(e.target.value));
 
+      document.getElementById("langBtn").onclick = ()=>{
+        LANG = (LANG === "ar") ? "en" : "ar";
+        applyLang();
+        loadDrugsJson();
+        clearChat();
+      };
+
+      document.getElementById("clearBtn").onclick = ()=> clearChat();
+
       const topModal = document.getElementById("topModal");
-      document.getElementById("topBtn").onclick = ()=>{ renderTop(); topModal.style.display="block"; };
-      document.getElementById("topClose").onclick = ()=>{ topModal.style.display="none"; };
+      document.getElementById("topBtn").onclick = ()=>{
+        renderTopModal();
+        topModal.style.display = "block";
+      };
+      document.getElementById("topClose").onclick = ()=> topModal.style.display = "none";
       topModal.onclick = (e)=>{ if(e.target.id==="topModal") topModal.style.display="none"; };
 
       document.getElementById("installBtn").onclick = async ()=>{
@@ -887,7 +948,7 @@
         document.getElementById("installBtn").style.display = "none";
       };
 
-      // Use your existing SW filename
+      // register SW (your repo filename)
       if("serviceWorker" in navigator){
         navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
       }
