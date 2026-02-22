@@ -36,7 +36,7 @@ header{
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  padding:18px 22px;
+  padding:16px 20px;
   background:var(--card);
   border-bottom:1px solid var(--border);
   box-shadow:var(--shadow);
@@ -45,42 +45,43 @@ header{
   z-index:10;
 }
 
-.logo{ height:64px; object-fit:contain; }
+.logo{ height:58px; object-fit:contain; }
 
 .title{
   text-align:center;
   flex:1;
-  min-width:180px;
+  min-width:200px;
 }
 .title h1{ margin:0; font-size:18px; }
 .title p{ margin:6px 0 0; color:var(--muted); font-size:13px; }
 
 .container{
   display:grid;
-  grid-template-columns:320px 1fr;
-  gap:20px;
-  padding:20px;
+  grid-template-columns:340px 1fr;
+  gap:18px;
+  padding:18px;
 }
 @media (max-width: 980px){
   .container{ grid-template-columns:1fr; }
   header{ position:relative; }
-  .logo{ height:54px; }
+  .logo{ height:50px; }
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:18px;
+  padding:16px;
   box-shadow:var(--shadow);
 }
 
-.sidebar h3{ margin:0 0 12px; }
-.hr{ height:1px; background:var(--border); border:0; margin:14px 0; }
+.sidebar h3{ margin:0 0 10px; }
+.hr{ height:1px; background:var(--border); border:0; margin:12px 0; }
 
 .btn{
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:8px;
   padding:10px 12px;
   border-radius:12px;
@@ -90,11 +91,13 @@ header{
   margin:6px 6px 0 0;
   font-size:13px;
   user-select:none;
+  transition:transform .05s ease;
 }
+.btn:active{ transform:scale(.98); }
 .btn.primary{ background:var(--accent); color:#fff; border:none; }
 .btn.danger{ background:var(--danger); color:#fff; border:none; }
 .btn.ghost{ background:#f7fbff; }
-.btn.full{ width:100%; justify-content:center; margin:10px 0 0; }
+.btn.full{ width:100%; margin:10px 0 0; }
 
 .kpi{
   background:#f6fbff;
@@ -108,29 +111,51 @@ header{
 }
 .kpi strong{ font-size:16px; }
 
+.badges{ display:flex; gap:8px; flex-wrap:wrap; }
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:12px;
+  color:var(--muted);
+}
+
 .chat{
-  min-height:320px;
-  max-height:55vh;
+  min-height:340px;
+  max-height:58vh;
   overflow:auto;
   padding-right:4px;
 }
-
 .bubble{
   background:#f0f7fb;
   padding:12px 14px;
   border-radius:14px;
   margin-bottom:12px;
   border:1px solid var(--border);
-  line-height:1.6;
+  line-height:1.65;
 }
-
 .bubble .meta{
   color:var(--muted);
   font-size:12px;
-  margin-top:6px;
+  margin-top:8px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:12px;
+  color:var(--muted);
 }
 
 .row{
@@ -174,34 +199,92 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   font-size:13px;
 }
 .suggest button:hover{ background:#f6fbff; }
-.suggest small{ color:var(--muted); }
+.suggest .line2{ color:var(--muted); font-size:12px; margin-top:2px; }
 
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
+.chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.chip{
+  border:1px dashed var(--border);
   background:#fff;
+  border-radius:999px;
+  padding:8px 10px;
+  cursor:pointer;
   font-size:12px;
   color:var(--muted);
 }
 
 .footer{
   text-align:center;
-  padding:18px;
+  padding:16px;
   font-size:12px;
   color:var(--muted);
 }
 
-/* ====== PRINT / PDF ====== */
+/* ===== MODAL ===== */
+.modalBack{
+  position:fixed;
+  inset:0;
+  background:rgba(11,34,48,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:999;
+}
+.modal{
+  width:min(780px, 96vw);
+  background:#fff;
+  border-radius:22px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.modalHead{
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px solid var(--border);
+}
+.modalHead strong{ font-size:15px; }
+.modalBody{
+  padding:14px 16px;
+  max-height:70vh;
+  overflow:auto;
+}
+.table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:14px;
+}
+.table th, .table td{
+  padding:10px 10px;
+  border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.table th{
+  background:#f6fbff;
+  text-align:right;
+  color:var(--muted);
+}
+.table tr:last-child td{ border-bottom:none; }
+
+/* ===== PRINT / PDF ===== */
 @media print{
   body{ background:#fff; }
-  header, .sidebar, .row, .footer{ display:none !important; }
+  header, .sidebar, .row, .footer, .chips, #openTopBtn { display:none !important; }
   .container{ padding:0; }
   .card{ border:none; box-shadow:none; }
   .chat{ max-height:none; overflow:visible; }
+  .bubble{ page-break-inside:avoid; }
 }
 </style>
 </head>
@@ -212,7 +295,7 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
   <img src="logo_qch.png" class="logo" alt="QCH Logo">
   <div class="title">
     <h1>QCH – مساعد رمضان الذكي للأدوية</h1>
-    <p>Arabic • English • Patient Friendly • Offline Tracking</p>
+    <p>Arabic • English • Patient Friendly • Offline Tracking • PDF</p>
   </div>
   <img src="logo_health_holding.png" class="logo" alt="Health Holding Logo">
 </header>
@@ -230,36 +313,32 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
       <button class="btn" onclick="filterCategory('GI')">المعدة 🍽</button>
       <button class="btn" onclick="filterCategory('Anticoagulant')">مُميعات 🧬</button>
       <button class="btn" onclick="filterCategory('Antibiotic')">مضادات 🦠</button>
+      <button class="btn" onclick="filterCategory('Pain')">ألم 💊</button>
+      <button class="btn" onclick="filterCategory('Asthma')">صدر 🌬️</button>
+      <button class="btn" onclick="filterCategory('Allergy')">حساسية 🌿</button>
+      <button class="btn" onclick="filterCategory('Lipids')">دهون 🫀</button>
     </div>
 
     <div class="hr"></div>
 
-    <div class="kpi">
-      <span>Drugs loaded</span>
-      <strong id="drugsLoaded">0</strong>
-    </div>
-
-    <div class="kpi">
-      <span>Total selections</span>
-      <strong id="tracked">0</strong>
-    </div>
-
-    <div class="kpi">
-      <span>Top 10 list</span>
-      <strong id="topCount">0</strong>
-    </div>
+    <div class="kpi"><span>Drugs loaded</span><strong id="drugsLoaded">0</strong></div>
+    <div class="kpi"><span>Total selections</span><strong id="tracked">0</strong></div>
+    <div class="kpi"><span>Top 10</span><strong id="topCount">0</strong></div>
 
     <div class="hr"></div>
 
-    <button class="btn ghost full" onclick="showTop10()">⭐ عرض Top 10</button>
-    <button class="btn ghost full" onclick="exportPDF()">📄 Export PDF</button>
+    <button id="openTopBtn" class="btn ghost full" onclick="openTop10()">⭐ Top 10 Dashboard</button>
+    <button class="btn ghost full" onclick="exportDrugPDF()">📄 Export PDF (Selected)</button>
     <button class="btn danger full" onclick="resetTracking()">إعادة ضبط التتبع ♻️</button>
     <button class="btn danger full" onclick="clearChat()">مسح المحادثة 🗑</button>
 
     <div class="hr"></div>
 
-    <div class="badge">⚠️ لا يغني عن الطبيب/الصيدلي</div>
-    <div class="badge">🔒 لا يتم حفظ بيانات مرضى</div>
+    <div class="badges">
+      <div class="badge">⚠️ لا يغني عن الطبيب/الصيدلي</div>
+      <div class="badge">🔒 لا يتم حفظ بيانات مرضى</div>
+      <div class="badge">📶 يعمل بدون إنترنت</div>
+    </div>
   </div>
 
   <!-- MAIN -->
@@ -268,29 +347,40 @@ input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,
 
     <div class="row">
       <div class="inputWrap">
-        <input id="input" placeholder="اكتب اسم الدواء بالعربي أو الإنجليزي..." autocomplete="off">
+        <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / أو الشركة..." autocomplete="off">
         <div id="suggest" class="suggest"></div>
       </div>
       <button class="btn primary" onclick="searchDrug()">إرسال</button>
     </div>
 
-    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button class="btn ghost" onclick="quickCommon()">⭐ الأدوية الأكثر شيوعًا</button>
-      <button class="btn ghost" onclick="toggleLang()">🌐 تبديل اللغة</button>
-    </div>
+    <div class="chips" id="chips"></div>
   </div>
 
 </div>
 
-<div class="footer">
-Created by Automation Supervisor Ali Alsada
+<div class="footer">Created by Automation Supervisor Ali Alsada</div>
+
+<!-- TOP10 MODAL -->
+<div class="modalBack" id="modalBack" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modalHead">
+      <strong>⭐ Top 10 Dashboard</strong>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn ghost" onclick="exportTop10PDF()">📄 Export PDF</button>
+        <button class="btn danger" onclick="closeModal()">إغلاق ✖</button>
+      </div>
+    </div>
+    <div class="modalBody">
+      <div id="top10Content"></div>
+    </div>
+  </div>
 </div>
 
 <script>
 /* ========= SETTINGS ========= */
 let LANG = localStorage.getItem("qch_lang") || "ar"; // ar | en
-const TRACK_KEY = "qch_track_counts_v1"; // { "Metformin": 3, ... }
-const TOTAL_KEY = "qch_total_selections_v1"; // number
+const TRACK_KEY = "qch_track_counts_v2";  // { "Amlodipine": 3, ... }
+const TOTAL_KEY = "qch_total_selections_v2";
 
 /* ========= STATE ========= */
 let DRUGS = [];
@@ -298,48 +388,33 @@ let lastSelectedDrug = null;
 
 /* ========= HELPERS ========= */
 const $ = (id) => document.getElementById(id);
-
 function safeText(s){ return (s ?? "").toString(); }
-
 function norm(s){
-  return safeText(s)
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g,' ');
+  return safeText(s).toLowerCase().trim().replace(/\s+/g,' ');
 }
-
 function getTrackMap(){
   try{ return JSON.parse(localStorage.getItem(TRACK_KEY) || "{}"); }
   catch{ return {}; }
 }
-
-function setTrackMap(map){
-  localStorage.setItem(TRACK_KEY, JSON.stringify(map));
-}
-
-function getTotal(){
-  return Number(localStorage.getItem(TOTAL_KEY) || "0");
-}
-function setTotal(n){
-  localStorage.setItem(TOTAL_KEY, String(n));
-}
+function setTrackMap(map){ localStorage.setItem(TRACK_KEY, JSON.stringify(map)); }
+function getTotal(){ return Number(localStorage.getItem(TOTAL_KEY) || "0"); }
+function setTotal(n){ localStorage.setItem(TOTAL_KEY, String(n)); }
 
 /* ========= LOAD DRUGS ========= */
 async function loadDrugs(){
   try{
     const res = await fetch("drugs.json", { cache: "no-store" });
     const data = await res.json();
-
-    // Expect array
     DRUGS = Array.isArray(data) ? data : [];
-    $("drugsLoaded").innerText = DRUGS.length;
 
-    // update KPIs
+    $("drugsLoaded").innerText = DRUGS.length;
     $("tracked").innerText = getTotal();
     updateTopCount();
+    renderChips();
+
     greet();
   }catch(e){
-    addMessage("⚠️ تعذر تحميل ملف الأدوية (drugs.json). تأكد أنه JSON صحيح بدون تعليقات.");
+    addMessage("⚠️ تعذر تحميل ملف الأدوية (drugs.json). تأكد أنه JSON صحيح.");
     console.log(e);
   }
 }
@@ -353,145 +428,193 @@ function addMessage(html){
   $("chat").appendChild(div);
   $("chat").scrollTop = $("chat").scrollHeight;
 }
-
-function clearChat(){ $("chat").innerHTML = ""; greet(); }
+function clearChat(){ $("chat").innerHTML=""; greet(); }
 
 function greet(){
   const msg = (LANG==="ar")
-    ? "مرحبًا 👋 اكتب اسم الدواء (عربي/إنجليزي) للحصول على إرشادات رمضان. يمكنك أيضًا اختيار تصنيف من القائمة."
-    : "Hello 👋 Type the medication name (Arabic/English) to get Ramadan guidance. You can also choose a category from the sidebar.";
+    ? "مرحبًا 👋 اكتب اسم الدواء (عربي/إنجليزي/الشركة/التركيز) وستظهر لك اقتراحات فورية."
+    : "Hello 👋 Type medication name (Arabic/English/brand/strength) and instant suggestions will appear.";
   addMessage(`<strong>${msg}</strong><div class="meta"><span>QCH Ramadan Assistant</span></div>`);
 }
 
-function toggleLang(){
-  LANG = (LANG==="ar") ? "en" : "ar";
-  localStorage.setItem("qch_lang", LANG);
-  document.documentElement.lang = (LANG==="ar") ? "ar" : "en";
-  document.documentElement.dir  = (LANG==="ar") ? "rtl" : "ltr";
-  addMessage(`<strong>${LANG==="ar" ? "✅ تم التبديل للعربية" : "✅ Switched to English"}</strong>`);
-}
-
-/* ========= SEARCH + AUTOCOMPLETE ========= */
+/* ========= SEARCH + AUTOCOMPLETE (PRO) ========= */
 $("input").addEventListener("input", onType);
-$("input").addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }});
+$("input").addEventListener("keydown", (e)=>{
+  if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }
+  if(e.key==="Escape"){ hideSuggest(); }
+});
 
-function onType(){
-  const q = norm($("input").value);
-  const box = $("suggest");
-  if(!q || q.length < 2){
-    box.style.display="none";
-    box.innerHTML="";
-    return;
-  }
-
-  const matches = DRUGS
-    .map(d => ({
-      drug: d,
-      score: scoreDrug(d, q)
-    }))
-    .filter(x => x.score > 0)
-    .sort((a,b)=>b.score-a.score)
-    .slice(0, 8);
-
-  if(matches.length === 0){
-    box.style.display="none";
-    box.innerHTML="";
-    return;
-  }
-
-  box.innerHTML = matches.map(x=>{
-    const d = x.drug;
-    const en = safeText(d.name);
-    const ar = safeText(d.name_ar);
-    const cat = safeText(d.category);
-    const label = (LANG==="ar" && ar) ? `${ar} — <small>${en}</small>` : `${en}${ar?` — <small>${ar}</small>`:""}`;
-    return `<button type="button" onclick="pickDrug('${escapeQuotes(en)}')">${label}<div><small>${cat}</small></div></button>`;
-  }).join("");
-
-  box.style.display="block";
+function hideSuggest(){
+  $("suggest").style.display="none";
+  $("suggest").innerHTML="";
 }
 
-function escapeQuotes(s){
-  return safeText(s).replace(/'/g,"\\'");
+function drugSearchBlob(d){
+  // search across multiple fields
+  return norm([
+    d.name, d.name_ar, d.brand, d.strength, d.form, d.category
+  ].map(safeText).join(" "));
 }
 
 function scoreDrug(d, q){
+  const blob = drugSearchBlob(d);
+  if(!blob.includes(q)) return 0;
+
   const en = norm(d.name);
   const ar = norm(d.name_ar);
-  // Prefix best, then contains
-  let score = 0;
-  if(en.startsWith(q) || ar.startsWith(q)) score += 5;
-  if(en.includes(q) || ar.includes(q)) score += 2;
-  // small bonus for category match
-  const cat = norm(d.category);
-  if(cat.includes(q)) score += 1;
-  return score;
+  const brand = norm(d.brand);
+  const strength = norm(d.strength);
+
+  let s = 1;
+  if(en.startsWith(q) || ar.startsWith(q)) s += 6;
+  if(brand.startsWith(q)) s += 4;
+  if(strength.startsWith(q)) s += 2;
+  // contains bonuses
+  if(en.includes(q) || ar.includes(q)) s += 2;
+  if(brand.includes(q)) s += 1;
+  return s;
+}
+
+function onType(){
+  const q = norm($("input").value);
+  if(!q || q.length < 2){ hideSuggest(); return; }
+
+  const matches = DRUGS
+    .map(d => ({ d, s: scoreDrug(d, q) }))
+    .filter(x => x.s > 0)
+    .sort((a,b)=>b.s-a.s)
+    .slice(0, 10);
+
+  if(matches.length === 0){ hideSuggest(); return; }
+
+  $("suggest").innerHTML = matches.map(x=>{
+    const d = x.d;
+    const en = safeText(d.name);
+    const ar = safeText(d.name_ar);
+    const br = safeText(d.brand);
+    const st = safeText(d.strength);
+    const cat = safeText(d.category);
+
+    const title = (LANG==="ar" && ar) ? ar : en;
+    const sub = [
+      (LANG==="ar" ? en : ar),
+      br ? `Brand: ${br}` : "",
+      st ? `Strength: ${st}` : "",
+      cat ? `• ${cat}` : ""
+    ].filter(Boolean).join(" — ");
+
+    return `
+      <button type="button" onclick="pickDrug('${escapeQuotes(en)}')">
+        <div><strong>${escapeHtml(title)}</strong></div>
+        <div class="line2">${escapeHtml(sub)}</div>
+      </button>
+    `;
+  }).join("");
+  $("suggest").style.display="block";
+}
+
+function escapeQuotes(s){ return safeText(s).replace(/'/g,"\\'"); }
+function escapeHtml(s){
+  return safeText(s)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
 }
 
 function pickDrug(englishName){
   $("input").value = englishName;
-  $("suggest").style.display="none";
-  $("suggest").innerHTML="";
+  hideSuggest();
   searchDrug();
 }
 
-function findDrugByQuery(q){
+function findBestDrug(qRaw){
+  const q = norm(qRaw);
   if(!q) return null;
-  const qq = norm(q);
 
-  // best match by score
-  const scored = DRUGS.map(d=>({d, s:scoreDrug(d, qq)})).sort((a,b)=>b.s-a.s);
-  if(scored.length && scored[0].s>0) return scored[0].d;
+  const ranked = DRUGS
+    .map(d=>({ d, s: scoreDrug(d, q) }))
+    .sort((a,b)=>b.s-a.s);
 
+  if(ranked.length && ranked[0].s > 0) return ranked[0].d;
   return null;
 }
 
 function searchDrug(){
-  const val = $("input").value;
-  const q = norm(val);
-  if(!q){ return; }
+  const qRaw = $("input").value;
+  const q = norm(qRaw);
+  if(!q) return;
 
-  const drug = findDrugByQuery(val);
+  const drug = findBestDrug(qRaw);
   if(drug){
     lastSelectedDrug = drug;
     trackSelection(drug);
     renderDrug(drug);
+    $("input").value = "";
+    hideSuggest();
   }else{
-    addMessage(LANG==="ar" ? "❌ لا يوجد دواء مطابق. جرّب كتابة أول حرفين أو اختر من الاقتراحات." : "❌ No match found. Type 2+ letters or pick from suggestions.");
+    addMessage(LANG==="ar"
+      ? "❌ لا يوجد تطابق. اكتب أول حرفين أو اختر من الاقتراحات."
+      : "❌ No match. Type 2+ letters or choose a suggestion."
+    );
   }
 }
 
-/* ========= RENDER DRUG ========= */
+/* ========= RENDER DRUG (EXEC) ========= */
+function riskLabel(r){
+  const v = norm(r);
+  if(v==="high") return "High Risk";
+  if(v==="moderate") return "Moderate Risk";
+  if(v==="low") return "Low Risk";
+  return "-";
+}
+
 function renderDrug(d){
   const en = safeText(d.name);
   const ar = safeText(d.name_ar);
+  const br = safeText(d.brand);
+  const st = safeText(d.strength);
+  const form = safeText(d.form);
   const cat = safeText(d.category);
+  const risk = safeText(d.risk);
 
   const guideAR = safeText(d.ramadan_ar || d.ramadan || "");
   const guideEN = safeText(d.ramadan_en || "");
+  const notesAR = safeText(d.notes_ar || "");
+  const notesEN = safeText(d.notes_en || "");
 
-  let body = "";
-  if(LANG==="ar"){
-    body = `<strong>${ar || en}</strong>${ar && en ? ` <small style="color:var(--muted)">(${en})</small>`:""}`;
-    body += `<div style="margin-top:8px">${guideAR || "لا توجد إرشادات عربية لهذا الدواء بعد."}</div>`;
-  }else{
-    body = `<strong>${en}</strong>${ar ? ` <small style="color:var(--muted)">(${ar})</small>`:""}`;
-    body += `<div style="margin-top:8px">${guideEN || guideAR || "No guidance added yet for this medication."}</div>`;
-  }
+  const map = getTrackMap();
+  const count = map[en] || 0;
 
-  const count = getTrackMap()[en] || 0;
-  body += `<div class="meta">
-    <span>Category: ${cat || "-"}</span>
-    <span>Selected: ${count}x</span>
-    <span style="color:var(--ok)">Ready for PDF</span>
-  </div>`;
+  const title = (LANG==="ar" ? (ar || en) : en);
+  const alt   = (LANG==="ar" ? (en ? `(${en})` : "") : (ar ? `(${ar})` : ""));
 
-  addMessage(body);
+  const guide = (LANG==="ar") ? (guideAR || "لا توجد إرشادات عربية بعد.") : (guideEN || guideAR || "No guidance yet.");
+  const notes = (LANG==="ar") ? notesAR : (notesEN || notesAR);
 
-  // clear input + suggestions
-  $("input").value = "";
-  $("suggest").style.display="none";
-  $("suggest").innerHTML="";
+  const metaTags = `
+    <div class="meta">
+      ${cat ? `<span class="tag">🏷 ${escapeHtml(cat)}</span>` : ""}
+      ${br ? `<span class="tag">🏭 ${escapeHtml(br)}</span>` : ""}
+      ${st ? `<span class="tag">⚖️ ${escapeHtml(st)}</span>` : ""}
+      ${form ? `<span class="tag">🧾 ${escapeHtml(form)}</span>` : ""}
+      ${risk ? `<span class="tag">⚠️ ${escapeHtml(riskLabel(risk))}</span>` : ""}
+      <span class="tag">⭐ Selected: <strong>${count}</strong>x</span>
+    </div>
+  `;
+
+  const notesBlock = notes ? `<div style="margin-top:10px"><strong>${LANG==="ar"?"ملاحظات":"Notes"}</strong><div>${escapeHtml(notes).replaceAll("\n","<br>")}</div></div>` : "";
+
+  addMessage(`
+    <strong>${escapeHtml(title)}</strong>
+    ${alt ? `<small style="color:var(--muted)"> ${escapeHtml(alt)}</small>` : ""}
+    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
+    ${notesBlock}
+    ${metaTags}
+    <div class="meta">
+      <span style="color:var(--ok)">✅ Ready for PDF</span>
+      <span>Qatif Central Hospital</span>
+    </div>
+  `);
 }
 
 /* ========= CATEGORY FILTER ========= */
@@ -501,14 +624,15 @@ function filterCategory(cat){
     addMessage(LANG==="ar" ? "لا توجد عناصر في هذا التصنيف." : "No items in this category.");
     return;
   }
-  addMessage(`<strong>${LANG==="ar" ? "نتائج التصنيف:" : "Category results:"} ${cat}</strong>`);
-  results.slice(0, 30).forEach(d => renderDrug(d)); // limit to avoid spam
-  if(results.length > 30){
-    addMessage(LANG==="ar" ? `… تم عرض 30 فقط من أصل ${results.length}` : `… showing 30 of ${results.length}`);
+
+  addMessage(`<strong>${LANG==="ar" ? "نتائج التصنيف:" : "Category results:"} ${escapeHtml(cat)}</strong>`);
+  results.slice(0, 20).forEach(d => renderDrug(d));
+  if(results.length > 20){
+    addMessage(LANG==="ar" ? `… تم عرض 20 فقط من أصل ${results.length}` : `… showing 20 of ${results.length}`);
   }
 }
 
-/* ========= TOP 10 TRACKING ========= */
+/* ========= TRACKING ========= */
 function trackSelection(d){
   const en = safeText(d.name);
   const map = getTrackMap();
@@ -528,28 +652,59 @@ function updateTopCount(){
   $("topCount").innerText = top.length;
 }
 
-function showTop10(){
+/* ========= TOP10 DASHBOARD ========= */
+function openTop10(){
   const map = getTrackMap();
-  const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const entries = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
 
-  if(top.length === 0){
+  if(entries.length === 0){
     addMessage(LANG==="ar" ? "لا توجد بيانات تتبع بعد." : "No tracking data yet.");
     return;
   }
 
-  const rows = top.map(([name,count], i)=>{
+  const rows = entries.map(([name, count], i)=>{
     const d = DRUGS.find(x=>safeText(x.name)===name);
     const ar = d ? safeText(d.name_ar) : "";
-    const label = (LANG==="ar" && ar) ? `${ar} <small style="color:var(--muted)">(${name})</small>` : `${name}${ar?` <small style="color:var(--muted)">(${ar})</small>`:""}`;
-    return `<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
-      <div>${i+1}. ${label}</div>
-      <div><strong>${count}</strong></div>
-    </div>`;
+    const br = d ? safeText(d.brand) : "";
+    const st = d ? safeText(d.strength) : "";
+    const cat = d ? safeText(d.category) : "";
+
+    const label = (LANG==="ar" && ar) ? `${ar} (${name})` : `${name}${ar?` (${ar})`:""}`;
+    const sub = [cat, br, st].filter(Boolean).join(" — ");
+
+    return `
+      <tr>
+        <td>${i+1}</td>
+        <td><strong>${escapeHtml(label)}</strong><div style="color:var(--muted);font-size:12px;margin-top:3px">${escapeHtml(sub)}</div></td>
+        <td><strong>${count}</strong></td>
+      </tr>
+    `;
   }).join("");
 
-  addMessage(`<strong>⭐ Top 10</strong><div style="margin-top:10px">${rows}</div>`);
+  $("top10Content").innerHTML = `
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:70px">#</th>
+          <th>${LANG==="ar" ? "الدواء" : "Medication"}</th>
+          <th style="width:140px">${LANG==="ar" ? "عدد الاستخدام" : "Count"}</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div style="margin-top:12px;color:var(--muted);font-size:12px">
+      ${LANG==="ar" ? "ملاحظة: البيانات محفوظة محليًا على الجهاز (بدون أسماء مرضى)." : "Note: Data stored locally on this device (no patient identifiers)."}
+    </div>
+  `;
+
+  $("modalBack").style.display="flex";
 }
 
+function closeModal(){
+  $("modalBack").style.display="none";
+}
+
+/* ========= RESET ========= */
 function resetTracking(){
   localStorage.removeItem(TRACK_KEY);
   localStorage.removeItem(TOTAL_KEY);
@@ -558,54 +713,53 @@ function resetTracking(){
   addMessage(LANG==="ar" ? "✅ تم إعادة ضبط التتبع." : "✅ Tracking reset.");
 }
 
-/* ========= COMMON QUICK ========= */
-function quickCommon(){
-  // show by tracking if exists else show curated common
-  const map = getTrackMap();
-  const has = Object.keys(map).length > 0;
-  if(has){ showTop10(); return; }
+/* ========= CHIPS (COMMON / FAST) ========= */
+function renderChips(){
+  const container = $("chips");
+  if(!container) return;
 
-  // fallback common list (by name field in drugs.json)
-  const common = ["Metformin","Amlodipine","Losartan","Levothyroxine","Omeprazole","Atorvastatin","Warfarin"];
-  addMessage(`<strong>${LANG==="ar" ? "⭐ الأكثر شيوعًا" : "⭐ Common meds"}</strong>`);
-  common.forEach(n=>{
-    const d = DRUGS.find(x=>norm(x.name)===norm(n));
-    if(d) renderDrug(d);
-  });
+  // Prefer top tracked, else show curated
+  const map = getTrackMap();
+  const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);
+  const fallback = ["Amlodipine","Losartan","Metformin","Omeprazole","Levothyroxine","Warfarin","Atorvastatin","Cetirizine"];
+
+  const list = (top.length ? top : fallback)
+    .map(n=>{
+      const d = DRUGS.find(x=>norm(x.name)===norm(n));
+      const label = d ? (LANG==="ar" ? (d.name_ar || d.name) : d.name) : n;
+      return `<div class="chip" onclick="pickDrug('${escapeQuotes(d?d.name:n)}')">⭐ ${escapeHtml(label)}</div>`;
+    }).join("");
+
+  container.innerHTML = list;
 }
 
-/* ========= EXPORT PDF ========= */
-function exportPDF(){
+/* ========= EXPORT PDF (Selected Drug) ========= */
+function exportDrugPDF(){
   if(!lastSelectedDrug){
-    addMessage(LANG==="ar" ? "اختر دواء أولاً ثم قم بتصدير PDF." : "Select a medication first, then export PDF.");
+    addMessage(LANG==="ar" ? "اختر دواء أولاً ثم Export PDF." : "Select a medication first, then export PDF.");
     return;
   }
-
-  // Add a print-friendly header bubble
+  // Add a print-friendly bubble header then print
   const d = lastSelectedDrug;
-  const en = safeText(d.name);
-  const ar = safeText(d.name_ar);
-  const cat = safeText(d.category);
+  const title = LANG==="ar" ? "QCH – إرشادات رمضان للدواء" : "QCH – Ramadan Medication Guidance";
 
-  const guideAR = safeText(d.ramadan_ar || d.ramadan || "");
-  const guideEN = safeText(d.ramadan_en || "");
+  addMessage(`
+    <strong>${escapeHtml(title)}</strong>
+    <div style="margin-top:10px;color:var(--muted);font-size:12px">
+      ${LANG==="ar" ? "يمكنك حفظ الملف PDF من شاشة الطباعة." : "Save as PDF from the print dialog."}
+    </div>
+  `);
 
-  const content = (LANG==="ar")
-    ? `<strong>QCH – إرشادات رمضان للدواء</strong><div style="margin-top:8px">
-        <div><strong>الدواء:</strong> ${ar || en} ${ar && en ? `<span style="color:var(--muted)">(${en})</span>`:""}</div>
-        <div><strong>التصنيف:</strong> ${cat || "-"}</div>
-        <div style="margin-top:10px">${guideAR || "لا توجد إرشادات عربية لهذا الدواء بعد."}</div>
-        <div class="meta"><span>Qatif Central Hospital</span><span>Created by Automation Supervisor</span></div>
-      </div>`
-    : `<strong>QCH – Ramadan Medication Guidance</strong><div style="margin-top:8px">
-        <div><strong>Medication:</strong> ${en} ${ar ? `<span style="color:var(--muted)">(${ar})</span>`:""}</div>
-        <div><strong>Category:</strong> ${cat || "-"}</div>
-        <div style="margin-top:10px">${guideEN || guideAR || "No guidance added yet for this medication."}</div>
-        <div class="meta"><span>Qatif Central Hospital</span><span>Created by Automation Supervisor</span></div>
-      </div>`;
+  setTimeout(()=>window.print(), 350);
+}
 
-  addMessage(content);
-  // Print to PDF
+/* ========= EXPORT PDF (Top10) ========= */
+function exportTop10PDF(){
+  // Print current modal content
+  const back = $("modalBack");
+  if(back.style.display !== "flex"){
+    openTop10();
+  }
   setTimeout(()=>window.print(), 300);
 }
 
