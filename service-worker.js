@@ -1,37 +1,47 @@
-const CACHE = "qch-ramadan-cache-v1";
+const CACHE_NAME = "qch-ramadan-v1";
 const ASSETS = [
   "./",
   "./index.html",
-  "./manifest.json",
-  "./service-worker.js",
-  "./logo_health_holding.png",
-  "./logo_qch.png",
+  "./manifest.webmanifest",
   "./drugs.json",
-  "./icon-192.png",
-  "./icon-512.png"
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/maskable-512.png",
+  "./screenshots/screen-1.png",
+  "./screenshots/screen-2.png"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())
   );
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.map((k) => k !== CACHE ? caches.delete(k) : null)))
-      .then(() => self.clients.claim())
+    caches.keys().then(keys =>
+      Promise.all(keys.map(k => (k !== CACHE_NAME ? caches.delete(k) : null)))
+    ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
-  if(req.method !== "GET") return;
+
+  // Network-first for drugs.json so updates are picked up quickly
+  if (req.url.includes("drugs.json")) {
+    event.respondWith(
+      fetch(req).then(res => {
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
+        return res;
+      }).catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // Cache-first for everything else
   event.respondWith(
-    caches.match(req).then((cached) => cached || fetch(req).then((res) => {
-      const copy = res.clone();
-      caches.open(CACHE).then((cache) => cache.put(req, copy)).catch(()=>{});
-      return res;
-    }).catch(() => caches.match("./")))
+    caches.match(req).then(cached => cached || fetch(req))
   );
 });
