@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>مساعد رمضان الذكي</title>
+<style>
+:root{
+  --brand:#2f7fa3;
+  --brand2:#67b3cf;
+  --text:#0c2a36;
+
+  --bgTop:#ffffff;
+  --bg1:#eef8fd;
+  --bg2:#dfeff8;
+
+  --card:#f6fbff;
+  --cardBorder:#bfe0f0;
+
+  --shadow:0 18px 40px rgba(10, 42, 54, .08);
+
+  /* محاذاة بصرية للشعارات (تعويض الفراغ الداخلي) */
+  --logoBox:110px;
+  --logoScaleQCH:1.00;
+  --logoScaleHH:1.12;
+  --logoYQCH:0px;
+  --logoYHH:0px;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: Tahoma, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(180deg, var(--bgTop) 0%, var(--bg1) 35%, var(--bg2) 100%);
+}
+
+/* ===== Header (white, minimal, like screenshot) ===== */
+.header{
+  background:#fff;
+  padding:26px 28px 22px;
+  border-bottom:1px solid rgba(47,127,163,.15);
+}
+
+.header-inner{
+  max-width:1280px;
+  margin:0 auto;
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+}
+
+/* corner logos */
+.logoCorner{
+  position:absolute;
+  top:2px;
+  width:var(--logoBox);
+  height:var(--logoBox);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.logoCorner.left{left:0;}
+.logoCorner.right{right:0;}
+
+.logoCorner img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  transform-origin:center center;
+}
+.logoCorner.right img{
+  transform: translateY(var(--logoYQCH)) scale(var(--logoScaleQCH));
+}
+.logoCorner.left img{
+  transform: translateY(var(--logoYHH)) scale(var(--logoScaleHH));
+}
+
+/* centered title */
+.title{
+  text-align:center;
+  padding: 6px 140px 0; /* leave room for logos on wide screens */
+}
+.title h1{
+  margin:0;
+  color:var(--brand);
+  font-size:64px;
+  letter-spacing:.2px;
+  font-weight:800;
+}
+.title p{
+  margin:10px 0 0;
+  color:var(--brand2);
+  font-size:34px;
+  font-weight:700;
+}
+
+/* ===== Main area ===== */
+.main{
+  max-width:1400px;
+  margin:0 auto;
+  padding: 34px 22px 60px;
+}
+
+/* subtle big panel background behind card (like screenshot) */
+.panel{
+  background:rgba(255,255,255,.35);
+  border:1px solid rgba(47,127,163,.12);
+  border-radius:26px;
+  padding: 34px;
+  box-shadow: 0 10px 24px rgba(10,42,54,.05);
+}
+
+/* chat card */
+.card{
+  background:var(--card);
+  border:2px solid var(--cardBorder);
+  border-radius:24px;
+  box-shadow: var(--shadow);
+  padding: 34px 34px 26px;
+  min-height: 520px;
+}
+
+.welcome{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  font-size:34px;
+  font-weight:800;
+  color:#0b2b38;
+  margin: 4px 0 22px;
+}
+.welcome .hand{font-size:28px;}
+
+.prompt{
+  font-size:30px;
+  line-height:1.7;
+  color:#123a4a;
+  font-weight:650;
+  margin:0 0 24px;
+}
+
+/* input row */
+.inputRow{
+  margin-top: 26px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.inputRow input{
+  flex:1;
+  height:60px;
+  border-radius:14px;
+  border:1px solid rgba(47,127,163,.25);
+  padding: 0 18px;
+  font-size:20px;
+  outline:none;
+  background:#fff;
+}
+.inputRow button{
+  height:60px;
+  padding:0 24px;
+  border-radius:14px;
+  border:0;
+  background:var(--brand2);
+  color:#053041;
+  font-size:18px;
+  font-weight:800;
+  cursor:pointer;
+}
+.inputRow button:hover{filter:brightness(.97);}
+
+#chatBox{
+  min-height: 320px;
+}
+
+/* responsive */
+@media (max-width: 980px){
+  :root{ --logoBox:90px; }
+  .title{ padding: 4px 110px 0; }
+  .title h1{ font-size:44px; }
+  .title p{ font-size:24px; }
+  .card{ min-height: 460px; }
+  .welcome{ font-size:28px; }
+  .prompt{ font-size:22px; }
+}
+@media (max-width: 640px){
+  :root{ --logoBox:74px; }
+  .header{ padding:18px 16px 16px; }
+  .title{ padding: 0 86px; }
+  .title h1{ font-size:34px; }
+  .title p{ font-size:20px; }
+  .panel{ padding:18px; }
+  .card{ padding:18px; }
+  .inputRow{ flex-direction:column; }
+  .inputRow input, .inputRow button{ width:100%; }
+}
+
+/* ===== Premium micro-animations ===== */
+.title h1, .title p{
+  opacity:0;
+  transform: translateY(18px);
+  animation: fadeRise 1.1s cubic-bezier(.2,.8,.2,1) forwards;
+  will-change: transform, opacity;
+}
+.title p{ animation-delay:.35s; }
+@keyframes fadeRise{ to{ opacity:1; transform: translateY(0);} }
+
+/* subtle header shine */
+.header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, transparent, rgba(103,179,207,.08), transparent);
+  transform: translateX(-100%);
+  animation: shine 3.6s ease-in-out 1.2s forwards;
+  pointer-events:none;
+}
+.header{ position:relative; overflow:hidden; }
+@keyframes shine{ 40%{transform:translateX(100%);} 100%{transform:translateX(100%);} }
+
+/* ===== Ramadan crescent (very subtle) ===== */
+body::before{
+  content:"";
+  position:fixed;
+  top:12%;
+  left:6%;
+  width:340px;
+  height:340px;
+  background:
+    radial-gradient(circle at 42% 42%, #ffffff 60%, transparent 61%),
+    radial-gradient(circle at 56% 46%, rgba(103,179,207,.9) 60%, transparent 61%);
+  opacity:.055;
+  filter: blur(.2px);
+  pointer-events:none;
+  z-index:0;
+}
+body::after{
+  content:"";
+  position:fixed;
+  bottom:8%;
+  right:7%;
+  width:260px;
+  height:260px;
+  background:
+    radial-gradient(circle at 42% 42%, #ffffff 60%, transparent 61%),
+    radial-gradient(circle at 56% 46%, rgba(47,127,163,.95) 60%, transparent 61%);
+  opacity:.04;
+  filter: blur(.3px);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* keep content above background */
+.header, .main{ position:relative; z-index:1; }
+
+/* ===== Chat UI upgrades ===== */
+.chat{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin: 6px 0 18px;
+}
+.bubble{
+  max-width:min(760px, 92%);
+  padding:14px 16px;
+  border-radius:16px;
+  line-height:1.75;
+  font-size:18px;
+  box-shadow: 0 10px 22px rgba(10,42,54,.06);
+  border:1px solid rgba(47,127,163,.14);
+  background:#fff;
+}
+.bubble.user{
+  align-self:flex-start;
+  background: linear-gradient(180deg, rgba(103,179,207,.18), rgba(103,179,207,.10));
+}
+.bubble.bot{
+  align-self:flex-end;
+  background: linear-gradient(180deg, rgba(47,127,163,.12), rgba(47,127,163,.06));
+}
+.bubble small{ display:block; opacity:.75; margin-top:8px; }
+
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  margin: 6px 0 18px;
+}
+.pills{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.pill{
+  border:1px solid rgba(47,127,163,.20);
+  background:#fff;
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform .06s ease, filter .2s ease;
+}
+.pill:hover{ filter:brightness(.98); }
+.pill:active{ transform:scale(.98); }
+
+.langToggle{
+  display:flex;
+  border:1px solid rgba(47,127,163,.22);
+  border-radius:999px;
+  overflow:hidden;
+  background:#fff;
+}
+.langToggle button{
+  border:0;
+  background:transparent;
+  padding:10px 14px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  color:var(--text);
+}
+.langToggle button.active{
+  background: rgba(103,179,207,.22);
+}
+
+.hint{
+  margin: 0 0 8px;
+  color:#1a4a5f;
+  opacity:.85;
+  font-size:16px;
+  font-weight:650;
+}
+
+/* input row polish */
+.inputRow input{
+  box-shadow: 0 8px 18px rgba(10,42,54,.05);
+}
+.inputRow button{
+  box-shadow: 0 10px 22px rgba(10,42,54,.08);
+}
+
+/* better mobile */
+@media (max-width: 640px){
+  .card{ min-height:auto; }
+  #chatBox{ min-height: 180px; }
+  .bubble{ font-size:16px; }
+  .title{ padding: 0 84px; }
+  .title h1{ font-size:32px; }
+  .title p{ font-size:18px; }
+  .welcome{ font-size:22px; }
+  .prompt{ font-size:18px; }
+  .pill{ font-size:14px; padding:9px 12px; }
+}
+
+</style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logoCorner left" aria-label="Health Holding Co">
+        <img src="logo_health_holding.png" alt="Health Holding Co" />
+      </div>
+
+      <div class="title">
+        <h1>مساعد رمضان الذكي</h1>
+        <p>لتعديل أوقات الجرعات</p>
+      </div>
+
+      <div class="logoCorner right" aria-label="Qatif Central Hospital">
+        <img src="logo_qch.png" alt="Qatif Central Hospital" />
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="panel">
+      <section class="card">
+        <div id="chatBox">
+          <div class="welcome"><span>أهلاً بك</span><span class="hand">👋</span></div>
+          <p class="prompt">اكتب اسم الدواء لمعرفة طريقة استخدامه في رمضان.</p>
+        </div>
+
+        <div class="inputRow">
+          <button type="button" onclick="sendMessage()">إرسال</button>
+          <input id="userInput" type="text" placeholder="اكتب اسم الدواء هنا..." autocomplete="off" />
+        </div>
+      </section>
+    </section>
+  </main>
+
+<script>
+function esc(s){
+  return (s||"").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+}
+function sendMessage(){
+  const input = document.getElementById("userInput");
+  const chat = document.getElementById("chatBox");
+  const v = (input.value||"").trim();
+  if(!v) return;
+
+  chat.insertAdjacentHTML("beforeend",
+    `<div style="margin-top:18px;font-size:18px;color:#0b2b38;"><b>أنت:</b> ${esc(v)}</div>` +
+    `<div style="margin-top:8px;font-size:18px;color:#123a4a;"><b>النظام:</b> تم استلام اسم الدواء. (يمكن ربط قاعدة البيانات لاحقاً)</div>`
+  );
+  input.value = "";
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+document.addEventListener("keydown", (e)=>{
+  if(e.key==="Enter") sendMessage();
+});
+</script>
+
+<script>
+(() => {
+  // ===== Language =====
+  const LANG = { AR:"ar", EN:"en" };
+  let lang = LANG.AR;
+
+  const el = {
+    input: document.querySelector(".inputRow input"),
+    send: document.querySelector(".inputRow button"),
+    chat: document.getElementById("chatBox"),
+    hint: document.getElementById("hintLine"),
+    btnTop: document.getElementById("btnTop"),
+    btnExamples: document.getElementById("btnExamples"),
+    btnClear: document.getElementById("btnClear"),
+    langAR: document.getElementById("langAR"),
+    langEN: document.getElementById("langEN"),
+  };
+
+  // ===== Real-ish medication knowledge base (offline) =====
+  // Note: This is general education, not individualized medical advice.
+  const DB = [
+    // diabetes
+    {key:"metformin", ar:"ميتفورمين", en:"Metformin", tags:["metformin","ميتفورمين","glucophage","جلوكوفاج"], class:"Diabetes (T2DM)", advice:{
+      ar:"غالبًا يؤخذ مع/بعد الوجبة لتقليل اضطراب المعدة. في رمضان: إذا كانت الجرعة مرة يوميًا فغالبًا بعد الإفطار. إذا مرتين يوميًا فغالبًا بعد الإفطار وبعد السحور. إذا لديك هبوط سكر متكرر أو مرض كلوي—راجع الطبيب لتعديل الخطة.",
+      en:"Usually taken with/after food to reduce GI upset. In Ramadan: once daily often after Iftar; twice daily often after Iftar and Suhoor. If you have recurrent hypoglycemia or kidney disease, consult your clinician for a tailored plan."
+    }},
+    {key:"insulin", ar:"أنسولين", en:"Insulin", tags:["insulin","أنسولين","lantus","levemir","novorapid","humalog","apidra","tresiba","نوفورابيد","هيومالوج","أبيدرا","تريسيبا","لانتوس"], class:"Diabetes", highRisk:true, advice:{
+      ar:"⚠️ الأنسولين يحتاج خطة فردية قبل رمضان. لا تغيّر الجرعة بنفسك. غالبًا تُعدّل جرعات ما قبل الإفطار/السحور حسب نوع الأنسولين وسكر الدم. راقب السكر بانتظام وخذ احتياطات الهبوط.",
+      en:"⚠️ Insulin dosing must be individualized for Ramadan—do not adjust on your own. Doses before Iftar/Suhoor often need modification depending on insulin type and glucose readings. Monitor closely and follow your care team’s plan."
+    }},
+    {key:"gliclazide", ar:"جليكلازايد", en:"Gliclazide", tags:["gliclazide","جليكلازايد","diamicron","دياميكرون"], class:"Diabetes (sulfonylurea)", highRisk:true, advice:{
+      ar:"⚠️ قد يسبب هبوط سكر. غالبًا تُنقل الجرعة الرئيسية إلى الإفطار وقد تُخفّض. راقب السكر وراجع الطبيب خصوصًا إذا حدثت أعراض هبوط.",
+      en:"⚠️ Can cause hypoglycemia. Often the main dose is moved to Iftar and may be reduced. Monitor glucose and consult your clinician if lows occur."
+    }},
+    // anticoag
+    {key:"warfarin", ar:"وارفارين", en:"Warfarin", tags:["warfarin","وارفارين","coumadin","كومادين"], class:"Anticoagulant", highRisk:true, advice:{
+      ar:"يمكن تناوله مرة يوميًا بعد الإفطار في وقت ثابت. الأهم: الاستمرار على نفس التوقيت يوميًا + متابعة INR حسب الخطة. تجنّب تغييرات كبيرة في الأغذية الغنية بفيتامين K دون استشارة.",
+      en:"Can be taken once daily after Iftar at a consistent time. Key: keep timing consistent and monitor INR as scheduled. Avoid major changes in vitamin K–rich foods without guidance."
+    }},
+    {key:"apixaban", ar:"أبيكسابان", en:"Apixaban", tags:["apixaban","eliquis","إليكويس","أبيكسابان"], class:"Anticoagulant", highRisk:true, advice:{
+      ar:"إذا مرتين يوميًا: غالبًا جرعة بعد الإفطار وجرعة قبل/بعد السحور بوقت مناسب. لا توقف الدواء دون طبيب.",
+      en:"If twice daily: often after Iftar and around Suhoor. Do not stop without clinician advice."
+    }},
+    {key:"rivaroxaban", ar:"ريفاروكسابان", en:"Rivaroxaban", tags:["rivaroxaban","xarelto","زاريلتو","ريفاروكسابان"], class:"Anticoagulant", highRisk:true, advice:{
+      ar:"بعض الجرعات تحتاج مع الطعام. في رمضان غالبًا بعد الإفطار مع وجبة. اتبع تعليمات الجرعة التي لديك ولا تغيّرها دون طبيب.",
+      en:"Some doses require food. In Ramadan often taken after Iftar with a meal. Follow your prescribed dosing instructions."
+    }},
+    // stomach
+    {key:"omeprazole", ar:"أوميبرازول", en:"Omeprazole", tags:["omeprazole","أوميبرازول","losec","لوسيك"], class:"PPI", advice:{
+      ar:"أفضل فعالية عند تناوله على معدة فارغة قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+      en:"Best taken on an empty stomach 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+    }},
+    {key:"pantoprazole", ar:"بانتوبرازول", en:"Pantoprazole", tags:["pantoprazole","بانتوبرازول","controloc","كونترولوك"], class:"PPI", advice:{
+      ar:"مثل الأوميبرازول: قبل الإفطار بـ 30–60 دقيقة.",
+      en:"Similar to omeprazole: take 30–60 minutes before Iftar."
+    }},
+    {key:"famotidine", ar:"فاموتيدين", en:"Famotidine", tags:["famotidine","فاموتيدين","pepcid","بيبcid","بيبسايد"], class:"H2 blocker", advice:{
+      ar:"يمكن تناوله قبل الإفطار أو قبل النوم حسب الحالة. عادة لا يحتاج معدة فارغة.",
+      en:"Can be taken before Iftar or at bedtime depending on symptoms; usually does not require an empty stomach."
+    }},
+    // blood pressure / heart
+    {key:"amlodipine", ar:"أملوديبين", en:"Amlodipine", tags:["amlodipine","أملوديبين","norvasc","نورفاسك"], class:"Hypertension", advice:{
+      ar:"غالبًا مرة يوميًا—يمكن بعد الإفطار أو السحور في وقت ثابت. راقب الضغط خصوصًا أول أيام رمضان.",
+      en:"Usually once daily—take after Iftar or Suhoor at a consistent time. Monitor BP especially early in Ramadan."
+    }},
+    {key:"lisinopril", ar:"ليزينوبريل", en:"Lisinopril", tags:["lisinopril","ليزينوبريل","zestril","زيستريل"], class:"ACE inhibitor", advice:{
+      ar:"مرة يوميًا غالبًا. قد يسبب دوخة مع الجفاف؛ اشرب سوائل كافية بين الإفطار والسحور وراقب الضغط.",
+      en:"Often once daily. Can cause dizziness with dehydration—hydrate between Iftar and Suhoor and monitor BP."
+    }},
+    {key:"losartan", ar:"لوسارتان", en:"Losartan", tags:["losartan","لوسارتان","cozaar","كوزار"], class:"ARB", advice:{
+      ar:"مرة يوميًا غالبًا. اختر وقت ثابت بعد الإفطار أو السحور.",
+      en:"Often once daily—choose a consistent time after Iftar or Suhoor."
+    }},
+    {key:"furosemide", ar:"فوروسيميد", en:"Furosemide", tags:["furosemide","lasix","لازيكس","فوروسيميد"], class:"Diuretic", highRisk:true, advice:{
+      ar:"⚠️ مُدرّ بول وقد يزيد العطش/الجفاف. غالبًا يُفضل بعد الإفطار (وتجنب قرب السحور) لتقليل التبول أثناء الصيام. راجع الطبيب إذا لديك قصور قلب/كلية.",
+      en:"⚠️ Diuretic—may worsen dehydration. Often preferred after Iftar (avoid close to Suhoor) to reduce daytime urination. Consult your clinician if you have HF/CKD."
+    }},
+    // antibiotics common (general)
+    {key:"amoxicillin", ar:"أموكسيسيلين", en:"Amoxicillin", tags:["amoxicillin","أموكسيسيلين","amoxil","أموكسيل"], class:"Antibiotic", advice:{
+      ar:"اتبع الجرعات الموصوفة (قد تكون 2–3 مرات يوميًا). في رمضان يمكن توزيعها بين الإفطار والسحور. لا توقف المضاد قبل إكمال المدة إلا بتوجيه طبي.",
+      en:"Follow prescribed dosing (often 2–3 times/day). In Ramadan, space doses between Iftar and Suhoor. Do not stop early unless advised."
+    }},
+    {key:"azithromycin", ar:"أزيثروميسين", en:"Azithromycin", tags:["azithromycin","أزيثروميسين","zithromax","زيثرومكس"], class:"Antibiotic", advice:{
+      ar:"غالبًا مرة يوميًا. بعض الأنواع تُؤخذ بعيدًا عن الطعام—اتبع ملصق العبوة. وقت بعد الإفطار غالبًا مناسب.",
+      en:"Often once daily. Some forms are taken away from food—follow your label. After Iftar is commonly convenient."
+    }},
+    // pain / antiinflammatory
+    {key:"paracetamol", ar:"باراسيتامول", en:"Paracetamol (Acetaminophen)", tags:["paracetamol","acetaminophen","panadol","بنادول","باراسيتامول"], class:"Pain/Fever", advice:{
+      ar:"يمكن تناوله عند الحاجة بعد الإفطار أو السحور. تجنب تجاوز الجرعة اليومية القصوى خصوصًا مع أدوية البرد.",
+      en:"May be taken as needed after Iftar or Suhoor. Avoid exceeding the daily maximum—watch combination cold/flu products."
+    }},
+    {key:"ibuprofen", ar:"إيبوبروفين", en:"Ibuprofen", tags:["ibuprofen","إيبوبروفين","brufen","بروفين"], class:"NSAID", highRisk:true, advice:{
+      ar:"⚠️ يفضل بعد الأكل لتقليل تهيج المعدة. قد يؤثر على الكلى مع الجفاف—كن حذرًا واشرب سوائل كافية، وتجنب استخدامه إذا لديك قرحة/مرض كلوي إلا بتوجيه طبي.",
+      en:"⚠️ Prefer after food to reduce stomach irritation. Can affect kidneys with dehydration—use cautiously, hydrate well, and avoid if ulcer/CKD unless advised."
+    }},
+    // thyroid
+    {key:"levothyroxine", ar:"ليفوثيروكسين", en:"Levothyroxine", tags:["levothyroxine","ليفوثيروكسين","eltroxin","إلتروكسين","synthroid"], class:"Thyroid", advice:{
+      ar:"يؤخذ على معدة فارغة. في رمضان خياران شائعان: (1) قبل السحور بـ 30–60 دقيقة، أو (2) بعد الإفطار بـ 3–4 ساعات (بعد انتهاء الأكل). الأهم الثبات على نفس الخطة يوميًا.",
+      en:"Take on an empty stomach. In Ramadan: either 30–60 minutes before Suhoor, or 3–4 hours after Iftar (after finishing meals). Consistency is key."
+    }},
+    // asthma
+    {key:"salbutamol", ar:"سالبوتامول", en:"Salbutamol (Albuterol)", tags:["salbutamol","albuterol","ventolin","فنتولين","سالبوتامول"], class:"Asthma", highRisk:true, advice:{
+      ar:"بخاخ الإسعاف يُستخدم عند اللزوم. إذا زادت الأعراض أثناء الصيام—لا تتردد في استخدامه واطلب تقييم طبي. (تأكد من توجيهات الجهة الشرعية/الطبية المحلية).",
+      en:"Rescue inhaler as needed. If symptoms worsen during fasting, use it and seek medical review. (Follow local medical/faith guidance)."
+    }},
+  ];
+
+  const TOP = [
+    "ميتفورمين","أنسولين","وارفارين","أوميبرازول","بانتوبرازول","أملوديبين",
+    "لوسارتان","ليزينوبريل","باراسيتامول","إيبوبروفين","ليفوثيروكسين","أموكسيسيلين"
+  ];
+
+  // ===== Helpers =====
+  const norm = (s) => (s||"")
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g," ")
+    .replace(/[أإآ]/g,"ا")
+    .replace(/ة/g,"ه")
+    .replace(/ى/g,"ي");
+
+  function setLang(next){
+    lang = next;
+    el.langAR.classList.toggle("active", lang===LANG.AR);
+    el.langEN.classList.toggle("active", lang===LANG.EN);
+    el.langAR.setAttribute("aria-selected", lang===LANG.AR ? "true":"false");
+    el.langEN.setAttribute("aria-selected", lang===LANG.EN ? "true":"false");
+    el.hint.textContent = lang===LANG.AR
+      ? "اكتب اسم الدواء (مثال: وارفارين، ميتفورمين، أوميبرازول) ثم اضغط إرسال."
+      : "Type a medication name (e.g., warfarin, metformin, omeprazole) then press Send.";
+    el.input.placeholder = lang===LANG.AR ? "اكتب اسم الدواء هنا..." : "Type the medication name...";
+    el.send.textContent = lang===LANG.AR ? "إرسال" : "Send";
+  }
+
+  function bubble(text, who="bot", footer=""){
+    const div = document.createElement("div");
+    div.className = `bubble ${who}`;
+    div.innerHTML = text + (footer ? `<small>${footer}</small>`:"");
+    el.chat.appendChild(div);
+    el.chat.scrollTop = el.chat.scrollHeight;
+  }
+
+  function findDrug(q){
+    const nq = norm(q);
+    if(!nq) return [];
+    return DB.filter(d => d.tags.some(t => nq.includes(norm(t))));
+  }
+
+  function replyFor(drug){
+    const disclaimerAR = "تنبيه: معلومات عامة للتثقيف وليست بديلًا عن الطبيب/الصيدلي. إذا لديك سكري على أنسولين، أو أدوية سيولة، أو مرض كلى/قلب—استشر طبيبك قبل أي تعديل.";
+    const disclaimerEN = "Note: General education only—not a substitute for your clinician/pharmacist. If you use insulin, anticoagulants, or have kidney/heart disease, consult your care team before any changes.";
+    const title = lang===LANG.AR ? drug.ar : drug.en;
+    const cls = lang===LANG.AR ? "التصنيف" : "Class";
+    const risk = drug.highRisk ? (lang===LANG.AR ? "⚠️ يحتاج حذر/خطة فردية" : "⚠️ Higher-risk / individualized plan") : "";
+    const advice = lang===LANG.AR ? drug.advice.ar : drug.advice.en;
+    const disc = lang===LANG.AR ? disclaimerAR : disclaimerEN;
+
+    const html = `<b>${title}</b><br><span style="opacity:.85">${cls}: ${drug.class}${risk ? " • "+risk : ""}</span><br><br>${advice}`;
+    return { html, disc };
+  }
+
+  function clearChat(){
+    el.chat.innerHTML = "";
+    welcome();
+  }
+
+  function welcome(){
+    const w = lang===LANG.AR
+      ? "مرحبًا 👋 أنا مساعد رمضان الذكي. اكتب اسم الدواء وسأعطيك إرشادات عامة لتوقيت الجرعة في رمضان."
+      : "Hi 👋 I’m the Ramadan Smart Assistant. Type a medication name and I’ll provide general Ramadan timing guidance.";
+    bubble(w, "bot");
+  }
+
+  function handleSend(text){
+    const raw = (text ?? el.input.value).trim();
+    if(!raw) return;
+    bubble(lang===LANG.AR ? `<b>أنت:</b> ${raw}` : `<b>You:</b> ${raw}`, "user");
+    el.input.value = "";
+
+    const hits = findDrug(raw);
+    if(hits.length){
+      // If multiple matches, show first 2
+      hits.slice(0,2).forEach(d => {
+        const r = replyFor(d);
+        bubble(r.html, "bot", r.disc);
+      });
+    }else{
+      const msg = lang===LANG.AR
+        ? "لم أتعرف على الدواء. جرّب كتابة الاسم العلمي/التجاري، أو اكتب جزء من الاسم."
+        : "I couldn’t match that medication. Try the generic/brand name, or part of the name.";
+      bubble(msg, "bot");
+    }
+  }
+
+  // ===== Events =====
+  el.send.addEventListener("click", () => handleSend());
+  el.input.addEventListener("keydown", (e) => {
+    if(e.key === "Enter"){ e.preventDefault(); handleSend(); }
+  });
+
+  el.langAR.addEventListener("click", () => { setLang(LANG.AR); clearChat(); });
+  el.langEN.addEventListener("click", () => { setLang(LANG.EN); clearChat(); });
+
+  el.btnClear.addEventListener("click", clearChat);
+
+  el.btnExamples.addEventListener("click", () => {
+    const examples = lang===LANG.AR
+      ? ["وارفارين","ميتفورمين","أوميبرازول","ليفوثيروكسين","أملوديبين"]
+      : ["warfarin","metformin","omeprazole","levothyroxine","amlodipine"];
+    bubble((lang===LANG.AR ? "أمثلة:" : "Examples:") + " " + examples.join(" • "), "bot");
+  });
+
+  el.btnTop.addEventListener("click", () => {
+    const list = (lang===LANG.AR ? TOP : TOP.map(x => x)); // AR list is fine; users can type EN too
+    bubble((lang===LANG.AR ? "الأكثر شيوعًا (اضغط/انسخ الاسم):" : "Top common (type/copy the name):") + "<br><br>" +
+      list.map(n => `• ${n}`).join("<br>"), "bot");
+  });
+
+  // ===== Init =====
+  setLang(LANG.AR);
+  clearChat();
+})();
+</script>
+
+</body>
+</html>
