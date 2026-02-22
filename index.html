@@ -1,1 +1,18 @@
+/* ===== Title Animation ===== */
+.title h1,
+.title p{
+  opacity:0;
+  transform: translateY(20px);
+  animation: fadeRise 1.2s ease forwards;
+}
 
+.title p{
+  animation-delay: .4s;
+}
+
+@keyframes fadeRise{
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
