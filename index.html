@@ -1,751 +1,657 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>مساعد رمضان الذكي</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QCH – Smart Ramadan Medication Assistant</title>
+  <meta name="description" content="Qatif Central Hospital – Ramadan Medication Assistant (Arabic/English)." />
 
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2f7fa3">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <!-- Modern PWA (clean, no deprecated meta) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0b1f26">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 
-<style>
-:root{
-  --brand:#2f7fa3;
-  --brand2:#67b3cf;
-  --text:#0c2a36;
+  <style>
+    :root{
+      --bg:#0b1f26; --panel:#0f2a33; --panel2:#0d2430;
+      --text:#eaf6fb; --muted:#b7d2dd;
+      --accent:#35d0c7; --accent2:#2aa6ff;
+      --danger:#ff4d4f; --warn:#f5a524; --ok:#22c55e;
+      --shadow: 0 14px 45px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 25% 10%, rgba(53,208,199,.18), transparent 55%),
+                  radial-gradient(1200px 700px at 85% 25%, rgba(42,166,255,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1000px; margin:0 auto; padding:18px;}
+    .topbar{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      padding:14px 14px; border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; gap:12px; align-items:center;}
+    .logo{
+      width:44px; height:44px; border-radius:12px; overflow:hidden;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center;
+    }
+    .logo img{width:100%; height:100%; object-fit:contain; display:block;}
+    .brand h1{margin:0; font-size:16px; line-height:1.15;}
+    .brand .sub{margin-top:3px; font-size:12px; color:var(--muted);}
 
-  --bgTop:#ffffff;
-  --bg1:#eef8fd;
-  --bg2:#dfeff8;
+    .actionsTop{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .miniBtn{
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color:#eaf6fb;
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:13px;
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    .miniBtn:hover{background: rgba(255,255,255,.10);}
+    .miniBtn.primary{
+      border-color: rgba(53,208,199,.55);
+      background: linear-gradient(180deg, rgba(53,208,199,.20), rgba(53,208,199,.10));
+    }
 
-  --card:#f6fbff;
-  --cardBorder:#bfe0f0;
+    .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; margin-top:14px;}
+    @media (max-width: 940px){ .grid{grid-template-columns:1fr;} }
 
-  --shadow:0 18px 40px rgba(10, 42, 54, .08);
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cardHead{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      background: rgba(0,0,0,.12);
+    }
+    .cardHead .title{font-weight:700; font-size:13px;}
+    .cardHead .hint{font-size:12px; color:var(--muted);}
 
-  /* محاذاة بصرية للشعارات (تعويض الفراغ الداخلي) */
-  --logoBox:110px;
-  --logoScaleQCH:1.00;
-  --logoScaleHH:1.12;
-  --logoYQCH:0px;
-  --logoYHH:0px;
-}
+    #chat{
+      height: 520px;
+      overflow:auto;
+      padding:14px;
+      background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.06));
+    }
+    .msg{display:flex; flex-direction:column; gap:6px; margin:10px 0;}
+    .msg.bot{align-items:flex-start;}
+    .msg.user{align-items:flex-end;}
+    .bubble{
+      max-width: 92%;
+      padding:12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      line-height:1.45;
+      font-size:14px;
+      white-space:normal;
+    }
+    .msg.user .bubble{
+      background: linear-gradient(180deg, rgba(42,166,255,.22), rgba(42,166,255,.10));
+      border-color: rgba(42,166,255,.30);
+    }
+    .msg.bot .bubble{
+      background: linear-gradient(180deg, rgba(53,208,199,.18), rgba(255,255,255,.04));
+      border-color: rgba(53,208,199,.25);
+    }
+    .actionsRow{display:flex; gap:8px;}
+    .pill{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:13px;
+      display:inline-flex; gap:8px; align-items:center;
+      margin: 6px 6px 0 0;
+    }
+    .pill:hover{background: rgba(255,255,255,.10);}
+    .muted{color:var(--muted);}
 
-*{box-sizing:border-box}
+    .composer{
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+      display:flex; gap:10px;
+      background: rgba(0,0,0,.10);
+    }
+    .composer input{
+      flex:1;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    .composer input::placeholder{color: rgba(183,210,221,.8);}
+    .composer button{
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(53,208,199,.45);
+      background: linear-gradient(180deg, rgba(53,208,199,.25), rgba(53,208,199,.12));
+      color:var(--text);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .composer button:hover{filter:brightness(1.08);}
 
-body{
-  margin:0;
-  font-family: Tahoma, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  color:var(--text);
-  background:
-    linear-gradient(180deg, var(--bgTop) 0%, var(--bg1) 35%, var(--bg2) 100%);
-}
+    .side{
+      padding:14px;
+    }
+    .section{margin-bottom:14px;}
+    .section h3{margin:0 0 8px 0; font-size:13px;}
+    .kpi{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    }
+    .kpi .box{
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+    }
+    .box .big{font-size:18px; font-weight:800;}
+    .box .small{font-size:12px; color:var(--muted); margin-top:4px;}
+    .smallList{font-size:13px; color:var(--muted); line-height:1.6;}
+    .footer{
+      margin-top:10px; font-size:12px; color: rgba(183,210,221,.85);
+      text-align:center;
+    }
+    a{color: var(--accent2);}
 
-/* ===== Header (white, minimal, like screenshot) ===== */
-.header{
-  background:#fff;
-  padding:26px 28px 22px;
-  border-bottom:1px solid rgba(47,127,163,.15);
-}
-
-.header-inner{
-  max-width:1280px;
-  margin:0 auto;
-  position:relative;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-}
-
-/* corner logos */
-.logoCorner{
-  position:absolute;
-  top:2px;
-  width:var(--logoBox);
-  height:var(--logoBox);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.logoCorner.left{left:0;}
-.logoCorner.right{right:0;}
-
-.logoCorner img{
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  display:block;
-  transform-origin:center center;
-}
-.logoCorner.right img{
-  transform: translateY(var(--logoYQCH)) scale(var(--logoScaleQCH));
-}
-.logoCorner.left img{
-  transform: translateY(var(--logoYHH)) scale(var(--logoScaleHH));
-}
-
-/* centered title */
-.title{
-  text-align:center;
-  padding: 6px 140px 0; /* leave room for logos on wide screens */
-}
-.title h1{
-  margin:0;
-  color:var(--brand);
-  font-size:64px;
-  letter-spacing:.2px;
-  font-weight:800;
-}
-.title p{
-  margin:10px 0 0;
-  color:var(--brand2);
-  font-size:34px;
-  font-weight:700;
-}
-
-/* ===== Main area ===== */
-.main{
-  max-width:1400px;
-  margin:0 auto;
-  padding: 34px 22px 60px;
-}
-
-/* subtle big panel background behind card (like screenshot) */
-.panel{
-  background:rgba(255,255,255,.35);
-  border:1px solid rgba(47,127,163,.12);
-  border-radius:26px;
-  padding: 34px;
-  box-shadow: 0 10px 24px rgba(10,42,54,.05);
-}
-
-/* chat card */
-.card{
-  background:var(--card);
-  border:2px solid var(--cardBorder);
-  border-radius:24px;
-  box-shadow: var(--shadow);
-  padding: 34px 34px 26px;
-  min-height: 520px;
-}
-
-.welcome{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  gap:10px;
-  font-size:34px;
-  font-weight:800;
-  color:#0b2b38;
-  margin: 4px 0 22px;
-}
-.welcome .hand{font-size:28px;}
-
-.prompt{
-  font-size:30px;
-  line-height:1.7;
-  color:#123a4a;
-  font-weight:650;
-  margin:0 0 24px;
-}
-
-/* input row */
-.inputRow{
-  margin-top: 26px;
-  display:flex;
-  gap:14px;
-  align-items:center;
-}
-.inputRow input{
-  flex:1;
-  height:60px;
-  border-radius:14px;
-  border:1px solid rgba(47,127,163,.25);
-  padding: 0 18px;
-  font-size:20px;
-  outline:none;
-  background:#fff;
-}
-.inputRow button{
-  height:60px;
-  padding:0 24px;
-  border-radius:14px;
-  border:0;
-  background:var(--brand2);
-  color:#053041;
-  font-size:18px;
-  font-weight:800;
-  cursor:pointer;
-}
-.inputRow button:hover{filter:brightness(.97);}
-
-#chatBox{
-  min-height: 320px;
-}
-
-/* responsive */
-@media (max-width: 980px){
-  :root{ --logoBox:90px; }
-  .title{ padding: 4px 110px 0; }
-  .title h1{ font-size:44px; }
-  .title p{ font-size:24px; }
-  .card{ min-height: 460px; }
-  .welcome{ font-size:28px; }
-  .prompt{ font-size:22px; }
-}
-@media (max-width: 640px){
-  :root{ --logoBox:74px; }
-  .header{ padding:18px 16px 16px; }
-  .title{ padding: 0 86px; }
-  .title h1{ font-size:34px; }
-  .title p{ font-size:20px; }
-  .panel{ padding:18px; }
-  .card{ padding:18px; }
-  .inputRow{ flex-direction:column; }
-  .inputRow input, .inputRow button{ width:100%; }
-}
-
-/* ===== Premium micro-animations ===== */
-.title h1, .title p{
-  opacity:0;
-  transform: translateY(18px);
-  animation: fadeRise 1.1s cubic-bezier(.2,.8,.2,1) forwards;
-  will-change: transform, opacity;
-}
-.title p{ animation-delay:.35s; }
-@keyframes fadeRise{ to{ opacity:1; transform: translateY(0);} }
-
-/* subtle header shine */
-.header::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(90deg, transparent, rgba(103,179,207,.08), transparent);
-  transform: translateX(-100%);
-  animation: shine 3.6s ease-in-out 1.2s forwards;
-  pointer-events:none;
-}
-.header{ position:relative; overflow:hidden; }
-@keyframes shine{ 40%{transform:translateX(100%);} 100%{transform:translateX(100%);} }
-
-/* ===== Ramadan crescent (very subtle) ===== */
-body::before{
-  content:"";
-  position:fixed;
-  top:12%;
-  left:6%;
-  width:340px;
-  height:340px;
-  background:
-    radial-gradient(circle at 42% 42%, #ffffff 60%, transparent 61%),
-    radial-gradient(circle at 56% 46%, rgba(103,179,207,.9) 60%, transparent 61%);
-  opacity:.055;
-  filter: blur(.2px);
-  pointer-events:none;
-  z-index:0;
-}
-body::after{
-  content:"";
-  position:fixed;
-  bottom:8%;
-  right:7%;
-  width:260px;
-  height:260px;
-  background:
-    radial-gradient(circle at 42% 42%, #ffffff 60%, transparent 61%),
-    radial-gradient(circle at 56% 46%, rgba(47,127,163,.95) 60%, transparent 61%);
-  opacity:.04;
-  filter: blur(.3px);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* keep content above background */
-.header, .main{ position:relative; z-index:1; }
-
-/* ===== Chat UI upgrades ===== */
-.chat{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin: 6px 0 18px;
-}
-.bubble{
-  max-width:min(760px, 92%);
-  padding:14px 16px;
-  border-radius:16px;
-  line-height:1.75;
-  font-size:18px;
-  box-shadow: 0 10px 22px rgba(10,42,54,.06);
-  border:1px solid rgba(47,127,163,.14);
-  background:#fff;
-}
-.bubble.user{
-  align-self:flex-start;
-  background: linear-gradient(180deg, rgba(103,179,207,.18), rgba(103,179,207,.10));
-}
-.bubble.bot{
-  align-self:flex-end;
-  background: linear-gradient(180deg, rgba(47,127,163,.12), rgba(47,127,163,.06));
-}
-.bubble small{ display:block; opacity:.75; margin-top:8px; }
-
-.toolbar{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-  justify-content:space-between;
-  margin: 6px 0 18px;
-}
-.pills{
-  display:flex; flex-wrap:wrap; gap:10px;
-}
-.pill{
-  border:1px solid rgba(47,127,163,.20);
-  background:#fff;
-  border-radius:999px;
-  padding:10px 14px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-  transition: transform .06s ease, filter .2s ease;
-}
-.pill:hover{ filter:brightness(.98); }
-.pill:active{ transform:scale(.98); }
-
-.langToggle{
-  display:flex;
-  border:1px solid rgba(47,127,163,.22);
-  border-radius:999px;
-  overflow:hidden;
-  background:#fff;
-}
-.langToggle button{
-  border:0;
-  background:transparent;
-  padding:10px 14px;
-  font-size:14px;
-  font-weight:800;
-  cursor:pointer;
-  color:var(--text);
-}
-.langToggle button.active{
-  background: rgba(103,179,207,.22);
-}
-
-.hint{
-  margin: 0 0 8px;
-  color:#1a4a5f;
-  opacity:.85;
-  font-size:16px;
-  font-weight:650;
-}
-
-/* input row polish */
-.inputRow input{
-  box-shadow: 0 8px 18px rgba(10,42,54,.05);
-}
-.inputRow button{
-  box-shadow: 0 10px 22px rgba(10,42,54,.08);
-}
-
-/* better mobile */
-@media (max-width: 640px){
-  .card{ min-height:auto; }
-  #chatBox{ min-height: 180px; }
-  .bubble{ font-size:16px; }
-  .title{ padding: 0 84px; }
-  .title h1{ font-size:32px; }
-  .title p{ font-size:18px; }
-  .welcome{ font-size:22px; }
-  .prompt{ font-size:18px; }
-  .pill{ font-size:14px; padding:9px 12px; }
-}
-
-
-/* ===== Footer ===== */
-.footer{
-  margin-top: 22px;
-  padding: 18px 18px 28px;
-}
-.footer-inner{
-  max-width:1400px;
-  margin:0 auto;
-  display:flex;
-  gap:16px;
-  align-items:flex-end;
-  justify-content:space-between;
-  background: rgba(255,255,255,.55);
-  border:1px solid rgba(47,127,163,.14);
-  border-radius:18px;
-  padding: 14px 16px;
-}
-.footer-line{
-  color:#0c2a36;
-  font-size:14px;
-  line-height:1.5;
-  opacity:.92;
-}
-#usageStats{
-  text-align:left;
-  font-size:12px;
-  color:#1a4a5f;
-  opacity:.9;
-}
-#usageStats b{ font-size:12px; }
-@media (max-width:640px){
-  .footer-inner{ flex-direction:column; align-items:flex-start; }
-  #usageStats{ text-align:right; width:100%; }
-}
-
-
-/* ===== Welcome Modal ===== */
-.modal{ position:fixed; inset:0; z-index:50; display:grid; place-items:center; }
-.modal[hidden]{ display:none; }
-.modal-backdrop{ position:absolute; inset:0; background: rgba(11,31,38,.35); backdrop-filter: blur(6px); }
-.modal-card{
-  position:relative;
-  width:min(720px, 92vw);
-  background:#fff;
-  border:1px solid rgba(47,127,163,.18);
-  border-radius:22px;
-  box-shadow: 0 22px 60px rgba(10,42,54,.22);
-  padding: 18px 18px 16px;
-  animation: popIn .22s ease-out forwards;
-}
-@keyframes popIn{ from{ transform: translateY(8px) scale(.98); opacity:.6;} to{ transform:none; opacity:1;} }
-.modal-badge{
-  display:inline-block;
-  background: rgba(103,179,207,.18);
-  border:1px solid rgba(47,127,163,.16);
-  color:#0c2a36;
-  font-weight:800;
-  border-radius:999px;
-  padding: 6px 10px;
-  font-size:13px;
-  margin-bottom:10px;
-}
-.modal-header h2{ margin:0; color: var(--brand); font-size:26px; }
-.modal-sub{ margin:8px 0 0; color:#1a4a5f; opacity:.9; line-height:1.7; }
-.modal-actions{ display:flex; gap:10px; justify-content:flex-start; flex-wrap:wrap; margin-top:14px; }
-
-</style>
+    /* Modal */
+    #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999;}
+    #topModal .boxModal{
+      max-width:520px; margin:8vh auto; background:#0b1f26; color:#eaf6fb;
+      border:1px solid rgba(255,255,255,.15); border-radius:18px; padding:16px;
+      box-shadow: var(--shadow);
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- ===== Welcome (first visit) ===== -->
-  <div class="modal" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" hidden>
-    <div class="modal-backdrop" data-close="1"></div>
-    <div class="modal-card">
-      <div class="modal-header">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" title="QCH">
+          <!-- If you have your logo, put it as icons/icon-192.png or change src here -->
+          <img src="icons/icon-192.png" alt="QCH Logo">
+        </div>
         <div>
-          <div class="modal-badge">🌙 رمضان كريم</div>
-          <h2 id="welcomeTitle">مرحبًا بك في مساعد رمضان الذكي</h2>
-          <p class="modal-sub">إرشادات عامة لتوقيت الأدوية في رمضان (عربي/English). ليست بديلًا عن الطبيب أو الصيدلي.</p>
+          <h1>QCH – Smart Ramadan Medication Assistant</h1>
+          <div class="sub">Arabic / English · Patient-friendly · Offline analytics</div>
         </div>
       </div>
-      <div class="modal-actions">
-        <button class="pill" type="button" id="welcomeStart">ابدأ الآن</button>
-        <button class="pill" type="button" id="welcomeDontShow">عدم الإظهار مرة أخرى</button>
+
+      <div class="actionsTop">
+        <button id="langBtn" class="miniBtn primary" type="button">🌐 Arabic</button>
+        <button id="topBtn" class="miniBtn" type="button">📊 Top 10</button>
+        <button id="installBtn" class="miniBtn" type="button" style="display:none;">⬇️ Install</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Chat -->
+      <div class="card">
+        <div class="cardHead">
+          <div>
+            <div class="title">Chat</div>
+            <div class="hint">Use suggestions or type medication name (autocomplete)</div>
+          </div>
+          <div class="hint" id="statusHint">Loading drugs.json…</div>
+        </div>
+
+        <div id="chat"></div>
+
+        <div class="composer">
+          <input id="userInput" list="drugHints" placeholder="Type medication name or question…" autocomplete="off" />
+          <datalist id="drugHints"></datalist>
+          <button id="sendBtn" type="button">Send</button>
+        </div>
+      </div>
+
+      <!-- Side info -->
+      <div class="card">
+        <div class="cardHead">
+          <div class="title">Quick Guide</div>
+          <div class="hint">Patient-friendly</div>
+        </div>
+
+        <div class="side">
+          <div class="section">
+            <h3>Suggested buttons</h3>
+            <div id="suggestions"></div>
+          </div>
+
+          <div class="section">
+            <h3>Analytics (local)</h3>
+            <div class="kpi">
+              <div class="box">
+                <div class="big" id="kpiUsed">0</div>
+                <div class="small">Tracked selections</div>
+              </div>
+              <div class="box">
+                <div class="big" id="kpiDrugs">0</div>
+                <div class="small">Drugs loaded</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Notes</h3>
+            <div class="smallList" id="notesBox">
+              • This tool provides general guidance only.<br>
+              • Always follow the clinician plan.<br>
+              • For emergencies, contact your hospital/911.<br>
+            </div>
+          </div>
+
+          <div class="footer">
+            Created by Automation Supervisor Ali Alsada
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <header class="header">
-    <div class="header-inner">
-      <div class="logoCorner left" aria-label="Health Holding Co">
-        <img src="logo_health_holding.png" alt="Health Holding Co" />
+  <!-- Top 10 Modal -->
+  <div id="topModal">
+    <div class="boxModal">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="margin:0;">📊 Top 10 Medications</h3>
+        <button id="topClose" type="button" class="miniBtn">✕ Close</button>
       </div>
-
-      <div class="title">
-        <h1>مساعد رمضان الذكي</h1>
-        <p>لتعديل أوقات الجرعات</p>
-      </div>
-
-      <div class="logoCorner right" aria-label="Qatif Central Hospital">
-        <img src="logo_qch.png" alt="Qatif Central Hospital" />
-      </div>
+      <div id="topList" style="margin-top:12px;"></div>
+      <div style="margin-top:12px;" class="muted">Stored locally in your browser (no server).</div>
     </div>
-  </header>
+  </div>
 
-  <main class="main">
-    <section class="panel">
-      <section class="card">
-        <div id="chatBox">
-          <div class="welcome"><span>أهلاً بك</span><span class="hand">👋</span></div>
-          <p class="prompt">اكتب اسم الدواء لمعرفة طريقة استخدامه في رمضان.</p>
-        </div>
+  <script>
+    /** ---------------- language ---------------- **/
+    let LANG = "en"; // "en" or "ar"
+    const T = {
+      en: {
+        langBtn: "🌐 Arabic",
+        placeholder: "Type medication name or question…",
+        send: "Send",
+        welcome: "Hello 👋\nType a medication name (e.g., Metformin 500 mg) or use the buttons.\n\nThis tool gives general guidance only.",
+        suggestTitle: "Suggested buttons",
+        s1: "⭐ Common meds",
+        s2: "💊 Search medication",
+        s3: "🕒 Ramadan timing tips",
+        s4: "⚠️ Warfarin notes",
+        copy: "📋 Copy reply",
+        copied: "✅ Copied",
+        topEmpty: "No data yet. Use the chatbot and it will auto-build Top 10.",
+        loading: "Loading drugs.json…",
+        ready: "Ready",
+      },
+      ar: {
+        langBtn: "🌐 English",
+        placeholder: "اكتب اسم الدواء أو سؤالك…",
+        send: "إرسال",
+        welcome: "مرحبًا 👋\nاكتب اسم الدواء (مثال: Metformin 500 mg) أو استخدم الأزرار.\n\nهذه الأداة للتوعية العامة فقط.",
+        suggestTitle: "أزرار مقترحة",
+        s1: "⭐ الأدوية الشائعة",
+        s2: "💊 ابحث عن دواء",
+        s3: "🕒 نصائح توقيت رمضان",
+        s4: "⚠️ ملاحظات الوارفارين",
+        copy: "📋 نسخ الرد",
+        copied: "✅ تم النسخ",
+        topEmpty: "لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
+        loading: "جاري تحميل drugs.json…",
+        ready: "جاهز",
+      }
+    };
 
-        <div class="inputRow">
-          <button type="button" onclick="sendMessage()">إرسال</button>
-          <input id="userInput" type="text" placeholder="اكتب اسم الدواء هنا..." autocomplete="off" />
-        </div>
-      </section>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <div class="footer-line"><b>Pharmacy Department – QCH</b></div>
-        <div class="footer-line">Created by Automation Supervisor <b>Ali Alsada</b></div>
-      </div>
-      <div class="footer-right" id="usageStats" aria-label="usage stats"></div>
-    </div>
-  </footer>
-
-
-<script>
-function esc(s){
-  return (s||"").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
-}
-function sendMessage(){
-  const input = document.getElementById("userInput");
-  const chat = document.getElementById("chatBox");
-  const v = (input.value||"").trim();
-  if(!v) return;
-
-  chat.insertAdjacentHTML("beforeend",
-    `<div style="margin-top:18px;font-size:18px;color:#0b2b38;"><b>أنت:</b> ${esc(v)}</div>` +
-    `<div style="margin-top:8px;font-size:18px;color:#123a4a;"><b>النظام:</b> تم استلام اسم الدواء. (يمكن ربط قاعدة البيانات لاحقاً)</div>`
-  );
-  input.value = "";
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-}
-document.addEventListener("keydown", (e)=>{
-  if(e.key==="Enter") sendMessage();
-});
-</script>
-
-<script>
-(async () => {
-  // ===== Simple local analytics (privacy-friendly) =====
-  const analyticsKey = "qch_ramadan_analytics_v1";
-  const getAnalytics = () => { try { return JSON.parse(localStorage.getItem(analyticsKey) || '{"visits":0,"messages":0,"top":{}}'); } catch(e){ return {visits:0,messages:0,top:{}}; } };
-  const setAnalytics = (a) => { try { localStorage.setItem(analyticsKey, JSON.stringify(a)); } catch(e){} };
-
-  function updateStats(){
-    const a = getAnalytics();
-    const top = Object.entries(a.top || {}).sort((x,y)=>y[1]-x[1]).slice(0,3);
-    const topText = top.length ? top.map(([k,v])=>`${k} (${v})`).join(" • ") : (lang===LANG.AR ? "لا يوجد بعد" : "None yet");
-    const label = lang===LANG.AR ? "الزيارات" : "Visits";
-    const label2 = lang===LANG.AR ? "الرسائل" : "Messages";
-    const label3 = lang===LANG.AR ? "الأكثر طلبًا" : "Top";
-    const elStats = document.getElementById("usageStats");
-    if(elStats){
-      elStats.innerHTML = `<div><b>${label}:</b> ${a.visits||0} • <b>${label2}:</b> ${a.messages||0}</div><div><b>${label3}:</b> ${topText}</div>`;
+    function applyLang(){
+      document.getElementById("langBtn").textContent = T[LANG].langBtn;
+      document.getElementById("userInput").placeholder = T[LANG].placeholder;
+      document.getElementById("sendBtn").textContent = T[LANG].send;
+      renderSuggestions();
     }
-  }
 
-
-  // ===== Language =====
-  const LANG = { AR:"ar", EN:"en" };
-  let lang = LANG.AR;
-
-  const el = {
-    input: document.querySelector(".inputRow input"),
-    send: document.querySelector(".inputRow button"),
-    chat: document.getElementById("chatBox"),
-    hint: document.getElementById("hintLine"),
-    btnTop: document.getElementById("btnTop"),
-    btnExamples: document.getElementById("btnExamples"),
-    btnClear: document.getElementById("btnClear"),
-    langAR: document.getElementById("langAR"),
-    langEN: document.getElementById("langEN"),
-  };
-
-  // count visit
-  const __a0 = getAnalytics();
-  __a0.visits = (__a0.visits||0) + 1;
-  setAnalytics(__a0);
-
-  // ===== Real-ish medication knowledge base (offline) =====
-  // Note: This is general education, not individualized medical advice.
-  
-  // ===== Medication knowledge base (loaded from drugs.json) =====
-  // Note: General education only, not individualized medical advice.
-  let DB = [];
-  async function loadDB(){
-    try{
-      const res = await fetch("drugs.json", {cache:"no-store"});
-      if(!res.ok) throw new Error("HTTP "+res.status);
-      const data = await res.json();
-      DB = Array.isArray(data.drugs) ? data.drugs : [];
-    }catch(e){
-      // Fallback minimal list if JSON not found
-      DB = [
-        {key:"metformin", ar:"ميتفورمين", en:"Metformin", tags:["metformin","ميتفورمين","glucophage","جلوكوفاج"], class:"Diabetes (T2DM)", highRisk:false,
-          advice:{ar:"غالبًا يؤخذ مع/بعد الوجبة. في رمضان: مرة يوميًا بعد الإفطار، أو مرتين بعد الإفطار وبعد السحور. راجع الطبيب عند هبوط سكر.", en:"Usually with/after meals. In Ramadan: once after Iftar, or twice after Iftar and Suhoor. Consult your clinician if hypoglycemia occurs."}},
-        {key:"warfarin", ar:"وارفارين", en:"Warfarin", tags:["warfarin","وارفارين","coumadin","كومادين"], class:"Anticoagulant", highRisk:true,
-          advice:{ar:"حافظ على وقت ثابت بعد الإفطار، وواصل متابعة INR. لا توقف الدواء دون طبيب.", en:"Keep a consistent time after Iftar and monitor INR. Do not stop without medical advice."}},
-        {key:"omeprazole", ar:"أوميبرازول", en:"Omeprazole", tags:["omeprazole","أوميبرازول","losec","لوسيك"], class:"PPI/GERD", highRisk:false,
-          advice:{ar:"قبل الإفطار بـ 30–60 دقيقة على معدة فارغة.", en:"30–60 minutes before Iftar on an empty stomach."}},
-      ];
+    /** ---------------- analytics (local) ---------------- **/
+    function trackDrugUse(drugKey){
+      try{
+        const key = "qch_drug_analytics_v1";
+        const db = JSON.parse(localStorage.getItem(key) || "{}");
+        db[drugKey] = (db[drugKey] || 0) + 1;
+        localStorage.setItem(key, JSON.stringify(db));
+        updateKpis();
+      }catch(e){}
     }
-  }
+    function getTopDrugs(limit=10){
+      const key = "qch_drug_analytics_v1";
+      const db = JSON.parse(localStorage.getItem(key) || "{}");
+      return Object.entries(db).sort((a,b)=>b[1]-a[1]).slice(0, limit);
+    }
+    function getTotalTracked(){
+      const key = "qch_drug_analytics_v1";
+      const db = JSON.parse(localStorage.getItem(key) || "{}");
+      return Object.values(db).reduce((a,b)=>a+b,0);
+    }
 
+    /** ---------------- helpers ---------------- **/
+    function escapeHtml(s){
+      return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+    function scrollChat(){
+      const c = document.getElementById("chat");
+      c.scrollTop = c.scrollHeight;
+    }
 
-  const TOP = [
-    "ميتفورمين","أنسولين","وارفارين","أوميبرازول","بانتوبرازول","أملوديبين",
-    "لوسارتان","ليزينوبريل","باراسيتامول","إيبوبروفين","ليفوثيروكسين","أموكسيسيلين"
-  ];
+    /** ---------------- chat render ---------------- **/
+    function addUserMessage(text){
+      const chat = document.getElementById("chat");
+      const wrap = document.createElement("div");
+      wrap.className = "msg user";
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.innerHTML = escapeHtml(text).replace(/\n/g,"<br>");
+      wrap.appendChild(bubble);
+      chat.appendChild(wrap);
+      scrollChat();
+    }
 
-  // ===== Helpers =====
-  const norm = (s) => (s||"")
-    .toString()
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g," ")
-    .replace(/[أإآ]/g,"ا")
-    .replace(/ة/g,"ه")
-    .replace(/ى/g,"ي");
+    function addBotMessage(text){
+      const chat = document.getElementById("chat");
+      const wrap = document.createElement("div");
+      wrap.className = "msg bot";
 
-  function setLang(next){
-    lang = next;
-    if(el.langAR){ el.langAR.classList.toggle("active", lang===LANG.AR); el.langAR.setAttribute("aria-selected", lang===LANG.AR ? "true":"false"); }
-    if(el.langEN){ el.langEN.classList.toggle("active", lang===LANG.EN); el.langEN.setAttribute("aria-selected", lang===LANG.EN ? "true":"false"); }
-    if(el.hint) el.hint.textContent = lang===LANG.AR
-      ? "اكتب اسم الدواء (مثال: وارفارين، ميتفورمين، أوميبرازول) ثم اضغط إرسال."
-      : "Type a medication name (e.g., warfarin, metformin, omeprazole) then press Send.";
-    el.input.placeholder = lang===LANG.AR ? "اكتب اسم الدواء هنا..." : "Type the medication name...";
-    el.send.textContent = lang===LANG.AR ? "إرسال" : "Send";
-  }
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.innerHTML = `<div class="botText">${escapeHtml(text).replace(/\n/g,"<br>")}</div>`;
 
-  function bubble(text, who="bot", footer=""){
-    const div = document.createElement("div");
-    div.className = `bubble ${who}`;
-    div.innerHTML = text + (footer ? `<small>${footer}</small>`:"");
-    el.chat.appendChild(div);
-    el.chat.scrollTop = el.chat.scrollHeight;
-  }
+      const actions = document.createElement("div");
+      actions.className = "actionsRow";
 
-  function findDrug(q){
-    const nq = norm(q);
-    if(!nq) return [];
-    return DB.filter(d => d.tags.some(t => nq.includes(norm(t))));
-  }
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "miniBtn";
+      copyBtn.type = "button";
+      copyBtn.textContent = T[LANG].copy;
+      copyBtn.onclick = async () => {
+        try{
+          await navigator.clipboard.writeText(text);
+          copyBtn.textContent = T[LANG].copied;
+          setTimeout(()=> copyBtn.textContent = T[LANG].copy, 1200);
+        }catch(e){
+          const ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta);
+          ta.select(); document.execCommand("copy");
+          document.body.removeChild(ta);
+          copyBtn.textContent = T[LANG].copied;
+          setTimeout(()=> copyBtn.textContent = T[LANG].copy, 1200);
+        }
+      };
 
-  function replyFor(drug){
-    const disclaimerAR = "تنبيه: معلومات عامة للتثقيف وليست بديلًا عن الطبيب/الصيدلي. إذا لديك سكري على أنسولين، أو أدوية سيولة، أو مرض كلى/قلب—استشر طبيبك قبل أي تعديل.";
-    const disclaimerEN = "Note: General education only—not a substitute for your clinician/pharmacist. If you use insulin, anticoagulants, or have kidney/heart disease, consult your care team before any changes.";
-    const title = lang===LANG.AR ? drug.ar : drug.en;
-    const cls = lang===LANG.AR ? "التصنيف" : "Class";
-    const risk = drug.highRisk ? (lang===LANG.AR ? "⚠️ يحتاج حذر/خطة فردية" : "⚠️ Higher-risk / individualized plan") : "";
-    const advice = lang===LANG.AR ? drug.advice.ar : drug.advice.en;
-    const disc = lang===LANG.AR ? disclaimerAR : disclaimerEN;
+      actions.appendChild(copyBtn);
 
-    const html = `<b>${title}</b><br><span style="opacity:.85">${cls}: ${drug.class}${risk ? " • "+risk : ""}</span><br><br>${advice}`;
-    return { html, disc };
-  }
+      wrap.appendChild(bubble);
+      wrap.appendChild(actions);
+      chat.appendChild(wrap);
+      scrollChat();
+    }
 
-  function clearChat(){
-    el.chat.innerHTML = "";
-    welcome();
-  }
+    /** ---------------- drug data + autocomplete ---------------- **/
+    let DRUGS = []; // from drugs.json
+    function setAutocomplete(drugs){
+      DRUGS = Array.isArray(drugs) ? drugs : [];
+      document.getElementById("kpiDrugs").textContent = DRUGS.length.toString();
+    }
+    function updateHints(q){
+      const dl = document.getElementById("drugHints");
+      dl.innerHTML = "";
+      if(!q || q.trim().length < 2) return;
 
-  function welcome(){
-    const w = lang===LANG.AR
-      ? "مرحبًا 👋 أنا مساعد رمضان الذكي. اكتب اسم الدواء وسأعطيك إرشادات عامة لتوقيت الجرعة في رمضان."
-      : "Hi 👋 I’m the Ramadan Smart Assistant. Type a medication name and I’ll provide general Ramadan timing guidance.";
-    bubble(w, "bot");
-  }
+      const query = q.trim().toLowerCase();
+      const matches = DRUGS
+        .filter(d =>
+          (d.name||"").toLowerCase().includes(query) ||
+          (d.brand||"").toLowerCase().includes(query)
+        )
+        .slice(0, 10);
 
-  function handleSend(text){
-    const raw = (text ?? el.input.value).trim();
-    if(!raw) return;
-    bubble(lang===LANG.AR ? `<b>أنت:</b> ${raw}` : `<b>You:</b> ${raw}`, "user");
-    const a = getAnalytics();
-    a.messages = (a.messages||0) + 1;
-    setAnalytics(a);
-    updateStats();
-    el.input.value = "";
+      for(const m of matches){
+        const opt = document.createElement("option");
+        opt.value = m.name + (m.strength ? ` ${m.strength}` : "");
+        dl.appendChild(opt);
+      }
+    }
 
-    const hits = findDrug(raw);
-    if(hits.length){
-      const a2 = getAnalytics();
-      const nameKey = (lang===LANG.AR ? (hits[0].ar||hits[0].en) : (hits[0].en||hits[0].ar));
-      a2.top = a2.top || {};
-      a2.top[nameKey] = (a2.top[nameKey]||0) + 1;
-      setAnalytics(a2);
-      updateStats();
-      // If multiple matches, show first 2
-      hits.slice(0,2).forEach(d => {
-        const r = replyFor(d);
-        bubble(r.html, "bot", r.disc);
+    async function loadDrugsJson(){
+      const status = document.getElementById("statusHint");
+      status.textContent = T[LANG].loading;
+      try{
+        const res = await fetch("drugs.json", {cache:"no-store"});
+        if(!res.ok) throw new Error("no drugs.json");
+        const data = await res.json();
+        setAutocomplete(data);
+        status.textContent = T[LANG].ready;
+      }catch(e){
+        setAutocomplete([]);
+        status.textContent = "drugs.json not found (autocomplete disabled)";
+      }
+    }
+
+    /** ---------------- core logic (simple, patient-friendly) ---------------- **/
+    function findDrugByQuery(q){
+      const query = (q||"").trim().toLowerCase();
+      if(!query) return null;
+
+      // try exact match "name strength"
+      const exact = DRUGS.find(d => {
+        const key = (d.name + " " + (d.strength||"")).trim().toLowerCase();
+        return key === query;
       });
-    }else{
-      const msg = lang===LANG.AR
-        ? "لم أتعرف على الدواء. جرّب كتابة الاسم العلمي/التجاري، أو اكتب جزء من الاسم."
-        : "I couldn’t match that medication. Try the generic/brand name, or part of the name.";
-      bubble(msg, "bot");
+      if(exact) return exact;
+
+      // contains
+      const best = DRUGS.find(d => {
+        const key = (d.name + " " + (d.strength||"") + " " + (d.brand||"")).toLowerCase();
+        return key.includes(query);
+      });
+      return best || null;
     }
-  }
 
-  // ===== Events =====
-  if(el.send){ el.send.addEventListener("click", () => handleSend()); }
+    function formatDrugReply(d){
+      const nameLine = `${d.name}${d.brand ? " ("+d.brand+")" : ""}${d.strength ? " — " + d.strength : ""}`;
+      const notes = (LANG==="ar" ? d.notes_ar : d.notes_en) || "";
+      const ramadan = (LANG==="ar" ? d.ramadan_ar : d.ramadan_en) || "";
+      let out = `💊 ${nameLine}\n\n`;
+      if(notes) out += `📝 ${notes}\n\n`;
+      if(ramadan) out += `🌙 ${ramadan}\n\n`;
+      out += (LANG==="ar")
+        ? "⚠️ تنبيه: هذه معلومات عامة. اتبع خطة طبيبك/صيدليّك."
+        : "⚠️ Note: General guidance only. Follow your clinician/pharmacist plan.";
+      return out.trim();
+    }
 
-  if(el.input){
-    el.input.addEventListener("keydown", (e) => {
-      if(e.key === "Enter"){
-        e.preventDefault();
-        handleSend();
+    function handleMessage(text){
+      const q = (text||"").trim();
+      if(!q) return;
+
+      addUserMessage(q);
+
+      // quick commands
+      const lower = q.toLowerCase();
+      if(lower.includes("warfarin") || lower.includes("وارفارين")){
+        const msg = (LANG==="ar")
+          ? "⚠️ الوارفارين: مهم الالتزام بالجرعة والمتابعة (INR). تجنب تغييرات مفاجئة في الغذاء/الأدوية. اسأل طبيبك عن أفضل توقيت في رمضان."
+          : "⚠️ Warfarin: Adherence + INR monitoring are essential. Avoid sudden diet/med changes. Ask your clinician about best Ramadan timing.";
+        addBotMessage(msg);
+        trackDrugUse("Warfarin");
+        return;
+      }
+      if(lower.includes("ramadan") || lower.includes("رمضان")){
+        const msg = (LANG==="ar")
+          ? "🌙 نصائح عامة لرمضان:\n• لا تغيّر الجرعات بنفسك.\n• بعض الأدوية تُقسم بين الإفطار والسحور حسب الخطة.\n• راجع الطبيب للأدوية الحساسة (السكري/الضغط/مميعات الدم)."
+          : "🌙 Ramadan general tips:\n• Don’t change doses on your own.\n• Some meds are split between Iftar/Suhoor per plan.\n• Ask clinician for sensitive meds (diabetes/BP/anticoagulants).";
+        addBotMessage(msg);
+        return;
+      }
+
+      // drug lookup
+      const d = findDrugByQuery(q);
+      if(d){
+        addBotMessage(formatDrugReply(d));
+        const key = (d.name + (d.strength ? " " + d.strength : "")).trim();
+        trackDrugUse(key);
+        return;
+      }
+
+      // fallback
+      const fallback = (LANG==="ar")
+        ? "لم أجد هذا الدواء في القائمة.\nجرّب كتابة الاسم بالإنجليزي أو جزء من الاسم.\nمثال: Metformin أو Warfarin."
+        : "I couldn't find this medication in the list.\nTry English name or part of the name.\nExample: Metformin or Warfarin.";
+      addBotMessage(fallback);
+    }
+
+    /** ---------------- suggestions panel ---------------- **/
+    function renderSuggestions(){
+      const box = document.getElementById("suggestions");
+      box.innerHTML = "";
+
+      const items = [
+        {label: T[LANG].s1, value: "Common meds"},
+        {label: T[LANG].s2, value: "Metformin 500 mg"},
+        {label: T[LANG].s3, value: "Ramadan timing"},
+        {label: T[LANG].s4, value: "Warfarin"}
+      ];
+
+      items.forEach(it=>{
+        const b = document.createElement("button");
+        b.className = "pill";
+        b.type = "button";
+        b.textContent = it.label;
+        b.onclick = () => {
+          // "Common meds" prints first 10 meds from list
+          if(it.value==="Common meds"){
+            const list = DRUGS.slice(0,10).map(d => `• ${d.name}${d.strength ? " " + d.strength : ""}`).join("\n");
+            const msg = (LANG==="ar")
+              ? `⭐ الأدوية الشائعة (مثال):\n${list || "لا توجد قائمة بعد (drugs.json)" }`
+              : `⭐ Common meds (sample):\n${list || "No list yet (drugs.json)"}`
+            addBotMessage(msg);
+            return;
+          }
+          handleMessage(it.value);
+        };
+        box.appendChild(b);
+      });
+    }
+
+    /** ---------------- KPIs ---------------- **/
+    function updateKpis(){
+      document.getElementById("kpiUsed").textContent = getTotalTracked().toString();
+    }
+
+    /** ---------------- Top 10 Modal ---------------- **/
+    function renderTop(){
+      const list = document.getElementById("topList");
+      const top = getTopDrugs(10);
+
+      if(!top.length){
+        list.innerHTML = `<div class="muted">${escapeHtml(T[LANG].topEmpty)}</div>`;
+        return;
+      }
+
+      list.innerHTML = top.map(([name,count],i)=>`
+        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.10);">
+          <div>${i+1}. ${escapeHtml(name)}</div>
+          <div class="muted">${count}</div>
+        </div>
+      `).join("");
+    }
+
+    /** ---------------- PWA Install button ---------------- **/
+    let deferredPrompt = null;
+    window.addEventListener("beforeinstallprompt", (e)=>{
+      e.preventDefault();
+      deferredPrompt = e;
+      const btn = document.getElementById("installBtn");
+      btn.style.display = "inline-flex";
+    });
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+      // language
+      applyLang();
+
+      // welcome
+      addBotMessage(T[LANG].welcome);
+
+      // events
+      document.getElementById("langBtn").onclick = ()=>{
+        LANG = (LANG==="en") ? "ar" : "en";
+        applyLang();
+        // small note on change
+        addBotMessage(LANG==="ar" ? "✅ تم تغيير اللغة للعربية." : "✅ Language switched to English.");
+        loadDrugsJson(); // refresh status language
+      };
+
+      document.getElementById("sendBtn").onclick = ()=>{
+        const input = document.getElementById("userInput");
+        const v = input.value;
+        input.value = "";
+        updateHints("");
+        handleMessage(v);
+      };
+
+      document.getElementById("userInput").addEventListener("keydown", (e)=>{
+        if(e.key === "Enter"){
+          e.preventDefault();
+          document.getElementById("sendBtn").click();
+        }
+      });
+
+      document.getElementById("userInput").addEventListener("input", (e)=>{
+        updateHints(e.target.value);
+      });
+
+      // Top 10 modal
+      const topBtn = document.getElementById("topBtn");
+      const topModal = document.getElementById("topModal");
+      const topClose = document.getElementById("topClose");
+
+      topBtn.onclick = ()=>{ renderTop(); topModal.style.display="block"; };
+      topClose.onclick = ()=>{ topModal.style.display="none"; };
+      topModal.onclick = (e)=>{ if(e.target.id==="topModal") topModal.style.display="none"; };
+
+      // Install
+      document.getElementById("installBtn").onclick = async ()=>{
+        if(!deferredPrompt) return;
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        document.getElementById("installBtn").style.display = "none";
+      };
+
+      // load data + kpis
+      updateKpis();
+      loadDrugsJson();
+
+      // register service worker (optional but recommended)
+      if("serviceWorker" in navigator){
+        navigator.serviceWorker.register("./sw.js").catch(()=>{});
       }
     });
-  }
-
-  if(el.langAR){
-    el.langAR.addEventListener("click", () => {
-      setLang(LANG.AR);
-      clearChat();
-      updateStats();
-    });
-  }
-
-  if(el.langEN){
-    el.langEN.addEventListener("click", () => {
-      setLang(LANG.EN);
-      clearChat();
-      updateStats();
-    });
-  }
-
-  if(el.btnClear){ el.btnClear.addEventListener("click", () => { clearChat(); updateStats(); }); }
-
-  if(el.btnExamples){
-    el.btnExamples.addEventListener("click", () => {
-      const examples = (lang===LANG.AR)
-        ? ["وارفارين","ميتفورمين","أوميبرازول","ليفوثيروكسين","أملوديبين"]
-        : ["warfarin","metformin","omeprazole","levothyroxine","amlodipine"];
-      bubble((lang===LANG.AR ? "أمثلة: " : "Examples: ") + examples.join(" • "), "bot");
-    });
-  }
-
-  if(el.btnTop){
-    el.btnTop.addEventListener("click", () => {
-      bubble(
-        (lang===LANG.AR ? "⭐ الأدوية الأكثر شيوعًا (اكتب الاسم):" : "⭐ Top common meds (type the name):")
-        + "<br><br>"
-        + TOP.map(n => `• ${n}`).join("<br>"),
-        "bot"
-      );
-    });
-  }
-
-
-  // ===== Init =====
-  setLang(LANG.AR);
-  await loadDB();
-  clearChat();
-  updateStats();
-})();
-</script>
-
+  </script>
 </body>
 </html>
