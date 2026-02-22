@@ -6,18 +6,17 @@
   <title>QCH – Smart Ramadan Medication Assistant</title>
   <meta name="description" content="Qatif Central Hospital – Ramadan Medication Assistant (Arabic/English)." />
 
-  <!-- Modern PWA (clean, no deprecated meta) -->
+  <!-- Clean modern PWA -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0b1f26">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
 
   <style>
     :root{
       --bg:#0b1f26; --panel:#0f2a33; --panel2:#0d2430;
       --text:#eaf6fb; --muted:#b7d2dd;
       --accent:#35d0c7; --accent2:#2aa6ff;
-      --danger:#ff4d4f; --warn:#f5a524; --ok:#22c55e;
       --shadow: 0 14px 45px rgba(0,0,0,.35);
       --radius:18px;
     }
@@ -37,17 +36,6 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    .brand{display:flex; gap:12px; align-items:center;}
-    .logo{
-      width:44px; height:44px; border-radius:12px; overflow:hidden;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      display:grid; place-items:center;
-    }
-    .logo img{width:100%; height:100%; object-fit:contain; display:block;}
-    .brand h1{margin:0; font-size:16px; line-height:1.15;}
-    .brand .sub{margin-top:3px; font-size:12px; color:var(--muted);}
-
     .actionsTop{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
     .miniBtn{
       border:1px solid rgba(255,255,255,.18);
@@ -101,7 +89,6 @@
       background: rgba(255,255,255,.06);
       line-height:1.45;
       font-size:14px;
-      white-space:normal;
     }
     .msg.user .bubble{
       background: linear-gradient(180deg, rgba(42,166,255,.22), rgba(42,166,255,.10));
@@ -154,14 +141,10 @@
     }
     .composer button:hover{filter:brightness(1.08);}
 
-    .side{
-      padding:14px;
-    }
+    .side{padding:14px;}
     .section{margin-bottom:14px;}
     .section h3{margin:0 0 8px 0; font-size:13px;}
-    .kpi{
-      display:grid; grid-template-columns:1fr 1fr; gap:10px;
-    }
+    .kpi{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
     .kpi .box{
       padding:12px;
       border-radius:16px;
@@ -171,11 +154,7 @@
     .box .big{font-size:18px; font-weight:800;}
     .box .small{font-size:12px; color:var(--muted); margin-top:4px;}
     .smallList{font-size:13px; color:var(--muted); line-height:1.6;}
-    .footer{
-      margin-top:10px; font-size:12px; color: rgba(183,210,221,.85);
-      text-align:center;
-    }
-    a{color: var(--accent2);}
+    .footer{margin-top:10px; font-size:12px; color: rgba(183,210,221,.85); text-align:center;}
 
     /* Modal */
     #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999;}
@@ -189,15 +168,18 @@
 
 <body>
   <div class="wrap">
+
+    <!-- Executive header with both logos -->
     <div class="topbar">
-      <div class="brand">
-        <div class="logo" title="QCH">
-          <!-- If you have your logo, put it as icons/icon-192.png or change src here -->
-          <img src="icons/icon-192.png" alt="QCH Logo">
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.05); padding:8px 14px; border-radius:16px; border:1px solid rgba(255,255,255,.12);">
+          <img src="logo_qch.png" alt="QCH Logo" style="height:40px; width:auto; display:block;">
+          <div style="width:1px; height:28px; background:rgba(255,255,255,.15);"></div>
+          <img src="logo_health_holding.png" alt="Health Holding Logo" style="height:40px; width:auto; display:block;">
         </div>
         <div>
-          <h1>QCH – Smart Ramadan Medication Assistant</h1>
-          <div class="sub">Arabic / English · Patient-friendly · Offline analytics</div>
+          <h1 style="margin:0; font-size:18px; font-weight:700;">QCH – Smart Ramadan Medication Assistant</h1>
+          <div style="font-size:13px; color:#b7d2dd;">Arabic / English · Patient-friendly · Offline analytics</div>
         </div>
       </div>
 
@@ -285,15 +267,14 @@
   </div>
 
   <script>
-    /** ---------------- language ---------------- **/
-    let LANG = "en"; // "en" or "ar"
+    // Language
+    let LANG = "en";
     const T = {
       en: {
         langBtn: "🌐 Arabic",
         placeholder: "Type medication name or question…",
         send: "Send",
         welcome: "Hello 👋\nType a medication name (e.g., Metformin 500 mg) or use the buttons.\n\nThis tool gives general guidance only.",
-        suggestTitle: "Suggested buttons",
         s1: "⭐ Common meds",
         s2: "💊 Search medication",
         s3: "🕒 Ramadan timing tips",
@@ -302,14 +283,13 @@
         copied: "✅ Copied",
         topEmpty: "No data yet. Use the chatbot and it will auto-build Top 10.",
         loading: "Loading drugs.json…",
-        ready: "Ready",
+        ready: "Ready"
       },
       ar: {
         langBtn: "🌐 English",
         placeholder: "اكتب اسم الدواء أو سؤالك…",
         send: "إرسال",
         welcome: "مرحبًا 👋\nاكتب اسم الدواء (مثال: Metformin 500 mg) أو استخدم الأزرار.\n\nهذه الأداة للتوعية العامة فقط.",
-        suggestTitle: "أزرار مقترحة",
         s1: "⭐ الأدوية الشائعة",
         s2: "💊 ابحث عن دواء",
         s3: "🕒 نصائح توقيت رمضان",
@@ -318,7 +298,7 @@
         copied: "✅ تم النسخ",
         topEmpty: "لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
         loading: "جاري تحميل drugs.json…",
-        ready: "جاهز",
+        ready: "جاهز"
       }
     };
 
@@ -327,9 +307,10 @@
       document.getElementById("userInput").placeholder = T[LANG].placeholder;
       document.getElementById("sendBtn").textContent = T[LANG].send;
       renderSuggestions();
+      document.getElementById("statusHint").textContent = T[LANG].ready;
     }
 
-    /** ---------------- analytics (local) ---------------- **/
+    // Analytics (local)
     function trackDrugUse(drugKey){
       try{
         const key = "qch_drug_analytics_v1";
@@ -350,7 +331,7 @@
       return Object.values(db).reduce((a,b)=>a+b,0);
     }
 
-    /** ---------------- helpers ---------------- **/
+    // Helpers
     function escapeHtml(s){
       return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     }
@@ -359,7 +340,7 @@
       c.scrollTop = c.scrollHeight;
     }
 
-    /** ---------------- chat render ---------------- **/
+    // Chat UI
     function addUserMessage(text){
       const chat = document.getElementById("chat");
       const wrap = document.createElement("div");
@@ -404,15 +385,14 @@
       };
 
       actions.appendChild(copyBtn);
-
       wrap.appendChild(bubble);
       wrap.appendChild(actions);
       chat.appendChild(wrap);
       scrollChat();
     }
 
-    /** ---------------- drug data + autocomplete ---------------- **/
-    let DRUGS = []; // from drugs.json
+    // Drugs + autocomplete
+    let DRUGS = [];
     function setAutocomplete(drugs){
       DRUGS = Array.isArray(drugs) ? drugs : [];
       document.getElementById("kpiDrugs").textContent = DRUGS.length.toString();
@@ -424,10 +404,7 @@
 
       const query = q.trim().toLowerCase();
       const matches = DRUGS
-        .filter(d =>
-          (d.name||"").toLowerCase().includes(query) ||
-          (d.brand||"").toLowerCase().includes(query)
-        )
+        .filter(d => (d.name||"").toLowerCase().includes(query) || (d.brand||"").toLowerCase().includes(query))
         .slice(0, 10);
 
       for(const m of matches){
@@ -452,23 +429,14 @@
       }
     }
 
-    /** ---------------- core logic (simple, patient-friendly) ---------------- **/
     function findDrugByQuery(q){
       const query = (q||"").trim().toLowerCase();
       if(!query) return null;
 
-      // try exact match "name strength"
-      const exact = DRUGS.find(d => {
-        const key = (d.name + " " + (d.strength||"")).trim().toLowerCase();
-        return key === query;
-      });
+      const exact = DRUGS.find(d => ((d.name + " " + (d.strength||"")).trim().toLowerCase()) === query);
       if(exact) return exact;
 
-      // contains
-      const best = DRUGS.find(d => {
-        const key = (d.name + " " + (d.strength||"") + " " + (d.brand||"")).toLowerCase();
-        return key.includes(query);
-      });
+      const best = DRUGS.find(d => ((d.name + " " + (d.strength||"") + " " + (d.brand||"")).toLowerCase()).includes(query));
       return best || null;
     }
 
@@ -485,13 +453,13 @@
       return out.trim();
     }
 
+    // Core logic
     function handleMessage(text){
       const q = (text||"").trim();
       if(!q) return;
 
       addUserMessage(q);
 
-      // quick commands
       const lower = q.toLowerCase();
       if(lower.includes("warfarin") || lower.includes("وارفارين")){
         const msg = (LANG==="ar")
@@ -509,7 +477,6 @@
         return;
       }
 
-      // drug lookup
       const d = findDrugByQuery(q);
       if(d){
         addBotMessage(formatDrugReply(d));
@@ -518,14 +485,13 @@
         return;
       }
 
-      // fallback
       const fallback = (LANG==="ar")
         ? "لم أجد هذا الدواء في القائمة.\nجرّب كتابة الاسم بالإنجليزي أو جزء من الاسم.\nمثال: Metformin أو Warfarin."
         : "I couldn't find this medication in the list.\nTry English name or part of the name.\nExample: Metformin or Warfarin.";
       addBotMessage(fallback);
     }
 
-    /** ---------------- suggestions panel ---------------- **/
+    // Suggestions
     function renderSuggestions(){
       const box = document.getElementById("suggestions");
       box.innerHTML = "";
@@ -543,12 +509,11 @@
         b.type = "button";
         b.textContent = it.label;
         b.onclick = () => {
-          // "Common meds" prints first 10 meds from list
           if(it.value==="Common meds"){
             const list = DRUGS.slice(0,10).map(d => `• ${d.name}${d.strength ? " " + d.strength : ""}`).join("\n");
             const msg = (LANG==="ar")
               ? `⭐ الأدوية الشائعة (مثال):\n${list || "لا توجد قائمة بعد (drugs.json)" }`
-              : `⭐ Common meds (sample):\n${list || "No list yet (drugs.json)"}`
+              : `⭐ Common meds (sample):\n${list || "No list yet (drugs.json)"}`;
             addBotMessage(msg);
             return;
           }
@@ -558,21 +523,18 @@
       });
     }
 
-    /** ---------------- KPIs ---------------- **/
     function updateKpis(){
       document.getElementById("kpiUsed").textContent = getTotalTracked().toString();
     }
 
-    /** ---------------- Top 10 Modal ---------------- **/
+    // Top 10 Modal
     function renderTop(){
       const list = document.getElementById("topList");
       const top = getTopDrugs(10);
-
       if(!top.length){
         list.innerHTML = `<div class="muted">${escapeHtml(T[LANG].topEmpty)}</div>`;
         return;
       }
-
       list.innerHTML = top.map(([name,count],i)=>`
         <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.10);">
           <div>${i+1}. ${escapeHtml(name)}</div>
@@ -581,34 +543,29 @@
       `).join("");
     }
 
-    /** ---------------- PWA Install button ---------------- **/
+    // Install prompt
     let deferredPrompt = null;
     window.addEventListener("beforeinstallprompt", (e)=>{
       e.preventDefault();
       deferredPrompt = e;
-      const btn = document.getElementById("installBtn");
-      btn.style.display = "inline-flex";
+      document.getElementById("installBtn").style.display = "inline-flex";
     });
 
     document.addEventListener("DOMContentLoaded", ()=>{
-      // language
       applyLang();
-
-      // welcome
       addBotMessage(T[LANG].welcome);
 
-      // events
       document.getElementById("langBtn").onclick = ()=>{
         LANG = (LANG==="en") ? "ar" : "en";
         applyLang();
-        // small note on change
         addBotMessage(LANG==="ar" ? "✅ تم تغيير اللغة للعربية." : "✅ Language switched to English.");
-        loadDrugsJson(); // refresh status language
+        loadDrugsJson();
       };
 
       document.getElementById("sendBtn").onclick = ()=>{
         const input = document.getElementById("userInput");
-        const v = input.value;
+        const v = input.value.trim();
+        if(!v) return;
         input.value = "";
         updateHints("");
         handleMessage(v);
@@ -620,21 +577,13 @@
           document.getElementById("sendBtn").click();
         }
       });
+      document.getElementById("userInput").addEventListener("input", (e)=> updateHints(e.target.value));
 
-      document.getElementById("userInput").addEventListener("input", (e)=>{
-        updateHints(e.target.value);
-      });
-
-      // Top 10 modal
-      const topBtn = document.getElementById("topBtn");
       const topModal = document.getElementById("topModal");
-      const topClose = document.getElementById("topClose");
-
-      topBtn.onclick = ()=>{ renderTop(); topModal.style.display="block"; };
-      topClose.onclick = ()=>{ topModal.style.display="none"; };
+      document.getElementById("topBtn").onclick = ()=>{ renderTop(); topModal.style.display="block"; };
+      document.getElementById("topClose").onclick = ()=>{ topModal.style.display="none"; };
       topModal.onclick = (e)=>{ if(e.target.id==="topModal") topModal.style.display="none"; };
 
-      // Install
       document.getElementById("installBtn").onclick = async ()=>{
         if(!deferredPrompt) return;
         deferredPrompt.prompt();
@@ -643,13 +592,12 @@
         document.getElementById("installBtn").style.display = "none";
       };
 
-      // load data + kpis
       updateKpis();
       loadDrugsJson();
 
-      // register service worker (optional but recommended)
+      // Register your actual SW filename:
       if("serviceWorker" in navigator){
-        navigator.serviceWorker.register("./sw.js").catch(()=>{});
+        navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
       }
     });
   </script>
