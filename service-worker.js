@@ -1,5 +1,4 @@
-const CACHE_NAME = "qch-ramadan-v1";
-const ASSETS = [
+const CACHE_NAME = "qch-ramadan-v5";const ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
