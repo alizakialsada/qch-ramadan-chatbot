@@ -14,7 +14,7 @@
 
   <style>
     :root{
-      --bg:#f5fbff;
+      --bg:#f7fcff;
       --panel:#ffffff;
       --stroke:#cfe0ec;
       --stroke2:#bcd2e2;
@@ -37,39 +37,52 @@
       background: linear-gradient(180deg, #f7fcff, #eef7ff);
       color: var(--text);
     }
-    .wrap{max-width:1100px; margin:0 auto; padding:18px;}
+    .wrap{max-width:1180px; margin:0 auto; padding:18px;}
 
-    /* Header: light, with logos right & left */
+    /* Header with logos right & left */
     .header{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:14px 18px;
+      padding:18px 18px;
       border:2px solid var(--stroke);
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.90);
       border-radius: 28px;
       box-shadow: var(--shadow);
     }
     .logoBox{
-  background:#fff;
-  border-radius:18px;
-  border:1px solid var(--stroke);
-  padding:10px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.logoBox img{
-  height:90px;   /* 🔥 CHANGE THIS NUMBER */
-  width:auto;
-  object-fit:contain;
-}
+      background:#fff;
+      border-radius:18px;
+      border:1px solid var(--stroke);
+      padding:10px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-    .titleBox h1{margin:0; font-size:22px; font-weight:800;}
+    .logoBox img{
+      height:110px; /* ✅ BIG LOGO: change 110 -> 130 if you want bigger */
+      width:auto;
+      object-fit:contain;
+      display:block;
+    }
+    .titleBox{
+      flex:1;
+      text-align:center;
+      line-height:1.2;
+      padding:0 10px;
+    }
+    .titleBox h1{margin:0; font-size:22px; font-weight:900;}
     .titleBox .sub{margin-top:6px; font-size:14px; color:var(--muted);}
 
-    .topBtns{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    /* Top action buttons */
+    .topBtns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:12px;
+    }
     .pillBtn{
       border:1px solid var(--stroke2);
       background:#fff;
@@ -87,14 +100,25 @@
     .pillBtn.primary{
       background: linear-gradient(180deg, #e7f6ff, #d8eefc);
       border-color:#9ec7dd;
+      font-weight:800;
     }
 
-    /* Layout like your light screenshot */
-    .card{
+    /* Layout: main chat + right panel */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap:14px;
       margin-top:14px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr;}
+      .logoBox img{height:85px;}
+    }
+
+    .card{
       border:2px solid var(--stroke);
       border-radius: 28px;
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.90);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
@@ -110,14 +134,14 @@
     .cardHead .left{
       display:flex; flex-direction:column; gap:4px;
     }
-    .cardHead .title{font-weight:800; font-size:16px;}
+    .cardHead .title{font-weight:900; font-size:16px;}
     .cardHead .hint{font-size:13px; color:var(--muted);}
     .status{font-size:13px; color:var(--muted);}
 
     #chat{
       padding:16px;
-      min-height: 520px;
-      max-height: 520px;
+      min-height: 560px;
+      max-height: 560px;
       overflow:auto;
       background: linear-gradient(180deg, rgba(245,251,255,.75), rgba(232,245,255,.55));
     }
@@ -141,15 +165,16 @@
     }
 
     .botTitle{
-      font-weight:900;
+      font-weight:950;
       font-size:22px;
       margin-bottom:8px;
       display:flex;
       align-items:center;
       gap:10px;
+      flex-wrap:wrap;
     }
     .metaLine{
-      font-size:18px;
+      font-size:17px;
       color: #1c3a4d;
       margin:6px 0 0 0;
       display:flex;
@@ -157,21 +182,32 @@
       gap:10px;
       flex-wrap:wrap;
     }
-    .warn{
+    .tag{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding:6px 10px;
       border-radius: 999px;
+      border:1px solid var(--stroke2);
+      background:#fff;
+      color:#17374a;
+      font-weight:800;
+      font-size:14px;
+    }
+    .warn{
       border:1px solid #f3d08a;
       background: #fff7df;
       color:#6a4b00;
-      font-weight:700;
-      font-size:16px;
     }
-    .sectionText{font-size:19px; margin-top:10px;}
+    .ok{
+      border:1px solid #bfe7c8;
+      background:#effbf2;
+      color:#165a2b;
+    }
+
+    .sectionText{font-size:18px; margin-top:10px;}
     .finePrint{
-      font-size:16px;
+      font-size:15px;
       color: var(--muted);
       border-top:1px solid var(--stroke);
       margin-top:14px;
@@ -179,7 +215,7 @@
       line-height:1.8;
     }
 
-    .actionsRow{display:flex; gap:10px; flex-wrap:wrap;}
+    .actionsRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
     .copyBtn{
       border:1px solid var(--stroke2);
       background:#fff;
@@ -194,15 +230,14 @@
       box-shadow: 0 6px 18px rgba(15,42,58,.08);
       width: fit-content;
     }
-    .copyBtn:hover{filter:brightness(0.98)}
 
-    /* Composer like your screenshot */
+    /* Composer */
     .composer{
       display:flex;
       gap:14px;
       padding:16px;
       border-top:1px solid var(--stroke);
-      background: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.80);
       align-items:center;
     }
     #userInput{
@@ -221,13 +256,54 @@
       background: var(--btn);
       color: #083047;
       font-size:18px;
-      font-weight:900;
+      font-weight:950;
       cursor:pointer;
       box-shadow: 0 10px 25px rgba(107,182,214,.35);
     }
-    #sendBtn:hover{filter:brightness(0.98)}
 
-    /* Top10 modal (light) */
+    /* Right panel */
+    .panelBody{padding:14px;}
+    .panelTitle{font-weight:950; font-size:16px; margin:0 0 8px 0;}
+    .chips{display:flex; gap:10px; flex-wrap:wrap;}
+    .chip{
+      border:1px solid var(--stroke2);
+      background:#fff;
+      padding:10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight:900;
+      font-size:14px;
+      display:inline-flex; align-items:center; gap:8px;
+      box-shadow: 0 6px 18px rgba(15,42,58,.08);
+    }
+    .chip:hover{filter:brightness(0.98)}
+    .kpis{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+    .kpi{
+      border:1px solid var(--stroke2);
+      border-radius: 18px;
+      padding:12px;
+      background:#fff;
+      box-shadow: 0 6px 18px rgba(15,42,58,.08);
+    }
+    .kpi .num{font-size:22px; font-weight:950;}
+    .kpi .lbl{font-size:13px; color:var(--muted); margin-top:4px;}
+
+    .notes{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .footer{
+      margin-top:12px;
+      text-align:center;
+      color: var(--muted);
+      font-size:13px;
+      padding:10px 0 2px 0;
+    }
+
+    /* Modal */
     #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999;}
     .modalBox{
       max-width:560px;
@@ -239,76 +315,98 @@
       padding:16px;
     }
     .modalHead{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
       margin-bottom:10px;
     }
     .modalHead h3{margin:0; font-size:18px;}
-    .row{
-      display:flex;
-      justify-content:space-between;
-      padding:10px 0;
-      border-bottom:1px solid var(--stroke);
-      font-size:16px;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 780px){
-      .titleBox{text-align:center}
-      .titleBox h1{font-size:18px}
-      .bubble{font-size:16px}
-      #userInput{font-size:16px}
-      #sendBtn{font-size:16px}
-      .logoBox{width:80px; height:50px}
-    }
+    .row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--stroke); font-size:16px;}
   </style>
 </head>
 
 <body>
   <div class="wrap">
 
-    <!-- Header with BOTH logos: right & left -->
+    <!-- Header -->
     <div class="header">
-      <!-- RIGHT logo (in RTL this appears right) -->
+      <!-- RIGHT (RTL) -->
       <div class="logoBox" title="QCH">
         <img src="logo_qch.png" alt="QCH Logo">
       </div>
 
       <div class="titleBox">
-        <h1 id="appTitle">QCH – Smart Ramadan Medication Assistant</h1>
-        <div class="sub" id="appSub">Arabic / English · Patient-friendly · Offline analytics</div>
+        <h1 id="appTitle">QCH – مساعد رمضان الذكي للأدوية</h1>
+        <div class="sub" id="appSub">عربي / إنجليزي · سهل للمريض · تحليلات محلية</div>
       </div>
 
-      <!-- LEFT logo -->
+      <!-- LEFT -->
       <div class="logoBox" title="Health Holding Company">
         <img src="logo_health_holding.png" alt="Health Holding Logo">
       </div>
     </div>
 
-    <div class="topBtns" style="margin-top:12px; justify-content:center;">
+    <div class="topBtns">
       <button id="langBtn" class="pillBtn primary" type="button">🌐 English</button>
       <button id="topBtn" class="pillBtn" type="button">📊 Top 10</button>
       <button id="installBtn" class="pillBtn" type="button" style="display:none;">⬇️ Install</button>
     </div>
 
-    <div class="card">
-      <div class="cardHead">
-        <div class="left">
-          <div class="title" id="chatTitle">الدردشة</div>
-          <div class="hint" id="chatHint">اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة</div>
+    <div class="grid">
+
+      <!-- Chat -->
+      <div class="card">
+        <div class="cardHead">
+          <div class="left">
+            <div class="title" id="chatTitle">الدردشة</div>
+            <div class="hint" id="chatHint">اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة</div>
+          </div>
+          <div class="status" id="statusHint">…</div>
         </div>
-        <div class="status" id="statusHint">…</div>
+
+        <div id="chat"></div>
+
+        <div class="composer">
+          <input id="userInput" list="drugHints" placeholder="اكتب اسم الدواء هنا…" autocomplete="off" />
+          <datalist id="drugHints"></datalist>
+          <button id="sendBtn" type="button">إرسال</button>
+        </div>
       </div>
 
-      <div id="chat"></div>
+      <!-- Right panel: easy icon buttons -->
+      <div class="card">
+        <div class="cardHead">
+          <div class="left">
+            <div class="title" id="panelTitle">أزرار سريعة</div>
+            <div class="hint" id="panelHint">اضغط زر أو اكتب اسم الدواء</div>
+          </div>
+          <div class="status" id="panelStatus">Patient-friendly</div>
+        </div>
 
-      <div class="composer">
-        <input id="userInput" list="drugHints" placeholder="اكتب اسم الدواء هنا…" autocomplete="off" />
-        <datalist id="drugHints"></datalist>
-        <button id="sendBtn" type="button">إرسال</button>
+        <div class="panelBody">
+          <div class="panelTitle" id="quickTitle">اقتراحات سريعة</div>
+          <div class="chips" id="chips"></div>
+
+          <div class="panelTitle" style="margin-top:14px;" id="analyticsTitle">Analytics (local)</div>
+          <div class="kpis">
+            <div class="kpi">
+              <div class="num" id="kpiUsed">0</div>
+              <div class="lbl" id="kpiUsedLbl">Tracked selections</div>
+            </div>
+            <div class="kpi">
+              <div class="num" id="kpiDrugs">0</div>
+              <div class="lbl" id="kpiDrugsLbl">Drugs loaded</div>
+            </div>
+          </div>
+
+          <div class="notes" id="notesBox">
+            • This tool provides general guidance only.<br>
+            • Always follow the clinician plan.<br>
+            • For emergencies, contact your hospital/911.
+          </div>
+
+          <div class="footer" id="footerText">Created by Automation Supervisor Ali Alsada</div>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -327,8 +425,8 @@
   </div>
 
   <script>
-    // ========== Language ==========
-    let LANG = "ar"; // start Arabic like your screenshot
+    // ================= Language =================
+    let LANG = "ar"; // start Arabic
     const T = {
       ar: {
         dir:"rtl", htmlLang:"ar",
@@ -337,21 +435,38 @@
         appSub:"عربي / إنجليزي · سهل للمريض · تحليلات محلية",
         chatTitle:"الدردشة",
         chatHint:"اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة",
+        panelTitle:"أزرار سريعة",
+        panelHint:"اضغط زر أو اكتب اسم الدواء",
         statusLoading:"جاري تحميل drugs.json…",
         statusReady:"Ready",
         inputPh:"اكتب اسم الدواء هنا…",
         send:"إرسال",
         you:"أنت",
-        welcome:"مرحباً 👋 أنا مساعد رمضان الذكي. اكتب اسم الدواء وسأعطيك إرشادات عامة لتوقيت الجرعة في رمضان.",
+        welcomeTitle:"مرحباً 👋",
+        welcome:"أنا مساعد رمضان الذكي. اكتب اسم الدواء وسأعطيك إرشادات عامة لتوقيت الجرعة في رمضان.",
         copy:"📋 نسخ الرد",
         copied:"✅ تم النسخ",
         topTitle:"📊 Top 10 أدوية",
         topEmpty:"لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
         disclaimer:"تنبيه: معلومات عامة للتثقيف وليست بديلاً عن الطبيب/الصيدلي. إذا لديك سكر على أنسولين/أدوية سيولة، أو مرض كلى/قلب—استشر طبيبك قبل أي تعديل.",
         classLabel:"التصنيف",
-        needsPlan:"يحتاج حذر/خطة فردية",
-        diabetes:"Diabetes",
-        defaultReply:"لم أجد هذا الدواء في القائمة حالياً. جرّب كتابة الاسم بالإنجليزي أو جزء من الاسم."
+        notesLabel:"ملاحظات",
+        ramadanLabel:"توقيت رمضان",
+        missing:"لم أجد هذا الدواء في القائمة حالياً. جرّب كتابة الاسم بالإنجليزي أو جزء من الاسم.",
+        analyticsTitle:"Analytics (local)",
+        usedLbl:"Tracked selections",
+        drugsLbl:"Drugs loaded",
+        footer:"Created by Automation Supervisor Ali Alsada",
+        chips: [
+          {k:"top",   label:"⭐ الأدوية الشائعة", q:"__TOP__"},
+          {k:"dm",    label:"🩸 أدوية السكر",     q:"__CAT__:Diabetes"},
+          {k:"bp",    label:"❤️ أدوية الضغط",     q:"__CAT__:Hypertension"},
+          {k:"pain",  label:"🟦 مسكنات",          q:"__CAT__:Pain"},
+          {k:"abx",   label:"🧫 مضادات حيوية",    q:"__CAT__:Antibiotic"},
+          {k:"gi",    label:"🫧 أدوية المعدة",    q:"__CAT__:GI"},
+          {k:"war",   label:"⚠️ وارفارين",        q:"warfarin"},
+          {k:"tips",  label:"🕒 نصائح رمضان",      q:"__RAMADAN_TIPS__"}
+        ]
       },
       en: {
         dir:"ltr", htmlLang:"en",
@@ -359,22 +474,39 @@
         appTitle:"QCH – Smart Ramadan Medication Assistant",
         appSub:"Arabic / English · Patient-friendly · Offline analytics",
         chatTitle:"Chat",
-        chatHint:"Type medication name and get autocomplete suggestions",
+        chatHint:"Type the medication name and get autocomplete while typing",
+        panelTitle:"Quick Buttons",
+        panelHint:"Tap a button or type a medication name",
         statusLoading:"Loading drugs.json…",
         statusReady:"Ready",
         inputPh:"Type medication name here…",
         send:"Send",
         you:"You",
-        welcome:"Hello 👋 I'm the Ramadan Medication Assistant. Type a medication name and I’ll provide general timing guidance for Ramadan.",
+        welcomeTitle:"Hello 👋",
+        welcome:"I’m the Ramadan Medication Assistant. Type a medication name and I’ll give general timing guidance for Ramadan.",
         copy:"📋 Copy reply",
         copied:"✅ Copied",
         topTitle:"📊 Top 10 meds",
         topEmpty:"No data yet. Use the chat and it will auto-build Top 10.",
         disclaimer:"Note: General guidance only, not a substitute for a clinician/pharmacist. If you use insulin/anticoagulants, or have kidney/heart disease—consult your clinician before changes.",
         classLabel:"Class",
-        needsPlan:"Needs caution / individual plan",
-        diabetes:"Diabetes",
-        defaultReply:"I couldn’t find this medication in the list. Try English name or part of the name."
+        notesLabel:"Notes",
+        ramadanLabel:"Ramadan timing",
+        missing:"I couldn’t find this medication in the list. Try English name or part of the name.",
+        analyticsTitle:"Analytics (local)",
+        usedLbl:"Tracked selections",
+        drugsLbl:"Drugs loaded",
+        footer:"Created by Automation Supervisor Ali Alsada",
+        chips: [
+          {k:"top",   label:"⭐ Common meds",      q:"__TOP__"},
+          {k:"dm",    label:"🩸 Diabetes meds",    q:"__CAT__:Diabetes"},
+          {k:"bp",    label:"❤️ Blood pressure",   q:"__CAT__:Hypertension"},
+          {k:"pain",  label:"🟦 Pain relief",      q:"__CAT__:Pain"},
+          {k:"abx",   label:"🧫 Antibiotics",      q:"__CAT__:Antibiotic"},
+          {k:"gi",    label:"🫧 Stomach / GI",     q:"__CAT__:GI"},
+          {k:"war",   label:"⚠️ Warfarin",         q:"warfarin"},
+          {k:"tips",  label:"🕒 Ramadan tips",      q:"__RAMADAN_TIPS__"}
+        ]
       }
     };
 
@@ -389,24 +521,31 @@
       document.getElementById("chatTitle").textContent = T[LANG].chatTitle;
       document.getElementById("chatHint").textContent = T[LANG].chatHint;
 
+      document.getElementById("panelTitle").textContent = T[LANG].panelTitle;
+      document.getElementById("panelHint").textContent = T[LANG].panelHint;
+
       document.getElementById("userInput").placeholder = T[LANG].inputPh;
       document.getElementById("sendBtn").textContent = T[LANG].send;
 
       document.getElementById("topTitle").textContent = T[LANG].topTitle;
 
-      // Re-render welcome in the new language if chat is empty
-      if(document.getElementById("chat").children.length === 0){
-        addBotWelcome();
-      }
+      document.getElementById("analyticsTitle").textContent = T[LANG].analyticsTitle;
+      document.getElementById("kpiUsedLbl").textContent = T[LANG].usedLbl;
+      document.getElementById("kpiDrugsLbl").textContent = T[LANG].drugsLbl;
+
+      document.getElementById("footerText").textContent = T[LANG].footer;
+
+      renderChips();
     }
 
-    // ========== Analytics (local) ==========
+    // ================= Analytics (local) =================
     function trackDrugUse(drugKey){
       try{
         const key = "qch_drug_analytics_v1";
         const db = JSON.parse(localStorage.getItem(key) || "{}");
         db[drugKey] = (db[drugKey] || 0) + 1;
         localStorage.setItem(key, JSON.stringify(db));
+        updateKpis();
       }catch(e){}
     }
     function getTopDrugs(limit=10){
@@ -414,8 +553,13 @@
       const db = JSON.parse(localStorage.getItem(key) || "{}");
       return Object.entries(db).sort((a,b)=>b[1]-a[1]).slice(0, limit);
     }
+    function getTotalTracked(){
+      const key = "qch_drug_analytics_v1";
+      const db = JSON.parse(localStorage.getItem(key) || "{}");
+      return Object.values(db).reduce((a,b)=>a+b,0);
+    }
 
-    // ========== Helpers ==========
+    // ================= Helpers =================
     function escapeHtml(s){
       return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     }
@@ -424,7 +568,7 @@
       c.scrollTop = c.scrollHeight;
     }
 
-    // ========== Chat UI ==========
+    // ================= Chat UI =================
     function addUserMessage(text){
       const chat = document.getElementById("chat");
       const wrap = document.createElement("div");
@@ -432,7 +576,7 @@
 
       const bubble = document.createElement("div");
       bubble.className = "bubble user";
-      bubble.innerHTML = `<div style="font-weight:800; margin-bottom:6px;">${T[LANG].you} : ${escapeHtml(text)}</div>`;
+      bubble.innerHTML = `<div style="font-weight:950; margin-bottom:6px;">${T[LANG].you} : ${escapeHtml(text)}</div>`;
 
       wrap.appendChild(bubble);
       chat.appendChild(wrap);
@@ -472,39 +616,54 @@
       };
 
       actions.appendChild(copyBtn);
-
       wrap.appendChild(bubble);
       wrap.appendChild(actions);
       chat.appendChild(wrap);
       scrollChat();
     }
 
-    function addBotWelcome(){
-      const welcomeHtml = `
-        <div class="botTitle">مرحباً 👋</div>
+    function addWelcome(){
+      const html = `
+        <div class="botTitle">${escapeHtml(T[LANG].welcomeTitle)}</div>
         <div class="sectionText">${escapeHtml(T[LANG].welcome)}</div>
       `;
-      addBotBubble(welcomeHtml, T[LANG].welcome);
+      addBotBubble(html, T[LANG].welcome);
     }
 
-    // ========== Drugs + Autocomplete ==========
+    // ================= Drugs + Autocomplete =================
     let DRUGS = [];
-    function setAutocomplete(drugs){
+    function setDrugs(drugs){
       DRUGS = Array.isArray(drugs) ? drugs : [];
+      document.getElementById("kpiDrugs").textContent = String(DRUGS.length || 0);
     }
+
+    function normalize(s){
+      return (s||"").toString().trim().toLowerCase();
+    }
+
     function updateHints(q){
       const dl = document.getElementById("drugHints");
       dl.innerHTML = "";
-      if(!q || q.trim().length < 2) return;
+      const query = normalize(q);
+      if(query.length < 2) return;
 
-      const query = q.trim().toLowerCase();
-      const matches = DRUGS
-        .filter(d => (d.name||"").toLowerCase().includes(query) || (d.brand||"").toLowerCase().includes(query))
-        .slice(0, 10);
+      const matches = [];
+      for(const d of DRUGS){
+        const name = normalize(d.name);
+        const brand = normalize(d.brand);
+        const nameAr = normalize(d.name_ar);
+        const strength = normalize(d.strength);
+
+        if(name.includes(query) || brand.includes(query) || nameAr.includes(query)){
+          matches.push(d);
+          if(matches.length >= 12) break;
+        }
+      }
 
       for(const m of matches){
+        const label = (LANG==="ar" && m.name_ar) ? m.name_ar : m.name;
         const opt = document.createElement("option");
-        opt.value = m.name + (m.strength ? ` ${m.strength}` : "");
+        opt.value = (label || m.name || "") + (m.strength ? ` ${m.strength}` : "");
         dl.appendChild(opt);
       }
     }
@@ -516,102 +675,153 @@
         const res = await fetch("drugs.json", {cache:"no-store"});
         if(!res.ok) throw new Error("no drugs.json");
         const data = await res.json();
-        setAutocomplete(data);
+        setDrugs(data);
         status.textContent = T[LANG].statusReady;
       }catch(e){
-        setAutocomplete([]);
+        setDrugs([]);
         status.textContent = "drugs.json not found";
       }
     }
 
-    function findDrugByQuery(q){
-      const query = (q||"").trim().toLowerCase();
+    function findDrug(q){
+      const query = normalize(q);
       if(!query) return null;
 
-      // exact match: "name strength"
-      const exact = DRUGS.find(d => ((d.name + " " + (d.strength||"")).trim().toLowerCase()) === query);
-      if(exact) return exact;
+      // Exact: name + strength (any language)
+      for(const d of DRUGS){
+        const k1 = normalize((d.name||"") + " " + (d.strength||""));
+        const k2 = normalize((d.name_ar||"") + " " + (d.strength||""));
+        if(k1 === query || k2 === query) return d;
+      }
 
-      // contains
-      return DRUGS.find(d => ((d.name + " " + (d.strength||"") + " " + (d.brand||"")).toLowerCase()).includes(query)) || null;
+      // Contains
+      for(const d of DRUGS){
+        const hay = normalize((d.name||"") + " " + (d.brand||"") + " " + (d.name_ar||"") + " " + (d.strength||""));
+        if(hay.includes(query)) return d;
+      }
+      return null;
     }
 
-    function buildLightReply(d){
-      const drugNameAr = (d.name_ar && LANG==="ar") ? d.name_ar : (d.name || "");
-      const drugNameEn = (d.name || "");
-      const title = (LANG==="ar")
-        ? `${drugNameAr || drugNameEn}`
-        : `${drugNameEn}${d.brand ? " ("+d.brand+")" : ""}`;
-
-      const brandPart = d.brand ? ` (${d.brand})` : "";
-      const strengthPart = d.strength ? ` — ${d.strength}` : "";
-
-      // Class (simple example)
-      const cls = d.class || ( (d.name||"").toLowerCase().includes("metformin") ? T[LANG].diabetes : "" );
-
+    function buildReply(d){
+      const title = (LANG==="ar" && d.name_ar) ? d.name_ar : (d.name || "");
+      const strength = d.strength ? ` — ${d.strength}` : "";
+      const brand = d.brand ? ` (${d.brand})` : "";
+      const cls = (LANG==="ar" ? d.class_ar : d.class_en) || d.class || "";
       const notes = (LANG==="ar" ? d.notes_ar : d.notes_en) || "";
       const ramadan = (LANG==="ar" ? d.ramadan_ar : d.ramadan_en) || "";
 
+      // Risk tag
+      const risk = normalize(d.risk || "");
+      const riskTag = risk === "high"
+        ? `<span class="tag warn">⚠️ يحتاج حذر/خطة فردية</span>`
+        : `<span class="tag ok">✅ إرشاد عام</span>`;
+
       const html = `
-        <div class="botTitle">💊 ${escapeHtml((LANG==="ar" ? (drugNameAr || drugNameEn) : (drugNameEn + brandPart)))}${escapeHtml(strengthPart)}</div>
-
+        <div class="botTitle">💊 ${escapeHtml(title)}${escapeHtml(brand)}${escapeHtml(strength)}</div>
         <div class="metaLine">
-          <span style="font-weight:800;">${escapeHtml(T[LANG].classLabel)}:</span>
-          <span>${escapeHtml(cls || "—")}</span>
-          <span class="warn">⚠️ ${escapeHtml(T[LANG].needsPlan)}</span>
+          <span class="tag">🏷️ ${escapeHtml(T[LANG].classLabel)}: ${escapeHtml(cls || "—")}</span>
+          ${riskTag}
         </div>
-
-        ${notes ? `<div class="sectionText">📝 ${escapeHtml(notes)}</div>` : ""}
-        ${ramadan ? `<div class="sectionText">🌙 ${escapeHtml(ramadan)}</div>` : ""}
-
+        ${notes ? `<div class="sectionText">📝 <b>${escapeHtml(T[LANG].notesLabel)}:</b> ${escapeHtml(notes)}</div>` : ""}
+        ${ramadan ? `<div class="sectionText">🌙 <b>${escapeHtml(T[LANG].ramadanLabel)}:</b> ${escapeHtml(ramadan)}</div>` : ""}
         <div class="finePrint">⚠️ ${escapeHtml(T[LANG].disclaimer)}</div>
       `;
 
-      // Copy text (nice clean)
       const copyText =
-        `💊 ${(LANG==="ar" ? (drugNameAr || drugNameEn) : (drugNameEn + brandPart))}${strengthPart}\n` +
+        `💊 ${title}${brand}${strength}\n` +
         `${T[LANG].classLabel}: ${cls || "—"}\n` +
-        (notes ? `\n${notes}\n` : "") +
-        (ramadan ? `\n${ramadan}\n` : "") +
+        (notes ? `\n${T[LANG].notesLabel}: ${notes}\n` : "") +
+        (ramadan ? `\n${T[LANG].ramadanLabel}: ${ramadan}\n` : "") +
         `\n⚠️ ${T[LANG].disclaimer}`;
 
       return {html, copyText};
     }
 
-    function handleMessage(text){
-      const q = (text||"").trim();
-      if(!q) return;
+    function handleQuery(q){
+      const text = (q||"").trim();
+      if(!text) return;
 
-      addUserMessage(q);
+      // Quick chips commands
+      if(text === "__RAMADAN_TIPS__"){
+        const tips = (LANG==="ar")
+          ? "🕒 نصائح عامة لرمضان:\n• لا تغيّر الجرعات بنفسك.\n• بعض الأدوية تُقسم بين الإفطار والسحور حسب الخطة.\n• راقب سكر الدم إذا كنت مريض سكري.\n• راجع الطبيب للأدوية الحساسة (السكري/السيولة/الضغط)."
+          : "🕒 General Ramadan tips:\n• Don’t change doses on your own.\n• Some meds are split between Iftar/Suhoor per plan.\n• Monitor glucose if diabetic.\n• Ask clinician for sensitive meds (diabetes/anticoagulants/BP).";
+        addUserMessage(LANG==="ar" ? "نصائح رمضان" : "Ramadan tips");
+        addBotBubble(`<div class="botTitle">🕒</div><div class="sectionText">${escapeHtml(tips).replace(/\n/g,"<br>")}</div>`, tips);
+        return;
+      }
 
-      // Find drug
-      const d = findDrugByQuery(q);
+      if(text.startsWith("__CAT__:")){
+        const cat = text.split(":")[1] || "";
+        const list = DRUGS.filter(d => normalize(d.category) === normalize(cat))
+                          .slice(0, 20)
+                          .map(d => {
+                            const nm = (LANG==="ar" && d.name_ar) ? d.name_ar : d.name;
+                            return `• ${nm}${d.strength ? " " + d.strength : ""}`;
+                          }).join("\n");
+
+        const title = (LANG==="ar") ? `أدوية التصنيف: ${cat}` : `Category: ${cat}`;
+        addUserMessage(title);
+        addBotBubble(`<div class="botTitle">📌 ${escapeHtml(title)}</div><div class="sectionText">${escapeHtml(list || (LANG==="ar"?"لا توجد عناصر في القائمة":"No items found")).replace(/\n/g,"<br>")}</div>`, `${title}\n${list}`);
+        return;
+      }
+
+      if(text === "__TOP__"){
+        const top = getTopDrugs(10);
+        const msg = top.length ? top.map(([n,c],i)=> `${i+1}. ${n} — ${c}`).join("\n")
+                               : T[LANG].topEmpty;
+        addUserMessage(LANG==="ar" ? "الأدوية الشائعة" : "Common meds");
+        addBotBubble(`<div class="botTitle">⭐</div><div class="sectionText">${escapeHtml(msg).replace(/\n/g,"<br>")}</div>`, msg);
+        return;
+      }
+
+      // Normal search
+      addUserMessage(text);
+
+      const d = findDrug(text);
       if(d){
-        const {html, copyText} = buildLightReply(d);
+        const {html, copyText} = buildReply(d);
         addBotBubble(html, copyText);
-        const key = (d.name + (d.strength ? " " + d.strength : "")).trim();
+
+        const key = ((d.name||"") + (d.strength ? " " + d.strength : "")).trim();
         trackDrugUse(key);
         return;
       }
 
-      // fallback
-      const html = `
-        <div class="botTitle">ℹ️</div>
-        <div class="sectionText">${escapeHtml(T[LANG].defaultReply)}</div>
-      `;
-      addBotBubble(html, T[LANG].defaultReply);
+      addBotBubble(`<div class="botTitle">ℹ️</div><div class="sectionText">${escapeHtml(T[LANG].missing)}</div>`, T[LANG].missing);
     }
 
-    // ========== Top 10 ==========
+    // ================= Chips =================
+    function renderChips(){
+      const box = document.getElementById("chips");
+      box.innerHTML = "";
+      for(const item of T[LANG].chips){
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.type = "button";
+        b.textContent = item.label;
+        b.onclick = () => handleQuery(item.q);
+        box.appendChild(b);
+      }
+      // notes language
+      document.getElementById("notesBox").innerHTML =
+        (LANG==="ar")
+        ? "• هذه الأداة للتوعية العامة فقط.<br>• اتبع خطة الطبيب/الصيدلي دائمًا.<br>• للطوارئ: تواصل مع المستشفى/911."
+        : "• This tool provides general guidance only.<br>• Always follow the clinician plan.<br>• For emergencies, contact your hospital/911.";
+    }
+
+    function updateKpis(){
+      document.getElementById("kpiUsed").textContent = String(getTotalTracked());
+    }
+
+    // ================= Top 10 modal =================
     function renderTop(){
       const list = document.getElementById("topList");
       const top = getTopDrugs(10);
-
       if(!top.length){
         list.innerHTML = `<div style="color:var(--muted); font-size:15px;">${escapeHtml(T[LANG].topEmpty)}</div>`;
         return;
       }
-
       list.innerHTML = top.map(([name,count],i)=>`
         <div class="row">
           <div>${i+1}. ${escapeHtml(name)}</div>
@@ -620,7 +830,7 @@
       `).join("");
     }
 
-    // ========== Install prompt ==========
+    // ================= Install prompt =================
     let deferredPrompt = null;
     window.addEventListener("beforeinstallprompt", (e)=>{
       e.preventDefault();
@@ -628,19 +838,23 @@
       document.getElementById("installBtn").style.display = "inline-flex";
     });
 
-    // ========== Boot ==========
+    // ================= Boot =================
     document.addEventListener("DOMContentLoaded", ()=>{
       applyLang();
-      addBotWelcome();
       loadDrugsJson();
+      updateKpis();
+
+      // Welcome only once
+      const chat = document.getElementById("chat");
+      if(chat.children.length === 0) addWelcome();
 
       document.getElementById("langBtn").onclick = ()=>{
         LANG = (LANG === "ar") ? "en" : "ar";
-        // Clear chat to look consistent when switching like the light design
         document.getElementById("chat").innerHTML = "";
         applyLang();
-        addBotWelcome();
         loadDrugsJson();
+        updateKpis();
+        addWelcome();
       };
 
       document.getElementById("sendBtn").onclick = ()=>{
@@ -649,7 +863,7 @@
         if(!v) return;
         input.value = "";
         updateHints("");
-        handleMessage(v);
+        handleQuery(v);
       };
 
       document.getElementById("userInput").addEventListener("keydown", (e)=>{
@@ -673,7 +887,7 @@
         document.getElementById("installBtn").style.display = "none";
       };
 
-      // Register your existing service worker file name
+      // Use your existing SW filename
       if("serviceWorker" in navigator){
         navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
       }
