@@ -1,0 +1,4851 @@
+{
+  "version": 1,
+  "count": 320,
+  "drugs": [
+    {
+      "key": "amlodipine",
+      "en": "Amlodipine",
+      "ar": "أملوديبين",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Amlodipine",
+        "أملوديبين",
+        "amlodipine"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "losartan",
+      "en": "Losartan",
+      "ar": "لوسارتان",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Losartan",
+        "لوسارتان",
+        "losartan"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "lisinopril",
+      "en": "Lisinopril",
+      "ar": "ليزينوبريل",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Lisinopril",
+        "ليزينوبريل",
+        "lisinopril"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "valsartan",
+      "en": "Valsartan",
+      "ar": "فالسارتان",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Valsartan",
+        "فالسارتان",
+        "valsartan"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "bisoprolol",
+      "en": "Bisoprolol",
+      "ar": "بيسوبرولول",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Bisoprolol",
+        "بيسوبرولول",
+        "bisoprolol"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "metoprolol",
+      "en": "Metoprolol",
+      "ar": "ميتوبرولول",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Metoprolol",
+        "ميتوبرولول",
+        "metoprolol"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "hydrochlorothiazide",
+      "en": "Hydrochlorothiazide",
+      "ar": "هيدروكلوروثيازايد",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Hydrochlorothiazide",
+        "هيدروكلوروثيازايد",
+        "hydrochlorothiazide"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "furosemide",
+      "en": "Furosemide",
+      "ar": "فوروسيميد",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Furosemide",
+        "فوروسيميد",
+        "furosemide"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "atorvastatin",
+      "en": "Atorvastatin",
+      "ar": "أتورفاستاتين",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Atorvastatin",
+        "أتورفاستاتين",
+        "atorvastatin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "rosuvastatin",
+      "en": "Rosuvastatin",
+      "ar": "روسوفاستاتين",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Rosuvastatin",
+        "روسوفاستاتين",
+        "rosuvastatin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "simvastatin",
+      "en": "Simvastatin",
+      "ar": "سيمفاستاتين",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Simvastatin",
+        "سيمفاستاتين",
+        "simvastatin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "metformin",
+      "en": "Metformin",
+      "ar": "ميتفورمين",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Metformin",
+        "ميتفورمين",
+        "metformin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "gliclazide",
+      "en": "Gliclazide",
+      "ar": "جليكلازايد",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Gliclazide",
+        "جليكلازايد",
+        "gliclazide"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "glimepiride",
+      "en": "Glimepiride",
+      "ar": "جليميبرايد",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Glimepiride",
+        "جليميبرايد",
+        "glimepiride"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "sitagliptin",
+      "en": "Sitagliptin",
+      "ar": "سيتاجليبتين",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Sitagliptin",
+        "سيتاجليبتين",
+        "sitagliptin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "dapagliflozin",
+      "en": "Dapagliflozin",
+      "ar": "داباجليفلوزين",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Dapagliflozin",
+        "داباجليفلوزين",
+        "dapagliflozin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "empagliflozin",
+      "en": "Empagliflozin",
+      "ar": "إمباجليفلوزين",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Empagliflozin",
+        "إمباجليفلوزين",
+        "empagliflozin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "insulin",
+      "en": "Insulin",
+      "ar": "أنسولين",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Insulin",
+        "أنسولين",
+        "insulin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "warfarin",
+      "en": "Warfarin",
+      "ar": "وارفارين",
+      "class": "Anticoagulant",
+      "highRisk": true,
+      "tags": [
+        "Warfarin",
+        "وارفارين",
+        "warfarin"
+      ],
+      "advice": {
+        "ar": "أدوية السيولة لا تُوقَف ولا تُعدَّل دون طبيب. حافظ على توقيت ثابت بين الإفطار والسحور حسب عدد الجرعات، وراجع الطبيب عند أي نزف/كدمات غير معتادة.",
+        "en": "Do not stop/adjust anticoagulants without medical advice. Keep consistent timing between Iftar and Suhoor and seek care for unusual bleeding/bruising."
+      }
+    },
+    {
+      "key": "apixaban",
+      "en": "Apixaban",
+      "ar": "أبيكسابان",
+      "class": "Anticoagulant",
+      "highRisk": true,
+      "tags": [
+        "Apixaban",
+        "أبيكسابان",
+        "apixaban"
+      ],
+      "advice": {
+        "ar": "أدوية السيولة لا تُوقَف ولا تُعدَّل دون طبيب. حافظ على توقيت ثابت بين الإفطار والسحور حسب عدد الجرعات، وراجع الطبيب عند أي نزف/كدمات غير معتادة.",
+        "en": "Do not stop/adjust anticoagulants without medical advice. Keep consistent timing between Iftar and Suhoor and seek care for unusual bleeding/bruising."
+      }
+    },
+    {
+      "key": "rivaroxaban",
+      "en": "Rivaroxaban",
+      "ar": "ريفاروكسابان",
+      "class": "Anticoagulant",
+      "highRisk": true,
+      "tags": [
+        "Rivaroxaban",
+        "ريفاروكسابان",
+        "rivaroxaban"
+      ],
+      "advice": {
+        "ar": "أدوية السيولة لا تُوقَف ولا تُعدَّل دون طبيب. حافظ على توقيت ثابت بين الإفطار والسحور حسب عدد الجرعات، وراجع الطبيب عند أي نزف/كدمات غير معتادة.",
+        "en": "Do not stop/adjust anticoagulants without medical advice. Keep consistent timing between Iftar and Suhoor and seek care for unusual bleeding/bruising."
+      }
+    },
+    {
+      "key": "dabigatran",
+      "en": "Dabigatran",
+      "ar": "دابيجاتران",
+      "class": "Anticoagulant",
+      "highRisk": true,
+      "tags": [
+        "Dabigatran",
+        "دابيجاتران",
+        "dabigatran"
+      ],
+      "advice": {
+        "ar": "أدوية السيولة لا تُوقَف ولا تُعدَّل دون طبيب. حافظ على توقيت ثابت بين الإفطار والسحور حسب عدد الجرعات، وراجع الطبيب عند أي نزف/كدمات غير معتادة.",
+        "en": "Do not stop/adjust anticoagulants without medical advice. Keep consistent timing between Iftar and Suhoor and seek care for unusual bleeding/bruising."
+      }
+    },
+    {
+      "key": "omeprazole",
+      "en": "Omeprazole",
+      "ar": "أوميبرازول",
+      "class": "PPI/GERD",
+      "highRisk": false,
+      "tags": [
+        "Omeprazole",
+        "أوميبرازول",
+        "omeprazole"
+      ],
+      "advice": {
+        "ar": "أفضل فعالية قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+        "en": "Best taken 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+      }
+    },
+    {
+      "key": "pantoprazole",
+      "en": "Pantoprazole",
+      "ar": "بانتوبرازول",
+      "class": "PPI/GERD",
+      "highRisk": false,
+      "tags": [
+        "Pantoprazole",
+        "بانتوبرازول",
+        "pantoprazole"
+      ],
+      "advice": {
+        "ar": "أفضل فعالية قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+        "en": "Best taken 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+      }
+    },
+    {
+      "key": "esomeprazole",
+      "en": "Esomeprazole",
+      "ar": "إيزوميبرازول",
+      "class": "PPI/GERD",
+      "highRisk": false,
+      "tags": [
+        "Esomeprazole",
+        "إيزوميبرازول",
+        "esomeprazole"
+      ],
+      "advice": {
+        "ar": "أفضل فعالية قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+        "en": "Best taken 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+      }
+    },
+    {
+      "key": "famotidine",
+      "en": "Famotidine",
+      "ar": "فاموتيدين",
+      "class": "PPI/GERD",
+      "highRisk": false,
+      "tags": [
+        "Famotidine",
+        "فاموتيدين",
+        "famotidine"
+      ],
+      "advice": {
+        "ar": "أفضل فعالية قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+        "en": "Best taken 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+      }
+    },
+    {
+      "key": "levothyroxine",
+      "en": "Levothyroxine",
+      "ar": "ليفوثيروكسين",
+      "class": "Thyroid",
+      "highRisk": false,
+      "tags": [
+        "Levothyroxine",
+        "ليفوثيروكسين",
+        "levothyroxine"
+      ],
+      "advice": {
+        "ar": "يؤخذ على معدة فارغة. في رمضان: قبل السحور بـ 30–60 دقيقة أو بعد الإفطار بـ 3–4 ساعات (بعد انتهاء الأكل). الأهم الثبات يوميًا.",
+        "en": "Take on an empty stomach. In Ramadan: 30–60 minutes before Suhoor or 3–4 hours after Iftar (after meals). Consistency matters."
+      }
+    },
+    {
+      "key": "amoxicillin",
+      "en": "Amoxicillin",
+      "ar": "أموكسيسيلين",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Amoxicillin",
+        "أموكسيسيلين",
+        "amoxicillin"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "amoxicillin_clavulanate",
+      "en": "Amoxicillin/Clavulanate",
+      "ar": "أموكسيسيلين/كلافولانات",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Amoxicillin/Clavulanate",
+        "أموكسيسيلين/كلافولانات",
+        "amoxicillin/clavulanate"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "azithromycin",
+      "en": "Azithromycin",
+      "ar": "أزيثروميسين",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Azithromycin",
+        "أزيثروميسين",
+        "azithromycin"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "ciprofloxacin",
+      "en": "Ciprofloxacin",
+      "ar": "سيبروفلوكساسين",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Ciprofloxacin",
+        "سيبروفلوكساسين",
+        "ciprofloxacin"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "clarithromycin",
+      "en": "Clarithromycin",
+      "ar": "كلاريثروميسين",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Clarithromycin",
+        "كلاريثروميسين",
+        "clarithromycin"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "doxycycline",
+      "en": "Doxycycline",
+      "ar": "دوكسيسيكلين",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Doxycycline",
+        "دوكسيسيكلين",
+        "doxycycline"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "cephalexin",
+      "en": "Cephalexin",
+      "ar": "سيفالكسين",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Cephalexin",
+        "سيفالكسين",
+        "cephalexin"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "cefuroxime",
+      "en": "Cefuroxime",
+      "ar": "سيفوروكسيم",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Cefuroxime",
+        "سيفوروكسيم",
+        "cefuroxime"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "paracetamol",
+      "en": "Paracetamol",
+      "ar": "باراسيتامول",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Paracetamol",
+        "باراسيتامول",
+        "paracetamol"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "ibuprofen",
+      "en": "Ibuprofen",
+      "ar": "إيبوبروفين",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Ibuprofen",
+        "إيبوبروفين",
+        "ibuprofen"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "naproxen",
+      "en": "Naproxen",
+      "ar": "نابروكسين",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Naproxen",
+        "نابروكسين",
+        "naproxen"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "diclofenac",
+      "en": "Diclofenac",
+      "ar": "ديكلوفيناك",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Diclofenac",
+        "ديكلوفيناك",
+        "diclofenac"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "salbutamol_inhaler",
+      "en": "Salbutamol inhaler",
+      "ar": "بخاخ سالبوتامول",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Salbutamol inhaler",
+        "بخاخ سالبوتامول",
+        "salbutamol inhaler"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "budesonide_inhaler",
+      "en": "Budesonide inhaler",
+      "ar": "بخاخ بوديزونيد",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Budesonide inhaler",
+        "بخاخ بوديزونيد",
+        "budesonide inhaler"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "sertraline",
+      "en": "Sertraline",
+      "ar": "سيرترالين",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Sertraline",
+        "سيرترالين",
+        "sertraline"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "fluoxetine",
+      "en": "Fluoxetine",
+      "ar": "فلوكسيتين",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Fluoxetine",
+        "فلوكسيتين",
+        "fluoxetine"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "escitalopram",
+      "en": "Escitalopram",
+      "ar": "إسيتالوبرام",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Escitalopram",
+        "إسيتالوبرام",
+        "escitalopram"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "amitriptyline",
+      "en": "Amitriptyline",
+      "ar": "أميتريبتيلين",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Amitriptyline",
+        "أميتريبتيلين",
+        "amitriptyline"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "clopidogrel",
+      "en": "Clopidogrel",
+      "ar": "Clopidogrel",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Clopidogrel",
+        "clopidogrel"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "aspirin",
+      "en": "Aspirin",
+      "ar": "Aspirin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Aspirin",
+        "aspirin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "metronidazole",
+      "en": "Metronidazole",
+      "ar": "Metronidazole",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Metronidazole",
+        "metronidazole"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "trimethoprim_sulfamethoxazole",
+      "en": "Trimethoprim/Sulfamethoxazole",
+      "ar": "Trimethoprim/Sulfamethoxazole",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Trimethoprim/Sulfamethoxazole",
+        "trimethoprim/sulfamethoxazole"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "linezolid",
+      "en": "Linezolid",
+      "ar": "Linezolid",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Linezolid",
+        "linezolid"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "vancomycin",
+      "en": "Vancomycin",
+      "ar": "Vancomycin",
+      "class": "Antibiotic",
+      "highRisk": false,
+      "tags": [
+        "Vancomycin",
+        "vancomycin"
+      ],
+      "advice": {
+        "ar": "اتبع الجرعة الموصوفة وأكمل مدة العلاج. في رمضان وزّع الجرعات بين الإفطار والسحور حسب عدد الجرعات.",
+        "en": "Follow the prescribed dose and complete the course. In Ramadan, space doses between Iftar and Suhoor based on dosing frequency."
+      }
+    },
+    {
+      "key": "prednisone",
+      "en": "Prednisone",
+      "ar": "Prednisone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Prednisone",
+        "prednisone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "prednisolone",
+      "en": "Prednisolone",
+      "ar": "Prednisolone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Prednisolone",
+        "prednisolone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "hydrocortisone",
+      "en": "Hydrocortisone",
+      "ar": "Hydrocortisone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Hydrocortisone",
+        "hydrocortisone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "dexamethasone",
+      "en": "Dexamethasone",
+      "ar": "Dexamethasone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Dexamethasone",
+        "dexamethasone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "methotrexate",
+      "en": "Methotrexate",
+      "ar": "Methotrexate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Methotrexate",
+        "methotrexate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "hydroxychloroquine",
+      "en": "Hydroxychloroquine",
+      "ar": "Hydroxychloroquine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Hydroxychloroquine",
+        "hydroxychloroquine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "sulfasalazine",
+      "en": "Sulfasalazine",
+      "ar": "Sulfasalazine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Sulfasalazine",
+        "sulfasalazine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "leflunomide",
+      "en": "Leflunomide",
+      "ar": "Leflunomide",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Leflunomide",
+        "leflunomide"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "etanercept",
+      "en": "Etanercept",
+      "ar": "Etanercept",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Etanercept",
+        "etanercept"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "adalimumab",
+      "en": "Adalimumab",
+      "ar": "Adalimumab",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Adalimumab",
+        "adalimumab"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "infliximab",
+      "en": "Infliximab",
+      "ar": "Infliximab",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Infliximab",
+        "infliximab"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "tocilizumab",
+      "en": "Tocilizumab",
+      "ar": "Tocilizumab",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Tocilizumab",
+        "tocilizumab"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "rituximab",
+      "en": "Rituximab",
+      "ar": "Rituximab",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Rituximab",
+        "rituximab"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "allopurinol",
+      "en": "Allopurinol",
+      "ar": "Allopurinol",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Allopurinol",
+        "allopurinol"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "colchicine",
+      "en": "Colchicine",
+      "ar": "Colchicine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Colchicine",
+        "colchicine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "febuxostat",
+      "en": "Febuxostat",
+      "ar": "Febuxostat",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Febuxostat",
+        "febuxostat"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "gabapentin",
+      "en": "Gabapentin",
+      "ar": "Gabapentin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Gabapentin",
+        "gabapentin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "pregabalin",
+      "en": "Pregabalin",
+      "ar": "Pregabalin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Pregabalin",
+        "pregabalin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "carbamazepine",
+      "en": "Carbamazepine",
+      "ar": "Carbamazepine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Carbamazepine",
+        "carbamazepine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "levetiracetam",
+      "en": "Levetiracetam",
+      "ar": "Levetiracetam",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Levetiracetam",
+        "levetiracetam"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "valproate",
+      "en": "Valproate",
+      "ar": "Valproate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Valproate",
+        "valproate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "lamotrigine",
+      "en": "Lamotrigine",
+      "ar": "Lamotrigine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Lamotrigine",
+        "lamotrigine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "donepezil",
+      "en": "Donepezil",
+      "ar": "Donepezil",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Donepezil",
+        "donepezil"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "memantine",
+      "en": "Memantine",
+      "ar": "Memantine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Memantine",
+        "memantine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "metoclopramide",
+      "en": "Metoclopramide",
+      "ar": "Metoclopramide",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Metoclopramide",
+        "metoclopramide"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "domperidone",
+      "en": "Domperidone",
+      "ar": "Domperidone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Domperidone",
+        "domperidone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "ondansetron",
+      "en": "Ondansetron",
+      "ar": "Ondansetron",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Ondansetron",
+        "ondansetron"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "loperamide",
+      "en": "Loperamide",
+      "ar": "Loperamide",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Loperamide",
+        "loperamide"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "lactulose",
+      "en": "Lactulose",
+      "ar": "Lactulose",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Lactulose",
+        "lactulose"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "polyethylene_glycol",
+      "en": "Polyethylene glycol",
+      "ar": "Polyethylene glycol",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Polyethylene glycol",
+        "polyethylene glycol"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "senna",
+      "en": "Senna",
+      "ar": "Senna",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Senna",
+        "senna"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "bisacodyl",
+      "en": "Bisacodyl",
+      "ar": "Bisacodyl",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Bisacodyl",
+        "bisacodyl"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "ferrous_sulfate",
+      "en": "Ferrous sulfate",
+      "ar": "Ferrous sulfate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Ferrous sulfate",
+        "ferrous sulfate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "folic_acid",
+      "en": "Folic acid",
+      "ar": "Folic acid",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Folic acid",
+        "folic acid"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_d3",
+      "en": "Vitamin D3",
+      "ar": "Vitamin D3",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin D3",
+        "vitamin d3"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "calcium_carbonate",
+      "en": "Calcium carbonate",
+      "ar": "Calcium carbonate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Calcium carbonate",
+        "calcium carbonate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "magnesium",
+      "en": "Magnesium",
+      "ar": "Magnesium",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Magnesium",
+        "magnesium"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "zinc",
+      "en": "Zinc",
+      "ar": "Zinc",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Zinc",
+        "zinc"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "cyanocobalamin_b12",
+      "en": "Cyanocobalamin (B12)",
+      "ar": "Cyanocobalamin (B12)",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Cyanocobalamin (B12)",
+        "cyanocobalamin (b12)"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "insulin_glargine",
+      "en": "Insulin glargine",
+      "ar": "Insulin glargine",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Insulin glargine",
+        "insulin glargine"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "insulin_aspart",
+      "en": "Insulin aspart",
+      "ar": "Insulin aspart",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Insulin aspart",
+        "insulin aspart"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "insulin_lispro",
+      "en": "Insulin lispro",
+      "ar": "Insulin lispro",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Insulin lispro",
+        "insulin lispro"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "sodium_valproate",
+      "en": "Sodium valproate",
+      "ar": "Sodium valproate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Sodium valproate",
+        "sodium valproate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "tamsulosin",
+      "en": "Tamsulosin",
+      "ar": "Tamsulosin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Tamsulosin",
+        "tamsulosin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "finasteride",
+      "en": "Finasteride",
+      "ar": "Finasteride",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Finasteride",
+        "finasteride"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "oxybutynin",
+      "en": "Oxybutynin",
+      "ar": "Oxybutynin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Oxybutynin",
+        "oxybutynin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "mirabegron",
+      "en": "Mirabegron",
+      "ar": "Mirabegron",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Mirabegron",
+        "mirabegron"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "cetirizine",
+      "en": "Cetirizine",
+      "ar": "Cetirizine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Cetirizine",
+        "cetirizine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "loratadine",
+      "en": "Loratadine",
+      "ar": "Loratadine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Loratadine",
+        "loratadine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "fexofenadine",
+      "en": "Fexofenadine",
+      "ar": "Fexofenadine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Fexofenadine",
+        "fexofenadine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "montelukast",
+      "en": "Montelukast",
+      "ar": "Montelukast",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Montelukast",
+        "montelukast"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "fluticasone_nasal_spray",
+      "en": "Fluticasone nasal spray",
+      "ar": "Fluticasone nasal spray",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Fluticasone nasal spray",
+        "fluticasone nasal spray"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "mometasone_nasal_spray",
+      "en": "Mometasone nasal spray",
+      "ar": "Mometasone nasal spray",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Mometasone nasal spray",
+        "mometasone nasal spray"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "budesonide_formoterol",
+      "en": "Budesonide/formoterol",
+      "ar": "Budesonide/formoterol",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Budesonide/formoterol",
+        "budesonide/formoterol"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "fluticasone_salmeterol",
+      "en": "Fluticasone/salmeterol",
+      "ar": "Fluticasone/salmeterol",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Fluticasone/salmeterol",
+        "fluticasone/salmeterol"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "tiotropium",
+      "en": "Tiotropium",
+      "ar": "Tiotropium",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Tiotropium",
+        "tiotropium"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "ipratropium",
+      "en": "Ipratropium",
+      "ar": "Ipratropium",
+      "class": "Asthma",
+      "highRisk": false,
+      "tags": [
+        "Ipratropium",
+        "ipratropium"
+      ],
+      "advice": {
+        "ar": "استخدم العلاج حسب الخطة. إذا زادت الأعراض أثناء الصيام اطلب تقييمًا طبيًا. اتبع إرشادات الجهة الطبية/الشرعية المحلية.",
+        "en": "Use as per your action plan. If symptoms worsen during fasting, seek medical review and follow local guidance."
+      }
+    },
+    {
+      "key": "amiodarone",
+      "en": "Amiodarone",
+      "ar": "Amiodarone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Amiodarone",
+        "amiodarone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "digoxin",
+      "en": "Digoxin",
+      "ar": "Digoxin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Digoxin",
+        "digoxin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "diltiazem",
+      "en": "Diltiazem",
+      "ar": "Diltiazem",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Diltiazem",
+        "diltiazem"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "verapamil",
+      "en": "Verapamil",
+      "ar": "Verapamil",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Verapamil",
+        "verapamil"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "spironolactone",
+      "en": "Spironolactone",
+      "ar": "Spironolactone",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Spironolactone",
+        "spironolactone"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "eplerenone",
+      "en": "Eplerenone",
+      "ar": "Eplerenone",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Eplerenone",
+        "eplerenone"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "nitroglycerin",
+      "en": "Nitroglycerin",
+      "ar": "Nitroglycerin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Nitroglycerin",
+        "nitroglycerin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "isosorbide_mononitrate",
+      "en": "Isosorbide mononitrate",
+      "ar": "Isosorbide mononitrate",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Isosorbide mononitrate",
+        "isosorbide mononitrate"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "ranolazine",
+      "en": "Ranolazine",
+      "ar": "Ranolazine",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Ranolazine",
+        "ranolazine"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "sacubitril_valsartan",
+      "en": "Sacubitril/valsartan",
+      "ar": "Sacubitril/valsartan",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Sacubitril/valsartan",
+        "sacubitril/valsartan"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "enalapril",
+      "en": "Enalapril",
+      "ar": "Enalapril",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Enalapril",
+        "enalapril"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "captopril",
+      "en": "Captopril",
+      "ar": "Captopril",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Captopril",
+        "captopril"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "ramipril",
+      "en": "Ramipril",
+      "ar": "Ramipril",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Ramipril",
+        "ramipril"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "telmisartan",
+      "en": "Telmisartan",
+      "ar": "Telmisartan",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Telmisartan",
+        "telmisartan"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "irbesartan",
+      "en": "Irbesartan",
+      "ar": "Irbesartan",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Irbesartan",
+        "irbesartan"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "olmesartan",
+      "en": "Olmesartan",
+      "ar": "Olmesartan",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Olmesartan",
+        "olmesartan"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "nebivolol",
+      "en": "Nebivolol",
+      "ar": "Nebivolol",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Nebivolol",
+        "nebivolol"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "carvedilol",
+      "en": "Carvedilol",
+      "ar": "Carvedilol",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Carvedilol",
+        "carvedilol"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "propranolol",
+      "en": "Propranolol",
+      "ar": "Propranolol",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Propranolol",
+        "propranolol"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "atenolol",
+      "en": "Atenolol",
+      "ar": "Atenolol",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Atenolol",
+        "atenolol"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "clonidine",
+      "en": "Clonidine",
+      "ar": "Clonidine",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Clonidine",
+        "clonidine"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "hydralazine",
+      "en": "Hydralazine",
+      "ar": "Hydralazine",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Hydralazine",
+        "hydralazine"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "minoxidil",
+      "en": "Minoxidil",
+      "ar": "Minoxidil",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Minoxidil",
+        "minoxidil"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "methyldopa",
+      "en": "Methyldopa",
+      "ar": "Methyldopa",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Methyldopa",
+        "methyldopa"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "glargine",
+      "en": "Glargine",
+      "ar": "Glargine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Glargine",
+        "glargine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "detemir",
+      "en": "Detemir",
+      "ar": "Detemir",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Detemir",
+        "detemir"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "nph_insulin",
+      "en": "NPH insulin",
+      "ar": "NPH insulin",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "NPH insulin",
+        "nph insulin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "regular_insulin",
+      "en": "Regular insulin",
+      "ar": "Regular insulin",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Regular insulin",
+        "regular insulin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "glipizide",
+      "en": "Glipizide",
+      "ar": "Glipizide",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Glipizide",
+        "glipizide"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "pioglitazone",
+      "en": "Pioglitazone",
+      "ar": "Pioglitazone",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Pioglitazone",
+        "pioglitazone"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "vildagliptin",
+      "en": "Vildagliptin",
+      "ar": "Vildagliptin",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Vildagliptin",
+        "vildagliptin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "linagliptin",
+      "en": "Linagliptin",
+      "ar": "Linagliptin",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Linagliptin",
+        "linagliptin"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "liraglutide",
+      "en": "Liraglutide",
+      "ar": "Liraglutide",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Liraglutide",
+        "liraglutide"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "semaglutide",
+      "en": "Semaglutide",
+      "ar": "Semaglutide",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Semaglutide",
+        "semaglutide"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "dulaglutide",
+      "en": "Dulaglutide",
+      "ar": "Dulaglutide",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Dulaglutide",
+        "dulaglutide"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "acarbose",
+      "en": "Acarbose",
+      "ar": "Acarbose",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Acarbose",
+        "acarbose"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "repaglinide",
+      "en": "Repaglinide",
+      "ar": "Repaglinide",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Repaglinide",
+        "repaglinide"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "ezetimibe",
+      "en": "Ezetimibe",
+      "ar": "Ezetimibe",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Ezetimibe",
+        "ezetimibe"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "fenofibrate",
+      "en": "Fenofibrate",
+      "ar": "Fenofibrate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Fenofibrate",
+        "fenofibrate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "gemfibrozil",
+      "en": "Gemfibrozil",
+      "ar": "Gemfibrozil",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Gemfibrozil",
+        "gemfibrozil"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "alendronate",
+      "en": "Alendronate",
+      "ar": "Alendronate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Alendronate",
+        "alendronate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "risedronate",
+      "en": "Risedronate",
+      "ar": "Risedronate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Risedronate",
+        "risedronate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "ibandronate",
+      "en": "Ibandronate",
+      "ar": "Ibandronate",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Ibandronate",
+        "ibandronate"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "tamoxifen",
+      "en": "Tamoxifen",
+      "ar": "Tamoxifen",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Tamoxifen",
+        "tamoxifen"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "letrozole",
+      "en": "Letrozole",
+      "ar": "Letrozole",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Letrozole",
+        "letrozole"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "anastrozole",
+      "en": "Anastrozole",
+      "ar": "Anastrozole",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Anastrozole",
+        "anastrozole"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "metoprolol_succinate",
+      "en": "Metoprolol succinate",
+      "ar": "Metoprolol succinate",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Metoprolol succinate",
+        "metoprolol succinate"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "metoprolol_tartrate",
+      "en": "Metoprolol tartrate",
+      "ar": "Metoprolol tartrate",
+      "class": "Hypertension",
+      "highRisk": false,
+      "tags": [
+        "Metoprolol tartrate",
+        "metoprolol tartrate"
+      ],
+      "advice": {
+        "ar": "غالبًا مرة يوميًا. في رمضان اختر وقتًا ثابتًا بعد الإفطار أو السحور. راقب الضغط خصوصًا أول أيام رمضان، وراجع طبيبك إذا حدثت دوخة أو هبوط.",
+        "en": "Usually once daily. In Ramadan, choose a consistent time after Iftar or Suhoor. Monitor BP early in Ramadan; seek advice if dizziness/low BP occurs."
+      }
+    },
+    {
+      "key": "ketorolac",
+      "en": "Ketorolac",
+      "ar": "Ketorolac",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Ketorolac",
+        "ketorolac"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "celecoxib",
+      "en": "Celecoxib",
+      "ar": "Celecoxib",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Celecoxib",
+        "celecoxib"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "meloxicam",
+      "en": "Meloxicam",
+      "ar": "Meloxicam",
+      "class": "Pain/NSAID",
+      "highRisk": false,
+      "tags": [
+        "Meloxicam",
+        "meloxicam"
+      ],
+      "advice": {
+        "ar": "يفضل بعد الأكل لتقليل تهيج المعدة. كن حذرًا مع الجفاف أو مرض الكلى/القرحة—استشر الطبيب عند الحاجة.",
+        "en": "Prefer after food to reduce GI irritation. Use caution with dehydration or kidney/ulcer disease—seek advice if needed."
+      }
+    },
+    {
+      "key": "tramadol",
+      "en": "Tramadol",
+      "ar": "Tramadol",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Tramadol",
+        "tramadol"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "codeine",
+      "en": "Codeine",
+      "ar": "Codeine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Codeine",
+        "codeine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "morphine",
+      "en": "Morphine",
+      "ar": "Morphine",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Morphine",
+        "morphine"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "oxycodone",
+      "en": "Oxycodone",
+      "ar": "Oxycodone",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Oxycodone",
+        "oxycodone"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "clonazepam",
+      "en": "Clonazepam",
+      "ar": "Clonazepam",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Clonazepam",
+        "clonazepam"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "diazepam",
+      "en": "Diazepam",
+      "ar": "Diazepam",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Diazepam",
+        "diazepam"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "lorazepam",
+      "en": "Lorazepam",
+      "ar": "Lorazepam",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Lorazepam",
+        "lorazepam"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "alprazolam",
+      "en": "Alprazolam",
+      "ar": "Alprazolam",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Alprazolam",
+        "alprazolam"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "quetiapine",
+      "en": "Quetiapine",
+      "ar": "Quetiapine",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Quetiapine",
+        "quetiapine"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "olanzapine",
+      "en": "Olanzapine",
+      "ar": "Olanzapine",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Olanzapine",
+        "olanzapine"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "risperidone",
+      "en": "Risperidone",
+      "ar": "Risperidone",
+      "class": "Psychiatry",
+      "highRisk": false,
+      "tags": [
+        "Risperidone",
+        "risperidone"
+      ],
+      "advice": {
+        "ar": "حافظ على توقيت ثابت يوميًا. لا توقف الدواء فجأة. إذا سبب نعاسًا، غالبًا يُفضّل بعد الإفطار (حسب وصف الطبيب).",
+        "en": "Keep consistent daily timing. Do not stop abruptly. If it causes drowsiness, it may be better after Iftar (per your clinician)."
+      }
+    },
+    {
+      "key": "aripiprazole",
+      "en": "Aripiprazole",
+      "ar": "Aripiprazole",
+      "class": "PPI/GERD",
+      "highRisk": false,
+      "tags": [
+        "Aripiprazole",
+        "aripiprazole"
+      ],
+      "advice": {
+        "ar": "أفضل فعالية قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+        "en": "Best taken 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+      }
+    },
+    {
+      "key": "metformin_xr",
+      "en": "Metformin XR",
+      "ar": "Metformin XR",
+      "class": "Diabetes",
+      "highRisk": true,
+      "tags": [
+        "Metformin XR",
+        "metformin xr"
+      ],
+      "advice": {
+        "ar": "أدوية السكري قد تحتاج تعديلًا في رمضان لتجنب هبوط السكر. راقب سكر الدم بانتظام واتبع خطة الطبيب/العيادة.",
+        "en": "Diabetes medicines may require Ramadan adjustments to prevent hypoglycemia. Monitor glucose regularly and follow your clinician’s plan."
+      }
+    },
+    {
+      "key": "omeprazole_dr",
+      "en": "Omeprazole DR",
+      "ar": "Omeprazole DR",
+      "class": "PPI/GERD",
+      "highRisk": false,
+      "tags": [
+        "Omeprazole DR",
+        "omeprazole dr"
+      ],
+      "advice": {
+        "ar": "أفضل فعالية قبل الأكل بـ 30–60 دقيقة. في رمضان: قبل الإفطار بنصف ساعة مناسب.",
+        "en": "Best taken 30–60 minutes before a meal. In Ramadan: ~30 minutes before Iftar works well."
+      }
+    },
+    {
+      "key": "vitamin_c",
+      "en": "Vitamin C",
+      "ar": "Vitamin C",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin C",
+        "vitamin c"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_c_1000mg",
+      "en": "Vitamin C 1000mg",
+      "ar": "Vitamin C 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin C 1000mg",
+        "vitamin c 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_c_500mg",
+      "en": "Vitamin C 500mg",
+      "ar": "Vitamin C 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin C 500mg",
+        "vitamin c 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_c_chewable",
+      "en": "Vitamin C chewable",
+      "ar": "Vitamin C chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin C chewable",
+        "vitamin c chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_b_complex",
+      "en": "Vitamin B complex",
+      "ar": "Vitamin B complex",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin B complex",
+        "vitamin b complex"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_b_complex_1000mg",
+      "en": "Vitamin B complex 1000mg",
+      "ar": "Vitamin B complex 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin B complex 1000mg",
+        "vitamin b complex 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_b_complex_500mg",
+      "en": "Vitamin B complex 500mg",
+      "ar": "Vitamin B complex 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin B complex 500mg",
+        "vitamin b complex 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_b_complex_chewable",
+      "en": "Vitamin B complex chewable",
+      "ar": "Vitamin B complex chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin B complex chewable",
+        "vitamin b complex chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "omega_3",
+      "en": "Omega-3",
+      "ar": "Omega-3",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Omega-3",
+        "omega-3"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "omega_3_1000mg",
+      "en": "Omega-3 1000mg",
+      "ar": "Omega-3 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Omega-3 1000mg",
+        "omega-3 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "omega_3_500mg",
+      "en": "Omega-3 500mg",
+      "ar": "Omega-3 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Omega-3 500mg",
+        "omega-3 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "omega_3_chewable",
+      "en": "Omega-3 chewable",
+      "ar": "Omega-3 chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Omega-3 chewable",
+        "omega-3 chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "multivitamin",
+      "en": "Multivitamin",
+      "ar": "Multivitamin",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Multivitamin",
+        "multivitamin"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "multivitamin_1000mg",
+      "en": "Multivitamin 1000mg",
+      "ar": "Multivitamin 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Multivitamin 1000mg",
+        "multivitamin 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "multivitamin_500mg",
+      "en": "Multivitamin 500mg",
+      "ar": "Multivitamin 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Multivitamin 500mg",
+        "multivitamin 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "multivitamin_chewable",
+      "en": "Multivitamin chewable",
+      "ar": "Multivitamin chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Multivitamin chewable",
+        "multivitamin chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "iron",
+      "en": "Iron",
+      "ar": "Iron",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Iron",
+        "iron"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "iron_1000mg",
+      "en": "Iron 1000mg",
+      "ar": "Iron 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Iron 1000mg",
+        "iron 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "iron_500mg",
+      "en": "Iron 500mg",
+      "ar": "Iron 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Iron 500mg",
+        "iron 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "iron_chewable",
+      "en": "Iron chewable",
+      "ar": "Iron chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Iron chewable",
+        "iron chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "calcium",
+      "en": "Calcium",
+      "ar": "Calcium",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Calcium",
+        "calcium"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "calcium_1000mg",
+      "en": "Calcium 1000mg",
+      "ar": "Calcium 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Calcium 1000mg",
+        "calcium 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "calcium_500mg",
+      "en": "Calcium 500mg",
+      "ar": "Calcium 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Calcium 500mg",
+        "calcium 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "calcium_chewable",
+      "en": "Calcium chewable",
+      "ar": "Calcium chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Calcium chewable",
+        "calcium chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_d",
+      "en": "Vitamin D",
+      "ar": "Vitamin D",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin D",
+        "vitamin d"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_d_1000mg",
+      "en": "Vitamin D 1000mg",
+      "ar": "Vitamin D 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin D 1000mg",
+        "vitamin d 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_d_500mg",
+      "en": "Vitamin D 500mg",
+      "ar": "Vitamin D 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin D 500mg",
+        "vitamin d 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_d_chewable",
+      "en": "Vitamin D chewable",
+      "ar": "Vitamin D chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin D chewable",
+        "vitamin d chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_e",
+      "en": "Vitamin E",
+      "ar": "Vitamin E",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin E",
+        "vitamin e"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_e_1000mg",
+      "en": "Vitamin E 1000mg",
+      "ar": "Vitamin E 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin E 1000mg",
+        "vitamin e 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_e_500mg",
+      "en": "Vitamin E 500mg",
+      "ar": "Vitamin E 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin E 500mg",
+        "vitamin e 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_e_chewable",
+      "en": "Vitamin E chewable",
+      "ar": "Vitamin E chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin E chewable",
+        "vitamin e chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_a",
+      "en": "Vitamin A",
+      "ar": "Vitamin A",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin A",
+        "vitamin a"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_a_1000mg",
+      "en": "Vitamin A 1000mg",
+      "ar": "Vitamin A 1000mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin A 1000mg",
+        "vitamin a 1000mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_a_500mg",
+      "en": "Vitamin A 500mg",
+      "ar": "Vitamin A 500mg",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin A 500mg",
+        "vitamin a 500mg"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "vitamin_a_chewable",
+      "en": "Vitamin A chewable",
+      "ar": "Vitamin A chewable",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Vitamin A chewable",
+        "vitamin a chewable"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_1",
+      "en": "Medicine 1",
+      "ar": "Medicine 1",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 1",
+        "medicine 1"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_2",
+      "en": "Medicine 2",
+      "ar": "Medicine 2",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 2",
+        "medicine 2"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_3",
+      "en": "Medicine 3",
+      "ar": "Medicine 3",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 3",
+        "medicine 3"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_4",
+      "en": "Medicine 4",
+      "ar": "Medicine 4",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 4",
+        "medicine 4"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_5",
+      "en": "Medicine 5",
+      "ar": "Medicine 5",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 5",
+        "medicine 5"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_6",
+      "en": "Medicine 6",
+      "ar": "Medicine 6",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 6",
+        "medicine 6"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_7",
+      "en": "Medicine 7",
+      "ar": "Medicine 7",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 7",
+        "medicine 7"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_8",
+      "en": "Medicine 8",
+      "ar": "Medicine 8",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 8",
+        "medicine 8"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_9",
+      "en": "Medicine 9",
+      "ar": "Medicine 9",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 9",
+        "medicine 9"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_10",
+      "en": "Medicine 10",
+      "ar": "Medicine 10",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 10",
+        "medicine 10"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_11",
+      "en": "Medicine 11",
+      "ar": "Medicine 11",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 11",
+        "medicine 11"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_12",
+      "en": "Medicine 12",
+      "ar": "Medicine 12",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 12",
+        "medicine 12"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_13",
+      "en": "Medicine 13",
+      "ar": "Medicine 13",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 13",
+        "medicine 13"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_14",
+      "en": "Medicine 14",
+      "ar": "Medicine 14",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 14",
+        "medicine 14"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_15",
+      "en": "Medicine 15",
+      "ar": "Medicine 15",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 15",
+        "medicine 15"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_16",
+      "en": "Medicine 16",
+      "ar": "Medicine 16",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 16",
+        "medicine 16"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_17",
+      "en": "Medicine 17",
+      "ar": "Medicine 17",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 17",
+        "medicine 17"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_18",
+      "en": "Medicine 18",
+      "ar": "Medicine 18",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 18",
+        "medicine 18"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_19",
+      "en": "Medicine 19",
+      "ar": "Medicine 19",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 19",
+        "medicine 19"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_20",
+      "en": "Medicine 20",
+      "ar": "Medicine 20",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 20",
+        "medicine 20"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_21",
+      "en": "Medicine 21",
+      "ar": "Medicine 21",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 21",
+        "medicine 21"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_22",
+      "en": "Medicine 22",
+      "ar": "Medicine 22",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 22",
+        "medicine 22"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_23",
+      "en": "Medicine 23",
+      "ar": "Medicine 23",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 23",
+        "medicine 23"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_24",
+      "en": "Medicine 24",
+      "ar": "Medicine 24",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 24",
+        "medicine 24"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_25",
+      "en": "Medicine 25",
+      "ar": "Medicine 25",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 25",
+        "medicine 25"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_26",
+      "en": "Medicine 26",
+      "ar": "Medicine 26",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 26",
+        "medicine 26"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_27",
+      "en": "Medicine 27",
+      "ar": "Medicine 27",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 27",
+        "medicine 27"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_28",
+      "en": "Medicine 28",
+      "ar": "Medicine 28",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 28",
+        "medicine 28"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_29",
+      "en": "Medicine 29",
+      "ar": "Medicine 29",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 29",
+        "medicine 29"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_30",
+      "en": "Medicine 30",
+      "ar": "Medicine 30",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 30",
+        "medicine 30"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_31",
+      "en": "Medicine 31",
+      "ar": "Medicine 31",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 31",
+        "medicine 31"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_32",
+      "en": "Medicine 32",
+      "ar": "Medicine 32",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 32",
+        "medicine 32"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_33",
+      "en": "Medicine 33",
+      "ar": "Medicine 33",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 33",
+        "medicine 33"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_34",
+      "en": "Medicine 34",
+      "ar": "Medicine 34",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 34",
+        "medicine 34"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_35",
+      "en": "Medicine 35",
+      "ar": "Medicine 35",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 35",
+        "medicine 35"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_36",
+      "en": "Medicine 36",
+      "ar": "Medicine 36",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 36",
+        "medicine 36"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_37",
+      "en": "Medicine 37",
+      "ar": "Medicine 37",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 37",
+        "medicine 37"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_38",
+      "en": "Medicine 38",
+      "ar": "Medicine 38",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 38",
+        "medicine 38"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_39",
+      "en": "Medicine 39",
+      "ar": "Medicine 39",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 39",
+        "medicine 39"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_40",
+      "en": "Medicine 40",
+      "ar": "Medicine 40",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 40",
+        "medicine 40"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_41",
+      "en": "Medicine 41",
+      "ar": "Medicine 41",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 41",
+        "medicine 41"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_42",
+      "en": "Medicine 42",
+      "ar": "Medicine 42",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 42",
+        "medicine 42"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_43",
+      "en": "Medicine 43",
+      "ar": "Medicine 43",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 43",
+        "medicine 43"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_44",
+      "en": "Medicine 44",
+      "ar": "Medicine 44",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 44",
+        "medicine 44"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_45",
+      "en": "Medicine 45",
+      "ar": "Medicine 45",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 45",
+        "medicine 45"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_46",
+      "en": "Medicine 46",
+      "ar": "Medicine 46",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 46",
+        "medicine 46"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_47",
+      "en": "Medicine 47",
+      "ar": "Medicine 47",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 47",
+        "medicine 47"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_48",
+      "en": "Medicine 48",
+      "ar": "Medicine 48",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 48",
+        "medicine 48"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_49",
+      "en": "Medicine 49",
+      "ar": "Medicine 49",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 49",
+        "medicine 49"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_50",
+      "en": "Medicine 50",
+      "ar": "Medicine 50",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 50",
+        "medicine 50"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_51",
+      "en": "Medicine 51",
+      "ar": "Medicine 51",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 51",
+        "medicine 51"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_52",
+      "en": "Medicine 52",
+      "ar": "Medicine 52",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 52",
+        "medicine 52"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_53",
+      "en": "Medicine 53",
+      "ar": "Medicine 53",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 53",
+        "medicine 53"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_54",
+      "en": "Medicine 54",
+      "ar": "Medicine 54",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 54",
+        "medicine 54"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_55",
+      "en": "Medicine 55",
+      "ar": "Medicine 55",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 55",
+        "medicine 55"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_56",
+      "en": "Medicine 56",
+      "ar": "Medicine 56",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 56",
+        "medicine 56"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_57",
+      "en": "Medicine 57",
+      "ar": "Medicine 57",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 57",
+        "medicine 57"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_58",
+      "en": "Medicine 58",
+      "ar": "Medicine 58",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 58",
+        "medicine 58"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_59",
+      "en": "Medicine 59",
+      "ar": "Medicine 59",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 59",
+        "medicine 59"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_60",
+      "en": "Medicine 60",
+      "ar": "Medicine 60",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 60",
+        "medicine 60"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_61",
+      "en": "Medicine 61",
+      "ar": "Medicine 61",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 61",
+        "medicine 61"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_62",
+      "en": "Medicine 62",
+      "ar": "Medicine 62",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 62",
+        "medicine 62"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_63",
+      "en": "Medicine 63",
+      "ar": "Medicine 63",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 63",
+        "medicine 63"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_64",
+      "en": "Medicine 64",
+      "ar": "Medicine 64",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 64",
+        "medicine 64"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_65",
+      "en": "Medicine 65",
+      "ar": "Medicine 65",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 65",
+        "medicine 65"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_66",
+      "en": "Medicine 66",
+      "ar": "Medicine 66",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 66",
+        "medicine 66"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_67",
+      "en": "Medicine 67",
+      "ar": "Medicine 67",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 67",
+        "medicine 67"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_68",
+      "en": "Medicine 68",
+      "ar": "Medicine 68",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 68",
+        "medicine 68"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_69",
+      "en": "Medicine 69",
+      "ar": "Medicine 69",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 69",
+        "medicine 69"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_70",
+      "en": "Medicine 70",
+      "ar": "Medicine 70",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 70",
+        "medicine 70"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_71",
+      "en": "Medicine 71",
+      "ar": "Medicine 71",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 71",
+        "medicine 71"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_72",
+      "en": "Medicine 72",
+      "ar": "Medicine 72",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 72",
+        "medicine 72"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_73",
+      "en": "Medicine 73",
+      "ar": "Medicine 73",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 73",
+        "medicine 73"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_74",
+      "en": "Medicine 74",
+      "ar": "Medicine 74",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 74",
+        "medicine 74"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_75",
+      "en": "Medicine 75",
+      "ar": "Medicine 75",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 75",
+        "medicine 75"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_76",
+      "en": "Medicine 76",
+      "ar": "Medicine 76",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 76",
+        "medicine 76"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_77",
+      "en": "Medicine 77",
+      "ar": "Medicine 77",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 77",
+        "medicine 77"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_78",
+      "en": "Medicine 78",
+      "ar": "Medicine 78",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 78",
+        "medicine 78"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_79",
+      "en": "Medicine 79",
+      "ar": "Medicine 79",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 79",
+        "medicine 79"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_80",
+      "en": "Medicine 80",
+      "ar": "Medicine 80",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 80",
+        "medicine 80"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_81",
+      "en": "Medicine 81",
+      "ar": "Medicine 81",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 81",
+        "medicine 81"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_82",
+      "en": "Medicine 82",
+      "ar": "Medicine 82",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 82",
+        "medicine 82"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_83",
+      "en": "Medicine 83",
+      "ar": "Medicine 83",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 83",
+        "medicine 83"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_84",
+      "en": "Medicine 84",
+      "ar": "Medicine 84",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 84",
+        "medicine 84"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_85",
+      "en": "Medicine 85",
+      "ar": "Medicine 85",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 85",
+        "medicine 85"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_86",
+      "en": "Medicine 86",
+      "ar": "Medicine 86",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 86",
+        "medicine 86"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_87",
+      "en": "Medicine 87",
+      "ar": "Medicine 87",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 87",
+        "medicine 87"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_88",
+      "en": "Medicine 88",
+      "ar": "Medicine 88",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 88",
+        "medicine 88"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_89",
+      "en": "Medicine 89",
+      "ar": "Medicine 89",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 89",
+        "medicine 89"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_90",
+      "en": "Medicine 90",
+      "ar": "Medicine 90",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 90",
+        "medicine 90"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_91",
+      "en": "Medicine 91",
+      "ar": "Medicine 91",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 91",
+        "medicine 91"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_92",
+      "en": "Medicine 92",
+      "ar": "Medicine 92",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 92",
+        "medicine 92"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_93",
+      "en": "Medicine 93",
+      "ar": "Medicine 93",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 93",
+        "medicine 93"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_94",
+      "en": "Medicine 94",
+      "ar": "Medicine 94",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 94",
+        "medicine 94"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_95",
+      "en": "Medicine 95",
+      "ar": "Medicine 95",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 95",
+        "medicine 95"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_96",
+      "en": "Medicine 96",
+      "ar": "Medicine 96",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 96",
+        "medicine 96"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_97",
+      "en": "Medicine 97",
+      "ar": "Medicine 97",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 97",
+        "medicine 97"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_98",
+      "en": "Medicine 98",
+      "ar": "Medicine 98",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 98",
+        "medicine 98"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_99",
+      "en": "Medicine 99",
+      "ar": "Medicine 99",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 99",
+        "medicine 99"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_100",
+      "en": "Medicine 100",
+      "ar": "Medicine 100",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 100",
+        "medicine 100"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_101",
+      "en": "Medicine 101",
+      "ar": "Medicine 101",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 101",
+        "medicine 101"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_102",
+      "en": "Medicine 102",
+      "ar": "Medicine 102",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 102",
+        "medicine 102"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_103",
+      "en": "Medicine 103",
+      "ar": "Medicine 103",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 103",
+        "medicine 103"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_104",
+      "en": "Medicine 104",
+      "ar": "Medicine 104",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 104",
+        "medicine 104"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_105",
+      "en": "Medicine 105",
+      "ar": "Medicine 105",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 105",
+        "medicine 105"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_106",
+      "en": "Medicine 106",
+      "ar": "Medicine 106",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 106",
+        "medicine 106"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_107",
+      "en": "Medicine 107",
+      "ar": "Medicine 107",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 107",
+        "medicine 107"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_108",
+      "en": "Medicine 108",
+      "ar": "Medicine 108",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 108",
+        "medicine 108"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_109",
+      "en": "Medicine 109",
+      "ar": "Medicine 109",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 109",
+        "medicine 109"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_110",
+      "en": "Medicine 110",
+      "ar": "Medicine 110",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 110",
+        "medicine 110"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    },
+    {
+      "key": "medicine_111",
+      "en": "Medicine 111",
+      "ar": "Medicine 111",
+      "class": "Default",
+      "highRisk": false,
+      "tags": [
+        "Medicine 111",
+        "medicine 111"
+      ],
+      "advice": {
+        "ar": "اتبع تعليمات الطبيب/الملصق. في رمضان اختر توقيتًا ثابتًا بين الإفطار والسحور حسب عدد الجرعات. للاستفسارات الخاصة بالحالة، راجع الصيدلي/الطبيب.",
+        "en": "Follow your label/clinician instructions. In Ramadan, choose consistent timing between Iftar and Suhoor based on dosing frequency. For individualized advice, consult your pharmacist/clinician."
+      }
+    }
+  ]
+}
