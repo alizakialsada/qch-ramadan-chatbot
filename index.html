@@ -1,167 +1,269 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>QCH – Smart Ramadan Medication Assistant</title>
   <meta name="description" content="Qatif Central Hospital – Ramadan Medication Assistant (Arabic/English)." />
 
-  <!-- Clean modern PWA -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#0b1f26">
+  <meta name="theme-color" content="#dfeef8">
   <link rel="icon" href="icon-192.png">
   <link rel="apple-touch-icon" href="icon-192.png">
 
   <style>
     :root{
-      --bg:#0b1f26; --panel:#0f2a33; --panel2:#0d2430;
-      --text:#eaf6fb; --muted:#b7d2dd;
-      --accent:#35d0c7; --accent2:#2aa6ff;
-      --shadow: 0 14px 45px rgba(0,0,0,.35);
-      --radius:18px;
+      --bg:#f5fbff;
+      --panel:#ffffff;
+      --stroke:#cfe0ec;
+      --stroke2:#bcd2e2;
+      --text:#0f2a3a;
+      --muted:#466274;
+
+      --bubble:#eaf4fb;
+      --bubble2:#dff0fb;
+
+      --btn:#6bb6d6;
+      --btnText:#0a2230;
+
+      --shadow: 0 10px 35px rgba(15,42,58,.12);
+      --radius: 22px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 25% 10%, rgba(53,208,199,.18), transparent 55%),
-                  radial-gradient(1200px 700px at 85% 25%, rgba(42,166,255,.18), transparent 55%),
-                  var(--bg);
-      color:var(--text);
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #f7fcff, #eef7ff);
+      color: var(--text);
     }
-    .wrap{max-width:1000px; margin:0 auto; padding:18px;}
-    .topbar{
-      display:flex; gap:12px; align-items:center; justify-content:space-between;
-      padding:14px 14px; border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius);
+    .wrap{max-width:1100px; margin:0 auto; padding:18px;}
+
+    /* Header: light, with logos right & left */
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 18px;
+      border:2px solid var(--stroke);
+      background: rgba(255,255,255,.85);
+      border-radius: 28px;
       box-shadow: var(--shadow);
     }
-    .actionsTop{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
-    .miniBtn{
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color:#eaf6fb;
-      padding:8px 10px;
-      border-radius:12px;
+    .logoBox{
+      width:92px; height:56px;
+      border-radius:16px;
+      border:1px solid var(--stroke);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px;
+      overflow:hidden;
+    }
+    .logoBox img{max-width:100%; max-height:100%; object-fit:contain; display:block;}
+    .titleBox{
+      flex:1;
+      text-align:center;
+      line-height:1.2;
+    }
+    .titleBox h1{margin:0; font-size:22px; font-weight:800;}
+    .titleBox .sub{margin-top:6px; font-size:14px; color:var(--muted);}
+
+    .topBtns{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .pillBtn{
+      border:1px solid var(--stroke2);
+      background:#fff;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius: 999px;
       cursor:pointer;
-      font-size:13px;
-      display:inline-flex; gap:8px; align-items:center;
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 6px 18px rgba(15,42,58,.08);
     }
-    .miniBtn:hover{background: rgba(255,255,255,.10);}
-    .miniBtn.primary{
-      border-color: rgba(53,208,199,.55);
-      background: linear-gradient(180deg, rgba(53,208,199,.20), rgba(53,208,199,.10));
+    .pillBtn:hover{filter:brightness(0.98)}
+    .pillBtn.primary{
+      background: linear-gradient(180deg, #e7f6ff, #d8eefc);
+      border-color:#9ec7dd;
     }
 
-    .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; margin-top:14px;}
-    @media (max-width: 940px){ .grid{grid-template-columns:1fr;} }
-
+    /* Layout like your light screenshot */
     .card{
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border-radius: var(--radius);
+      margin-top:14px;
+      border:2px solid var(--stroke);
+      border-radius: 28px;
+      background: rgba(255,255,255,.85);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
     .cardHead{
-      padding:12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; justify-content:space-between; align-items:center; gap:10px;
-      background: rgba(0,0,0,.12);
+      padding:14px 16px;
+      border-bottom:1px solid var(--stroke);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      background: linear-gradient(180deg, rgba(223,240,251,.70), rgba(255,255,255,.55));
     }
-    .cardHead .title{font-weight:700; font-size:13px;}
-    .cardHead .hint{font-size:12px; color:var(--muted);}
+    .cardHead .left{
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .cardHead .title{font-weight:800; font-size:16px;}
+    .cardHead .hint{font-size:13px; color:var(--muted);}
+    .status{font-size:13px; color:var(--muted);}
 
     #chat{
-      height: 520px;
+      padding:16px;
+      min-height: 520px;
+      max-height: 520px;
       overflow:auto;
-      padding:14px;
-      background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.06));
+      background: linear-gradient(180deg, rgba(245,251,255,.75), rgba(232,245,255,.55));
     }
-    .msg{display:flex; flex-direction:column; gap:6px; margin:10px 0;}
-    .msg.bot{align-items:flex-start;}
-    .msg.user{align-items:flex-end;}
+
+    /* Bubbles like your screenshot */
+    .msg{display:flex; flex-direction:column; gap:10px; margin:14px 0;}
+    .msg.bot{align-items:stretch;}
+    .msg.user{align-items:flex-start;}
+
     .bubble{
-      max-width: 92%;
-      padding:12px 12px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      line-height:1.45;
-      font-size:14px;
+      border-radius: 22px;
+      border:2px solid var(--stroke);
+      background: radial-gradient(140% 160% at 50% 0%, rgba(255,255,255,.95), var(--bubble));
+      padding:18px 18px;
+      box-shadow: 0 8px 22px rgba(15,42,58,.08);
+      line-height:1.9;
+      font-size:18px;
     }
-    .msg.user .bubble{
-      background: linear-gradient(180deg, rgba(42,166,255,.22), rgba(42,166,255,.10));
-      border-color: rgba(42,166,255,.30);
+    .bubble.user{
+      background: radial-gradient(140% 160% at 50% 0%, rgba(255,255,255,.95), var(--bubble2));
     }
-    .msg.bot .bubble{
-      background: linear-gradient(180deg, rgba(53,208,199,.18), rgba(255,255,255,.04));
-      border-color: rgba(53,208,199,.25);
-    }
-    .actionsRow{display:flex; gap:8px;}
-    .pill{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:8px 10px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:13px;
-      display:inline-flex; gap:8px; align-items:center;
-      margin: 6px 6px 0 0;
-    }
-    .pill:hover{background: rgba(255,255,255,.10);}
-    .muted{color:var(--muted);}
 
-    .composer{
-      padding:12px;
-      border-top:1px solid rgba(255,255,255,.08);
-      display:flex; gap:10px;
-      background: rgba(0,0,0,.10);
+    .botTitle{
+      font-weight:900;
+      font-size:22px;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
-    .composer input{
-      flex:1;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      outline:none;
-      font-size:14px;
+    .metaLine{
+      font-size:18px;
+      color: #1c3a4d;
+      margin:6px 0 0 0;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .composer input::placeholder{color: rgba(183,210,221,.8);}
-    .composer button{
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(53,208,199,.45);
-      background: linear-gradient(180deg, rgba(53,208,199,.25), rgba(53,208,199,.12));
-      color:var(--text);
-      cursor:pointer;
+    .warn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid #f3d08a;
+      background: #fff7df;
+      color:#6a4b00;
       font-weight:700;
+      font-size:16px;
     }
-    .composer button:hover{filter:brightness(1.08);}
-
-    .side{padding:14px;}
-    .section{margin-bottom:14px;}
-    .section h3{margin:0 0 8px 0; font-size:13px;}
-    .kpi{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-    .kpi .box{
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+    .sectionText{font-size:19px; margin-top:10px;}
+    .finePrint{
+      font-size:16px;
+      color: var(--muted);
+      border-top:1px solid var(--stroke);
+      margin-top:14px;
+      padding-top:10px;
+      line-height:1.8;
     }
-    .box .big{font-size:18px; font-weight:800;}
-    .box .small{font-size:12px; color:var(--muted); margin-top:4px;}
-    .smallList{font-size:13px; color:var(--muted); line-height:1.6;}
-    .footer{margin-top:10px; font-size:12px; color: rgba(183,210,221,.85); text-align:center;}
 
-    /* Modal */
-    #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999;}
-    #topModal .boxModal{
-      max-width:520px; margin:8vh auto; background:#0b1f26; color:#eaf6fb;
-      border:1px solid rgba(255,255,255,.15); border-radius:18px; padding:16px;
+    .actionsRow{display:flex; gap:10px; flex-wrap:wrap;}
+    .copyBtn{
+      border:1px solid var(--stroke2);
+      background:#fff;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius: 16px;
+      cursor:pointer;
+      font-size:15px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      box-shadow: 0 6px 18px rgba(15,42,58,.08);
+      width: fit-content;
+    }
+    .copyBtn:hover{filter:brightness(0.98)}
+
+    /* Composer like your screenshot */
+    .composer{
+      display:flex;
+      gap:14px;
+      padding:16px;
+      border-top:1px solid var(--stroke);
+      background: rgba(255,255,255,.75);
+      align-items:center;
+    }
+    #userInput{
+      flex:1;
+      padding:18px 18px;
+      border-radius: 22px;
+      border:2px solid var(--stroke);
+      background:#fff;
+      font-size:18px;
+      outline:none;
+    }
+    #sendBtn{
+      padding:18px 22px;
+      border-radius: 22px;
+      border:0;
+      background: var(--btn);
+      color: #083047;
+      font-size:18px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 10px 25px rgba(107,182,214,.35);
+    }
+    #sendBtn:hover{filter:brightness(0.98)}
+
+    /* Top10 modal (light) */
+    #topModal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999;}
+    .modalBox{
+      max-width:560px;
+      margin: 10vh auto;
+      background:#fff;
+      border-radius: 22px;
+      border:2px solid var(--stroke);
       box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .modalHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .modalHead h3{margin:0; font-size:18px;}
+    .row{
+      display:flex;
+      justify-content:space-between;
+      padding:10px 0;
+      border-bottom:1px solid var(--stroke);
+      font-size:16px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 780px){
+      .titleBox{text-align:center}
+      .titleBox h1{font-size:18px}
+      .bubble{font-size:16px}
+      #userInput{font-size:16px}
+      #sendBtn{font-size:16px}
+      .logoBox{width:80px; height:50px}
     }
   </style>
 </head>
@@ -169,155 +271,144 @@
 <body>
   <div class="wrap">
 
-    <!-- Executive header with both logos -->
-    <div class="topbar">
-      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.05); padding:8px 14px; border-radius:16px; border:1px solid rgba(255,255,255,.12);">
-          <img src="logo_qch.png" alt="QCH Logo" style="height:40px; width:auto; display:block;">
-          <div style="width:1px; height:28px; background:rgba(255,255,255,.15);"></div>
-          <img src="logo_health_holding.png" alt="Health Holding Logo" style="height:40px; width:auto; display:block;">
-        </div>
-        <div>
-          <h1 style="margin:0; font-size:18px; font-weight:700;">QCH – Smart Ramadan Medication Assistant</h1>
-          <div style="font-size:13px; color:#b7d2dd;">Arabic / English · Patient-friendly · Offline analytics</div>
-        </div>
+    <!-- Header with BOTH logos: right & left -->
+    <div class="header">
+      <!-- RIGHT logo (in RTL this appears right) -->
+      <div class="logoBox" title="QCH">
+        <img src="logo_qch.png" alt="QCH Logo">
       </div>
 
-      <div class="actionsTop">
-        <button id="langBtn" class="miniBtn primary" type="button">🌐 Arabic</button>
-        <button id="topBtn" class="miniBtn" type="button">📊 Top 10</button>
-        <button id="installBtn" class="miniBtn" type="button" style="display:none;">⬇️ Install</button>
+      <div class="titleBox">
+        <h1 id="appTitle">QCH – Smart Ramadan Medication Assistant</h1>
+        <div class="sub" id="appSub">Arabic / English · Patient-friendly · Offline analytics</div>
+      </div>
+
+      <!-- LEFT logo -->
+      <div class="logoBox" title="Health Holding Company">
+        <img src="logo_health_holding.png" alt="Health Holding Logo">
       </div>
     </div>
 
-    <div class="grid">
-      <!-- Chat -->
-      <div class="card">
-        <div class="cardHead">
-          <div>
-            <div class="title">Chat</div>
-            <div class="hint">Use suggestions or type medication name (autocomplete)</div>
-          </div>
-          <div class="hint" id="statusHint">Loading drugs.json…</div>
-        </div>
+    <div class="topBtns" style="margin-top:12px; justify-content:center;">
+      <button id="langBtn" class="pillBtn primary" type="button">🌐 English</button>
+      <button id="topBtn" class="pillBtn" type="button">📊 Top 10</button>
+      <button id="installBtn" class="pillBtn" type="button" style="display:none;">⬇️ Install</button>
+    </div>
 
-        <div id="chat"></div>
-
-        <div class="composer">
-          <input id="userInput" list="drugHints" placeholder="Type medication name or question…" autocomplete="off" />
-          <datalist id="drugHints"></datalist>
-          <button id="sendBtn" type="button">Send</button>
+    <div class="card">
+      <div class="cardHead">
+        <div class="left">
+          <div class="title" id="chatTitle">الدردشة</div>
+          <div class="hint" id="chatHint">اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة</div>
         </div>
+        <div class="status" id="statusHint">…</div>
       </div>
 
-      <!-- Side info -->
-      <div class="card">
-        <div class="cardHead">
-          <div class="title">Quick Guide</div>
-          <div class="hint">Patient-friendly</div>
-        </div>
+      <div id="chat"></div>
 
-        <div class="side">
-          <div class="section">
-            <h3>Suggested buttons</h3>
-            <div id="suggestions"></div>
-          </div>
-
-          <div class="section">
-            <h3>Analytics (local)</h3>
-            <div class="kpi">
-              <div class="box">
-                <div class="big" id="kpiUsed">0</div>
-                <div class="small">Tracked selections</div>
-              </div>
-              <div class="box">
-                <div class="big" id="kpiDrugs">0</div>
-                <div class="small">Drugs loaded</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h3>Notes</h3>
-            <div class="smallList" id="notesBox">
-              • This tool provides general guidance only.<br>
-              • Always follow the clinician plan.<br>
-              • For emergencies, contact your hospital/911.<br>
-            </div>
-          </div>
-
-          <div class="footer">
-            Created by Automation Supervisor Ali Alsada
-          </div>
-        </div>
+      <div class="composer">
+        <input id="userInput" list="drugHints" placeholder="اكتب اسم الدواء هنا…" autocomplete="off" />
+        <datalist id="drugHints"></datalist>
+        <button id="sendBtn" type="button">إرسال</button>
       </div>
     </div>
   </div>
 
-  <!-- Top 10 Modal -->
+  <!-- Top 10 modal -->
   <div id="topModal">
-    <div class="boxModal">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h3 style="margin:0;">📊 Top 10 Medications</h3>
-        <button id="topClose" type="button" class="miniBtn">✕ Close</button>
+    <div class="modalBox">
+      <div class="modalHead">
+        <h3 id="topTitle">📊 Top 10 أدوية</h3>
+        <button id="topClose" class="pillBtn" type="button">✕ إغلاق</button>
       </div>
-      <div id="topList" style="margin-top:12px;"></div>
-      <div style="margin-top:12px;" class="muted">Stored locally in your browser (no server).</div>
+      <div id="topList"></div>
+      <div style="margin-top:10px; color:var(--muted); font-size:13px;" id="topNote">
+        يتم حفظ البيانات محليًا على نفس المتصفح (بدون سيرفر).
+      </div>
     </div>
   </div>
 
   <script>
-    // Language
-    let LANG = "en";
+    // ========== Language ==========
+    let LANG = "ar"; // start Arabic like your screenshot
     const T = {
-      en: {
-        langBtn: "🌐 Arabic",
-        placeholder: "Type medication name or question…",
-        send: "Send",
-        welcome: "Hello 👋\nType a medication name (e.g., Metformin 500 mg) or use the buttons.\n\nThis tool gives general guidance only.",
-        s1: "⭐ Common meds",
-        s2: "💊 Search medication",
-        s3: "🕒 Ramadan timing tips",
-        s4: "⚠️ Warfarin notes",
-        copy: "📋 Copy reply",
-        copied: "✅ Copied",
-        topEmpty: "No data yet. Use the chatbot and it will auto-build Top 10.",
-        loading: "Loading drugs.json…",
-        ready: "Ready"
-      },
       ar: {
-        langBtn: "🌐 English",
-        placeholder: "اكتب اسم الدواء أو سؤالك…",
-        send: "إرسال",
-        welcome: "مرحبًا 👋\nاكتب اسم الدواء (مثال: Metformin 500 mg) أو استخدم الأزرار.\n\nهذه الأداة للتوعية العامة فقط.",
-        s1: "⭐ الأدوية الشائعة",
-        s2: "💊 ابحث عن دواء",
-        s3: "🕒 نصائح توقيت رمضان",
-        s4: "⚠️ ملاحظات الوارفارين",
-        copy: "📋 نسخ الرد",
-        copied: "✅ تم النسخ",
-        topEmpty: "لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
-        loading: "جاري تحميل drugs.json…",
-        ready: "جاهز"
+        dir:"rtl", htmlLang:"ar",
+        langBtn:"🌐 English",
+        appTitle:"QCH – مساعد رمضان الذكي للأدوية",
+        appSub:"عربي / إنجليزي · سهل للمريض · تحليلات محلية",
+        chatTitle:"الدردشة",
+        chatHint:"اكتب اسم الدواء وسيظهر اقتراح تلقائي أثناء الكتابة",
+        statusLoading:"جاري تحميل drugs.json…",
+        statusReady:"Ready",
+        inputPh:"اكتب اسم الدواء هنا…",
+        send:"إرسال",
+        you:"أنت",
+        welcome:"مرحباً 👋 أنا مساعد رمضان الذكي. اكتب اسم الدواء وسأعطيك إرشادات عامة لتوقيت الجرعة في رمضان.",
+        copy:"📋 نسخ الرد",
+        copied:"✅ تم النسخ",
+        topTitle:"📊 Top 10 أدوية",
+        topEmpty:"لا توجد بيانات بعد. استخدم الشات وسيتكوّن Top 10 تلقائيًا.",
+        disclaimer:"تنبيه: معلومات عامة للتثقيف وليست بديلاً عن الطبيب/الصيدلي. إذا لديك سكر على أنسولين/أدوية سيولة، أو مرض كلى/قلب—استشر طبيبك قبل أي تعديل.",
+        classLabel:"التصنيف",
+        needsPlan:"يحتاج حذر/خطة فردية",
+        diabetes:"Diabetes",
+        defaultReply:"لم أجد هذا الدواء في القائمة حالياً. جرّب كتابة الاسم بالإنجليزي أو جزء من الاسم."
+      },
+      en: {
+        dir:"ltr", htmlLang:"en",
+        langBtn:"🌐 Arabic",
+        appTitle:"QCH – Smart Ramadan Medication Assistant",
+        appSub:"Arabic / English · Patient-friendly · Offline analytics",
+        chatTitle:"Chat",
+        chatHint:"Type medication name and get autocomplete suggestions",
+        statusLoading:"Loading drugs.json…",
+        statusReady:"Ready",
+        inputPh:"Type medication name here…",
+        send:"Send",
+        you:"You",
+        welcome:"Hello 👋 I'm the Ramadan Medication Assistant. Type a medication name and I’ll provide general timing guidance for Ramadan.",
+        copy:"📋 Copy reply",
+        copied:"✅ Copied",
+        topTitle:"📊 Top 10 meds",
+        topEmpty:"No data yet. Use the chat and it will auto-build Top 10.",
+        disclaimer:"Note: General guidance only, not a substitute for a clinician/pharmacist. If you use insulin/anticoagulants, or have kidney/heart disease—consult your clinician before changes.",
+        classLabel:"Class",
+        needsPlan:"Needs caution / individual plan",
+        diabetes:"Diabetes",
+        defaultReply:"I couldn’t find this medication in the list. Try English name or part of the name."
       }
     };
 
     function applyLang(){
+      document.documentElement.dir = T[LANG].dir;
+      document.documentElement.lang = T[LANG].htmlLang;
+
       document.getElementById("langBtn").textContent = T[LANG].langBtn;
-      document.getElementById("userInput").placeholder = T[LANG].placeholder;
+      document.getElementById("appTitle").textContent = T[LANG].appTitle;
+      document.getElementById("appSub").textContent = T[LANG].appSub;
+
+      document.getElementById("chatTitle").textContent = T[LANG].chatTitle;
+      document.getElementById("chatHint").textContent = T[LANG].chatHint;
+
+      document.getElementById("userInput").placeholder = T[LANG].inputPh;
       document.getElementById("sendBtn").textContent = T[LANG].send;
-      renderSuggestions();
-      document.getElementById("statusHint").textContent = T[LANG].ready;
+
+      document.getElementById("topTitle").textContent = T[LANG].topTitle;
+
+      // Re-render welcome in the new language if chat is empty
+      if(document.getElementById("chat").children.length === 0){
+        addBotWelcome();
+      }
     }
 
-    // Analytics (local)
+    // ========== Analytics (local) ==========
     function trackDrugUse(drugKey){
       try{
         const key = "qch_drug_analytics_v1";
         const db = JSON.parse(localStorage.getItem(key) || "{}");
         db[drugKey] = (db[drugKey] || 0) + 1;
         localStorage.setItem(key, JSON.stringify(db));
-        updateKpis();
       }catch(e){}
     }
     function getTopDrugs(limit=10){
@@ -325,13 +416,8 @@
       const db = JSON.parse(localStorage.getItem(key) || "{}");
       return Object.entries(db).sort((a,b)=>b[1]-a[1]).slice(0, limit);
     }
-    function getTotalTracked(){
-      const key = "qch_drug_analytics_v1";
-      const db = JSON.parse(localStorage.getItem(key) || "{}");
-      return Object.values(db).reduce((a,b)=>a+b,0);
-    }
 
-    // Helpers
+    // ========== Helpers ==========
     function escapeHtml(s){
       return (s||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     }
@@ -340,36 +426,39 @@
       c.scrollTop = c.scrollHeight;
     }
 
-    // Chat UI
+    // ========== Chat UI ==========
     function addUserMessage(text){
       const chat = document.getElementById("chat");
       const wrap = document.createElement("div");
       wrap.className = "msg user";
+
       const bubble = document.createElement("div");
-      bubble.className = "bubble";
-      bubble.innerHTML = escapeHtml(text).replace(/\n/g,"<br>");
+      bubble.className = "bubble user";
+      bubble.innerHTML = `<div style="font-weight:800; margin-bottom:6px;">${T[LANG].you} : ${escapeHtml(text)}</div>`;
+
       wrap.appendChild(bubble);
       chat.appendChild(wrap);
       scrollChat();
     }
 
-    function addBotMessage(text){
+    function addBotBubble(html, copyText){
       const chat = document.getElementById("chat");
       const wrap = document.createElement("div");
       wrap.className = "msg bot";
 
       const bubble = document.createElement("div");
       bubble.className = "bubble";
-      bubble.innerHTML = `<div class="botText">${escapeHtml(text).replace(/\n/g,"<br>")}</div>`;
+      bubble.innerHTML = html;
 
       const actions = document.createElement("div");
       actions.className = "actionsRow";
 
       const copyBtn = document.createElement("button");
-      copyBtn.className = "miniBtn";
+      copyBtn.className = "copyBtn";
       copyBtn.type = "button";
       copyBtn.textContent = T[LANG].copy;
       copyBtn.onclick = async () => {
+        const text = copyText || bubble.innerText;
         try{
           await navigator.clipboard.writeText(text);
           copyBtn.textContent = T[LANG].copied;
@@ -385,17 +474,25 @@
       };
 
       actions.appendChild(copyBtn);
+
       wrap.appendChild(bubble);
       wrap.appendChild(actions);
       chat.appendChild(wrap);
       scrollChat();
     }
 
-    // Drugs + autocomplete
+    function addBotWelcome(){
+      const welcomeHtml = `
+        <div class="botTitle">مرحباً 👋</div>
+        <div class="sectionText">${escapeHtml(T[LANG].welcome)}</div>
+      `;
+      addBotBubble(welcomeHtml, T[LANG].welcome);
+    }
+
+    // ========== Drugs + Autocomplete ==========
     let DRUGS = [];
     function setAutocomplete(drugs){
       DRUGS = Array.isArray(drugs) ? drugs : [];
-      document.getElementById("kpiDrugs").textContent = DRUGS.length.toString();
     }
     function updateHints(q){
       const dl = document.getElementById("drugHints");
@@ -416,16 +513,16 @@
 
     async function loadDrugsJson(){
       const status = document.getElementById("statusHint");
-      status.textContent = T[LANG].loading;
+      status.textContent = T[LANG].statusLoading;
       try{
         const res = await fetch("drugs.json", {cache:"no-store"});
         if(!res.ok) throw new Error("no drugs.json");
         const data = await res.json();
         setAutocomplete(data);
-        status.textContent = T[LANG].ready;
+        status.textContent = T[LANG].statusReady;
       }catch(e){
         setAutocomplete([]);
-        status.textContent = "drugs.json not found (autocomplete disabled)";
+        status.textContent = "drugs.json not found";
       }
     }
 
@@ -433,117 +530,99 @@
       const query = (q||"").trim().toLowerCase();
       if(!query) return null;
 
+      // exact match: "name strength"
       const exact = DRUGS.find(d => ((d.name + " " + (d.strength||"")).trim().toLowerCase()) === query);
       if(exact) return exact;
 
-      const best = DRUGS.find(d => ((d.name + " " + (d.strength||"") + " " + (d.brand||"")).toLowerCase()).includes(query));
-      return best || null;
+      // contains
+      return DRUGS.find(d => ((d.name + " " + (d.strength||"") + " " + (d.brand||"")).toLowerCase()).includes(query)) || null;
     }
 
-    function formatDrugReply(d){
-      const nameLine = `${d.name}${d.brand ? " ("+d.brand+")" : ""}${d.strength ? " — " + d.strength : ""}`;
+    function buildLightReply(d){
+      const drugNameAr = (d.name_ar && LANG==="ar") ? d.name_ar : (d.name || "");
+      const drugNameEn = (d.name || "");
+      const title = (LANG==="ar")
+        ? `${drugNameAr || drugNameEn}`
+        : `${drugNameEn}${d.brand ? " ("+d.brand+")" : ""}`;
+
+      const brandPart = d.brand ? ` (${d.brand})` : "";
+      const strengthPart = d.strength ? ` — ${d.strength}` : "";
+
+      // Class (simple example)
+      const cls = d.class || ( (d.name||"").toLowerCase().includes("metformin") ? T[LANG].diabetes : "" );
+
       const notes = (LANG==="ar" ? d.notes_ar : d.notes_en) || "";
       const ramadan = (LANG==="ar" ? d.ramadan_ar : d.ramadan_en) || "";
-      let out = `💊 ${nameLine}\n\n`;
-      if(notes) out += `📝 ${notes}\n\n`;
-      if(ramadan) out += `🌙 ${ramadan}\n\n`;
-      out += (LANG==="ar")
-        ? "⚠️ تنبيه: هذه معلومات عامة. اتبع خطة طبيبك/صيدليّك."
-        : "⚠️ Note: General guidance only. Follow your clinician/pharmacist plan.";
-      return out.trim();
+
+      const html = `
+        <div class="botTitle">💊 ${escapeHtml((LANG==="ar" ? (drugNameAr || drugNameEn) : (drugNameEn + brandPart)))}${escapeHtml(strengthPart)}</div>
+
+        <div class="metaLine">
+          <span style="font-weight:800;">${escapeHtml(T[LANG].classLabel)}:</span>
+          <span>${escapeHtml(cls || "—")}</span>
+          <span class="warn">⚠️ ${escapeHtml(T[LANG].needsPlan)}</span>
+        </div>
+
+        ${notes ? `<div class="sectionText">📝 ${escapeHtml(notes)}</div>` : ""}
+        ${ramadan ? `<div class="sectionText">🌙 ${escapeHtml(ramadan)}</div>` : ""}
+
+        <div class="finePrint">⚠️ ${escapeHtml(T[LANG].disclaimer)}</div>
+      `;
+
+      // Copy text (nice clean)
+      const copyText =
+        `💊 ${(LANG==="ar" ? (drugNameAr || drugNameEn) : (drugNameEn + brandPart))}${strengthPart}\n` +
+        `${T[LANG].classLabel}: ${cls || "—"}\n` +
+        (notes ? `\n${notes}\n` : "") +
+        (ramadan ? `\n${ramadan}\n` : "") +
+        `\n⚠️ ${T[LANG].disclaimer}`;
+
+      return {html, copyText};
     }
 
-    // Core logic
     function handleMessage(text){
       const q = (text||"").trim();
       if(!q) return;
 
       addUserMessage(q);
 
-      const lower = q.toLowerCase();
-      if(lower.includes("warfarin") || lower.includes("وارفارين")){
-        const msg = (LANG==="ar")
-          ? "⚠️ الوارفارين: مهم الالتزام بالجرعة والمتابعة (INR). تجنب تغييرات مفاجئة في الغذاء/الأدوية. اسأل طبيبك عن أفضل توقيت في رمضان."
-          : "⚠️ Warfarin: Adherence + INR monitoring are essential. Avoid sudden diet/med changes. Ask your clinician about best Ramadan timing.";
-        addBotMessage(msg);
-        trackDrugUse("Warfarin");
-        return;
-      }
-      if(lower.includes("ramadan") || lower.includes("رمضان")){
-        const msg = (LANG==="ar")
-          ? "🌙 نصائح عامة لرمضان:\n• لا تغيّر الجرعات بنفسك.\n• بعض الأدوية تُقسم بين الإفطار والسحور حسب الخطة.\n• راجع الطبيب للأدوية الحساسة (السكري/الضغط/مميعات الدم)."
-          : "🌙 Ramadan general tips:\n• Don’t change doses on your own.\n• Some meds are split between Iftar/Suhoor per plan.\n• Ask clinician for sensitive meds (diabetes/BP/anticoagulants).";
-        addBotMessage(msg);
-        return;
-      }
-
+      // Find drug
       const d = findDrugByQuery(q);
       if(d){
-        addBotMessage(formatDrugReply(d));
+        const {html, copyText} = buildLightReply(d);
+        addBotBubble(html, copyText);
         const key = (d.name + (d.strength ? " " + d.strength : "")).trim();
         trackDrugUse(key);
         return;
       }
 
-      const fallback = (LANG==="ar")
-        ? "لم أجد هذا الدواء في القائمة.\nجرّب كتابة الاسم بالإنجليزي أو جزء من الاسم.\nمثال: Metformin أو Warfarin."
-        : "I couldn't find this medication in the list.\nTry English name or part of the name.\nExample: Metformin or Warfarin.";
-      addBotMessage(fallback);
+      // fallback
+      const html = `
+        <div class="botTitle">ℹ️</div>
+        <div class="sectionText">${escapeHtml(T[LANG].defaultReply)}</div>
+      `;
+      addBotBubble(html, T[LANG].defaultReply);
     }
 
-    // Suggestions
-    function renderSuggestions(){
-      const box = document.getElementById("suggestions");
-      box.innerHTML = "";
-
-      const items = [
-        {label: T[LANG].s1, value: "Common meds"},
-        {label: T[LANG].s2, value: "Metformin 500 mg"},
-        {label: T[LANG].s3, value: "Ramadan timing"},
-        {label: T[LANG].s4, value: "Warfarin"}
-      ];
-
-      items.forEach(it=>{
-        const b = document.createElement("button");
-        b.className = "pill";
-        b.type = "button";
-        b.textContent = it.label;
-        b.onclick = () => {
-          if(it.value==="Common meds"){
-            const list = DRUGS.slice(0,10).map(d => `• ${d.name}${d.strength ? " " + d.strength : ""}`).join("\n");
-            const msg = (LANG==="ar")
-              ? `⭐ الأدوية الشائعة (مثال):\n${list || "لا توجد قائمة بعد (drugs.json)" }`
-              : `⭐ Common meds (sample):\n${list || "No list yet (drugs.json)"}`;
-            addBotMessage(msg);
-            return;
-          }
-          handleMessage(it.value);
-        };
-        box.appendChild(b);
-      });
-    }
-
-    function updateKpis(){
-      document.getElementById("kpiUsed").textContent = getTotalTracked().toString();
-    }
-
-    // Top 10 Modal
+    // ========== Top 10 ==========
     function renderTop(){
       const list = document.getElementById("topList");
       const top = getTopDrugs(10);
+
       if(!top.length){
-        list.innerHTML = `<div class="muted">${escapeHtml(T[LANG].topEmpty)}</div>`;
+        list.innerHTML = `<div style="color:var(--muted); font-size:15px;">${escapeHtml(T[LANG].topEmpty)}</div>`;
         return;
       }
+
       list.innerHTML = top.map(([name,count],i)=>`
-        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.10);">
+        <div class="row">
           <div>${i+1}. ${escapeHtml(name)}</div>
-          <div class="muted">${count}</div>
+          <div style="color:var(--muted)">${count}</div>
         </div>
       `).join("");
     }
 
-    // Install prompt
+    // ========== Install prompt ==========
     let deferredPrompt = null;
     window.addEventListener("beforeinstallprompt", (e)=>{
       e.preventDefault();
@@ -551,14 +630,18 @@
       document.getElementById("installBtn").style.display = "inline-flex";
     });
 
+    // ========== Boot ==========
     document.addEventListener("DOMContentLoaded", ()=>{
       applyLang();
-      addBotMessage(T[LANG].welcome);
+      addBotWelcome();
+      loadDrugsJson();
 
       document.getElementById("langBtn").onclick = ()=>{
-        LANG = (LANG==="en") ? "ar" : "en";
+        LANG = (LANG === "ar") ? "en" : "ar";
+        // Clear chat to look consistent when switching like the light design
+        document.getElementById("chat").innerHTML = "";
         applyLang();
-        addBotMessage(LANG==="ar" ? "✅ تم تغيير اللغة للعربية." : "✅ Language switched to English.");
+        addBotWelcome();
         loadDrugsJson();
       };
 
@@ -592,10 +675,7 @@
         document.getElementById("installBtn").style.display = "none";
       };
 
-      updateKpis();
-      loadDrugsJson();
-
-      // Register your actual SW filename:
+      // Register your existing service worker file name
       if("serviceWorker" in navigator){
         navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
       }
