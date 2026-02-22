@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>QCH – Smart Ramadan Medication Assistant</title>
 
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#35d0c7" />
 
 <style>
 :root{
@@ -18,12 +19,14 @@
   --muted:#6b8796;
   --radius:20px;
   --shadow:0 15px 40px rgba(0,0,0,.08);
+  --danger:#ff4d4f;
+  --ok:#22c55e;
 }
 
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   background:var(--bg);
   color:var(--text);
 }
@@ -32,153 +35,249 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 30px;
+  gap:12px;
+  padding:18px 22px;
   background:var(--card);
   border-bottom:1px solid var(--border);
   box-shadow:var(--shadow);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.logo{
-  height:75px;
-}
+.logo{ height:64px; object-fit:contain; }
 
 .title{
   text-align:center;
   flex:1;
+  min-width:180px;
 }
-
-.title h1{
-  margin:0;
-  font-size:22px;
-}
-
-.title p{
-  margin:4px 0 0;
-  color:var(--muted);
-  font-size:14px;
-}
+.title h1{ margin:0; font-size:18px; }
+.title p{ margin:6px 0 0; color:var(--muted); font-size:13px; }
 
 .container{
   display:grid;
-  grid-template-columns:300px 1fr;
-  gap:25px;
-  padding:25px;
+  grid-template-columns:320px 1fr;
+  gap:20px;
+  padding:20px;
+}
+@media (max-width: 980px){
+  .container{ grid-template-columns:1fr; }
+  header{ position:relative; }
+  .logo{ height:54px; }
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:20px;
+  padding:18px;
   box-shadow:var(--shadow);
 }
 
-.sidebar h3{
-  margin-top:0;
-}
+.sidebar h3{ margin:0 0 12px; }
+.hr{ height:1px; background:var(--border); border:0; margin:14px 0; }
 
 .btn{
-  display:inline-block;
-  padding:10px 14px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
   border-radius:12px;
   border:1px solid var(--border);
   background:#fff;
   cursor:pointer;
-  margin:6px 4px;
-  font-size:14px;
+  margin:6px 6px 0 0;
+  font-size:13px;
+  user-select:none;
 }
+.btn.primary{ background:var(--accent); color:#fff; border:none; }
+.btn.danger{ background:var(--danger); color:#fff; border:none; }
+.btn.ghost{ background:#f7fbff; }
+.btn.full{ width:100%; justify-content:center; margin:10px 0 0; }
 
-.btn.primary{
-  background:var(--accent);
-  color:#fff;
-  border:none;
+.kpi{
+  background:#f6fbff;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-
-.btn.danger{
-  background:#ff4d4f;
-  color:#fff;
-  border:none;
-}
+.kpi strong{ font-size:16px; }
 
 .chat{
-  min-height:300px;
-  margin-bottom:20px;
+  min-height:320px;
+  max-height:55vh;
+  overflow:auto;
+  padding-right:4px;
 }
 
 .bubble{
   background:#f0f7fb;
-  padding:15px;
-  border-radius:15px;
-  margin-bottom:15px;
+  padding:12px 14px;
+  border-radius:14px;
+  margin-bottom:12px;
   border:1px solid var(--border);
+  line-height:1.6;
 }
 
+.bubble .meta{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:6px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:10px;
+  align-items:center;
+  margin-top:12px;
+}
+
+.inputWrap{ position:relative; }
 input{
   width:100%;
-  padding:12px;
+  padding:12px 12px;
   border-radius:12px;
   border:1px solid var(--border);
+  outline:none;
+}
+input:focus{ border-color:rgba(42,166,255,.6); box-shadow:0 0 0 4px rgba(42,166,255,.12); }
+
+.suggest{
+  position:absolute;
+  top:46px;
+  right:0;
+  left:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:none;
+  z-index:50;
+}
+.suggest button{
+  width:100%;
+  text-align:right;
+  padding:10px 12px;
+  border:0;
+  background:#fff;
+  cursor:pointer;
+  font-size:13px;
+}
+.suggest button:hover{ background:#f6fbff; }
+.suggest small{ color:var(--muted); }
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:12px;
+  color:var(--muted);
 }
 
 .footer{
   text-align:center;
-  padding:20px;
-  font-size:13px;
+  padding:18px;
+  font-size:12px;
   color:var(--muted);
 }
 
-.kpi{
-  background:#f6fbff;
-  padding:15px;
-  border-radius:15px;
-  border:1px solid var(--border);
-  margin-bottom:15px;
+/* ====== PRINT / PDF ====== */
+@media print{
+  body{ background:#fff; }
+  header, .sidebar, .row, .footer{ display:none !important; }
+  .container{ padding:0; }
+  .card{ border:none; box-shadow:none; }
+  .chat{ max-height:none; overflow:visible; }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo_qch.png" class="logo">
+  <img src="logo_qch.png" class="logo" alt="QCH Logo">
   <div class="title">
     <h1>QCH – مساعد رمضان الذكي للأدوية</h1>
-    <p>Arabic • English • Patient Friendly • Offline Analytics</p>
+    <p>Arabic • English • Patient Friendly • Offline Tracking</p>
   </div>
-  <img src="logo_health_holding.png" class="logo">
+  <img src="logo_health_holding.png" class="logo" alt="Health Holding Logo">
 </header>
 
 <div class="container">
 
+  <!-- SIDEBAR -->
   <div class="card sidebar">
     <h3>التصنيفات</h3>
-    <button class="btn" onclick="filterCategory('Hypertension')">ضغط ❤️</button>
-    <button class="btn" onclick="filterCategory('Diabetes')">سكر 🩸</button>
-    <button class="btn" onclick="filterCategory('Thyroid')">الغدة 🦋</button>
-    <button class="btn" onclick="filterCategory('GI')">المعدة 🍽</button>
 
-    <hr>
+    <div>
+      <button class="btn" onclick="filterCategory('Hypertension')">ضغط ❤️</button>
+      <button class="btn" onclick="filterCategory('Diabetes')">سكر 🩸</button>
+      <button class="btn" onclick="filterCategory('Thyroid')">الغدة 🦋</button>
+      <button class="btn" onclick="filterCategory('GI')">المعدة 🍽</button>
+      <button class="btn" onclick="filterCategory('Anticoagulant')">مُميعات 🧬</button>
+      <button class="btn" onclick="filterCategory('Antibiotic')">مضادات 🦠</button>
+    </div>
+
+    <div class="hr"></div>
 
     <div class="kpi">
-      <strong id="drugsLoaded">0</strong><br>
-      Drugs loaded
+      <span>Drugs loaded</span>
+      <strong id="drugsLoaded">0</strong>
     </div>
 
     <div class="kpi">
-      <strong id="tracked">0</strong><br>
-      Tracked selections
+      <span>Total selections</span>
+      <strong id="tracked">0</strong>
     </div>
 
-    <button class="btn danger" onclick="clearChat()">مسح المحادثة 🗑</button>
+    <div class="kpi">
+      <span>Top 10 list</span>
+      <strong id="topCount">0</strong>
+    </div>
+
+    <div class="hr"></div>
+
+    <button class="btn ghost full" onclick="showTop10()">⭐ عرض Top 10</button>
+    <button class="btn ghost full" onclick="exportPDF()">📄 Export PDF</button>
+    <button class="btn danger full" onclick="resetTracking()">إعادة ضبط التتبع ♻️</button>
+    <button class="btn danger full" onclick="clearChat()">مسح المحادثة 🗑</button>
+
+    <div class="hr"></div>
+
+    <div class="badge">⚠️ لا يغني عن الطبيب/الصيدلي</div>
+    <div class="badge">🔒 لا يتم حفظ بيانات مرضى</div>
   </div>
 
+  <!-- MAIN -->
   <div class="card">
     <div class="chat" id="chat"></div>
 
-    <input id="input" placeholder="اكتب اسم الدواء هنا..." onkeypress="handleKey(event)">
-    <br><br>
-    <button class="btn primary" onclick="searchDrug()">إرسال</button>
+    <div class="row">
+      <div class="inputWrap">
+        <input id="input" placeholder="اكتب اسم الدواء بالعربي أو الإنجليزي..." autocomplete="off">
+        <div id="suggest" class="suggest"></div>
+      </div>
+      <button class="btn primary" onclick="searchDrug()">إرسال</button>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="btn ghost" onclick="quickCommon()">⭐ الأدوية الأكثر شيوعًا</button>
+      <button class="btn ghost" onclick="toggleLang()">🌐 تبديل اللغة</button>
+    </div>
   </div>
 
 </div>
@@ -188,54 +287,335 @@ Created by Automation Supervisor Ali Alsada
 </div>
 
 <script>
-let DRUGS=[];
-let tracked=0;
+/* ========= SETTINGS ========= */
+let LANG = localStorage.getItem("qch_lang") || "ar"; // ar | en
+const TRACK_KEY = "qch_track_counts_v1"; // { "Metformin": 3, ... }
+const TOTAL_KEY = "qch_total_selections_v1"; // number
 
+/* ========= STATE ========= */
+let DRUGS = [];
+let lastSelectedDrug = null;
+
+/* ========= HELPERS ========= */
+const $ = (id) => document.getElementById(id);
+
+function safeText(s){ return (s ?? "").toString(); }
+
+function norm(s){
+  return safeText(s)
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g,' ');
+}
+
+function getTrackMap(){
+  try{ return JSON.parse(localStorage.getItem(TRACK_KEY) || "{}"); }
+  catch{ return {}; }
+}
+
+function setTrackMap(map){
+  localStorage.setItem(TRACK_KEY, JSON.stringify(map));
+}
+
+function getTotal(){
+  return Number(localStorage.getItem(TOTAL_KEY) || "0");
+}
+function setTotal(n){
+  localStorage.setItem(TOTAL_KEY, String(n));
+}
+
+/* ========= LOAD DRUGS ========= */
 async function loadDrugs(){
   try{
-    const res=await fetch("drugs.json");
-    DRUGS=await res.json();
-    document.getElementById("drugsLoaded").innerText=DRUGS.length;
-  }catch{
-    console.log("Failed loading drugs.json");
+    const res = await fetch("drugs.json", { cache: "no-store" });
+    const data = await res.json();
+
+    // Expect array
+    DRUGS = Array.isArray(data) ? data : [];
+    $("drugsLoaded").innerText = DRUGS.length;
+
+    // update KPIs
+    $("tracked").innerText = getTotal();
+    updateTopCount();
+    greet();
+  }catch(e){
+    addMessage("⚠️ تعذر تحميل ملف الأدوية (drugs.json). تأكد أنه JSON صحيح بدون تعليقات.");
+    console.log(e);
   }
 }
 loadDrugs();
 
+/* ========= UI ========= */
+function addMessage(html){
+  const div = document.createElement("div");
+  div.className = "bubble";
+  div.innerHTML = html;
+  $("chat").appendChild(div);
+  $("chat").scrollTop = $("chat").scrollHeight;
+}
+
+function clearChat(){ $("chat").innerHTML = ""; greet(); }
+
+function greet(){
+  const msg = (LANG==="ar")
+    ? "مرحبًا 👋 اكتب اسم الدواء (عربي/إنجليزي) للحصول على إرشادات رمضان. يمكنك أيضًا اختيار تصنيف من القائمة."
+    : "Hello 👋 Type the medication name (Arabic/English) to get Ramadan guidance. You can also choose a category from the sidebar.";
+  addMessage(`<strong>${msg}</strong><div class="meta"><span>QCH Ramadan Assistant</span></div>`);
+}
+
+function toggleLang(){
+  LANG = (LANG==="ar") ? "en" : "ar";
+  localStorage.setItem("qch_lang", LANG);
+  document.documentElement.lang = (LANG==="ar") ? "ar" : "en";
+  document.documentElement.dir  = (LANG==="ar") ? "rtl" : "ltr";
+  addMessage(`<strong>${LANG==="ar" ? "✅ تم التبديل للعربية" : "✅ Switched to English"}</strong>`);
+}
+
+/* ========= SEARCH + AUTOCOMPLETE ========= */
+$("input").addEventListener("input", onType);
+$("input").addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }});
+
+function onType(){
+  const q = norm($("input").value);
+  const box = $("suggest");
+  if(!q || q.length < 2){
+    box.style.display="none";
+    box.innerHTML="";
+    return;
+  }
+
+  const matches = DRUGS
+    .map(d => ({
+      drug: d,
+      score: scoreDrug(d, q)
+    }))
+    .filter(x => x.score > 0)
+    .sort((a,b)=>b.score-a.score)
+    .slice(0, 8);
+
+  if(matches.length === 0){
+    box.style.display="none";
+    box.innerHTML="";
+    return;
+  }
+
+  box.innerHTML = matches.map(x=>{
+    const d = x.drug;
+    const en = safeText(d.name);
+    const ar = safeText(d.name_ar);
+    const cat = safeText(d.category);
+    const label = (LANG==="ar" && ar) ? `${ar} — <small>${en}</small>` : `${en}${ar?` — <small>${ar}</small>`:""}`;
+    return `<button type="button" onclick="pickDrug('${escapeQuotes(en)}')">${label}<div><small>${cat}</small></div></button>`;
+  }).join("");
+
+  box.style.display="block";
+}
+
+function escapeQuotes(s){
+  return safeText(s).replace(/'/g,"\\'");
+}
+
+function scoreDrug(d, q){
+  const en = norm(d.name);
+  const ar = norm(d.name_ar);
+  // Prefix best, then contains
+  let score = 0;
+  if(en.startsWith(q) || ar.startsWith(q)) score += 5;
+  if(en.includes(q) || ar.includes(q)) score += 2;
+  // small bonus for category match
+  const cat = norm(d.category);
+  if(cat.includes(q)) score += 1;
+  return score;
+}
+
+function pickDrug(englishName){
+  $("input").value = englishName;
+  $("suggest").style.display="none";
+  $("suggest").innerHTML="";
+  searchDrug();
+}
+
+function findDrugByQuery(q){
+  if(!q) return null;
+  const qq = norm(q);
+
+  // best match by score
+  const scored = DRUGS.map(d=>({d, s:scoreDrug(d, qq)})).sort((a,b)=>b.s-a.s);
+  if(scored.length && scored[0].s>0) return scored[0].d;
+
+  return null;
+}
+
 function searchDrug(){
-  const val=document.getElementById("input").value.toLowerCase();
-  const drug=DRUGS.find(d=>d.name.toLowerCase().includes(val));
+  const val = $("input").value;
+  const q = norm(val);
+  if(!q){ return; }
+
+  const drug = findDrugByQuery(val);
   if(drug){
-    addMessage(`<strong>${drug.name}</strong><br>${drug.ramadan_ar}`);
-    tracked++;
-    document.getElementById("tracked").innerText=tracked;
+    lastSelectedDrug = drug;
+    trackSelection(drug);
+    renderDrug(drug);
   }else{
-    addMessage("لا يوجد دواء مطابق.");
+    addMessage(LANG==="ar" ? "❌ لا يوجد دواء مطابق. جرّب كتابة أول حرفين أو اختر من الاقتراحات." : "❌ No match found. Type 2+ letters or pick from suggestions.");
   }
 }
 
+/* ========= RENDER DRUG ========= */
+function renderDrug(d){
+  const en = safeText(d.name);
+  const ar = safeText(d.name_ar);
+  const cat = safeText(d.category);
+
+  const guideAR = safeText(d.ramadan_ar || d.ramadan || "");
+  const guideEN = safeText(d.ramadan_en || "");
+
+  let body = "";
+  if(LANG==="ar"){
+    body = `<strong>${ar || en}</strong>${ar && en ? ` <small style="color:var(--muted)">(${en})</small>`:""}`;
+    body += `<div style="margin-top:8px">${guideAR || "لا توجد إرشادات عربية لهذا الدواء بعد."}</div>`;
+  }else{
+    body = `<strong>${en}</strong>${ar ? ` <small style="color:var(--muted)">(${ar})</small>`:""}`;
+    body += `<div style="margin-top:8px">${guideEN || guideAR || "No guidance added yet for this medication."}</div>`;
+  }
+
+  const count = getTrackMap()[en] || 0;
+  body += `<div class="meta">
+    <span>Category: ${cat || "-"}</span>
+    <span>Selected: ${count}x</span>
+    <span style="color:var(--ok)">Ready for PDF</span>
+  </div>`;
+
+  addMessage(body);
+
+  // clear input + suggestions
+  $("input").value = "";
+  $("suggest").style.display="none";
+  $("suggest").innerHTML="";
+}
+
+/* ========= CATEGORY FILTER ========= */
 function filterCategory(cat){
-  const results=DRUGS.filter(d=>d.category===cat);
-  if(results.length===0){
-    addMessage("لا توجد عناصر في هذا التصنيف.");
-  }else{
-    results.forEach(d=>addMessage(`<strong>${d.name}</strong><br>${d.ramadan_ar}`));
+  const results = DRUGS.filter(d => safeText(d.category) === cat);
+  if(results.length === 0){
+    addMessage(LANG==="ar" ? "لا توجد عناصر في هذا التصنيف." : "No items in this category.");
+    return;
+  }
+  addMessage(`<strong>${LANG==="ar" ? "نتائج التصنيف:" : "Category results:"} ${cat}</strong>`);
+  results.slice(0, 30).forEach(d => renderDrug(d)); // limit to avoid spam
+  if(results.length > 30){
+    addMessage(LANG==="ar" ? `… تم عرض 30 فقط من أصل ${results.length}` : `… showing 30 of ${results.length}`);
   }
 }
 
-function addMessage(msg){
-  const div=document.createElement("div");
-  div.className="bubble";
-  div.innerHTML=msg;
-  document.getElementById("chat").appendChild(div);
+/* ========= TOP 10 TRACKING ========= */
+function trackSelection(d){
+  const en = safeText(d.name);
+  const map = getTrackMap();
+  map[en] = (map[en] || 0) + 1;
+  setTrackMap(map);
+
+  const total = getTotal() + 1;
+  setTotal(total);
+  $("tracked").innerText = total;
+
+  updateTopCount();
 }
 
-function clearChat(){
-  document.getElementById("chat").innerHTML="";
+function updateTopCount(){
+  const map = getTrackMap();
+  const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  $("topCount").innerText = top.length;
 }
 
-function handleKey(e){
-  if(e.key==="Enter") searchDrug();
+function showTop10(){
+  const map = getTrackMap();
+  const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
+
+  if(top.length === 0){
+    addMessage(LANG==="ar" ? "لا توجد بيانات تتبع بعد." : "No tracking data yet.");
+    return;
+  }
+
+  const rows = top.map(([name,count], i)=>{
+    const d = DRUGS.find(x=>safeText(x.name)===name);
+    const ar = d ? safeText(d.name_ar) : "";
+    const label = (LANG==="ar" && ar) ? `${ar} <small style="color:var(--muted)">(${name})</small>` : `${name}${ar?` <small style="color:var(--muted)">(${ar})</small>`:""}`;
+    return `<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div>${i+1}. ${label}</div>
+      <div><strong>${count}</strong></div>
+    </div>`;
+  }).join("");
+
+  addMessage(`<strong>⭐ Top 10</strong><div style="margin-top:10px">${rows}</div>`);
+}
+
+function resetTracking(){
+  localStorage.removeItem(TRACK_KEY);
+  localStorage.removeItem(TOTAL_KEY);
+  $("tracked").innerText = "0";
+  updateTopCount();
+  addMessage(LANG==="ar" ? "✅ تم إعادة ضبط التتبع." : "✅ Tracking reset.");
+}
+
+/* ========= COMMON QUICK ========= */
+function quickCommon(){
+  // show by tracking if exists else show curated common
+  const map = getTrackMap();
+  const has = Object.keys(map).length > 0;
+  if(has){ showTop10(); return; }
+
+  // fallback common list (by name field in drugs.json)
+  const common = ["Metformin","Amlodipine","Losartan","Levothyroxine","Omeprazole","Atorvastatin","Warfarin"];
+  addMessage(`<strong>${LANG==="ar" ? "⭐ الأكثر شيوعًا" : "⭐ Common meds"}</strong>`);
+  common.forEach(n=>{
+    const d = DRUGS.find(x=>norm(x.name)===norm(n));
+    if(d) renderDrug(d);
+  });
+}
+
+/* ========= EXPORT PDF ========= */
+function exportPDF(){
+  if(!lastSelectedDrug){
+    addMessage(LANG==="ar" ? "اختر دواء أولاً ثم قم بتصدير PDF." : "Select a medication first, then export PDF.");
+    return;
+  }
+
+  // Add a print-friendly header bubble
+  const d = lastSelectedDrug;
+  const en = safeText(d.name);
+  const ar = safeText(d.name_ar);
+  const cat = safeText(d.category);
+
+  const guideAR = safeText(d.ramadan_ar || d.ramadan || "");
+  const guideEN = safeText(d.ramadan_en || "");
+
+  const content = (LANG==="ar")
+    ? `<strong>QCH – إرشادات رمضان للدواء</strong><div style="margin-top:8px">
+        <div><strong>الدواء:</strong> ${ar || en} ${ar && en ? `<span style="color:var(--muted)">(${en})</span>`:""}</div>
+        <div><strong>التصنيف:</strong> ${cat || "-"}</div>
+        <div style="margin-top:10px">${guideAR || "لا توجد إرشادات عربية لهذا الدواء بعد."}</div>
+        <div class="meta"><span>Qatif Central Hospital</span><span>Created by Automation Supervisor</span></div>
+      </div>`
+    : `<strong>QCH – Ramadan Medication Guidance</strong><div style="margin-top:8px">
+        <div><strong>Medication:</strong> ${en} ${ar ? `<span style="color:var(--muted)">(${ar})</span>`:""}</div>
+        <div><strong>Category:</strong> ${cat || "-"}</div>
+        <div style="margin-top:10px">${guideEN || guideAR || "No guidance added yet for this medication."}</div>
+        <div class="meta"><span>Qatif Central Hospital</span><span>Created by Automation Supervisor</span></div>
+      </div>`;
+
+  addMessage(content);
+  // Print to PDF
+  setTimeout(()=>window.print(), 300);
+}
+
+/* ========= PWA REGISTER ========= */
+if ("serviceWorker" in navigator){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(()=>console.log("✅ Service Worker registered"))
+      .catch(err=>console.log("SW error", err));
+  });
 }
 </script>
 
