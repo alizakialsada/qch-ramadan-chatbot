@@ -1,32 +1,427 @@
 [
-  {
-    "name": "Metformin",
-    "brand": "Glucophage",
-    "strength": "500 mg",
-    "form": "tablet",
-    "notes_ar": "يفضل مع الأكل لتقليل اضطرابات المعدة. لا توقفه دون استشارة الطبيب.",
-    "notes_en": "Prefer with food to reduce GI upset. Do not stop without medical advice.",
-    "ramadan_ar": "عادةً يؤخذ بعد الإفطار (وقد تُقسم الجرعة حسب الخطة).",
-    "ramadan_en": "Often after Iftar (dose splitting depends on plan)."
-  },
+  /* =========================
+     HYPERTENSION (ضغط)
+  ========================= */
   {
     "name": "Amlodipine",
+    "name_ar": "أملوديبين",
     "brand": "Norvasc",
     "strength": "5 mg",
     "form": "tablet",
-    "notes_ar": "دواء للضغط. خذه يوميًا في نفس الوقت. لا توقفه فجأة دون استشارة.",
-    "notes_en": "Blood pressure medication. Take daily at the same time. Do not stop suddenly without advice.",
-    "ramadan_ar": "يمكن أخذه بعد الإفطار أو السحور حسب الخطة وتجنب تفويت الجرعات.",
-    "ramadan_en": "Can be taken after Iftar or Suhoor per plan—avoid missed doses."
+    "category": "Hypertension",
+    "risk": "low",
+    "notes_ar": "قد يسبب تورم القدمين أو صداع.",
+    "notes_en": "May cause ankle swelling or headache.",
+    "ramadan_ar": "عادةً مرة يومياً بعد الإفطار أو حسب الخطة.",
+    "ramadan_en": "Usually once daily after Iftar or per plan."
   },
   {
-    "name": "Warfarin",
-    "brand": "Coumadin",
-    "strength": "",
+    "name": "Losartan",
+    "name_ar": "لوسارتان",
+    "brand": "Cozaar",
+    "strength": "50 mg",
     "form": "tablet",
-    "notes_ar": "مهم الالتزام بالجرعة والمتابعة (INR). تجنب تغيير النظام الغذائي فجأة وتأكد من التداخلات الدوائية.",
-    "notes_en": "Adherence and INR monitoring are essential. Avoid sudden dietary changes and check for drug interactions.",
-    "ramadan_ar": "خذها في نفس الوقت يوميًا (غالبًا بعد الإفطار) حسب خطة الطبيب.",
-    "ramadan_en": "Take at the same time daily (often after Iftar) per clinician plan."
+    "category": "Hypertension",
+    "risk": "low",
+    "notes_ar": "راقب وظائف الكلى والبوتاسيوم.",
+    "notes_en": "Monitor kidney function and potassium.",
+    "ramadan_ar": "مرة يومياً غالباً بعد الإفطار.",
+    "ramadan_en": "Once daily, usually after Iftar."
+  },
+  {
+    "name": "Valsartan",
+    "name_ar": "فالسارتان",
+    "brand": "Diovan",
+    "strength": "80 mg",
+    "form": "tablet",
+    "category": "Hypertension",
+    "risk": "low",
+    "notes_ar": "قد يسبب دوخة بالبداية.",
+    "notes_en": "May cause dizziness initially.",
+    "ramadan_ar": "مرة يومياً بعد الإفطار أو حسب الخطة.",
+    "ramadan_en": "Once daily after Iftar or per plan."
+  },
+  {
+    "name": "Perindopril",
+    "name_ar": "بيريندوبريل",
+    "brand": "Coversyl",
+    "strength": "5 mg",
+    "form": "tablet",
+    "category": "Hypertension",
+    "risk": "moderate",
+    "notes_ar": "قد يسبب سعال جاف. راقب ضغطك.",
+    "notes_en": "May cause dry cough. Monitor BP.",
+    "ramadan_ar": "مرة يومياً بعد الإفطار.",
+    "ramadan_en": "Once daily after Iftar."
+  },
+  {
+    "name": "Bisoprolol",
+    "name_ar": "بيسوبرولول",
+    "brand": "Concor",
+    "strength": "5 mg",
+    "form": "tablet",
+    "category": "Hypertension",
+    "risk": "moderate",
+    "notes_ar": "قد يبطئ النبض. لا توقفه فجأة.",
+    "notes_en": "May slow pulse. Do not stop abruptly.",
+    "ramadan_ar": "مرة يومياً بعد الإفطار أو حسب الخطة.",
+    "ramadan_en": "Once daily after Iftar or per plan."
+  },
+  {
+    "name": "Hydrochlorothiazide",
+    "name_ar": "هيدروكلوروثيازيد",
+    "brand": "HCTZ",
+    "strength": "25 mg",
+    "form": "tablet",
+    "category": "Hypertension",
+    "risk": "high",
+    "notes_ar": "مدر للبول وقد يزيد التبول. انتبه للجفاف.",
+    "notes_en": "Diuretic; may increase urination. Watch dehydration.",
+    "ramadan_ar": "يفضل بعد الإفطار لتقليل الجفاف أثناء الصيام.",
+    "ramadan_en": "Prefer after Iftar to reduce dehydration risk."
+  },
+
+  /* =========================
+     DIABETES (سكر)
+  ========================= */
+  {
+    "name": "Metformin",
+    "name_ar": "ميتفورمين",
+    "brand": "Glucophage",
+    "strength": "500 mg",
+    "form": "tablet",
+    "category": "Diabetes",
+    "risk": "moderate",
+    "notes_ar": "يفضل مع الأكل لتقليل اضطرابات المعدة.",
+    "notes_en": "Prefer with food to reduce GI upset.",
+    "ramadan_ar": "غالباً بعد الإفطار (وقد تُقسم الجرعة حسب الخطة).",
+    "ramadan_en": "Often after Iftar (dose splitting depends on plan)."
+  },
+  {
+    "name": "Gliclazide MR",
+    "name_ar": "جليكلازايد ممتد",
+    "brand": "Diamicron MR",
+    "strength": "60 mg",
+    "form": "tablet",
+    "category": "Diabetes",
+    "risk": "high",
+    "notes_ar": "قد يسبب هبوط سكر. راقب السكر خصوصاً مع الصيام.",
+    "notes_en": "May cause hypoglycemia. Monitor glucose during fasting.",
+    "ramadan_ar": "تعديل الجرعة قد يلزم. اتبع خطة الطبيب.",
+    "ramadan_en": "Dose adjustment may be needed. Follow clinician plan."
+  },
+  {
+    "name": "Sitagliptin",
+    "name_ar": "سيتاجليبتين",
+    "brand": "Januvia",
+    "strength": "100 mg",
+    "form": "tablet",
+    "category": "Diabetes",
+    "risk": "low",
+    "notes_ar": "عادة خطر هبوط السكر منخفض وحده.",
+    "notes_en": "Low hypoglycemia risk when used alone.",
+    "ramadan_ar": "مرة يومياً بعد الإفطار أو حسب الخطة.",
+    "ramadan_en": "Once daily after Iftar or per plan."
+  },
+  {
+    "name": "Empagliflozin",
+    "name_ar": "إمباجليفلوزين",
+    "brand": "Jardiance",
+    "strength": "10 mg",
+    "form": "tablet",
+    "category": "Diabetes",
+    "risk": "high",
+    "notes_ar": "قد يزيد التبول وقد يسبب جفاف. اشرب سوائل كفاية بعد الإفطار.",
+    "notes_en": "May increase urination and dehydration risk. Hydrate after Iftar.",
+    "ramadan_ar": "قد لا يناسب بعض المرضى بالصيام—استشر الطبيب.",
+    "ramadan_en": "May not suit some fasting patients—consult clinician."
+  },
+  {
+    "name": "Insulin Glargine",
+    "name_ar": "إنسولين جلارجين",
+    "brand": "Lantus",
+    "strength": "100 units/mL",
+    "form": "injection",
+    "category": "Diabetes",
+    "risk": "high",
+    "notes_ar": "خطر هبوط السكر موجود. لا تغيّر الجرعة دون خطة طبيب.",
+    "notes_en": "Hypoglycemia risk. Do not change dose without plan.",
+    "ramadan_ar": "توقيت/جرعة رمضان تحتاج خطة فردية.",
+    "ramadan_en": "Ramadan timing/dose needs individualized plan."
+  },
+
+  /* =========================
+     THYROID (الغدة)
+  ========================= */
+  {
+    "name": "Levothyroxine",
+    "name_ar": "ليفوثيروكسين",
+    "brand": "Euthyrox",
+    "strength": "50 mcg",
+    "form": "tablet",
+    "category": "Thyroid",
+    "risk": "moderate",
+    "notes_ar": "يؤخذ على معدة فارغة. تجنب تناوله مع الحديد/الكالسيوم بنفس الوقت.",
+    "notes_en": "Take on empty stomach. Separate from iron/calcium.",
+    "ramadan_ar": "إما قبل السحور بـ 30–60 دقيقة أو بعد الإفطار بـ 3–4 ساعات.",
+    "ramadan_en": "Either 30–60 min before Suhoor or 3–4 hours after Iftar."
+  },
+  {
+    "name": "Carbimazole",
+    "name_ar": "كاربميزول",
+    "brand": "Neo-Mercazole",
+    "strength": "5 mg",
+    "form": "tablet",
+    "category": "Thyroid",
+    "risk": "high",
+    "notes_ar": "راجع الطبيب عند حرارة/التهاب حلق (احتمال نادر لنقص كريات بيضاء).",
+    "notes_en": "Seek care if fever/sore throat (rare low WBC risk).",
+    "ramadan_ar": "عادة يُقسم حسب الجرعة الموصوفة—اتبع الخطة.",
+    "ramadan_en": "Often split dosing—follow prescribed plan."
+  },
+
+  /* =========================
+     GI (المعدة)
+  ========================= */
+  {
+    "name": "Omeprazole",
+    "name_ar": "أوميبرازول",
+    "brand": "Losec",
+    "strength": "20 mg",
+    "form": "capsule",
+    "category": "GI",
+    "risk": "low",
+    "notes_ar": "أفضل قبل الأكل. يفيد للحموضة والارتجاع.",
+    "notes_en": "Best before meals. Helps reflux/heartburn.",
+    "ramadan_ar": "قبل الإفطار بـ 30 دقيقة أو قبل السحور حسب الأعراض.",
+    "ramadan_en": "30 min before Iftar or before Suhoor depending on symptoms."
+  },
+  {
+    "name": "Pantoprazole",
+    "name_ar": "بانتوبرازول",
+    "brand": "Controloc",
+    "strength": "40 mg",
+    "form": "tablet",
+    "category": "GI",
+    "risk": "low",
+    "notes_ar": "يفضل قبل الأكل.",
+    "notes_en": "Prefer before meals.",
+    "ramadan_ar": "قبل الإفطار بـ 30 دقيقة غالباً.",
+    "ramadan_en": "Usually 30 min before Iftar."
+  },
+  {
+    "name": "Famotidine",
+    "name_ar": "فاموتيدين",
+    "brand": "Pepcid",
+    "strength": "20 mg",
+    "form": "tablet",
+    "category": "GI",
+    "risk": "low",
+    "notes_ar": "يخفف الحموضة ويمكن أخذه عند اللزوم حسب الخطة.",
+    "notes_en": "Reduces acid; may be used as directed.",
+    "ramadan_ar": "بعد الإفطار أو قبل النوم حسب الأعراض.",
+    "ramadan_en": "After Iftar or bedtime depending on symptoms."
+  },
+  {
+    "name": "Domperidone",
+    "name_ar": "دومبيريدون",
+    "brand": "Motilium",
+    "strength": "10 mg",
+    "form": "tablet",
+    "category": "GI",
+    "risk": "moderate",
+    "notes_ar": "يؤخذ قبل الأكل. استشر الطبيب إذا لديك مشاكل قلب.",
+    "notes_en": "Take before meals. Caution in heart conditions.",
+    "ramadan_ar": "قبل الإفطار بـ 15–30 دقيقة عند الحاجة.",
+    "ramadan_en": "15–30 min before Iftar if needed."
+  },
+
+  /* =========================
+     PAIN (مسكنات)
+  ========================= */
+  {
+    "name": "Paracetamol",
+    "name_ar": "باراسيتامول",
+    "brand": "Panadol",
+    "strength": "500 mg",
+    "form": "tablet",
+    "category": "Pain",
+    "risk": "low",
+    "notes_ar": "لا تتجاوز الجرعة اليومية الموصوفة. انتبه لو عندك مرض كبد.",
+    "notes_en": "Do not exceed recommended daily dose. Caution in liver disease.",
+    "ramadan_ar": "بعد الإفطار أو السحور حسب الحاجة.",
+    "ramadan_en": "After Iftar or Suhoor as needed."
+  },
+  {
+    "name": "Ibuprofen",
+    "name_ar": "إيبوبروفين",
+    "brand": "Brufen",
+    "strength": "400 mg",
+    "form": "tablet",
+    "category": "Pain",
+    "risk": "high",
+    "notes_ar": "قد يهيّج المعدة. يُفضّل بعد الأكل وتجنبه عند قرحة/مرض كلى.",
+    "notes_en": "May irritate stomach. Prefer after food; avoid in ulcers/kidney disease.",
+    "ramadan_ar": "بعد الإفطار مع الأكل لتقليل تهيج المعدة.",
+    "ramadan_en": "After Iftar with food to reduce stomach irritation."
+  },
+  {
+    "name": "Diclofenac",
+    "name_ar": "ديكلوفيناك",
+    "brand": "Voltaren",
+    "strength": "50 mg",
+    "form": "tablet",
+    "category": "Pain",
+    "risk": "high",
+    "notes_ar": "قد يسبب تهيج معدة ورفع ضغط. استخدم أقل مدة ممكنة.",
+    "notes_en": "GI irritation and BP rise possible. Use shortest duration.",
+    "ramadan_ar": "بعد الإفطار مع الأكل (إن كان مناسباً لك).",
+    "ramadan_en": "After Iftar with food (if appropriate for you)."
+  },
+
+  /* =========================
+     ANTIBIOTIC (مضادات)
+  ========================= */
+  {
+    "name": "Amoxicillin/Clavulanate",
+    "name_ar": "أموكسيسيلين/كلافولانات",
+    "brand": "Augmentin",
+    "strength": "625 mg",
+    "form": "tablet",
+    "category": "Antibiotic",
+    "risk": "moderate",
+    "notes_ar": "يفضل مع الأكل لتقليل اضطراب المعدة. أكمل كورس العلاج.",
+    "notes_en": "Prefer with food to reduce GI upset. Complete the course.",
+    "ramadan_ar": "غالباً بعد الإفطار وقد تُقسم الجرعات حسب الوصفة.",
+    "ramadan_en": "Usually after Iftar; dosing depends on prescription."
+  },
+  {
+    "name": "Azithromycin",
+    "name_ar": "أزيثروميسين",
+    "brand": "Zithromax",
+    "strength": "500 mg",
+    "form": "tablet",
+    "category": "Antibiotic",
+    "risk": "moderate",
+    "notes_ar": "يؤخذ حسب الوصفة. أكمل العلاج.",
+    "notes_en": "Take as prescribed. Complete the course.",
+    "ramadan_ar": "مرة يومياً بعد الإفطار غالباً.",
+    "ramadan_en": "Often once daily after Iftar."
+  },
+  {
+    "name": "Ciprofloxacin",
+    "name_ar": "سيبروفلوكساسين",
+    "brand": "Cipro",
+    "strength": "500 mg",
+    "form": "tablet",
+    "category": "Antibiotic",
+    "risk": "high",
+    "notes_ar": "تجنب أخذه مع الحليب/الكالسيوم بنفس الوقت.",
+    "notes_en": "Avoid taking with dairy/calcium at the same time.",
+    "ramadan_ar": "قد يحتاج تقسيم بين الإفطار والسحور حسب الوصفة.",
+    "ramadan_en": "May need split between Iftar/Suhoor per prescription."
+  },
+
+  /* =========================
+     LIPIDS (دهون)
+  ========================= */
+  {
+    "name": "Atorvastatin",
+    "name_ar": "أتورفاستاتين",
+    "brand": "Lipitor",
+    "strength": "20 mg",
+    "form": "tablet",
+    "category": "Lipids",
+    "risk": "low",
+    "notes_ar": "اتبع الجرعة الموصوفة. راجع الطبيب إذا ألم عضلات شديد.",
+    "notes_en": "Follow prescribed dose. Seek care for severe muscle pain.",
+    "ramadan_ar": "عادةً مساءً بعد الإفطار.",
+    "ramadan_en": "Usually in the evening after Iftar."
+  },
+  {
+    "name": "Rosuvastatin",
+    "name_ar": "روسوفاستاتين",
+    "brand": "Crestor",
+    "strength": "10 mg",
+    "form": "tablet",
+    "category": "Lipids",
+    "risk": "low",
+    "notes_ar": "قد يسبب ألم عضلات نادراً.",
+    "notes_en": "Rare muscle pain possible.",
+    "ramadan_ar": "مرة يومياً بعد الإفطار أو مساءً.",
+    "ramadan_en": "Once daily after Iftar or evening."
+  },
+
+  /* =========================
+     ASTHMA / ALLERGY (ربو/حساسية)
+  ========================= */
+  {
+    "name": "Salbutamol inhaler",
+    "name_ar": "سالبوتامول بخاخ",
+    "brand": "Ventolin",
+    "strength": "100 mcg",
+    "form": "inhaler",
+    "category": "Asthma",
+    "risk": "low",
+    "notes_ar": "بخاخ إسعافي لضيق التنفس عند اللزوم.",
+    "notes_en": "Rescue inhaler for shortness of breath as needed.",
+    "ramadan_ar": "يُستخدم عند الحاجة حسب وصف الطبيب.",
+    "ramadan_en": "Use as needed per clinician instructions."
+  },
+  {
+    "name": "Montelukast",
+    "name_ar": "مونتيلوكاست",
+    "brand": "Singulair",
+    "strength": "10 mg",
+    "form": "tablet",
+    "category": "Asthma",
+    "risk": "low",
+    "notes_ar": "عادةً يؤخذ مساءً.",
+    "notes_en": "Often taken in the evening.",
+    "ramadan_ar": "بعد الإفطار أو قبل النوم.",
+    "ramadan_en": "After Iftar or bedtime."
+  },
+  {
+    "name": "Cetirizine",
+    "name_ar": "سيتريزين",
+    "brand": "Zyrtec",
+    "strength": "10 mg",
+    "form": "tablet",
+    "category": "Allergy",
+    "risk": "low",
+    "notes_ar": "قد يسبب نعاس عند بعض الناس.",
+    "notes_en": "May cause drowsiness in some people.",
+    "ramadan_ar": "بعد الإفطار أو قبل النوم إذا سبب نعاس.",
+    "ramadan_en": "After Iftar or bedtime if drowsy."
+  },
+
+  /* =========================
+     ANTICOAGULANTS (سيولة)
+  ========================= */
+  {
+    "name": "Warfarin",
+    "name_ar": "وارفارين",
+    "brand": "Coumadin",
+    "strength": "5 mg",
+    "form": "tablet",
+    "category": "Anticoagulant",
+    "risk": "high",
+    "notes_ar": "دواء حساس يحتاج متابعة INR. انتبه للتداخلات الغذائية/الدوائية.",
+    "notes_en": "High-risk medicine requiring INR monitoring. Food/drug interactions.",
+    "ramadan_ar": "لا تغيّر الجرعة دون الطبيب. التوقيت حسب الخطة.",
+    "ramadan_en": "Do not change dose without clinician. Timing per plan."
+  },
+  {
+    "name": "Apixaban",
+    "name_ar": "أبيكسابان",
+    "brand": "Eliquis",
+    "strength": "5 mg",
+    "form": "tablet",
+    "category": "Anticoagulant",
+    "risk": "high",
+    "notes_ar": "لا توقفه دون استشارة. انتبه للنزيف.",
+    "notes_en": "Do not stop without advice. Watch bleeding.",
+    "ramadan_ar": "قد يتطلب تقسيم الجرعات بين الإفطار والسحور حسب الوصفة.",
+    "ramadan_en": "Often split doses between Iftar/Suhoor per prescription."
   }
 ]
