@@ -53,11 +53,14 @@ header{
   width:auto;
   object-fit:contain;
 
-  /* This makes white background inside the PNG blend into header */
-mix-blend-mode:darken;
-  /* shadow can reveal edges, keep it soft or remove */
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,.08));
-  background:transparent !important;
+  /* نفس لون الهيدر عشان يختفي البوكس */
+  background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+
+  padding:6px 10px;
+  border-radius:16px;
+
+  mix-blend-mode: normal;
+  filter:none;
 }
 
 .title{
