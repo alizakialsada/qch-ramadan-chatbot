@@ -49,17 +49,14 @@ header{
 
 /* ✅ LOGO FIX: blend with header so no edges/white box visible */
 .logo{
-  height:96px;
+  height:120px;              /* كان 96px – الآن أكبر */
   width:auto;
   object-fit:contain;
 
-  /* نفس لون الهيدر عشان يختفي البوكس */
   background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+  padding:8px 14px;
+  border-radius:18px;
 
-  padding:6px 10px;
-  border-radius:16px;
-
-  mix-blend-mode: normal;
   filter:none;
 }
 
