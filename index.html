@@ -10,14 +10,13 @@
 
 <style>
 :root{
-  /* Theme tuned to logos (turquoise + hospital blue) */
+  /* Colors tuned to your logos (turquoise + hospital blue) */
   --accent:#0ea5a6;        /* turquoise */
   --accent2:#2aa6ff;       /* hospital blue */
-  --accentDark:#0b7f80;
   --bg:#f3fbff;
   --card:#ffffff;
   --border:#d7e9f2;
-  --text:#08202a;
+  --text:#07202a;
   --muted:#5f7f8f;
   --radius:22px;
   --shadow:0 18px 45px rgba(0,0,0,.08);
@@ -29,13 +28,14 @@
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:var(--text);
   background:
-    radial-gradient(900px 450px at 20% -10%, rgba(14,165,166,.16), transparent 60%),
+    radial-gradient(900px 450px at 20% -10%, rgba(14,165,166,.18), transparent 60%),
     radial-gradient(900px 450px at 80% -10%, rgba(42,166,255,.14), transparent 60%),
     var(--bg);
-  color:var(--text);
 }
 
+/* ===== HEADER ===== */
 header{
   display:flex;
   justify-content:space-between;
@@ -51,40 +51,51 @@ header{
 }
 
 .logo{
-  height:86px;              /* enlarged */
+  height:96px;              /* enlarged */
   width:auto;
   object-fit:contain;
-  filter: drop-shadow(0 8px 14px rgba(0,0,0,.08));
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.10));
 }
 
 .title{
   text-align:center;
   flex:1;
-  min-width:210px;
+  min-width:220px;
 }
+
+/* Title color matches logo theme */
 .title h1{
   margin:0;
-  font-size:18px;
+  font-size:20px;
   letter-spacing:.2px;
+  font-weight:800;
+  background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
+
 .title p{
-  margin:6px 0 0;
+  margin:7px 0 0;
   color:var(--muted);
   font-size:13px;
 }
 
 .container{
   display:grid;
-  grid-template-columns:360px 1fr;
+  grid-template-columns:380px 1fr;
   gap:18px;
   padding:18px;
 }
+
 @media (max-width: 980px){
   .container{ grid-template-columns:1fr; }
   header{ position:relative; }
-  .logo{ height:72px; }
+  .logo{ height:80px; }
+  .title h1{ font-size:18px; }
 }
 
+/* ===== CARDS ===== */
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -96,6 +107,7 @@ header{
 .sidebar h3{ margin:0 0 10px; }
 .hr{ height:1px; background:var(--border); border:0; margin:12px 0; }
 
+/* ===== BUTTONS ===== */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -122,6 +134,7 @@ header{
 .btn.ghost{ background:#f7fbff; }
 .btn.full{ width:100%; margin:10px 0 0; }
 
+/* ===== KPI ===== */
 .kpi{
   background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
   padding:12px;
@@ -147,8 +160,9 @@ header{
   color:var(--muted);
 }
 
+/* ===== CHAT ===== */
 .chat{
-  min-height:360px;
+  min-height:380px;
   max-height:60vh;
   overflow:auto;
   padding-right:4px;
@@ -181,6 +195,7 @@ header{
   color:var(--muted);
 }
 
+/* ===== INPUT + SUGGEST ===== */
 .row{
   display:grid;
   grid-template-columns: 1fr auto;
@@ -188,7 +203,6 @@ header{
   align-items:center;
   margin-top:12px;
 }
-
 .inputWrap{ position:relative; }
 input{
   width:100%;
@@ -201,7 +215,6 @@ input:focus{
   border-color:rgba(14,165,166,.55);
   box-shadow:0 0 0 5px rgba(14,165,166,.14);
 }
-
 .suggest{
   position:absolute;
   top:48px;
@@ -227,6 +240,7 @@ input:focus{
 .suggest button:hover{ background:#f4fbff; }
 .suggest .line2{ color:var(--muted); font-size:12px; margin-top:2px; }
 
+/* ===== CHIPS ===== */
 .chips{
   display:flex;
   gap:8px;
@@ -244,6 +258,7 @@ input:focus{
 }
 .chip:hover{ border-color:rgba(42,166,255,.45); }
 
+/* ===== FOOTER ===== */
 .footer{
   text-align:center;
   padding:16px;
@@ -319,7 +334,7 @@ input:focus{
   margin-bottom:10px;
 }
 .printLogo{
-  height:70px;   /* enlarged for PDF */
+  height:82px;   /* enlarged for PDF */
   width:auto;
   object-fit:contain;
 }
@@ -330,14 +345,13 @@ input:focus{
 .printTitle h2{
   margin:0;
   font-size:16px;
-  color:#08202a;
+  color:#07202a;
 }
 .printTitle p{
   margin:4px 0 0;
   font-size:11px;
   color:#5f7f8f;
 }
-
 .printMeta{
   display:flex;
   justify-content:space-between;
@@ -348,8 +362,7 @@ input:focus{
   padding-bottom:10px;
   border-bottom:1px solid #d7e9f2;
 }
-.printMeta strong{ color:#08202a; }
-
+.printMeta strong{ color:#07202a; }
 .printFooter{
   margin-top:14px;
   padding-top:10px;
@@ -360,13 +373,12 @@ input:focus{
   justify-content:space-between;
   gap:10px;
 }
-.printFooter .warn{ color:#08202a; }
+.printFooter .warn{ color:#07202a; }
 
-/* ===== PRINT RULES ===== */
+/* Improve print image rendering */
 @media print{
   @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
 
-  /* Hide interactive UI */
   header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
 
   body{ background:#fff !important; }
@@ -374,8 +386,10 @@ input:focus{
   .card{ border:none; box-shadow:none; padding:0; }
   .chat{ max-height:none; overflow:visible; }
 
-  /* Only print executive area */
   #printArea{ display:block !important; }
+
+  img{ max-width:100% !important; }
+  #printArea img{ display:inline-block !important; visibility:visible !important; }
 
   .bubble{
     page-break-inside: avoid;
@@ -406,6 +420,7 @@ input:focus{
     <div>
       <button class="btn" onclick="filterCategory('Hypertension')">ضغط ❤️</button>
       <button class="btn" onclick="filterCategory('Diabetes')">سكر 🩸</button>
+      <button class="btn" onclick="filterCategory('Insulin')">أنسولين 💉</button>
       <button class="btn" onclick="filterCategory('Thyroid')">الغدة 🦋</button>
       <button class="btn" onclick="filterCategory('GI')">المعدة 🍽</button>
       <button class="btn" onclick="filterCategory('Anticoagulant')">مُميعات 🧬</button>
@@ -446,7 +461,7 @@ input:focus{
 
     <div class="row">
       <div class="inputWrap">
-        <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / أو الشركة / أو التركيز..." autocomplete="off">
+        <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / Brand / Strength ..." autocomplete="off">
         <div id="suggest" class="suggest"></div>
       </div>
       <button class="btn primary" onclick="searchDrug()">إرسال</button>
@@ -505,9 +520,8 @@ input:focus{
 
 <script>
 /* ========= SETTINGS ========= */
-let LANG = localStorage.getItem("qch_lang") || "ar"; // ar | en
-const TRACK_KEY = "qch_track_counts_v3";  // { "Amlodipine": 3, ... }
-const TOTAL_KEY = "qch_total_selections_v3";
+const TRACK_KEY = "qch_track_counts_v4";
+const TOTAL_KEY = "qch_total_selections_v4";
 
 /* ========= STATE ========= */
 let DRUGS = [];
@@ -517,7 +531,6 @@ let lastSelectedDrug = null;
 const $ = (id) => document.getElementById(id);
 function safeText(s){ return (s ?? "").toString(); }
 function norm(s){ return safeText(s).toLowerCase().trim().replace(/\s+/g,' '); }
-
 function escapeHtml(s){
   return safeText(s)
     .replaceAll("&","&amp;")
@@ -534,6 +547,38 @@ function setTrackMap(map){ localStorage.setItem(TRACK_KEY, JSON.stringify(map));
 function getTotal(){ return Number(localStorage.getItem(TOTAL_KEY) || "0"); }
 function setTotal(n){ localStorage.setItem(TOTAL_KEY, String(n)); }
 
+/* Wait for images before printing (fix missing logos in PDF) */
+function waitForImages(selector, timeoutMs = 3000){
+  const root = document.querySelector(selector);
+  if(!root) return Promise.resolve();
+
+  const imgs = Array.from(root.querySelectorAll("img"));
+  if(imgs.length === 0) return Promise.resolve();
+
+  const notReady = imgs.filter(img => !img.complete || img.naturalWidth === 0);
+  if(notReady.length === 0) return Promise.resolve();
+
+  return new Promise(resolve => {
+    let done = false;
+    const finish = () => { if(!done){ done = true; resolve(); } };
+    const t = setTimeout(finish, timeoutMs);
+
+    notReady.forEach(img => {
+      img.addEventListener("load", () => {
+        const still = imgs.some(i => !i.complete || i.naturalWidth === 0);
+        if(!still){ clearTimeout(t); finish(); }
+      }, { once:true });
+
+      img.addEventListener("error", () => { clearTimeout(t); finish(); }, { once:true });
+
+      if(img.naturalWidth === 0){
+        const src = img.getAttribute("src");
+        if(src) img.src = src + (src.includes("?") ? "&" : "?") + "v=" + Date.now();
+      }
+    });
+  });
+}
+
 /* ========= LOAD DRUGS ========= */
 async function loadDrugs(){
   try{
@@ -547,7 +592,7 @@ async function loadDrugs(){
     renderChips();
     greet();
   }catch(e){
-    addMessage("⚠️ تعذر تحميل ملف الأدوية (drugs.json). تأكد أنه JSON صحيح.");
+    addMessage("⚠️ تعذر تحميل ملف الأدوية (drugs.json). تأكد أنه JSON صحيح بدون تعليقات.");
     console.log(e);
   }
 }
@@ -562,12 +607,14 @@ function addMessage(html){
   $("chat").scrollTop = $("chat").scrollHeight;
 }
 function clearChat(){ $("chat").innerHTML=""; greet(); }
-
 function greet(){
-  addMessage(`<strong>مرحبًا 👋</strong><div style="margin-top:6px">
-  اكتب اسم الدواء (عربي/إنجليزي/Brand/Strength) وستظهر اقتراحات فورية.
-  </div>
-  <div class="meta"><span>QCH Ramadan Assistant</span></div>`);
+  addMessage(
+    `<strong>مرحبًا 👋</strong>
+     <div style="margin-top:6px">
+       اكتب اسم الدواء (عربي/إنجليزي/Brand/Strength) وستظهر اقتراحات فورية.
+     </div>
+     <div class="meta"><span>QCH Ramadan Assistant</span></div>`
+  );
 }
 
 /* ========= SEARCH + AUTOCOMPLETE ========= */
@@ -585,7 +632,6 @@ function hideSuggest(){
 function drugSearchBlob(d){
   return norm([d.name, d.name_ar, d.brand, d.strength, d.form, d.category].map(safeText).join(" "));
 }
-
 function scoreDrug(d, q){
   const blob = drugSearchBlob(d);
   if(!blob.includes(q)) return 0;
@@ -596,9 +642,9 @@ function scoreDrug(d, q){
   const strength = norm(d.strength);
 
   let s = 1;
-  if(en.startsWith(q) || ar.startsWith(q)) s += 6;
-  if(brand.startsWith(q)) s += 4;
-  if(strength.startsWith(q)) s += 2;
+  if(en.startsWith(q) || ar.startsWith(q)) s += 7;
+  if(brand.startsWith(q)) s += 5;
+  if(strength.startsWith(q)) s += 3;
   if(en.includes(q) || ar.includes(q)) s += 2;
   if(brand.includes(q)) s += 1;
   return s;
@@ -624,7 +670,7 @@ function onType(){
     const st = safeText(d.strength);
     const cat = safeText(d.category);
 
-    const title = (ar ? ar : en);
+    const title = (ar || en);
     const sub = [
       en && ar ? en : "",
       br ? `Brand: ${br}` : "",
@@ -639,6 +685,7 @@ function onType(){
       </button>
     `;
   }).join("");
+
   $("suggest").style.display="block";
 }
 
@@ -692,21 +739,20 @@ function renderDrug(d){
   const cat = safeText(d.category);
   const risk = safeText(d.risk);
 
-  const guideAR = safeText(d.ramadan_ar || d.ramadan || "");
-  const guideEN = safeText(d.ramadan_en || "");
-  const notesAR = safeText(d.notes_ar || "");
-  const notesEN = safeText(d.notes_en || "");
+  const guide = safeText(d.ramadan_ar || d.ramadan || "لا توجد إرشادات بعد.");
+  const notes = safeText(d.notes_ar || "");
 
   const map = getTrackMap();
   const count = map[en] || 0;
 
   const title = ar || en;
-  const alt = en && ar ? `(${en})` : "";
+  const alt = (en && ar) ? `(${en})` : "";
 
-  const guide = guideAR || "لا توجد إرشادات عربية بعد.";
-  const notes = notesAR || "";
-
-  const notesBlock = notes ? `<div style="margin-top:10px"><strong>ملاحظات</strong><div>${escapeHtml(notes).replaceAll("\n","<br>")}</div></div>` : "";
+  const notesBlock = notes ? `
+    <div style="margin-top:10px">
+      <strong>ملاحظات</strong>
+      <div>${escapeHtml(notes).replaceAll("\n","<br>")}</div>
+    </div>` : "";
 
   addMessage(`
     <strong>${escapeHtml(title)}</strong>
@@ -735,12 +781,9 @@ function filterCategory(cat){
     addMessage("لا توجد عناصر في هذا التصنيف.");
     return;
   }
-
   addMessage(`<strong>نتائج التصنيف: ${escapeHtml(cat)}</strong>`);
-  results.slice(0, 20).forEach(d => renderDrug(d));
-  if(results.length > 20){
-    addMessage(`… تم عرض 20 فقط من أصل ${results.length}`);
-  }
+  results.slice(0, 25).forEach(d => renderDrug(d));
+  if(results.length > 25) addMessage(`… تم عرض 25 فقط من أصل ${results.length}`);
 }
 
 /* ========= TRACKING ========= */
@@ -764,6 +807,15 @@ function updateTopCount(){
   $("topCount").innerText = top.length;
 }
 
+function resetTracking(){
+  localStorage.removeItem(TRACK_KEY);
+  localStorage.removeItem(TOTAL_KEY);
+  $("tracked").innerText = "0";
+  updateTopCount();
+  renderChips();
+  addMessage("✅ تم إعادة ضبط التتبع.");
+}
+
 /* ========= TOP10 DASHBOARD ========= */
 function openTop10(){
   const map = getTrackMap();
@@ -780,7 +832,6 @@ function openTop10(){
     const br = d ? safeText(d.brand) : "";
     const st = d ? safeText(d.strength) : "";
     const cat = d ? safeText(d.category) : "";
-
     const label = ar ? `${ar} (${name})` : name;
     const sub = [cat, br, st].filter(Boolean).join(" — ");
 
@@ -810,15 +861,6 @@ function openTop10(){
 }
 function closeModal(){ $("modalBack").style.display="none"; }
 
-function resetTracking(){
-  localStorage.removeItem(TRACK_KEY);
-  localStorage.removeItem(TOTAL_KEY);
-  $("tracked").innerText = "0";
-  updateTopCount();
-  renderChips();
-  addMessage("✅ تم إعادة ضبط التتبع.");
-}
-
 /* ========= CHIPS ========= */
 function renderChips(){
   const container = $("chips");
@@ -826,7 +868,7 @@ function renderChips(){
 
   const map = getTrackMap();
   const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);
-  const fallback = ["Amlodipine","Losartan","Metformin","Omeprazole","Levothyroxine","Warfarin","Atorvastatin","Cetirizine"];
+  const fallback = ["Amlodipine","Losartan","Metformin","Insulin Glargine","Insulin Aspart","Omeprazole","Levothyroxine","Warfarin"];
 
   const list = (top.length ? top : fallback).map(n=>{
     const d = DRUGS.find(x=>norm(x.name)===norm(n));
@@ -839,21 +881,19 @@ function renderChips(){
 }
 
 /* ========= EXECUTIVE PDF EXPORT (Selected) ========= */
-function exportDrugPDF(){
+async function exportDrugPDF(){
   if(!lastSelectedDrug){
     addMessage("اختر دواء أولاً ثم Export PDF.");
     return;
   }
 
   const d = lastSelectedDrug;
-
   const medTitle = (d.name_ar || d.name || "-");
   const alt = (d.name && d.name_ar) ? `(${d.name})` : "";
   const cat = d.category || "-";
   const brand = d.brand || "-";
   const strength = d.strength || "-";
   const form = d.form || "-";
-
   const guide = (d.ramadan_ar || d.ramadan || "لا توجد إرشادات بعد.");
   const notes = (d.notes_ar || "");
 
@@ -863,9 +903,9 @@ function exportDrugPDF(){
   $("printContent").innerHTML = `
     <div class="bubble">
       <strong style="font-size:15px">${escapeHtml(medTitle)}</strong>
-      ${alt ? `<span style="color:#5f7f8f; font-size:12px"> ${escapeHtml(alt)}</span>` : ""}
+      ${alt ? `<span style="color:var(--muted); font-size:12px"> ${escapeHtml(alt)}</span>` : ""}
 
-      <div style="margin-top:10px; font-size:12px; color:#5f7f8f">
+      <div style="margin-top:10px; font-size:12px; color:var(--muted)">
         <div><strong>Category:</strong> ${escapeHtml(cat)}</div>
         <div><strong>Brand:</strong> ${escapeHtml(brand)}</div>
         <div><strong>Strength:</strong> ${escapeHtml(strength)}</div>
@@ -883,17 +923,18 @@ function exportDrugPDF(){
         <div style="margin-top:6px">${escapeHtml(notes).replaceAll("\n","<br>")}</div>
       </div>` : ""}
 
-      <div style="margin-top:12px; font-size:11px; color:#5f7f8f">
+      <div style="margin-top:12px; font-size:11px; color:var(--muted)">
         ملاحظة: لا يتم حفظ بيانات المرضى.
       </div>
     </div>
   `;
 
-  setTimeout(()=>window.print(), 250);
+  await waitForImages("#printArea", 3500);
+  setTimeout(()=>window.print(), 150);
 }
 
 /* ========= EXECUTIVE PDF EXPORT (Top10) ========= */
-function exportTop10PDF(){
+async function exportTop10PDF(){
   const map = getTrackMap();
   const entries = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,10);
 
@@ -917,7 +958,7 @@ function exportTop10PDF(){
     return `
       <tr>
         <td>${i+1}</td>
-        <td><strong>${escapeHtml(label)}</strong><div style="color:#5f7f8f;font-size:12px;margin-top:3px">${escapeHtml(sub)}</div></td>
+        <td><strong>${escapeHtml(label)}</strong><div style="color:var(--muted);font-size:12px;margin-top:3px">${escapeHtml(sub)}</div></td>
         <td><strong>${count}</strong></td>
       </tr>
     `;
@@ -938,13 +979,14 @@ function exportTop10PDF(){
           <tbody>${rows}</tbody>
         </table>
       </div>
-      <div style="margin-top:10px;font-size:11px;color:#5f7f8f">
+      <div style="margin-top:10px;font-size:11px;color:var(--muted)">
         This data is stored locally on the device (no patient identifiers).
       </div>
     </div>
   `;
 
-  setTimeout(()=>window.print(), 250);
+  await waitForImages("#printArea", 3500);
+  setTimeout(()=>window.print(), 150);
 }
 
 /* ========= PWA REGISTER ========= */
