@@ -9,10 +9,10 @@
 <meta name="theme-color" content="#0ea5a6" />
 
 <style>
+/* === YOUR THEME (UNCHANGED) === */
 :root{
-  /* Colors tuned to your logos (turquoise + hospital blue) */
-  --accent:#0ea5a6;        /* turquoise */
-  --accent2:#2aa6ff;       /* hospital blue */
+  --accent:#0ea5a6;
+  --accent2:#2aa6ff;
   --bg:#f3fbff;
   --card:#ffffff;
   --border:#d7e9f2;
@@ -23,7 +23,6 @@
   --danger:#ff4d4f;
   --ok:#22c55e;
 }
-
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -34,8 +33,6 @@ body{
     radial-gradient(900px 450px at 80% -10%, rgba(42,166,255,.14), transparent 60%),
     var(--bg);
 }
-
-/* ===== HEADER ===== */
 header{
   display:flex;
   justify-content:space-between;
@@ -49,21 +46,17 @@ header{
   top:0;
   z-index:10;
 }
-
 .logo{
-  height:96px;              /* enlarged */
+  height:96px;
   width:auto;
   object-fit:contain;
   filter: drop-shadow(0 8px 14px rgba(0,0,0,.10));
 }
-
 .title{
   text-align:center;
   flex:1;
   min-width:220px;
 }
-
-/* Title color matches logo theme */
 .title h1{
   margin:0;
   font-size:20px;
@@ -74,28 +67,23 @@ header{
   background-clip:text;
   color:transparent;
 }
-
 .title p{
   margin:7px 0 0;
   color:var(--muted);
   font-size:13px;
 }
-
 .container{
   display:grid;
   grid-template-columns:380px 1fr;
   gap:18px;
   padding:18px;
 }
-
 @media (max-width: 980px){
   .container{ grid-template-columns:1fr; }
   header{ position:relative; }
   .logo{ height:80px; }
   .title h1{ font-size:18px; }
 }
-
-/* ===== CARDS ===== */
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -103,11 +91,8 @@ header{
   padding:16px;
   box-shadow:var(--shadow);
 }
-
 .sidebar h3{ margin:0 0 10px; }
 .hr{ height:1px; background:var(--border); border:0; margin:12px 0; }
-
-/* ===== BUTTONS ===== */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -133,8 +118,6 @@ header{
 .btn.danger{ background:var(--danger); color:#fff; border:none; }
 .btn.ghost{ background:#f7fbff; }
 .btn.full{ width:100%; margin:10px 0 0; }
-
-/* ===== KPI ===== */
 .kpi{
   background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
   padding:12px;
@@ -146,7 +129,6 @@ header{
   align-items:center;
 }
 .kpi strong{ font-size:16px; }
-
 .badges{ display:flex; gap:8px; flex-wrap:wrap; }
 .badge{
   display:inline-flex;
@@ -159,8 +141,6 @@ header{
   font-size:12px;
   color:var(--muted);
 }
-
-/* ===== CHAT ===== */
 .chat{
   min-height:380px;
   max-height:60vh;
@@ -194,8 +174,6 @@ header{
   font-size:12px;
   color:var(--muted);
 }
-
-/* ===== INPUT + SUGGEST ===== */
 .row{
   display:grid;
   grid-template-columns: 1fr auto;
@@ -239,8 +217,6 @@ input:focus{
 }
 .suggest button:hover{ background:#f4fbff; }
 .suggest .line2{ color:var(--muted); font-size:12px; margin-top:2px; }
-
-/* ===== CHIPS ===== */
 .chips{
   display:flex;
   gap:8px;
@@ -257,16 +233,12 @@ input:focus{
   color:var(--muted);
 }
 .chip:hover{ border-color:rgba(42,166,255,.45); }
-
-/* ===== FOOTER ===== */
 .footer{
   text-align:center;
   padding:16px;
   font-size:12px;
   color:var(--muted);
 }
-
-/* ===== MODAL ===== */
 .modalBack{
   position:fixed;
   inset:0;
@@ -320,10 +292,7 @@ input:focus{
   color:var(--muted);
 }
 .table tr:last-child td{ border-bottom:none; }
-
-/* ===== EXECUTIVE PRINT AREA ===== */
 #printArea{ display:none; }
-
 .printHeader{
   display:flex;
   align-items:center;
@@ -334,7 +303,7 @@ input:focus{
   margin-bottom:10px;
 }
 .printLogo{
-  height:82px;   /* enlarged for PDF */
+  height:82px;
   width:auto;
   object-fit:contain;
 }
@@ -374,23 +343,16 @@ input:focus{
   gap:10px;
 }
 .printFooter .warn{ color:#07202a; }
-
-/* Improve print image rendering */
 @media print{
   @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
-
   header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
-
   body{ background:#fff !important; }
   .container{ padding:0; }
   .card{ border:none; box-shadow:none; padding:0; }
   .chat{ max-height:none; overflow:visible; }
-
   #printArea{ display:block !important; }
-
   img{ max-width:100% !important; }
   #printArea img{ display:inline-block !important; visibility:visible !important; }
-
   .bubble{
     page-break-inside: avoid;
     border:1px solid #d7e9f2;
@@ -520,8 +482,8 @@ input:focus{
 
 <script>
 /* ========= SETTINGS ========= */
-const TRACK_KEY = "qch_track_counts_v4";
-const TOTAL_KEY = "qch_total_selections_v4";
+const TRACK_KEY = "qch_track_counts_v5";
+const TOTAL_KEY = "qch_total_selections_v5";
 
 /* ========= STATE ========= */
 let DRUGS = [];
@@ -539,6 +501,26 @@ function escapeHtml(s){
 }
 function escapeQuotes(s){ return safeText(s).replace(/'/g,"\\'"); }
 
+/* === Category canonicalization (fix "No items in category") === */
+const CATEGORY_ALIASES = {
+  "gi":"GI","g.i":"GI","gastro":"GI","gastrointestinal":"GI",
+  "htn":"Hypertension","bp":"Hypertension","hypertension":"Hypertension",
+  "dm":"Diabetes","diabetes":"Diabetes",
+  "insulin":"Insulin",
+  "blood thinner":"Anticoagulant","anticoagulant":"Anticoagulant",
+  "abx":"Antibiotic","antibiotic":"Antibiotic",
+  "lipid":"Lipids","lipids":"Lipids",
+  "pain":"Pain","analgesic":"Pain",
+  "resp":"Asthma","asthma":"Asthma",
+  "antihistamine":"Allergy","allergy":"Allergy",
+  "thyroid":"Thyroid","endocrine":"Thyroid"
+};
+function canonicalCategory(raw){
+  const key = norm(raw);
+  return CATEGORY_ALIASES[key] || safeText(raw).trim();
+}
+
+/* ========= LOCAL STORAGE ========= */
 function getTrackMap(){
   try{ return JSON.parse(localStorage.getItem(TRACK_KEY) || "{}"); }
   catch{ return {}; }
@@ -547,14 +529,12 @@ function setTrackMap(map){ localStorage.setItem(TRACK_KEY, JSON.stringify(map));
 function getTotal(){ return Number(localStorage.getItem(TOTAL_KEY) || "0"); }
 function setTotal(n){ localStorage.setItem(TOTAL_KEY, String(n)); }
 
-/* Wait for images before printing (fix missing logos in PDF) */
+/* Wait for images before printing */
 function waitForImages(selector, timeoutMs = 3000){
   const root = document.querySelector(selector);
   if(!root) return Promise.resolve();
-
   const imgs = Array.from(root.querySelectorAll("img"));
   if(imgs.length === 0) return Promise.resolve();
-
   const notReady = imgs.filter(img => !img.complete || img.naturalWidth === 0);
   if(notReady.length === 0) return Promise.resolve();
 
@@ -568,7 +548,6 @@ function waitForImages(selector, timeoutMs = 3000){
         const still = imgs.some(i => !i.complete || i.naturalWidth === 0);
         if(!still){ clearTimeout(t); finish(); }
       }, { once:true });
-
       img.addEventListener("error", () => { clearTimeout(t); finish(); }, { once:true });
 
       if(img.naturalWidth === 0){
@@ -582,9 +561,14 @@ function waitForImages(selector, timeoutMs = 3000){
 /* ========= LOAD DRUGS ========= */
 async function loadDrugs(){
   try{
-    const res = await fetch("drugs.json", { cache: "no-store" });
+    // cache-bust for GitHub pages caching
+    const res = await fetch("./drugs.json?v=" + Date.now(), { cache: "no-store" });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+
     const data = await res.json();
     DRUGS = Array.isArray(data) ? data : [];
+    // normalize categories once
+    DRUGS = DRUGS.map(d => ({ ...d, category: canonicalCategory(d.category) }));
 
     $("drugsLoaded").innerText = DRUGS.length;
     $("tracked").innerText = getTotal();
@@ -774,14 +758,23 @@ function renderDrug(d){
   `);
 }
 
-/* ========= CATEGORY FILTER ========= */
+/* ========= CATEGORY FILTER (FIXED) ========= */
 function filterCategory(cat){
-  const results = DRUGS.filter(d => safeText(d.category) === cat);
+  const sel = norm(cat);
+  const results = DRUGS.filter(d => norm(canonicalCategory(d.category)) === sel);
+
   if(results.length === 0){
-    addMessage("لا توجد عناصر في هذا التصنيف.");
+    const cats = Array.from(new Set(DRUGS.map(d=>canonicalCategory(d.category)).filter(Boolean))).sort();
+    addMessage(
+      `لا توجد عناصر في هذا التصنيف: <strong>${escapeHtml(cat)}</strong><br>` +
+      `<div style="margin-top:6px;color:var(--muted);font-size:12px">` +
+      `التصنيفات الموجودة فعليًا في drugs.json: ${escapeHtml(cats.join(" • ") || "—")}` +
+      `</div>`
+    );
     return;
   }
-  addMessage(`<strong>نتائج التصنيف: ${escapeHtml(cat)}</strong>`);
+
+  addMessage(`<strong>نتائج التصنيف: ${escapeHtml(cat)}</strong> <span style="color:var(--muted);font-size:12px">(${results.length})</span>`);
   results.slice(0, 25).forEach(d => renderDrug(d));
   if(results.length > 25) addMessage(`… تم عرض 25 فقط من أصل ${results.length}`);
 }
