@@ -46,12 +46,21 @@ header{
   top:0;
   z-index:10;
 }
+
+/* ✅ LOGO FIX: blend with header so no edges/white box visible */
 .logo{
   height:96px;
   width:auto;
   object-fit:contain;
-  filter: drop-shadow(0 8px 14px rgba(0,0,0,.10));
+
+  /* This makes white background inside the PNG blend into header */
+  mix-blend-mode:multiply;
+
+  /* shadow can reveal edges, keep it soft or remove */
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.08));
+  background:transparent !important;
 }
+
 .title{
   text-align:center;
   flex:1;
@@ -302,11 +311,16 @@ input:focus{
   border-bottom:2px solid #d7e9f2;
   margin-bottom:10px;
 }
+
+/* ✅ also blend logos in PDF print area */
 .printLogo{
   height:82px;
   width:auto;
   object-fit:contain;
+  mix-blend-mode:multiply;
+  background:transparent !important;
 }
+
 .printTitle{
   text-align:center;
   flex:1;
@@ -561,13 +575,11 @@ function waitForImages(selector, timeoutMs = 3000){
 /* ========= LOAD DRUGS ========= */
 async function loadDrugs(){
   try{
-    // cache-bust for GitHub pages caching
     const res = await fetch("./drugs.json?v=" + Date.now(), { cache: "no-store" });
     if(!res.ok) throw new Error("HTTP " + res.status);
 
     const data = await res.json();
     DRUGS = Array.isArray(data) ? data : [];
-    // normalize categories once
     DRUGS = DRUGS.map(d => ({ ...d, category: canonicalCategory(d.category) }));
 
     $("drugsLoaded").innerText = DRUGS.length;
@@ -607,11 +619,7 @@ $("input").addEventListener("keydown", (e)=>{
   if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }
   if(e.key==="Escape"){ hideSuggest(); }
 });
-
-function hideSuggest(){
-  $("suggest").style.display="none";
-  $("suggest").innerHTML="";
-}
+function hideSuggest(){ $("suggest").style.display="none"; $("suggest").innerHTML=""; }
 
 function drugSearchBlob(d){
   return norm([d.name, d.name_ar, d.brand, d.strength, d.form, d.category].map(safeText).join(" "));
@@ -682,7 +690,6 @@ function pickDrug(englishName){
 function findBestDrug(qRaw){
   const q = norm(qRaw);
   if(!q) return null;
-
   const ranked = DRUGS.map(d=>({ d, s: scoreDrug(d, q) })).sort((a,b)=>b.s-a.s);
   if(ranked.length && ranked[0].s > 0) return ranked[0].d;
   return null;
