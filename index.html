@@ -9,7 +9,6 @@
 <meta name="theme-color" content="#0ea5a6" />
 
 <style>
-/* === YOUR THEME (UNCHANGED) === */
 :root{
   --accent:#0ea5a6;
   --accent2:#2aa6ff;
@@ -23,6 +22,7 @@
   --danger:#ff4d4f;
   --ok:#22c55e;
 }
+
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -33,62 +33,59 @@ body{
     radial-gradient(900px 450px at 80% -10%, rgba(42,166,255,.14), transparent 60%),
     var(--bg);
 }
-<header>
-  <img src="logo_qch.png" class="logo logo-left" alt="QCH Logo">
 
-  <div class="title">
-    <h1>QCH – مساعد رمضان الذكي للأدوية</h1>
-    <p>Arabic • English • Patient Friendly • Offline Tracking • Executive PDF</p>
-  </div>
-
-  <img src="logo_health_holding.png" class="logo logo-right" alt="Health Holding Logo">
-</header>
-
-/* ✅ LOGO FIX: blend with header so no edges/white box visible */
-.logo{
-  height:120px;              /* كان 96px – الآن أكبر */
-  width:200px;
-  object-fit:contain;
-
-  background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
-  padding:8px 14px;
-  border-radius:18px;
-
-  filter:none;
+/* ===== HEADER (clean: logos + one sentence only) ===== */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 18px;
+  background:linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
-.title{
-  text-align:center;
+.headerTitle{
   flex:1;
-  min-width:220px;
-}
-.title h1{
-  margin:0;
-  font-size:20px;
+  text-align:center;
+  font-weight:900;
   letter-spacing:.2px;
-  font-weight:800;
+  font-size:16px;
+  line-height:1.35;
   background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
+  padding:0 8px;
 }
-.title p{
-  margin:7px 0 0;
-  color:var(--muted);
-  font-size:13px;
+
+.logo{
+  height:110px;
+  width:auto;
+  object-fit:contain;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+  padding:8px 14px;
+  border-radius:18px;
+  filter:none;
 }
+
+/* Keep Health Holding on the RIGHT always */
+.logo-left{ order:1; }
+.headerTitle{ order:2; }
+.logo-right{ order:3; margin-right:auto; }
+
 .container{
   display:grid;
   grid-template-columns:380px 1fr;
-  gap:18px;
-  padding:18px;
+  gap:16px;
+  padding:16px;
 }
-@media (max-width: 980px){
-  .container{ grid-template-columns:1fr; }
-  header{ position:relative; }
-  .logo{ height:80px; }
-  .title h1{ font-size:18px; }
-}
+
+/* ===== CARDS ===== */
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -96,8 +93,74 @@ body{
   padding:16px;
   box-shadow:var(--shadow);
 }
-.sidebar h3{ margin:0 0 10px; }
+
+.sidebar h3{
+  margin:0 0 10px;
+  font-size:14px;
+  color:var(--muted);
+  letter-spacing:.2px;
+}
 .hr{ height:1px; background:var(--border); border:0; margin:12px 0; }
+
+/* ===== CATEGORY TILES (icons) ===== */
+.catGrid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:10px;
+}
+.catBtn{
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, #ffffff 0%, #f7fcff 100%);
+  border-radius:18px;
+  padding:12px 12px;
+  cursor:pointer;
+  text-align:right;
+  transition:transform .05s ease, box-shadow .2s ease, border-color .2s ease;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.catBtn:hover{ box-shadow:0 14px 30px rgba(0,0,0,.06); border-color:rgba(14,165,166,.35); }
+.catBtn:active{ transform:scale(.99); }
+.catBtn .label{ font-weight:800; font-size:13px; }
+.catBtn .icon{
+  width:34px; height:34px;
+  border-radius:12px;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg, rgba(14,165,166,.15) 0%, rgba(42,166,255,.13) 100%);
+  border:1px solid rgba(14,165,166,.18);
+  font-size:18px;
+}
+
+/* ===== KPI ===== */
+.kpiRow{ display:grid; grid-template-columns:1fr; gap:10px; }
+.kpi{
+  background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
+  padding:12px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.kpi span{ color:var(--muted); font-size:12px; }
+.kpi strong{ font-size:16px; }
+
+.badges{ display:flex; gap:8px; flex-wrap:wrap; }
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ===== BUTTONS ===== */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -123,47 +186,27 @@ body{
 .btn.danger{ background:var(--danger); color:#fff; border:none; }
 .btn.ghost{ background:#f7fbff; }
 .btn.full{ width:100%; margin:10px 0 0; }
-.kpi{
-  background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
-  padding:12px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  margin-bottom:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.kpi strong{ font-size:16px; }
-.badges{ display:flex; gap:8px; flex-wrap:wrap; }
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-size:12px;
-  color:var(--muted);
-}
+
+/* ===== CHAT ===== */
 .chat{
-  min-height:380px;
-  max-height:60vh;
+  min-height:420px;
+  max-height:62vh;
   overflow:auto;
   padding-right:4px;
+  scroll-behavior:smooth;
 }
 .bubble{
   background:linear-gradient(180deg, #f2fbff 0%, #ffffff 100%);
   padding:12px 14px;
-  border-radius:16px;
+  border-radius:18px;
   margin-bottom:12px;
   border:1px solid var(--border);
-  line-height:1.75;
+  line-height:1.8;
 }
 .bubble .meta{
   color:var(--muted);
   font-size:12px;
-  margin-top:8px;
+  margin-top:10px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
@@ -172,19 +215,25 @@ body{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  padding:5px 9px;
+  padding:6px 10px;
   border-radius:999px;
   border:1px solid var(--border);
   background:#fff;
   font-size:12px;
   color:var(--muted);
 }
+
+/* ===== INPUT ===== */
 .row{
   display:grid;
   grid-template-columns: 1fr auto;
   gap:10px;
   align-items:center;
   margin-top:12px;
+  position:sticky;
+  bottom:0;
+  background:linear-gradient(180deg, rgba(243,251,255,.0) 0%, rgba(243,251,255,.85) 40%, rgba(243,251,255,1) 100%);
+  padding-top:10px;
 }
 .inputWrap{ position:relative; }
 input{
@@ -193,6 +242,7 @@ input{
   border-radius:14px;
   border:1px solid var(--border);
   outline:none;
+  background:#fff;
 }
 input:focus{
   border-color:rgba(14,165,166,.55);
@@ -200,7 +250,7 @@ input:focus{
 }
 .suggest{
   position:absolute;
-  top:48px;
+  top:52px;
   right:0;
   left:0;
   background:#fff;
@@ -222,6 +272,8 @@ input:focus{
 }
 .suggest button:hover{ background:#f4fbff; }
 .suggest .line2{ color:var(--muted); font-size:12px; margin-top:2px; }
+
+/* ===== CHIPS ===== */
 .chips{
   display:flex;
   gap:8px;
@@ -238,12 +290,15 @@ input:focus{
   color:var(--muted);
 }
 .chip:hover{ border-color:rgba(42,166,255,.45); }
+
 .footer{
   text-align:center;
   padding:16px;
   font-size:12px;
   color:var(--muted);
 }
+
+/* ===== MODAL ===== */
 .modalBack{
   position:fixed;
   inset:0;
@@ -297,6 +352,8 @@ input:focus{
   color:var(--muted);
 }
 .table tr:last-child td{ border-bottom:none; }
+
+/* ===== PRINT AREA ===== */
 #printArea{ display:none; }
 .printHeader{
   display:flex;
@@ -307,30 +364,18 @@ input:focus{
   border-bottom:2px solid #d7e9f2;
   margin-bottom:10px;
 }
-
-/* ✅ also blend logos in PDF print area */
 .printLogo{
-  height:82px;
+  height:100px;
   width:auto;
   object-fit:contain;
-  mix-blend-mode:multiply;
-  background:transparent !important;
+  background:#fff;
+  padding:6px 10px;
+  border-radius:16px;
+  filter:none;
 }
-
-.printTitle{
-  text-align:center;
-  flex:1;
-}
-.printTitle h2{
-  margin:0;
-  font-size:16px;
-  color:#07202a;
-}
-.printTitle p{
-  margin:4px 0 0;
-  font-size:11px;
-  color:#5f7f8f;
-}
+.printTitle{ text-align:center; flex:1; }
+.printTitle h2{ margin:0; font-size:16px; color:#07202a; }
+.printTitle p{ margin:4px 0 0; font-size:11px; color:#5f7f8f; }
 .printMeta{
   display:flex;
   justify-content:space-between;
@@ -353,6 +398,7 @@ input:focus{
   gap:10px;
 }
 .printFooter .warn{ color:#07202a; }
+
 @media print{
   @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
   header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
@@ -368,116 +414,46 @@ input:focus{
     border:1px solid #d7e9f2;
     background:#fff;
   }
-  /* =========================
-   MOBILE OPTIMIZATION
-   (Theme unchanged)
-========================= */
-@media (max-width: 600px){
+}
 
-  /* Header stacks nicely on phone */
+/* ===== MOBILE ===== */
+@media (max-width: 980px){
+  .container{ grid-template-columns:1fr; }
+  header{ position:relative; }
+  .logo{ height:92px; }
+}
+@media (max-width: 600px){
   header{
     flex-direction:column;
-    align-items:center;
-    justify-content:center;
     gap:10px;
-    padding:12px 12px;
-    position:relative; /* smoother on mobile */
-  }
-
-  /* Logos fit phone */
-  .logo{
-    height:88px;               /* good size for phones */
-    padding:6px 10px;
-    border-radius:16px;
-  }
-
-  /* Title wraps cleanly */
-  .title{
-    min-width:unset;
-    width:100%;
-    text-align:center;
-  }
-  .title h1{
-    font-size:18px;
-    line-height:1.25;
-  }
-  .title p{
-    font-size:12px;
-    line-height:1.35;
-  }
-
-  /* Tighten layout spacing */
-  .container{
-    grid-template-columns:1fr;
     padding:12px;
-    gap:12px;
   }
+  .logo-right{ order:1; margin-right:0; }
+  .headerTitle{ order:2; font-size:15px; }
+  .logo-left{ order:3; }
 
-  /* Category buttons become 2-column grid for easy tapping */
-  .sidebar > div:first-of-type{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:8px;
-  }
+  .logo{ height:86px; padding:6px 10px; border-radius:16px; }
 
-  .btn{
-    width:100%;
-    margin:0;
-    padding:11px 10px;
-    border-radius:14px;
-    font-size:13px;
-  }
+  .container{ padding:12px; gap:12px; }
 
-  /* Chat height comfortable on phone */
-  .chat{
-    max-height:55vh;
-    min-height:320px;
-  }
+  .catGrid{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; }
+  .catBtn{ padding:10px 10px; border-radius:16px; }
+  .catBtn .icon{ width:32px; height:32px; border-radius:12px; }
 
-  /* Input row stacks */
-  .row{
-    grid-template-columns:1fr;
-    gap:10px;
-  }
-  .row .btn.primary{
-    width:100%;
-  }
+  .chat{ max-height:58vh; min-height:360px; }
 
-  /* Suggest dropdown spacing */
-  .suggest{
-    top:52px;
-  }
-
-  /* Chips wrap nicely */
-  .chips{
-    gap:6px;
-  }
-  .chip{
-    padding:9px 10px;
-    font-size:12px;
-  }
-
-  /* Modal fit */
-  .modal{
-    width:96vw;
-    border-radius:18px;
-  }
-  .modalBody{
-    max-height:72vh;
-  }
-}}
+  .row{ grid-template-columns:1fr; }
+  .row .btn.primary{ width:100%; }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo_qch.png" class="logo" alt="QCH Logo">
-  <div class="title">
-    <h1>الخدمات الصيدلانية بشبكة القطيف الصحية</h1>
-    <p>الشات التفاعلي لتوقيت جرعات شهر رمضان</p>
-  </div>
-  <img src="logo_health_holding.png" class="logo" alt="Health Holding Logo">
+  <img src="logo_qch.png" class="logo logo-left" alt="QCH Logo">
+  <div class="headerTitle">الشات التفاعلي للخدمات الصيدلانية بشبكة القطيف الصحية</div>
+  <img src="logo_health_holding.png" class="logo logo-right" alt="Health Holding Logo">
 </header>
 
 <div class="container">
@@ -486,25 +462,52 @@ input:focus{
   <div class="card sidebar">
     <h3>التصنيفات</h3>
 
-    <div>
-      <button class="btn" onclick="filterCategory('Hypertension')">ضغط ❤️</button>
-      <button class="btn" onclick="filterCategory('Diabetes')">سكر 🩸</button>
-      <button class="btn" onclick="filterCategory('Insulin')">أنسولين 💉</button>
-      <button class="btn" onclick="filterCategory('Thyroid')">الغدة 🦋</button>
-      <button class="btn" onclick="filterCategory('GI')">المعدة 🍽</button>
-      <button class="btn" onclick="filterCategory('Anticoagulant')">مُميعات 🧬</button>
-      <button class="btn" onclick="filterCategory('Antibiotic')">مضادات 🦠</button>
-      <button class="btn" onclick="filterCategory('Pain')">ألم 💊</button>
-      <button class="btn" onclick="filterCategory('Asthma')">صدر 🌬️</button>
-      <button class="btn" onclick="filterCategory('Allergy')">حساسية 🌿</button>
-      <button class="btn" onclick="filterCategory('Lipids')">دهون 🫀</button>
+    <div class="catGrid">
+      <button class="catBtn" onclick="filterCategory('Hypertension', true)">
+        <span class="label">ضغط</span><span class="icon">❤️</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Diabetes', true)">
+        <span class="label">سكر</span><span class="icon">🩸</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Insulin', true)">
+        <span class="label">أنسولين</span><span class="icon">💉</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Thyroid', true)">
+        <span class="label">الغدة</span><span class="icon">🦋</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('GI', true)">
+        <span class="label">المعدة</span><span class="icon">🍽</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Anticoagulant', true)">
+        <span class="label">مُميعات</span><span class="icon">🧬</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Antibiotic', true)">
+        <span class="label">مضادات</span><span class="icon">🦠</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Pain', true)">
+        <span class="label">ألم</span><span class="icon">💊</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Asthma', true)">
+        <span class="label">صدر</span><span class="icon">🌬️</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Allergy', true)">
+        <span class="label">حساسية</span><span class="icon">🌿</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('Lipids', true)">
+        <span class="label">دهون</span><span class="icon">🫀</span>
+      </button>
+      <button class="catBtn" onclick="filterCategory('All', true)">
+        <span class="label">الكل</span><span class="icon">⭐</span>
+      </button>
     </div>
 
     <div class="hr"></div>
 
-    <div class="kpi"><span>Drugs loaded</span><strong id="drugsLoaded">0</strong></div>
-    <div class="kpi"><span>Total selections</span><strong id="tracked">0</strong></div>
-    <div class="kpi"><span>Top 10</span><strong id="topCount">0</strong></div>
+    <div class="kpiRow">
+      <div class="kpi"><span>Drugs loaded</span><strong id="drugsLoaded">0</strong></div>
+      <div class="kpi"><span>Total selections</span><strong id="tracked">0</strong></div>
+      <div class="kpi"><span>Top 10</span><strong id="topCount">0</strong></div>
+    </div>
 
     <div class="hr"></div>
 
@@ -533,7 +536,7 @@ input:focus{
         <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / Brand / Strength ..." autocomplete="off">
         <div id="suggest" class="suggest"></div>
       </div>
-      <button class="btn primary" onclick="searchDrug()">إرسال</button>
+      <button class="btn primary" onclick="searchDrug(true)">إرسال</button>
     </div>
 
     <div class="chips" id="chips"></div>
@@ -568,7 +571,7 @@ input:focus{
     <img src="logo_qch.png" class="printLogo" alt="QCH">
     <div class="printTitle">
       <h2>Qatif Central Hospital – Smart Ramadan Medication Assistant</h2>
-      <p>Arabic • English • Patient Friendly • Offline Tracking • Executive PDF</p>
+      <p>Executive PDF</p>
     </div>
     <img src="logo_health_holding.png" class="printLogo" alt="Health Holding">
   </div>
@@ -583,14 +586,14 @@ input:focus{
 
   <div class="printFooter">
     <div class="warn">⚠️ This guidance does not replace clinician advice.</div>
-    <div>QCH Pharmacy • For patient education use</div>
+    <div>QCH Pharmacy • Patient education</div>
   </div>
 </div>
 
 <script>
 /* ========= SETTINGS ========= */
-const TRACK_KEY = "qch_track_counts_v5";
-const TOTAL_KEY = "qch_total_selections_v5";
+const TRACK_KEY = "qch_track_counts_v6";
+const TOTAL_KEY = "qch_total_selections_v6";
 
 /* ========= STATE ========= */
 let DRUGS = [];
@@ -599,7 +602,7 @@ let lastSelectedDrug = null;
 /* ========= HELPERS ========= */
 const $ = (id) => document.getElementById(id);
 function safeText(s){ return (s ?? "").toString(); }
-function norm(s){ return safeText(s).toLowerCase().trim().replace(/\s+/g,' '); }
+function norm(s){ return safeText(s).toLowerCase().trim().replace(/\\s+/g,' '); }
 function escapeHtml(s){
   return safeText(s)
     .replaceAll("&","&amp;")
@@ -608,7 +611,15 @@ function escapeHtml(s){
 }
 function escapeQuotes(s){ return safeText(s).replace(/'/g,"\\'"); }
 
-/* === Category canonicalization (fix "No items in category") === */
+/* ===== Scroll helper (go down to chat/last message) ===== */
+function scrollToChat(){
+  const chat = $("chat");
+  if(!chat) return;
+  chat.scrollIntoView({ behavior:"smooth", block:"start" });
+  setTimeout(()=>{ chat.scrollTop = chat.scrollHeight; }, 120);
+}
+
+/* === Category canonicalization === */
 const CATEGORY_ALIASES = {
   "gi":"GI","g.i":"GI","gastro":"GI","gastrointestinal":"GI",
   "htn":"Hypertension","bp":"Hypertension","hypertension":"Hypertension",
@@ -620,7 +631,8 @@ const CATEGORY_ALIASES = {
   "pain":"Pain","analgesic":"Pain",
   "resp":"Asthma","asthma":"Asthma",
   "antihistamine":"Allergy","allergy":"Allergy",
-  "thyroid":"Thyroid","endocrine":"Thyroid"
+  "thyroid":"Thyroid","endocrine":"Thyroid",
+  "all":"All"
 };
 function canonicalCategory(raw){
   const key = norm(raw);
@@ -655,6 +667,7 @@ function waitForImages(selector, timeoutMs = 3000){
         const still = imgs.some(i => !i.complete || i.naturalWidth === 0);
         if(!still){ clearTimeout(t); finish(); }
       }, { once:true });
+
       img.addEventListener("error", () => { clearTimeout(t); finish(); }, { once:true });
 
       if(img.naturalWidth === 0){
@@ -696,23 +709,28 @@ function addMessage(html){
   $("chat").scrollTop = $("chat").scrollHeight;
 }
 function clearChat(){ $("chat").innerHTML=""; greet(); }
+
 function greet(){
   addMessage(
     `<strong>مرحبًا 👋</strong>
      <div style="margin-top:6px">
        اكتب اسم الدواء (عربي/إنجليزي/Brand/Strength) وستظهر اقتراحات فورية.
      </div>
-     <div class="meta"><span>QCH Ramadan Assistant</span></div>`
+     <div class="meta"><span>QCH Pharmacy</span></div>`
   );
 }
 
 /* ========= SEARCH + AUTOCOMPLETE ========= */
 $("input").addEventListener("input", onType);
 $("input").addEventListener("keydown", (e)=>{
-  if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }
+  if(e.key==="Enter"){ e.preventDefault(); searchDrug(true); }
   if(e.key==="Escape"){ hideSuggest(); }
 });
-function hideSuggest(){ $("suggest").style.display="none"; $("suggest").innerHTML=""; }
+
+function hideSuggest(){
+  $("suggest").style.display="none";
+  $("suggest").innerHTML="";
+}
 
 function drugSearchBlob(d){
   return norm([d.name, d.name_ar, d.brand, d.strength, d.form, d.category].map(safeText).join(" "));
@@ -764,7 +782,7 @@ function onType(){
     ].filter(Boolean).join(" — ");
 
     return `
-      <button type="button" onclick="pickDrug('${escapeQuotes(en)}')">
+      <button type="button" onclick="pickDrug('${escapeQuotes(en)}', true)">
         <div><strong>${escapeHtml(title)}</strong></div>
         <div class="line2">${escapeHtml(sub)}</div>
       </button>
@@ -774,21 +792,22 @@ function onType(){
   $("suggest").style.display="block";
 }
 
-function pickDrug(englishName){
+function pickDrug(englishName, scrollDown=false){
   $("input").value = englishName;
   hideSuggest();
-  searchDrug();
+  searchDrug(scrollDown);
 }
 
 function findBestDrug(qRaw){
   const q = norm(qRaw);
   if(!q) return null;
+
   const ranked = DRUGS.map(d=>({ d, s: scoreDrug(d, q) })).sort((a,b)=>b.s-a.s);
   if(ranked.length && ranked[0].s > 0) return ranked[0].d;
   return null;
 }
 
-function searchDrug(){
+function searchDrug(scrollDown=false){
   const qRaw = $("input").value;
   const q = norm(qRaw);
   if(!q) return;
@@ -800,8 +819,10 @@ function searchDrug(){
     renderDrug(drug);
     $("input").value = "";
     hideSuggest();
+    if(scrollDown) scrollToChat();
   }else{
     addMessage("❌ لا يوجد تطابق. اكتب أول حرفين أو اختر من الاقتراحات.");
+    if(scrollDown) scrollToChat();
   }
 }
 
@@ -835,13 +856,13 @@ function renderDrug(d){
   const notesBlock = notes ? `
     <div style="margin-top:10px">
       <strong>ملاحظات</strong>
-      <div>${escapeHtml(notes).replaceAll("\n","<br>")}</div>
+      <div>${escapeHtml(notes).replaceAll("\\n","<br>")}</div>
     </div>` : "";
 
   addMessage(`
     <strong>${escapeHtml(title)}</strong>
     ${alt ? `<small style="color:var(--muted)"> ${escapeHtml(alt)}</small>` : ""}
-    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
+    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\\n","<br>")}</div>
     ${notesBlock}
     <div class="meta">
       ${cat ? `<span class="tag">🏷 ${escapeHtml(cat)}</span>` : ""}
@@ -853,30 +874,33 @@ function renderDrug(d){
     </div>
     <div class="meta">
       <span style="color:var(--ok)">✅ Ready for Executive PDF</span>
-      <span>Qatif Central Hospital</span>
+      <span>Qatif Health Network</span>
     </div>
   `);
 }
 
-/* ========= CATEGORY FILTER (FIXED) ========= */
-function filterCategory(cat){
-  const sel = norm(cat);
-  const results = DRUGS.filter(d => norm(canonicalCategory(d.category)) === sel);
+/* ========= CATEGORY FILTER (scrolls down) ========= */
+function filterCategory(cat, scrollDown=false){
+  const sel = norm(canonicalCategory(cat));
+
+  let results = [];
+  if(sel === "all"){
+    results = DRUGS.slice();
+  }else{
+    results = DRUGS.filter(d => norm(canonicalCategory(d.category)) === sel);
+  }
 
   if(results.length === 0){
-    const cats = Array.from(new Set(DRUGS.map(d=>canonicalCategory(d.category)).filter(Boolean))).sort();
-    addMessage(
-      `لا توجد عناصر في هذا التصنيف: <strong>${escapeHtml(cat)}</strong><br>` +
-      `<div style="margin-top:6px;color:var(--muted);font-size:12px">` +
-      `التصنيفات الموجودة فعليًا في drugs.json: ${escapeHtml(cats.join(" • ") || "—")}` +
-      `</div>`
-    );
+    addMessage("لا توجد عناصر في هذا التصنيف.");
+    if(scrollDown) scrollToChat();
     return;
   }
 
   addMessage(`<strong>نتائج التصنيف: ${escapeHtml(cat)}</strong> <span style="color:var(--muted);font-size:12px">(${results.length})</span>`);
   results.slice(0, 25).forEach(d => renderDrug(d));
   if(results.length > 25) addMessage(`… تم عرض 25 فقط من أصل ${results.length}`);
+
+  if(scrollDown) scrollToChat();
 }
 
 /* ========= TRACKING ========= */
@@ -916,6 +940,7 @@ function openTop10(){
 
   if(entries.length === 0){
     addMessage("لا توجد بيانات تتبع بعد.");
+    scrollToChat();
     return;
   }
 
@@ -961,22 +986,22 @@ function renderChips(){
 
   const map = getTrackMap();
   const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);
-  const fallback = ["Amlodipine","Losartan","Metformin","Insulin Glargine","Insulin Aspart","Omeprazole","Levothyroxine","Warfarin"];
 
-  const list = (top.length ? top : fallback).map(n=>{
+  const list = (top.length ? top : []).map(n=>{
     const d = DRUGS.find(x=>norm(x.name)===norm(n));
     const label = d ? (d.name_ar || d.name) : n;
     const key = d ? d.name : n;
-    return `<div class="chip" onclick="pickDrug('${escapeQuotes(key)}')">⭐ ${escapeHtml(label)}</div>`;
+    return `<div class="chip" onclick="pickDrug('${escapeQuotes(key)}', true)">⭐ ${escapeHtml(label)}</div>`;
   }).join("");
 
-  container.innerHTML = list;
+  container.innerHTML = list || `<div style="color:var(--muted);font-size:12px">ابدأ بالبحث عن دواء لتظهر هنا اختصارات سريعة ⭐</div>`;
 }
 
 /* ========= EXECUTIVE PDF EXPORT (Selected) ========= */
 async function exportDrugPDF(){
   if(!lastSelectedDrug){
     addMessage("اختر دواء أولاً ثم Export PDF.");
+    scrollToChat();
     return;
   }
 
@@ -1007,13 +1032,13 @@ async function exportDrugPDF(){
 
       <div style="margin-top:12px; line-height:1.7">
         <strong>إرشادات رمضان</strong>
-        <div style="margin-top:6px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
+        <div style="margin-top:6px">${escapeHtml(guide).replaceAll("\\n","<br>")}</div>
       </div>
 
       ${notes ? `
       <div style="margin-top:12px; line-height:1.7">
         <strong>ملاحظات</strong>
-        <div style="margin-top:6px">${escapeHtml(notes).replaceAll("\n","<br>")}</div>
+        <div style="margin-top:6px">${escapeHtml(notes).replaceAll("\\n","<br>")}</div>
       </div>` : ""}
 
       <div style="margin-top:12px; font-size:11px; color:var(--muted)">
@@ -1033,6 +1058,7 @@ async function exportTop10PDF(){
 
   if(entries.length === 0){
     addMessage("لا توجد بيانات تتبع بعد.");
+    scrollToChat();
     return;
   }
 
