@@ -9,6 +9,7 @@
 <meta name="theme-color" content="#0ea5a6" />
 
 <style>
+/* === YOUR THEME (UNCHANGED) === */
 :root{
   --accent:#0ea5a6;
   --accent2:#2aa6ff;
@@ -24,6 +25,7 @@
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth;}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
@@ -34,58 +36,83 @@ body{
     var(--bg);
 }
 
-/* ===== HEADER (clean: logos + one sentence only) ===== */
+/* ===== HEADER ===== */
 header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:14px;
-  padding:14px 18px;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
   background:linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
   border-bottom:1px solid var(--border);
   box-shadow:var(--shadow);
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:10;
 }
-
-.headerTitle{
-  flex:1;
+.logo{
+  height:110px; /* maximized */
+  width:auto;
+  object-fit:contain;
+  filter:none;
+  background:linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+  padding:8px 12px;
+  border-radius:18px;
+  mix-blend-mode:multiply; /* hides edges/white box effect */
+}
+.title{
   text-align:center;
-  font-weight:900;
+  flex:1;
+  min-width:220px;
+}
+.title h1{
+  margin:0;
+  font-size:18px;
   letter-spacing:.2px;
-  font-size:16px;
-  line-height:1.35;
+  font-weight:900;
   background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  padding:0 8px;
+  line-height:1.25;
 }
 
-.logo{
-  height:110px;
-  width:auto;
+/* QR + Right logo wrapper */
+.headerRight{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.qrBox{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+}
+.qrBox img{
+  width:72px;
+  height:72px;
   object-fit:contain;
-  background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
-  padding:8px 14px;
-  border-radius:18px;
-  filter:none;
+}
+.qrBox small{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.2;
+  text-align:center;
 }
 
-/* Keep Health Holding on the RIGHT always */
-.logo-left{ order:1; }
-.headerTitle{ order:2; }
-.logo-right{ order:3; margin-right:auto; }
-
+/* ===== LAYOUT ===== */
 .container{
   display:grid;
   grid-template-columns:380px 1fr;
-  gap:16px;
-  padding:16px;
+  gap:18px;
+  padding:18px;
 }
 
-/* ===== CARDS ===== */
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -93,72 +120,8 @@ header{
   padding:16px;
   box-shadow:var(--shadow);
 }
-
-.sidebar h3{
-  margin:0 0 10px;
-  font-size:14px;
-  color:var(--muted);
-  letter-spacing:.2px;
-}
+.sidebar h3{ margin:0 0 10px; }
 .hr{ height:1px; background:var(--border); border:0; margin:12px 0; }
-
-/* ===== CATEGORY TILES (icons) ===== */
-.catGrid{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:10px;
-}
-.catBtn{
-  border:1px solid var(--border);
-  background:linear-gradient(180deg, #ffffff 0%, #f7fcff 100%);
-  border-radius:18px;
-  padding:12px 12px;
-  cursor:pointer;
-  text-align:right;
-  transition:transform .05s ease, box-shadow .2s ease, border-color .2s ease;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-.catBtn:hover{ box-shadow:0 14px 30px rgba(0,0,0,.06); border-color:rgba(14,165,166,.35); }
-.catBtn:active{ transform:scale(.99); }
-.catBtn .label{ font-weight:800; font-size:13px; }
-.catBtn .icon{
-  width:34px; height:34px;
-  border-radius:12px;
-  display:grid; place-items:center;
-  background:linear-gradient(135deg, rgba(14,165,166,.15) 0%, rgba(42,166,255,.13) 100%);
-  border:1px solid rgba(14,165,166,.18);
-  font-size:18px;
-}
-
-/* ===== KPI ===== */
-.kpiRow{ display:grid; grid-template-columns:1fr; gap:10px; }
-.kpi{
-  background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
-  padding:12px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.kpi span{ color:var(--muted); font-size:12px; }
-.kpi strong{ font-size:16px; }
-
-.badges{ display:flex; gap:8px; flex-wrap:wrap; }
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-size:12px;
-  color:var(--muted);
-}
 
 /* ===== BUTTONS ===== */
 .btn{
@@ -187,26 +150,51 @@ header{
 .btn.ghost{ background:#f7fbff; }
 .btn.full{ width:100%; margin:10px 0 0; }
 
+/* ===== KPI ===== */
+.kpi{
+  background:linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
+  padding:12px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.kpi strong{ font-size:16px; }
+
+.badges{ display:flex; gap:8px; flex-wrap:wrap; }
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:12px;
+  color:var(--muted);
+}
+
 /* ===== CHAT ===== */
 .chat{
-  min-height:420px;
-  max-height:62vh;
+  min-height:380px;
+  max-height:60vh;
   overflow:auto;
   padding-right:4px;
-  scroll-behavior:smooth;
 }
 .bubble{
   background:linear-gradient(180deg, #f2fbff 0%, #ffffff 100%);
   padding:12px 14px;
-  border-radius:18px;
+  border-radius:16px;
   margin-bottom:12px;
   border:1px solid var(--border);
-  line-height:1.8;
+  line-height:1.75;
 }
 .bubble .meta{
   color:var(--muted);
   font-size:12px;
-  margin-top:10px;
+  margin-top:8px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
@@ -215,7 +203,7 @@ header{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  padding:6px 10px;
+  padding:5px 9px;
   border-radius:999px;
   border:1px solid var(--border);
   background:#fff;
@@ -223,17 +211,13 @@ header{
   color:var(--muted);
 }
 
-/* ===== INPUT ===== */
+/* ===== INPUT + SUGGEST ===== */
 .row{
   display:grid;
   grid-template-columns: 1fr auto;
   gap:10px;
   align-items:center;
   margin-top:12px;
-  position:sticky;
-  bottom:0;
-  background:linear-gradient(180deg, rgba(243,251,255,.0) 0%, rgba(243,251,255,.85) 40%, rgba(243,251,255,1) 100%);
-  padding-top:10px;
 }
 .inputWrap{ position:relative; }
 input{
@@ -242,7 +226,6 @@ input{
   border-radius:14px;
   border:1px solid var(--border);
   outline:none;
-  background:#fff;
 }
 input:focus{
   border-color:rgba(14,165,166,.55);
@@ -250,7 +233,7 @@ input:focus{
 }
 .suggest{
   position:absolute;
-  top:52px;
+  top:48px;
   right:0;
   left:0;
   background:#fff;
@@ -291,6 +274,7 @@ input:focus{
 }
 .chip:hover{ border-color:rgba(42,166,255,.45); }
 
+/* ===== FOOTER ===== */
 .footer{
   text-align:center;
   padding:16px;
@@ -353,8 +337,12 @@ input:focus{
 }
 .table tr:last-child td{ border-bottom:none; }
 
-/* ===== PRINT AREA ===== */
+/* ===== MED DETAILS ANCHOR ===== */
+#detailsAnchor{ position:relative; top:-110px; } /* offset for sticky header */
+
+/* ===== EXECUTIVE PRINT AREA ===== */
 #printArea{ display:none; }
+
 .printHeader{
   display:flex;
   align-items:center;
@@ -365,17 +353,25 @@ input:focus{
   margin-bottom:10px;
 }
 .printLogo{
-  height:100px;
+  height:82px;
   width:auto;
   object-fit:contain;
-  background:#fff;
-  padding:6px 10px;
-  border-radius:16px;
-  filter:none;
+  mix-blend-mode:multiply;
 }
-.printTitle{ text-align:center; flex:1; }
-.printTitle h2{ margin:0; font-size:16px; color:#07202a; }
-.printTitle p{ margin:4px 0 0; font-size:11px; color:#5f7f8f; }
+.printTitle{
+  text-align:center;
+  flex:1;
+}
+.printTitle h2{
+  margin:0;
+  font-size:16px;
+  color:#07202a;
+}
+.printTitle p{
+  margin:4px 0 0;
+  font-size:11px;
+  color:#5f7f8f;
+}
 .printMeta{
   display:flex;
   justify-content:space-between;
@@ -399,6 +395,50 @@ input:focus{
 }
 .printFooter .warn{ color:#07202a; }
 
+/* ===== MOBILE OPTIMIZATION (Theme unchanged) ===== */
+@media (max-width: 600px){
+  header{
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:12px 12px;
+    position:relative;
+  }
+  .logo{
+    height:92px;
+    padding:6px 10px;
+    border-radius:16px;
+  }
+  .title{ min-width:unset; width:100%; }
+  .title h1{ font-size:17px; }
+  .headerRight{ width:100%; justify-content:center; }
+
+  .qrBox img{ width:64px; height:64px; }
+  .container{
+    grid-template-columns:1fr;
+    padding:12px;
+    gap:12px;
+  }
+
+  /* categories as 2 columns */
+  .catGrid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:8px;
+  }
+  .btn{ width:100%; margin:0; padding:11px 10px; }
+  .chat{ max-height:55vh; min-height:320px; }
+  .row{ grid-template-columns:1fr; gap:10px; }
+  .row .btn.primary{ width:100%; }
+  .suggest{ top:52px; }
+  .chips{ gap:6px; }
+  .chip{ padding:9px 10px; font-size:12px; }
+  .modal{ width:96vw; border-radius:18px; }
+  .modalBody{ max-height:72vh; }
+}
+
+/* ===== PRINT ===== */
 @media print{
   @page { size: A4; margin: 14mm 12mm 14mm 12mm; }
   header, .sidebar, .row, .footer, .chips, #openTopBtn, .modalBack { display:none !important; }
@@ -409,41 +449,7 @@ input:focus{
   #printArea{ display:block !important; }
   img{ max-width:100% !important; }
   #printArea img{ display:inline-block !important; visibility:visible !important; }
-  .bubble{
-    page-break-inside: avoid;
-    border:1px solid #d7e9f2;
-    background:#fff;
-  }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 980px){
-  .container{ grid-template-columns:1fr; }
-  header{ position:relative; }
-  .logo{ height:92px; }
-}
-@media (max-width: 600px){
-  header{
-    flex-direction:column;
-    gap:10px;
-    padding:12px;
-  }
-  .logo-right{ order:1; margin-right:0; }
-  .headerTitle{ order:2; font-size:15px; }
-  .logo-left{ order:3; }
-
-  .logo{ height:86px; padding:6px 10px; border-radius:16px; }
-
-  .container{ padding:12px; gap:12px; }
-
-  .catGrid{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; }
-  .catBtn{ padding:10px 10px; border-radius:16px; }
-  .catBtn .icon{ width:32px; height:32px; border-radius:12px; }
-
-  .chat{ max-height:58vh; min-height:360px; }
-
-  .row{ grid-template-columns:1fr; }
-  .row .btn.primary{ width:100%; }
+  .bubble{ page-break-inside: avoid; border:1px solid #d7e9f2; background:#fff; }
 }
 </style>
 </head>
@@ -451,9 +457,19 @@ input:focus{
 <body>
 
 <header>
-  <img src="logo_qch.png" class="logo logo-left" alt="QCH Logo">
-  <div class="headerTitle">الشات التفاعلي للخدمات الصيدلانية بشبكة القطيف الصحية</div>
-  <img src="logo_health_holding.png" class="logo logo-right" alt="Health Holding Logo">
+  <img src="logo_qch.png" class="logo" alt="QCH Logo">
+
+  <div class="title">
+    <h1>الشات التفاعلي للخدمات الصيدلانية بشبكة القطيف الصحية</h1>
+  </div>
+
+  <div class="headerRight">
+    <div class="qrBox" title="افتح على الجوال">
+      <img id="qrImg" alt="QR Code">
+      <small>افتح الشات<br>على الجوال</small>
+    </div>
+    <img src="logo_health_holding.png" class="logo" alt="Health Holding Logo">
+  </div>
 </header>
 
 <div class="container">
@@ -463,51 +479,24 @@ input:focus{
     <h3>التصنيفات</h3>
 
     <div class="catGrid">
-      <button class="catBtn" onclick="filterCategory('Hypertension', true)">
-        <span class="label">ضغط</span><span class="icon">❤️</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Diabetes', true)">
-        <span class="label">سكر</span><span class="icon">🩸</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Insulin', true)">
-        <span class="label">أنسولين</span><span class="icon">💉</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Thyroid', true)">
-        <span class="label">الغدة</span><span class="icon">🦋</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('GI', true)">
-        <span class="label">المعدة</span><span class="icon">🍽</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Anticoagulant', true)">
-        <span class="label">مُميعات</span><span class="icon">🧬</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Antibiotic', true)">
-        <span class="label">مضادات</span><span class="icon">🦠</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Pain', true)">
-        <span class="label">ألم</span><span class="icon">💊</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Asthma', true)">
-        <span class="label">صدر</span><span class="icon">🌬️</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Allergy', true)">
-        <span class="label">حساسية</span><span class="icon">🌿</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('Lipids', true)">
-        <span class="label">دهون</span><span class="icon">🫀</span>
-      </button>
-      <button class="catBtn" onclick="filterCategory('All', true)">
-        <span class="label">الكل</span><span class="icon">⭐</span>
-      </button>
+      <button class="btn" onclick="filterCategory('Hypertension')">ضغط ❤️</button>
+      <button class="btn" onclick="filterCategory('Diabetes')">سكر 🩸</button>
+      <button class="btn" onclick="filterCategory('Insulin')">أنسولين 💉</button>
+      <button class="btn" onclick="filterCategory('Thyroid')">الغدة 🦋</button>
+      <button class="btn" onclick="filterCategory('GI')">المعدة 🍽</button>
+      <button class="btn" onclick="filterCategory('Anticoagulant')">مُميعات 🧬</button>
+      <button class="btn" onclick="filterCategory('Antibiotic')">مضادات 🦠</button>
+      <button class="btn" onclick="filterCategory('Pain')">ألم 💊</button>
+      <button class="btn" onclick="filterCategory('Asthma')">صدر 🌬️</button>
+      <button class="btn" onclick="filterCategory('Allergy')">حساسية 🌿</button>
+      <button class="btn" onclick="filterCategory('Lipids')">دهون 🫀</button>
     </div>
 
     <div class="hr"></div>
 
-    <div class="kpiRow">
-      <div class="kpi"><span>Drugs loaded</span><strong id="drugsLoaded">0</strong></div>
-      <div class="kpi"><span>Total selections</span><strong id="tracked">0</strong></div>
-      <div class="kpi"><span>Top 10</span><strong id="topCount">0</strong></div>
-    </div>
+    <div class="kpi"><span>Drugs loaded</span><strong id="drugsLoaded">0</strong></div>
+    <div class="kpi"><span>Total selections</span><strong id="tracked">0</strong></div>
+    <div class="kpi"><span>Top 10</span><strong id="topCount">0</strong></div>
 
     <div class="hr"></div>
 
@@ -529,6 +518,9 @@ input:focus{
 
   <!-- MAIN -->
   <div class="card">
+    <!-- anchor so clicking a drug scrolls down here -->
+    <div id="detailsAnchor"></div>
+
     <div class="chat" id="chat"></div>
 
     <div class="row">
@@ -536,7 +528,7 @@ input:focus{
         <input id="input" placeholder="اكتب اسم الدواء / بالعربي أو الإنجليزي / Brand / Strength ..." autocomplete="off">
         <div id="suggest" class="suggest"></div>
       </div>
-      <button class="btn primary" onclick="searchDrug(true)">إرسال</button>
+      <button class="btn primary" onclick="searchDrug()">إرسال</button>
     </div>
 
     <div class="chips" id="chips"></div>
@@ -570,10 +562,13 @@ input:focus{
   <div class="printHeader">
     <img src="logo_qch.png" class="printLogo" alt="QCH">
     <div class="printTitle">
-      <h2>Qatif Central Hospital – Smart Ramadan Medication Assistant</h2>
-      <p>Executive PDF</p>
+      <h2>Qatif Health Network – Interactive Pharmacy Chat</h2>
+      <p>Ramadan Medication Timing • Patient Friendly • Executive PDF</p>
     </div>
-    <img src="logo_health_holding.png" class="printLogo" alt="Health Holding">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img id="printQrImg" style="width:74px;height:74px;object-fit:contain" alt="QR">
+      <img src="logo_health_holding.png" class="printLogo" alt="Health Holding">
+    </div>
   </div>
 
   <div class="printMeta">
@@ -586,7 +581,7 @@ input:focus{
 
   <div class="printFooter">
     <div class="warn">⚠️ This guidance does not replace clinician advice.</div>
-    <div>QCH Pharmacy • Patient education</div>
+    <div>QCH Pharmacy • For patient education use</div>
   </div>
 </div>
 
@@ -595,6 +590,17 @@ input:focus{
 const TRACK_KEY = "qch_track_counts_v6";
 const TOTAL_KEY = "qch_total_selections_v6";
 
+/* ========= QR CODE ========= */
+const QR_URL = "https://alizakialsada.github.io/qch-ramadan-chatbot/"; // غيّر الرابط إذا تبغى
+function setQR(){
+  const qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" + encodeURIComponent(QR_URL);
+  const qr = document.getElementById("qrImg");
+  const pqr = document.getElementById("printQrImg");
+  if(qr) qr.src = qrSrc;
+  if(pqr) pqr.src = qrSrc;
+}
+setQR();
+
 /* ========= STATE ========= */
 let DRUGS = [];
 let lastSelectedDrug = null;
@@ -602,7 +608,7 @@ let lastSelectedDrug = null;
 /* ========= HELPERS ========= */
 const $ = (id) => document.getElementById(id);
 function safeText(s){ return (s ?? "").toString(); }
-function norm(s){ return safeText(s).toLowerCase().trim().replace(/\\s+/g,' '); }
+function norm(s){ return safeText(s).toLowerCase().trim().replace(/\s+/g,' '); }
 function escapeHtml(s){
   return safeText(s)
     .replaceAll("&","&amp;")
@@ -610,14 +616,6 @@ function escapeHtml(s){
     .replaceAll(">","&gt;");
 }
 function escapeQuotes(s){ return safeText(s).replace(/'/g,"\\'"); }
-
-/* ===== Scroll helper (go down to chat/last message) ===== */
-function scrollToChat(){
-  const chat = $("chat");
-  if(!chat) return;
-  chat.scrollIntoView({ behavior:"smooth", block:"start" });
-  setTimeout(()=>{ chat.scrollTop = chat.scrollHeight; }, 120);
-}
 
 /* === Category canonicalization === */
 const CATEGORY_ALIASES = {
@@ -631,8 +629,7 @@ const CATEGORY_ALIASES = {
   "pain":"Pain","analgesic":"Pain",
   "resp":"Asthma","asthma":"Asthma",
   "antihistamine":"Allergy","allergy":"Allergy",
-  "thyroid":"Thyroid","endocrine":"Thyroid",
-  "all":"All"
+  "thyroid":"Thyroid","endocrine":"Thyroid"
 };
 function canonicalCategory(raw){
   const key = norm(raw);
@@ -667,7 +664,6 @@ function waitForImages(selector, timeoutMs = 3000){
         const still = imgs.some(i => !i.complete || i.naturalWidth === 0);
         if(!still){ clearTimeout(t); finish(); }
       }, { once:true });
-
       img.addEventListener("error", () => { clearTimeout(t); finish(); }, { once:true });
 
       if(img.naturalWidth === 0){
@@ -709,21 +705,26 @@ function addMessage(html){
   $("chat").scrollTop = $("chat").scrollHeight;
 }
 function clearChat(){ $("chat").innerHTML=""; greet(); }
-
 function greet(){
   addMessage(
     `<strong>مرحبًا 👋</strong>
      <div style="margin-top:6px">
        اكتب اسم الدواء (عربي/إنجليزي/Brand/Strength) وستظهر اقتراحات فورية.
      </div>
-     <div class="meta"><span>QCH Pharmacy</span></div>`
+     <div class="meta"><span>QCH Pharmacy Assistant</span></div>`
   );
+}
+
+/* Scroll to explanation when selecting from icons/chips/suggest */
+function scrollToDetails(){
+  const el = document.getElementById("detailsAnchor");
+  if(el) el.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
 /* ========= SEARCH + AUTOCOMPLETE ========= */
 $("input").addEventListener("input", onType);
 $("input").addEventListener("keydown", (e)=>{
-  if(e.key==="Enter"){ e.preventDefault(); searchDrug(true); }
+  if(e.key==="Enter"){ e.preventDefault(); searchDrug(); }
   if(e.key==="Escape"){ hideSuggest(); }
 });
 
@@ -782,7 +783,7 @@ function onType(){
     ].filter(Boolean).join(" — ");
 
     return `
-      <button type="button" onclick="pickDrug('${escapeQuotes(en)}', true)">
+      <button type="button" onclick="pickDrug('${escapeQuotes(en)}')">
         <div><strong>${escapeHtml(title)}</strong></div>
         <div class="line2">${escapeHtml(sub)}</div>
       </button>
@@ -792,10 +793,10 @@ function onType(){
   $("suggest").style.display="block";
 }
 
-function pickDrug(englishName, scrollDown=false){
+function pickDrug(englishName){
   $("input").value = englishName;
   hideSuggest();
-  searchDrug(scrollDown);
+  searchDrug();
 }
 
 function findBestDrug(qRaw){
@@ -807,7 +808,7 @@ function findBestDrug(qRaw){
   return null;
 }
 
-function searchDrug(scrollDown=false){
+function searchDrug(){
   const qRaw = $("input").value;
   const q = norm(qRaw);
   if(!q) return;
@@ -819,10 +820,9 @@ function searchDrug(scrollDown=false){
     renderDrug(drug);
     $("input").value = "";
     hideSuggest();
-    if(scrollDown) scrollToChat();
+    scrollToDetails();
   }else{
     addMessage("❌ لا يوجد تطابق. اكتب أول حرفين أو اختر من الاقتراحات.");
-    if(scrollDown) scrollToChat();
   }
 }
 
@@ -856,13 +856,13 @@ function renderDrug(d){
   const notesBlock = notes ? `
     <div style="margin-top:10px">
       <strong>ملاحظات</strong>
-      <div>${escapeHtml(notes).replaceAll("\\n","<br>")}</div>
+      <div>${escapeHtml(notes).replaceAll("\n","<br>")}</div>
     </div>` : "";
 
   addMessage(`
     <strong>${escapeHtml(title)}</strong>
     ${alt ? `<small style="color:var(--muted)"> ${escapeHtml(alt)}</small>` : ""}
-    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\\n","<br>")}</div>
+    <div style="margin-top:10px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
     ${notesBlock}
     <div class="meta">
       ${cat ? `<span class="tag">🏷 ${escapeHtml(cat)}</span>` : ""}
@@ -872,35 +872,23 @@ function renderDrug(d){
       ${risk ? `<span class="tag">⚠️ ${escapeHtml(riskLabel(risk))}</span>` : ""}
       <span class="tag">⭐ Selected: <strong>${count}</strong>x</span>
     </div>
-    <div class="meta">
-      <span style="color:var(--ok)">✅ Ready for Executive PDF</span>
-      <span>Qatif Health Network</span>
-    </div>
   `);
 }
 
-/* ========= CATEGORY FILTER (scrolls down) ========= */
-function filterCategory(cat, scrollDown=false){
-  const sel = norm(canonicalCategory(cat));
-
-  let results = [];
-  if(sel === "all"){
-    results = DRUGS.slice();
-  }else{
-    results = DRUGS.filter(d => norm(canonicalCategory(d.category)) === sel);
-  }
+/* ========= CATEGORY FILTER ========= */
+function filterCategory(cat){
+  const sel = norm(cat);
+  const results = DRUGS.filter(d => norm(canonicalCategory(d.category)) === sel);
 
   if(results.length === 0){
-    addMessage("لا توجد عناصر في هذا التصنيف.");
-    if(scrollDown) scrollToChat();
+    addMessage(`لا توجد عناصر في هذا التصنيف.`);
     return;
   }
 
   addMessage(`<strong>نتائج التصنيف: ${escapeHtml(cat)}</strong> <span style="color:var(--muted);font-size:12px">(${results.length})</span>`);
   results.slice(0, 25).forEach(d => renderDrug(d));
   if(results.length > 25) addMessage(`… تم عرض 25 فقط من أصل ${results.length}`);
-
-  if(scrollDown) scrollToChat();
+  scrollToDetails();
 }
 
 /* ========= TRACKING ========= */
@@ -933,6 +921,11 @@ function resetTracking(){
   addMessage("✅ تم إعادة ضبط التتبع.");
 }
 
+function clearChat(){
+  $("chat").innerHTML="";
+  greet();
+}
+
 /* ========= TOP10 DASHBOARD ========= */
 function openTop10(){
   const map = getTrackMap();
@@ -940,7 +933,6 @@ function openTop10(){
 
   if(entries.length === 0){
     addMessage("لا توجد بيانات تتبع بعد.");
-    scrollToChat();
     return;
   }
 
@@ -986,22 +978,22 @@ function renderChips(){
 
   const map = getTrackMap();
   const top = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);
+  const fallback = ["Metformin","Amlodipine","Losartan","Insulin Glargine","Insulin Aspart","Omeprazole","Levothyroxine","Atorvastatin"];
 
-  const list = (top.length ? top : []).map(n=>{
+  const list = (top.length ? top : fallback).map(n=>{
     const d = DRUGS.find(x=>norm(x.name)===norm(n));
     const label = d ? (d.name_ar || d.name) : n;
     const key = d ? d.name : n;
-    return `<div class="chip" onclick="pickDrug('${escapeQuotes(key)}', true)">⭐ ${escapeHtml(label)}</div>`;
+    return `<div class="chip" onclick="pickDrug('${escapeQuotes(key)}');scrollToDetails();">⭐ ${escapeHtml(label)}</div>`;
   }).join("");
 
-  container.innerHTML = list || `<div style="color:var(--muted);font-size:12px">ابدأ بالبحث عن دواء لتظهر هنا اختصارات سريعة ⭐</div>`;
+  container.innerHTML = list;
 }
 
 /* ========= EXECUTIVE PDF EXPORT (Selected) ========= */
 async function exportDrugPDF(){
   if(!lastSelectedDrug){
     addMessage("اختر دواء أولاً ثم Export PDF.");
-    scrollToChat();
     return;
   }
 
@@ -1032,13 +1024,13 @@ async function exportDrugPDF(){
 
       <div style="margin-top:12px; line-height:1.7">
         <strong>إرشادات رمضان</strong>
-        <div style="margin-top:6px">${escapeHtml(guide).replaceAll("\\n","<br>")}</div>
+        <div style="margin-top:6px">${escapeHtml(guide).replaceAll("\n","<br>")}</div>
       </div>
 
       ${notes ? `
       <div style="margin-top:12px; line-height:1.7">
         <strong>ملاحظات</strong>
-        <div style="margin-top:6px">${escapeHtml(notes).replaceAll("\\n","<br>")}</div>
+        <div style="margin-top:6px">${escapeHtml(notes).replaceAll("\n","<br>")}</div>
       </div>` : ""}
 
       <div style="margin-top:12px; font-size:11px; color:var(--muted)">
@@ -1058,7 +1050,6 @@ async function exportTop10PDF(){
 
   if(entries.length === 0){
     addMessage("لا توجد بيانات تتبع بعد.");
-    scrollToChat();
     return;
   }
 
