@@ -371,7 +371,104 @@ input:focus{
     border:1px solid #d7e9f2;
     background:#fff;
   }
-}
+  /* =========================
+   MOBILE OPTIMIZATION
+   (Theme unchanged)
+========================= */
+@media (max-width: 600px){
+
+  /* Header stacks nicely on phone */
+  header{
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:12px 12px;
+    position:relative; /* smoother on mobile */
+  }
+
+  /* Logos fit phone */
+  .logo{
+    height:88px;               /* good size for phones */
+    padding:6px 10px;
+    border-radius:16px;
+  }
+
+  /* Title wraps cleanly */
+  .title{
+    min-width:unset;
+    width:100%;
+    text-align:center;
+  }
+  .title h1{
+    font-size:18px;
+    line-height:1.25;
+  }
+  .title p{
+    font-size:12px;
+    line-height:1.35;
+  }
+
+  /* Tighten layout spacing */
+  .container{
+    grid-template-columns:1fr;
+    padding:12px;
+    gap:12px;
+  }
+
+  /* Category buttons become 2-column grid for easy tapping */
+  .sidebar > div:first-of-type{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:8px;
+  }
+
+  .btn{
+    width:100%;
+    margin:0;
+    padding:11px 10px;
+    border-radius:14px;
+    font-size:13px;
+  }
+
+  /* Chat height comfortable on phone */
+  .chat{
+    max-height:55vh;
+    min-height:320px;
+  }
+
+  /* Input row stacks */
+  .row{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .row .btn.primary{
+    width:100%;
+  }
+
+  /* Suggest dropdown spacing */
+  .suggest{
+    top:52px;
+  }
+
+  /* Chips wrap nicely */
+  .chips{
+    gap:6px;
+  }
+  .chip{
+    padding:9px 10px;
+    font-size:12px;
+  }
+
+  /* Modal fit */
+  .modal{
+    width:96vw;
+    border-radius:18px;
+  }
+  .modalBody{
+    max-height:72vh;
+  }
+}}
 </style>
 </head>
 
